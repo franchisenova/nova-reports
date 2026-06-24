@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Pink's Window Services Financial Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#1a1a2e;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.12);}
+.hdr{background:linear-gradient(135deg,#1a0820,#2a0830,#0d0a1c);padding:28px 40px 24px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(233,30,140,0.25),transparent 65%);pointer-events:none;}
+.hlogo{font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,0.4);margin-bottom:12px;font-weight:700;font-family:'Montserrat',sans-serif;}
+.heye{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#e91e8c;margin-bottom:6px;font-weight:700;font-family:'Montserrat',sans-serif;}
+.htitle{font-size:26px;font-weight:900;color:#fff;margin-bottom:4px;font-family:'Montserrat',sans-serif;}
+.hmeta{font-size:12px;color:#b0aed0;}
+.critical-banner{background:#b1456b;padding:14px 40px;}
+.critical-banner p{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;color:#fff;letter-spacing:.03em;}
+.score-strip{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #e8eaf0;background:linear-gradient(90deg,rgba(233,30,140,0.05),transparent);}
+.ss{padding:14px 16px;border-right:1px solid #e8eaf0;text-align:center;}
+.ss:last-child{border-right:none;}
+.ss-val{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;line-height:1;margin-bottom:3px;}
+.ss-lbl{font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#888;}
+.sec{padding:20px 40px;border-bottom:1px solid #e8eaf0;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:14px;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:left;}
+.th-dark{background:#1a0820;color:#fff;}
+.th-pink{background:#2a0830;color:#e91e8c;}
+td{padding:7px 10px;border-bottom:1px solid #e8eaf0;color:#1a1a2e;vertical-align:top;line-height:1.45;}
+tr:nth-child(even) td{background:#f9f9fc;}
+tr:last-child td{border-bottom:none;}
+.tdm{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;color:#452e80;}
+.gap-box{background:#fff0f4;border-left:4px solid #b1456b;padding:14px 16px;border-radius:0 8px 8px 0;margin:12px 0;}
+.gap-box-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#b1456b;margin-bottom:7px;}
+.gap-box p{font-size:12.5px;color:#4a1020;line-height:1.65;}
+.flag-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.flag-card{border-radius:8px;padding:14px 16px;}
+.fg{background:#f0f9f0;border-left:3px solid #1a7a4a;}
+.fr{background:#fff0f4;border-left:3px solid #b1456b;}
+.flag-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;}
+.fg .flag-title{color:#1a7a4a;}
+.fr .flag-title{color:#b1456b;}
+.flag-list{padding-left:14px;margin:0;}
+.flag-list li{font-size:12px;margin-bottom:6px;line-height:1.5;}
+.fg .flag-list li{color:#1a3a12;}
+.fr .flag-list li{color:#4a1020;}
+.scen-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.scen{border-radius:8px;padding:14px 16px;}
+.scen-base{background:#f5f5fa;border-top:3px solid #452e80;}
+.scen-best{background:#f0f9f0;border-top:3px solid #1a7a4a;}
+.scen-worst{background:#fff0f4;border-top:3px solid #b1456b;}
+.scen-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.scen-base .scen-title{color:#452e80;}
+.scen-best .scen-title{color:#1a7a4a;}
+.scen-worst .scen-title{color:#b1456b;}
+.scen-row{display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid rgba(0,0,0,0.06);}
+.scen-row:last-child{border-bottom:none;font-weight:700;font-size:12px;}
+.scen-row span:first-child{color:#666;}
+.fee-bar-wrap{margin-bottom:10px;}
+.fee-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;}
+.fee-bar{height:10px;background:#e8eaf0;border-radius:999px;overflow:hidden;}
+.fee-fill{height:100%;border-radius:999px;}
+.roi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.roi-card{border-radius:8px;padding:12px 14px;text-align:center;}
+.ftr{background:#0d0a1c;padding:14px 40px;}
+.ftr p{font-size:11px;color:#666;line-height:1.5;}
+.good{color:#1a7a4a;font-weight:700;}
+.warn{color:#b86e00;font-weight:700;}
+.bad{color:#b1456b;font-weight:700;}
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.critical-banner{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+
+/* ── Watermark ─────────────────────────────────── */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='400'%3E%3Ctext x='50%25' y='44%25' text-anchor='middle' dominant-baseline='middle' font-family='Helvetica Neue, Arial, sans-serif' font-weight='700' font-size='52' fill='%23282560' fill-opacity='0.055' transform='rotate(-35 350 200)'%3ECONFIDENTIAL%3C/text%3E%3Ctext x='50%25' y='64%25' text-anchor='middle' dominant-baseline='middle' font-family='Helvetica Neue, Arial, sans-serif' font-weight='700' font-size='21' fill='%23282560' fill-opacity='0.055' transform='rotate(-35 350 200)'%3EINTERNAL USE ONLY · FRANCHISE NOVA%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 700px 400px;
+}
+@media print {
+  body::before {
+    position: fixed;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<div class="hdr">
+  <div class="hlogo">BLK GRVTY / FRANCHISE NOVA</div>
+  <div class="heye">Financial Analysis · FDD-Based</div>
+  <div class="htitle">Pink's Window Services — Financial Analysis</div>
+  <p class="hmeta">Based on 2024 FDD &nbsp;·&nbsp; Pink's Franchising LLC &nbsp;·&nbsp; Austin, TX &nbsp;·&nbsp; Franchisor formed May 2023</p>
+</div>
+
+<div class="critical-banner">
+  <p>⚑ CRITICAL DATA LIMITATION: This FDD contains virtually no independent franchisee financial data. Item 19 discloses only 1 affiliate-owned location. 0 franchisee P&L data available. Most sections of this financial analysis rely on projections and affiliate data that should NOT be treated as franchisee benchmarks.</p>
+</div>
+
+<div class="score-strip">
+  <div class="ss"><div class="ss-val" style="color:#e91e8c">2</div><div class="ss-lbl">Total Locations</div></div>
+  <div class="ss"><div class="ss-val" style="color:#b1456b">0</div><div class="ss-lbl">Franchisee P&L Data</div></div>
+  <div class="ss"><div class="ss-val" style="color:#b1456b">N/A</div><div class="ss-lbl">Franchisee NOI</div></div>
+  <div class="ss"><div class="ss-val" style="color:#1a7a4a">0</div><div class="ss-lbl">Terminations (to date)</div></div>
+  <div class="ss"><div class="ss-val" style="color:#b86e00">May '23</div><div class="ss-lbl">Franchisor Founded</div></div>
+</div>
+
+<!-- UNIT COUNT -->
+<div class="sec">
+  <div class="sec-lbl">Unit Count & System History (Item 20)</div>
+  <table>
+    <tr><th class="th-dark">Year</th><th class="th-dark">Franchise Units at Start</th><th class="th-dark">Openings</th><th class="th-dark">Closures</th><th class="th-dark">Terminations</th><th class="th-dark">Units at End</th></tr>
+    <tr><td class="tdm">2021</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class="tdm">2022</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td class="tdm">2023</td><td>0</td><td style="color:#b86e00;font-weight:700;">1 (franchise agreement only)</td><td>0</td><td>0</td><td style="color:#b86e00;font-weight:700;">1 (not yet open)</td></tr>
+    <tr><td class="tdm">Company-owned</td><td>1 affiliate (Austin, TX)</td><td>—</td><td>0</td><td>0</td><td>1</td></tr>
+    <tr><td class="tdm" style="color:#b1456b;">TOTAL SYSTEM</td><td colspan="4" style="color:#b1456b;font-weight:700;">2 locations total (1 affiliate + 1 franchisee) as of FDD date · 10 franchise agreements signed but unopen</td><td></td></tr>
+  </table>
+  <div class="gap-box" style="margin-top:12px;">
+    <div class="gap-box-title">⚑ RED FLAG — Insufficient Track Record</div>
+    <p>Pink's Franchising LLC was formed in May 2023 — approximately 12 months before the FDD filing date. There is no multi-year franchise history to evaluate. The 1 franchisee location that signed an agreement during 2023 had not opened by the FDD measurement date. Zero closures and zero terminations cannot be interpreted as system health signals — the system is simply too new to have generated them. This is a fundamental data limitation, not a green flag.</p>
+  </div>
+</div>
+
+<!-- P&L PERFORMANCE -->
+<div class="sec">
+  <div class="sec-lbl">P&L Performance — Item 19 (Affiliate Data Only — NOT Franchisee Benchmarks)</div>
+  <table>
+    <tr><th class="th-dark">Location</th><th class="th-pink">Type</th><th class="th-pink">AUV</th><th class="th-pink">Net Income</th><th class="th-pink">NOI %</th><th class="th-dark">Credibility Note</th></tr>
+    <tr><td class="tdm">Austin, TX (Affiliate)</td><td>Company-owned</td><td>$748,000</td><td style="color:#1a7a4a;font-weight:700;">$358,000</td><td style="color:#1a7a4a;font-weight:700;">47.8%</td><td style="color:#b1456b;font-weight:700;">Affiliate — does NOT pay royalty, brand fund, or marketing fees. NOT a franchisee benchmark.</td></tr>
+    <tr><td class="tdm">Franchisee Data</td><td colspan="4" style="color:#b1456b;font-weight:700;">NOT DISCLOSED — 0 franchisee P&L data in this FDD</td><td style="color:#b1456b;font-weight:700;">⚑ This is a red flag. No independent validation of the model exists.</td></tr>
+  </table>
+  <div class="gap-box">
+    <div class="gap-box-title">⚑ RED FLAG — Affiliate NOI of 47.8% is Structurally Misleading</div>
+    <p>The affiliate-owned Austin location reports 47.8% NOI ($358K on $748K revenue). This figure excludes royalty (7%), brand fund (2%), local advertising management ($500/mo + 3% of gross), and tech fees ($650–$1,000/mo) — all fees that franchisees are required to pay. Adjusting for these fees, a franchisee replicating the same $748K revenue would have an effective NOI of approximately <strong>17–20%</strong>, or ~$127–$150K. That is still a strong return IF the affiliate's revenue is replicable — but there is zero franchisee data to confirm it is. The 47.8% figure should not be used as a benchmark for franchise economics under any circumstances.</p>
+  </div>
+  <div class="gap-box" style="background:#fff8e1;border-left-color:#b86e00;margin-top:0;">
+    <div class="gap-box-title" style="color:#b86e00;">⚑ DATA GAP — Year-Over-Year Comparison Not Available</div>
+    <p>Pink's Franchising LLC was formed May 2023. There is no prior-year comparison data available. No same-store YoY growth figures can be calculated. The affiliate store's performance in prior years (before franchising) is not disclosed. Year-over-year margin trend analysis is not possible from this FDD.</p>
+  </div>
+</div>
+
+<!-- FEES -->
+<div class="sec">
+  <div class="sec-lbl">Fee Structure — All Fees (Items 5 & 6)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div>
+      <p style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#452e80;margin-bottom:10px;">Initial Fees</p>
+      <table>
+        <tr><th class="th-dark">Fee</th><th class="th-dark">Amount</th></tr>
+        <tr><td class="tdm">Single unit</td><td>$59,000</td></tr>
+        <tr><td class="tdm">2-territory development</td><td>$108,000</td></tr>
+        <tr><td class="tdm">4-territory development</td><td>$186,000</td></tr>
+        <tr><td class="tdm">CEO Model (5+ territories)</td><td>$225,000</td></tr>
+        <tr><td class="tdm">Veteran/clergy discount</td><td>10% on first unit</td></tr>
+        <tr><td class="tdm">Refundable?</td><td style="color:#b1456b;font-weight:700;">No — non-refundable under any circumstance</td></tr>
+      </table>
+    </div>
+    <div>
+      <p style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#452e80;margin-bottom:10px;">Ongoing Fee Burden</p>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Royalty</span><span style="color:#b86e00;font-weight:700;">7.0%</span></div><div class="fee-bar"><div class="fee-fill" style="width:64%;background:#b86e00;"></div></div></div>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Brand Fund</span><span>2.0%</span></div><div class="fee-bar"><div class="fee-fill" style="width:18%;background:#664ca9;"></div></div></div>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Local Ad Mgmt (min)</span><span style="color:#b86e00;font-weight:700;">3.0%+</span></div><div class="fee-bar"><div class="fee-fill" style="width:27%;background:#b86e00;"></div></div></div>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Technology + other</span><span>~0.5–1.0%</span></div><div class="fee-bar"><div class="fee-fill" style="width:9%;background:#9b8fc8;"></div></div></div>
+      <div class="fee-bar-wrap" style="margin-top:8px;"><div class="fee-label"><span style="font-weight:700;color:#1a1a2e;">Total Effective Burden</span><span style="font-weight:700;color:#b1456b;">~12.5–14%+ of gross</span></div><div class="fee-bar"><div class="fee-fill" style="width:100%;background:#b1456b;"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- REVENUE REQUIRED -->
+<div class="sec">
+  <div class="sec-lbl">Revenue Required — CEO Model (5 Territories, ~$700K Investment, SBA at $500K, 9%, 10 yr)</div>
+  <table>
+    <tr><th class="th-dark">Target</th><th class="th-dark">Annual Revenue / Territory</th><th class="th-dark">5-Territory Total</th><th class="th-dark">Est. NOI (post-fees)</th><th class="th-dark">SBA DSCR</th></tr>
+    <tr><td class="tdm">Break Even</td><td>~$280K</td><td>~$1.4M</td><td>~0%</td><td style="color:#b1456b;font-weight:700;">&lt;1.0x — Not viable</td></tr>
+    <tr><td class="tdm">Cover Debt Service</td><td>~$350K</td><td>~$1.75M</td><td>~3–5%</td><td style="color:#b86e00;font-weight:700;">~1.0x — Tight</td></tr>
+    <tr><td class="tdm">SBA Minimum (1.25x DSCR)</td><td>~$420K</td><td>~$2.1M</td><td>~8–10%</td><td style="color:#b86e00;font-weight:700;">1.25x — SBA minimum</td></tr>
+    <tr><td class="tdm">Healthy Operations (15% NOI)</td><td>~$550K+</td><td>~$2.75M+</td><td>15%+</td><td style="color:#1a7a4a;font-weight:700;">1.5x+ — Strong</td></tr>
+    <tr><td class="tdm" style="color:#b1456b;">Key risk</td><td colspan="4" style="color:#b1456b;font-weight:700;">No franchisee revenue data exists to validate whether $350–550K per territory is achievable in a new market. The affiliate's $748K AUV in Austin (its home market) is the only reference point.</td></tr>
+  </table>
+</div>
+
+<!-- SCENARIO ANALYSIS -->
+<div class="sec">
+  <div class="sec-lbl">Sensitivity / Scenario Analysis — Single Territory (Illustrative — NO franchisee data basis)</div>
+  <div class="scen-grid">
+    <div class="scen scen-worst">
+      <div class="scen-title">⚠ Worst Case</div>
+      <div class="scen-row"><span>Annual Revenue</span><span style="color:#b1456b;">$200K (new market, slow ramp)</span></div>
+      <div class="scen-row"><span>Fee Burden (~13%)</span><span>$26K</span></div>
+      <div class="scen-row"><span>Operating Costs</span><span>$210K</span></div>
+      <div class="scen-row"><span>NOI</span><span style="color:#b1456b;">−$36K (loss)</span></div>
+      <div class="scen-row"><span>Annual Debt Service</span><span>$62K</span></div>
+      <div class="scen-row"><span>DSCR</span><span style="color:#b1456b;">Negative — Default</span></div>
+      <div class="scen-row"><span>Outcome</span><span style="color:#b1456b;">Business failure</span></div>
+    </div>
+    <div class="scen scen-base">
+      <div class="scen-title">📊 Base Case (Illustrative)</div>
+      <div class="scen-row"><span>Annual Revenue</span><span>$400K (assumed)</span></div>
+      <div class="scen-row"><span>Fee Burden (~13%)</span><span>$52K</span></div>
+      <div class="scen-row"><span>Operating Costs</span><span>$310K</span></div>
+      <div class="scen-row"><span>NOI</span><span style="color:#b86e00;font-weight:700;">$38K (9.5%)</span></div>
+      <div class="scen-row"><span>Annual Debt Service</span><span>$62K</span></div>
+      <div class="scen-row"><span>DSCR</span><span style="color:#b1456b;">0.61x — Below SBA minimum</span></div>
+      <div class="scen-row"><span>Outcome</span><span style="color:#b1456b;">Not SBA-financeable at $400K</span></div>
+    </div>
+    <div class="scen scen-best">
+      <div class="scen-title">✓ Best Case (Affiliate Benchmark)</div>
+      <div class="scen-row"><span>Annual Revenue</span><span>$748K (affiliate AUV)</span></div>
+      <div class="scen-row"><span>Fee Burden (~13%) — added back</span><span>$97K</span></div>
+      <div class="scen-row"><span>Operating Costs</span><span>$521K</span></div>
+      <div class="scen-row"><span>Franchisee-adjusted NOI</span><span style="color:#1a7a4a;font-weight:700;">$130K (~17.4%)</span></div>
+      <div class="scen-row"><span>Annual Debt Service</span><span>$62K</span></div>
+      <div class="scen-row"><span>DSCR</span><span style="color:#1a7a4a;">2.1x — Excellent</span></div>
+      <div class="scen-row"><span>Outcome</span><span style="color:#b86e00;">Strong IF affiliate AUV replicable</span></div>
+    </div>
+  </div>
+  <div class="gap-box" style="margin-top:12px;">
+    <div class="gap-box-title">⚑ Critical Assumption Warning</div>
+    <p>All scenario analysis above is illustrative. There is no franchisee P&L data to anchor these projections. The base case assumption of $400K revenue per territory is speculative. The best case uses the affiliate's AUV but that location is in Austin (the brand's home market) and does not pay franchisee fees. Any investment decision based on this analysis would be made without adequate financial validation.</p>
+  </div>
+</div>
+
+<!-- ROI -->
+<div class="sec">
+  <div class="sec-lbl">ROI Analysis — Can This Make Sense?</div>
+  <div class="roi-grid">
+    <div class="roi-card" style="background:#fff0f4;"><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#b1456b;margin-bottom:3px;">Unknown</div><div style="font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;">Payback Period</div></div>
+    <div class="roi-card" style="background:#fff0f4;"><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#b1456b;margin-bottom:3px;">Unknown</div><div style="font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;">Cash-on-Cash Return</div></div>
+    <div class="roi-card" style="background:#fff0f4;"><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#b1456b;margin-bottom:3px;">Unknown</div><div style="font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;">DSCR (no data basis)</div></div>
+    <div class="roi-card" style="background:#fff0f4;"><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#b1456b;margin-bottom:3px;">Not Yet</div><div style="font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;">FN Recommendation</div></div>
+  </div>
+  <div style="margin-top:14px;font-size:12.5px;color:#333;line-height:1.7;"><strong>FN Assessment:</strong> An ROI analysis cannot be responsibly completed for Pink's Window Services at this time. There is no franchisee financial performance data. The affiliate-adjusted NOI is promising (potentially ~17–20% if revenue is replicable), but the core question — can a franchisee in a new market generate $400–750K annual revenue from window cleaning and pressure washing — is completely unanswered by this FDD. FN would be asking Leonard to invest $128K–$790K based on one company-owned location in the brand's home city with a 12-month operating history.</div>
+</div>
+
+<!-- FRANCHISOR CREDIBILITY -->
+<div class="sec">
+  <div class="sec-lbl">Franchisor Credibility & Disclosed Liabilities (Item 21)</div>
+  <table>
+    <tr><th class="th-dark">Item</th><th class="th-dark">Status</th><th class="th-dark">Source</th></tr>
+    <tr><td class="tdm">Franchisor profitability</td><td style="color:#b1456b;font-weight:700;">Net loss $29,322 on $108,955 revenue — pre-profitability</td><td>Item 21</td></tr>
+    <tr><td class="tdm">Operating history</td><td style="color:#b1456b;font-weight:700;">8 months as of financial statement date (formed May 2023)</td><td>Item 21</td></tr>
+    <tr><td class="tdm">Going concern note</td><td style="color:#b86e00;font-weight:700;">Not disclosed in available data — recommend requesting from franchisor</td><td>Item 21</td></tr>
+    <tr><td class="tdm">Members' equity</td><td>$70,703 — thin balance sheet</td><td>Item 21</td></tr>
+    <tr><td class="tdm">Cash position</td><td style="color:#b86e00;font-weight:700;">$375,897 — adequate short-term, but limited runway if growth stalls</td><td>Item 21</td></tr>
+    <tr><td class="tdm">Revenue source</td><td style="color:#b86e00;font-weight:700;">Primarily deferred revenue from initial franchise fees — not yet sustainable</td><td>Item 21</td></tr>
+    <tr><td class="tdm">Litigation / judgments</td><td style="color:#1a7a4a;font-weight:700;">None disclosed</td><td>Item 3</td></tr>
+    <tr><td class="tdm">Bankruptcies</td><td style="color:#1a7a4a;font-weight:700;">None disclosed</td><td>Item 4</td></tr>
+    <tr><td class="tdm">Audit / financial statement quality</td><td style="color:#b86e00;font-weight:700;">Financial statements present but represent only 8 months — insufficient for trend analysis</td><td>Item 21</td></tr>
+  </table>
+</div>
+
+<!-- FLAGS -->
+<div class="sec">
+  <div class="sec-lbl">Green Flags & Red Flags</div>
+  <div class="flag-grid">
+    <div class="flag-card fg">
+      <div class="flag-title">✓ Green Flags</div>
+      <ul class="flag-list">
+        <li>Affiliate-owned location showing strong AUV ($748K) in home market</li>
+        <li>CEO Model structure is explicitly designed for semi-absentee multi-unit operators — well-designed ownership architecture</li>
+        <li>Zero terminations, closures, or non-renewals to date</li>
+        <li>Low single-unit entry cost ($128K–$167K) vs comparable systems</li>
+        <li>10% veteran/first-responder discount available</li>
+        <li>Transfer fee of 20% of initial fee is relatively standard for the category</li>
+        <li>10-year initial term with up to 4 successive 5-year renewals provides long-term security if the system succeeds</li>
+      </ul>
+    </div>
+    <div class="flag-card fr">
+      <div class="flag-title">⚑ Red Flags</div>
+      <ul class="flag-list">
+        <li><strong>Zero franchisee financial performance data disclosed</strong> — the single most critical red flag. This is not disclosed and IS a red flag.</li>
+        <li><strong>Franchisor formed May 2023 — 12 months of operating history</strong> as a franchise system. Insufficient track record to evaluate viability.</li>
+        <li><strong>Franchisor is pre-profitability</strong> — net loss of $29K. Revenue dependent on initial franchise fees, not royalties.</li>
+        <li><strong>No exclusive territory granted</strong> — "You will not receive an exclusive territory." Fundamental structural risk for multi-unit operators.</li>
+        <li><strong>Total fee burden ~12.5–14%</strong> is above the industry amber threshold of 12%.</li>
+        <li><strong>Transactional revenue only</strong> — no subscription or recurring model. Revenue is fully weather/season dependent.</li>
+        <li><strong>No SBA preferred lenders identified</strong> — financing path is unclear.</li>
+        <li><strong>Affiliate NOI of 47.8% is structurally misleading</strong> — does not reflect franchisee fee obligations.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="ftr"><p>Franchise Nova Financial Analysis · BLK GRVTY · June 2026 · Based on Pink's Window Services 2024 FDD · For internal FN use only · Not financial, legal, or investment advice · All figures derived from FDD disclosures · Scenario analysis is illustrative only due to absence of franchisee performance data</p></div>
+</div>
+</body>
+</html>
