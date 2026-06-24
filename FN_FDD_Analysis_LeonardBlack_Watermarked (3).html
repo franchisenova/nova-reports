@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Leonard Black · FDD Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: #e8eaf0; color: #1a1a2e; line-height: 1.6; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+.doc { max-width: 860px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+/* HEADER */
+.header { background: linear-gradient(135deg, #05040a 0%, #0d0a1c 50%, #161033 100%); padding: 36px 48px 28px; position: relative; overflow: hidden; }
+.header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(0,174,239,0.3) 0%, transparent 65%); pointer-events: none; }
+.header-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+.header-eyebrow { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #00aeef; margin-bottom: 8px; }
+.header-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; color: #fff; margin-bottom: 5px; }
+.header-meta { font-size: 13px; color: #b0aed0; }
+
+/* CANDIDATE STRIP */
+.cand-strip { display: flex; flex-wrap: wrap; border-bottom: 1px solid #e8eaf0; background: #f9f9fc; }
+.ci { padding: 13px 18px; border-right: 1px solid #e8eaf0; flex: 1; min-width: 110px; }
+.ci:last-child { border-right: none; }
+.ci-k { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #999; margin-bottom: 3px; }
+.ci-v { font-size: 13px; color: #1a1a2e; font-weight: 700; line-height: 1.4; }
+
+/* SECTION */
+.section { padding: 28px 48px; border-bottom: 1px solid #e8eaf0; }
+.sec-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #452e80; margin-bottom: 18px; }
+
+/* IMPORTANT NOTE BOX */
+.note-box { background: #fff8e1; border-left: 3px solid #b86e00; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 0; }
+.note-box p { font-size: 13px; color: #5a4000; line-height: 1.6; }
+.note-box strong { color: #3a2a00; }
+
+/* SYSTEM HEADER */
+.sys-head { padding: 16px 48px; border-bottom: 3px solid #00aeef; }
+.sys-head.pink { border-bottom-color: #e91e8c; }
+.sys-head h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 19px; color: #fff; margin-bottom: 3px; }
+.sys-head p { font-size: 12px; color: #b9b6d6; }
+.sys-head.scenthound { background: #1a1040; }
+.sys-head.pink { background: #1a0820; }
+
+/* SCORE ROW */
+.score-row { display: flex; align-items: center; gap: 28px; padding: 18px 48px; border-bottom: 1px solid #e8eaf0; flex-wrap: wrap; }
+.score-main { }
+.score-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 46px; line-height: 1; }
+.score-num.scent { color: #00aeef; }
+.score-num.pink-col { color: #e91e8c; }
+.score-lbl { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-top: 3px; }
+.score-dims { display: flex; gap: 14px; flex-wrap: wrap; }
+.sdim { text-align: center; }
+.sdim-val { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 17px; line-height: 1.1; }
+.sdim-lbl { font-size: 9px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #aaa; margin-top: 2px; }
+.fit-pill { margin-left: auto; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; padding: 8px 18px; border-radius: 999px; white-space: nowrap; }
+.fit-strong { background: rgba(26,122,74,0.1); color: #1a7a4a; border: 1px solid #1a7a4a; }
+.fit-conditional { background: rgba(184,110,0,0.1); color: #b86e00; border: 1px solid #b86e00; }
+.fit-stretch { background: rgba(177,69,107,0.1); color: #b1456b; border: 1px solid #b1456b; }
+
+/* ITEMS GRID */
+.items-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.item-card { border: 1px solid #e8eaf0; border-radius: 8px; padding: 14px 16px; background: #fafafa; }
+.item-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #452e80; margin-bottom: 7px; }
+.item-content { font-size: 13px; color: #333; line-height: 1.55; margin-bottom: 8px; }
+.item-content strong { color: #1a1a2e; }
+.item-content .flag { color: #b1456b; font-weight: 700; }
+.sig { display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+.g { background: rgba(26,122,74,0.1); color: #1a7a4a; }
+.a { background: rgba(184,110,0,0.1); color: #b86e00; }
+.r { background: rgba(177,69,107,0.1); color: #b1456b; }
+
+/* MATCH GRID */
+.match-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.match-card { background: #f5f5fa; border-radius: 8px; padding: 13px 15px; }
+.match-key { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #999; margin-bottom: 5px; }
+.match-val { font-size: 13px; color: #1a1a2e; line-height: 1.5; }
+.good { color: #1a7a4a; font-weight: 700; }
+.warn { color: #b86e00; font-weight: 700; }
+.bad { color: #b1456b; font-weight: 700; }
+
+/* CAPITAL STACK */
+.stack-bar { height: 26px; border-radius: 6px; overflow: hidden; display: flex; margin-bottom: 10px; }
+.seg { display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; white-space: nowrap; padding: 0 6px; }
+.s-sba { background: #00aeef; color: #0d0a1c; }
+.s-robs { background: #452e80; color: #fff; }
+.s-cash { background: #664ca9; color: #fff; }
+.s-cdfi { background: #1a7a4a; color: #fff; }
+.stack-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 10px; }
+.sl { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #444; }
+.sl-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.stack-summary { font-size: 13px; color: #333; line-height: 1.65; }
+.stack-summary strong { font-family: 'Montserrat', sans-serif; color: #1a1a2e; }
+
+/* QUESTIONS */
+.qs { padding-left: 18px; }
+.qs li { font-size: 14px; color: #333; margin-bottom: 10px; line-height: 1.6; }
+
+/* COMPARISON TABLE */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+th.h-dark { background: #0d0a1c; color: #fff; }
+th.h-scent { background: #1a1040; color: #00aeef; }
+th.h-pink { background: #1a0820; color: #e91e8c; }
+td { padding: 9px 14px; border-bottom: 1px solid #e8eaf0; color: #1a1a2e; vertical-align: top; line-height: 1.5; }
+tr:nth-child(even) td { background: #f9f9fc; }
+td.metric { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; color: #452e80; }
+
+/* RECOMMENDATION */
+.rec-card { background: linear-gradient(140deg, #0d0a1c, #1a1340); border-radius: 10px; padding: 28px 30px; color: #eceaf8; }
+.rec-card .sec-label { color: #00aeef; }
+.rec-system { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; color: #fff; margin-bottom: 10px; }
+.rec-body { font-size: 14px; color: #d8d6ec; line-height: 1.7; margin-bottom: 20px; }
+.unlock-label { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #9b8fc8; margin-bottom: 10px; }
+.unlock-list { padding-left: 18px; }
+.unlock-list li { font-size: 13px; color: #d8d6ec; margin-bottom: 7px; line-height: 1.55; }
+
+/* RISKS */
+.risks-list { padding-left: 18px; }
+.risks-list li { font-size: 14px; color: #333; margin-bottom: 10px; line-height: 1.6; }
+.risks-list li strong { color: #b1456b; }
+
+/* FOOTER */
+.doc-footer { background: #0d0a1c; padding: 16px 48px; }
+.footer-main { font-size: 12px; color: #9a98b4; margin-bottom: 4px; line-height: 1.6; }
+.footer-note { font-size: 11px; color: #555; line-height: 1.5; }
+
+@media print { body { background: #fff; padding: 0; } .doc { box-shadow: none; border-radius: 0; } .header, .sys-head, .rec-card, .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+@media (max-width: 640px) { .items-grid { grid-template-columns: 1fr; } .match-grid { grid-template-columns: 1fr; } .score-dims { display: none; } .cand-strip { flex-direction: column; } .ci { border-right: none; border-bottom: 1px solid #e8eaf0; } }
+
+/* ── Watermark ─────────────────────────────────── */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='400'%3E%3Ctext x='50%25' y='44%25' text-anchor='middle' dominant-baseline='middle' font-family='Helvetica Neue, Arial, sans-serif' font-weight='700' font-size='52' fill='%23282560' fill-opacity='0.055' transform='rotate(-35 350 200)'%3ECONFIDENTIAL%3C/text%3E%3Ctext x='50%25' y='64%25' text-anchor='middle' dominant-baseline='middle' font-family='Helvetica Neue, Arial, sans-serif' font-weight='700' font-size='21' fill='%23282560' fill-opacity='0.055' transform='rotate(-35 350 200)'%3EINTERNAL USE ONLY · FRANCHISE NOVA%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 700px 400px;
+}
+@media print {
+  body::before {
+    position: fixed;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+    <div class="header-eyebrow">FDD Analysis &amp; Candidate-System Match</div>
+    <h1 class="header-title">Leonard Black &mdash; FDD Analysis</h1>
+    <p class="header-meta">2 systems analyzed &nbsp;&middot;&nbsp; June 2026 &nbsp;&middot;&nbsp; Nova Guide: [Nova Guide Name]</p>
+  </div>
+
+  <!-- CANDIDATE STRIP -->
+  <div class="cand-strip">
+    <div class="ci"><div class="ci-k">Classification</div><div class="ci-v">Nova</div></div>
+    <div class="ci"><div class="ci-k">FN Lift</div><div class="ci-v">Moderate (capital)</div></div>
+    <div class="ci"><div class="ci-k">Liquid Capital</div><div class="ci-v">$50K&ndash;$100K</div></div>
+    <div class="ci"><div class="ci-k">Net Worth</div><div class="ci-v">$1M+</div></div>
+    <div class="ci"><div class="ci-k">Credit Range</div><div class="ci-v">750+</div></div>
+    <div class="ci"><div class="ci-k">Target Industries</div><div class="ci-v">Home Services, Hospitality</div></div>
+    <div class="ci"><div class="ci-k">Timeframe</div><div class="ci-v">Within 6 months</div></div>
+    <div class="ci"><div class="ci-k">Units Sought</div><div class="ci-v">4+</div></div>
+  </div>
+
+  <!-- CANDIDATE THESIS -->
+  <div class="section">
+    <div class="sec-label">Candidate Investment Thesis</div>
+    <div class="note-box">
+      <p>&ldquo;I look for businesses where <strong>recurring subscription revenue creates predictable cash flow</strong>, where a <strong>shared labor model can be deployed across multiple units</strong>, and where asset intensity is moderate &mdash; enough to create a defensible operation, not so heavy it limits scalability. Home services and hospitality both offer that profile.&rdquo;</p>
+      <p style="margin-top:10px;font-size:12px;color:#888;">Leonard Black &mdash; Intake Form, May 2026 &nbsp;&middot;&nbsp; Semi-absentee ownership preference &nbsp;&middot;&nbsp; Group decision-making &nbsp;&middot;&nbsp; P&L experience: Yes, $1M+ budget &nbsp;&middot;&nbsp; Sales capability: Better than most</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SYSTEM 1: SCENTHOUND -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="sys-head scenthound">
+    <h2>Scenthound Franchising LLC &mdash; 2024 FDD</h2>
+    <p>Dog wellness &amp; grooming membership model &nbsp;&middot;&nbsp; Jupiter, FL &nbsp;&middot;&nbsp; FDD issued April 5, 2024 &nbsp;&middot;&nbsp; Source: FranChimp</p>
+  </div>
+
+  <div class="score-row">
+    <div>
+      <div class="score-num scent">73</div>
+      <div class="score-lbl">System Nova Score / 100 &mdash; Good System</div>
+    </div>
+    <div class="score-dims">
+      <div class="sdim"><div class="sdim-val" style="color:#1a7a4a">20<span style="font-size:12px;color:#aaa">/25</span></div><div class="sdim-lbl">Performance</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#1a7a4a">20<span style="font-size:12px;color:#aaa">/20</span></div><div class="sdim-lbl">Health</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#b86e00">12<span style="font-size:12px;color:#aaa">/20</span></div><div class="sdim-lbl">Access</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#1a7a4a">16<span style="font-size:12px;color:#aaa">/20</span></div><div class="sdim-lbl">Flexibility</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#b86e00">5<span style="font-size:12px;color:#aaa">/15</span></div><div class="sdim-lbl">Exit</div></div>
+    </div>
+    <div class="fit-pill fit-conditional">Conditional Fit</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">FDD Item Analysis &mdash; Scenthound</div>
+    <div class="items-grid">
+      <div class="item-card">
+        <div class="item-label">Item 5 &middot; Initial Fee</div>
+        <div class="item-content">$49,900 single unit &middot; <strong>4-unit development: ~$119,900 (&minus;40% per territory)</strong> &middot; Non-refundable</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 6 &middot; Fee Burden</div>
+        <div class="item-content">Royalty 6% + Brand fund 2% + Tech ~0.6% &middot; <strong>Total: ~8.6% of gross</strong> &middot; Well within healthy range</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 7 &middot; Investment Range</div>
+        <div class="item-content">$318K&ndash;$499K single unit &middot; <strong>Planning amount: $549K</strong> (high end + 10%) &middot; Leonard's $50K&ndash;$100K liquid = significant gap but net worth $1M+ enables structuring</div>
+        <span class="sig a">Amber</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 10 &middot; Franchisor Financing</div>
+        <div class="item-content">No in-house financing &middot; SBA accepted, no restrictions &middot; Preferred lender relationships: confirm with dev team</div>
+        <span class="sig a">Amber</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 11 &middot; Ownership Model</div>
+        <div class="item-content"><strong>Semi-absentee permitted with qualified GM</strong> &middot; 2-week training at Jupiter, FL HQ &middot; Aligns with Leonard's stated semi-absentee preference</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 12 &middot; Territory Rights</div>
+        <div class="item-content">Exclusive by zip code cluster &middot; <strong>Multi-unit area development available</strong> &middot; Development schedule: confirm with franchisor &middot; Leonard wants 4+ units — strong multi-unit case</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 19 &middot; Financial Performance</div>
+        <div class="item-content">Disclosed &#10003; &middot; Median AUV: $457K &middot; <strong>Median NOI: $71K (13.8%)</strong> &middot; 34 qualifying units, 22 full P&amp;L &middot; Bottom quartile NOI: $4K (1.2%) &mdash; wide spread, investigate</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 20 &middot; System Health</div>
+        <div class="item-content">18 &rarr; 34 &rarr; 71 units (2021&ndash;23) &middot; <strong>Zero terminations in 3 years</strong> &middot; Churn rate &lt;1% &middot; One of the strongest system health signals in the dataset</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 21 &middot; Franchisor Health</div>
+        <div class="item-content">Profitable &middot; Positive cash flow trend &middot; Clean audit &middot; No going concern notes &middot; Strong trajectory for a growing franchisor</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 23 &middot; Exit Rights</div>
+        <div class="item-content">Transfer fee present &middot; Renewal at franchisor discretion with conditions &middot; No aggressive ROFR noted &middot; Multi-unit agreement supports portfolio building</div>
+        <span class="sig a">Amber</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENTHOUND MATCH -->
+  <div class="section">
+    <div class="sec-label">Candidate-System Match &mdash; Scenthound</div>
+    <div class="match-grid">
+      <div class="match-card">
+        <div class="match-key">Capital Gap</div>
+        <div class="match-val">~$449K&ndash;$499K gap at planning amount &middot; <span class="warn">Closeable</span> &mdash; net worth $1M+ enables SBA + HELOC/cash-out refi + ROBS</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Ownership Model</div>
+        <div class="match-val"><span class="good">Strong</span> &mdash; semi-absentee permitted with GM. Matches Leonard's stated preference and group investment model</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Timeline</div>
+        <div class="match-val"><span class="warn">Conditional</span> &mdash; 6 months requires immediate capital structuring. Net worth gives options but documentation takes time</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Investment Thesis Fit</div>
+        <div class="match-val"><span class="good">Strong</span> &mdash; membership model creates the recurring subscription revenue Leonard explicitly stated he values</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Shared Labor Model</div>
+        <div class="match-val"><span class="good">Strong</span> &mdash; Scenter GM model with shared back-office maps well to Leonard's multi-unit labor efficiency thesis</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Multi-Unit (4+)</div>
+        <div class="match-val"><span class="good">Strong</span> &mdash; 4-unit dev agreement cuts fee 40%. Leonard's 4+ unit target is the exact entry point that maximizes the value proposition</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENTHOUND CAPITAL STACK -->
+  <div class="section">
+    <div class="sec-label">Capital Stack Proposal &mdash; Scenthound (4-Unit Development)</div>
+    <div class="stack-bar" id="stack-scent"></div>
+    <div class="stack-legend">
+      <div class="sl"><div class="sl-dot" style="background:#00aeef"></div>SBA 7(a) $350K &mdash; 57%</div>
+      <div class="sl"><div class="sl-dot" style="background:#452e80"></div>Net Worth / Cash-Out Refi $200K &mdash; 33%</div>
+      <div class="sl"><div class="sl-dot" style="background:#664ca9"></div>Personal Cash $65K &mdash; 10%</div>
+    </div>
+    <p class="stack-summary">Total project cost (first territory) <strong>$615K</strong> (planning amount + 4-unit dev fee allocation) &nbsp;&middot;&nbsp; Equity injection <strong>~$265K (43%)</strong> &mdash; exceeds SBA minimum significantly &nbsp;&middot;&nbsp; Leonard's $1M+ net worth provides multiple capital access routes beyond liquid cash alone &nbsp;&middot;&nbsp; <span style="color:#b86e00;font-weight:700;">Key note:</span> Liquid cash of $50K&ndash;$100K is the primary gap — net worth allows for equity extraction strategies</p>
+  </div>
+
+  <!-- SCENTHOUND QUESTIONS -->
+  <div class="section">
+    <div class="sec-label">Discovery Day Questions &mdash; Scenthound</div>
+    <ul class="qs">
+      <li>Walk me through what semi-absentee ownership actually looks like at scale for your top multi-unit operators — how are they structuring their GM layer across 4+ Scenters?</li>
+      <li>Your Item 19 shows median NOI at 13.8% but bottom quartile at 1.2% — that's a wide spread. What separates the top performers from the bottom and what does Scenthound corporate do to support underperforming Scenters?</li>
+      <li>I'm targeting 4+ territories. What does your area development agreement look like for that scale, what's the realistic development timeline, and what territories are available in [Leonard's target market]?</li>
+      <li>What capital structures have your 4+ unit franchisees used? Do you have lender relationships experienced with multi-unit deals backed primarily by net worth rather than liquid cash?</li>
+      <li>Your membership model is the core thesis for me — what's the average member retention rate and how do your franchisees drive recurring revenue growth past the initial launch period?</li>
+      <li>For someone running a GM model with limited day-to-day involvement, what does your field support and performance management infrastructure look like — how do you hold GMs accountable?</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SYSTEM 2: PINK'S WINDOW SERVICES -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="sys-head pink">
+    <h2>Pink&rsquo;s Window Services &mdash; 2024 FDD</h2>
+    <p>Residential &amp; commercial window cleaning / pressure washing &nbsp;&middot;&nbsp; Austin, TX &nbsp;&middot;&nbsp; FDD issued May 2, 2024 &nbsp;&middot;&nbsp; Source: Provided by candidate</p>
+  </div>
+
+  <div class="score-row">
+    <div>
+      <div class="score-num pink-col">44</div>
+      <div class="score-lbl">System Nova Score / 100 &mdash; Caution</div>
+    </div>
+    <div class="score-dims">
+      <div class="sdim"><div class="sdim-val" style="color:#b1456b">5<span style="font-size:12px;color:#aaa">/25</span></div><div class="sdim-lbl">Performance</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#b86e00">8<span style="font-size:12px;color:#aaa">/20</span></div><div class="sdim-lbl">Health</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#b86e00">8<span style="font-size:12px;color:#aaa">/20</span></div><div class="sdim-lbl">Access</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#1a7a4a">15<span style="font-size:12px;color:#aaa">/20</span></div><div class="sdim-lbl">Flexibility</div></div>
+      <div class="sdim"><div class="sdim-val" style="color:#b1456b">8<span style="font-size:12px;color:#aaa">/15</span></div><div class="sdim-lbl">Exit</div></div>
+    </div>
+    <div class="fit-pill fit-stretch">Stretch</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">FDD Item Analysis &mdash; Pink&rsquo;s Window Services</div>
+    <div class="items-grid">
+      <div class="item-card">
+        <div class="item-label">Item 5 &middot; Initial Fee</div>
+        <div class="item-content">$59,000 single unit &middot; Multi-unit (2T): $108K dev fee &middot; 3T: $147K &middot; 4T: $186K &middot; <strong>CEO Model (5+T): $225K</strong> &middot; Non-refundable under any circumstance &middot; 10% discount for clergy, veterans, first responders</div>
+        <span class="sig a">Amber</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 6 &middot; Fee Burden</div>
+        <div class="item-content">Royalty 7% + Brand fund 2% + Local advertising mgmt $500/mo + Tech $650&ndash;$1,000/mo &middot; <strong>Effective total burden: ~12.5&ndash;14%+</strong> depending on revenue &middot; Local ad spend adds $2,000/mo year 1, then 3% of gross</div>
+        <span class="sig a">Amber</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 7 &middot; Investment Range</div>
+        <div class="item-content">Single unit: $128K&ndash;$166.5K &middot; <strong>CEO Model (5T): $560K&ndash;$790K</strong> &middot; Planning amount (5T high end + 10%): <strong>$869K</strong> &middot; Much lower entry for single or 2-unit than Scenthound &mdash; but CEO model scale costs more</div>
+        <span class="sig a">Amber</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 10 &middot; Franchisor Financing</div>
+        <div class="item-content"><span class="flag">No financing offered whatsoever</span> &middot; No guarantees on any notes, leases, or obligations &middot; SBA compatibility not confirmed in FDD</div>
+        <span class="sig r">Red</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 11 &middot; Ownership Model</div>
+        <div class="item-content"><strong>CEO Model explicitly designed for semi-absentee operators</strong> &middot; Regional Director layer manages Territory Managers &middot; CEO model available at 5+ territories &middot; Strong alignment with Leonard's labor deployment thesis</div>
+        <span class="sig g">Green</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 12 &middot; Territory Rights</div>
+        <div class="item-content"><span class="flag">No exclusive territory granted</span> &middot; "You will not receive an exclusive territory" &mdash; stated directly in FDD &middot; Limited protection only — franchisor can compete via alternative channels &middot; <span class="flag">Significant risk for multi-unit operators.</span></div>
+        <span class="sig r">Red</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 19 &middot; Financial Performance</div>
+        <div class="item-content"><span class="flag">Only 1 affiliate-owned location disclosed</span> &middot; 0 franchisee data (franchisee opened during 2023, excluded as incomplete year) &middot; Affiliate AUV: $748K, Net Income: $358K (47.8%) &middot; <span class="flag">No independent franchisee performance data exists yet</span></div>
+        <span class="sig r">Red</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 20 &middot; System Health</div>
+        <div class="item-content">System is very early stage: 1 affiliate + 1 franchisee as of Dec 2023 &middot; 10 franchise agreements signed but unopened &middot; 34 projected new openings in 2024 &middot; No terminations, closures, or transfers yet &middot; <span class="flag">No track record — insufficient data to evaluate system health</span></div>
+        <span class="sig a">Amber</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 21 &middot; Franchisor Health</div>
+        <div class="item-content">Pink's Franchising LLC formed May 2023 &middot; <span class="flag">Only 8 months of operating history</span> &middot; Net loss: $29,322 on $108,955 revenue &middot; Members' equity: $70,703 &middot; <span class="flag">Pre-profitability, heavy deferred revenue from initial franchise fees</span> &middot; Cash position: $375,897 (adequate short term)</div>
+        <span class="sig r">Red</span>
+      </div>
+      <div class="item-card">
+        <div class="item-label">Item 23 &middot; Exit Rights</div>
+        <div class="item-content">Transfer fee: <strong>20% of current initial franchise fee (~$11,800)</strong> plus third-party broker costs &middot; If franchisor assists in sale: additional 10% &middot; ROFR present &middot; Renewal: 10-year terms with conditions (training, upgrades, release required) &middot; Minimum revenue requirements per territory: $200K Y1 &rarr; $500K Y6+</div>
+        <span class="sig a">Amber</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PINK'S MATCH -->
+  <div class="section">
+    <div class="sec-label">Candidate-System Match &mdash; Pink&rsquo;s Window Services</div>
+    <div class="match-grid">
+      <div class="match-card">
+        <div class="match-key">Capital Gap</div>
+        <div class="match-val">Single unit: $128K&ndash;$167K — <span class="good">low barrier</span> &middot; CEO Model (5T): $560K&ndash;$790K — <span class="warn">comparable to Scenthound gap</span> &middot; No franchisor financing options</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Ownership Model</div>
+        <div class="match-val"><span class="good">Strong</span> &mdash; CEO Model with Regional Director layer is purpose-built for semi-absentee multi-unit operators. Matches Leonard's thesis precisely</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Timeline</div>
+        <div class="match-val"><span class="warn">Conditional</span> &mdash; single unit accessible quickly; CEO Model scale requires more capital structuring. 6-month target feasible for early-stage entry</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Investment Thesis Fit</div>
+        <div class="match-val"><span class="warn">Partial</span> &mdash; home services fits but <span class="bad">no recurring subscription model</span>. Revenue is transactional, not membership-based. Contradicts Leonard's stated thesis</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">Shared Labor Model</div>
+        <div class="match-val"><span class="good">Strong</span> &mdash; CEO Model shares Regional Director across territories. Vehicle fleet and field labor are shared. Moderate asset intensity</div>
+      </div>
+      <div class="match-card">
+        <div class="match-key">System Maturity Risk</div>
+        <div class="match-val"><span class="bad">High</span> &mdash; franchisor formed May 2023 with 1 franchisee location. Leonard would be an early-stage adopter with no independent track record to evaluate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PINK'S QUESTIONS -->
+  <div class="section">
+    <div class="sec-label">Discovery Day Questions &mdash; Pink&rsquo;s Window Services</div>
+    <ul class="qs">
+      <li>Your FDD shows no exclusive territory granted — what does "limited protection" actually mean in practice for a CEO Model operator running 5 territories? How do you prevent internal competition between franchisees?</li>
+      <li>The Item 19 data is from one affiliate-owned location only, with no independent franchisee history. What are the actual financial results from the one franchisee who opened in 2023, and when will that data be available in the FDD?</li>
+      <li>Pink's Franchising LLC was formed in May 2023. Walk me through the leadership team's franchising experience and the operational infrastructure you have in place to support rapid growth from 2 locations to the 34 you're projecting in 2024.</li>
+      <li>Your revenue model is transactional window cleaning — how do your top operators build recurring revenue and customer retention? Do you have any subscription or membership product in development?</li>
+      <li>The minimum revenue requirements escalate to $500K per territory by year 6. What happens operationally if I miss a milestone — how has the franchisor handled that with existing franchisees?</li>
+      <li>Your transfer fee is 20% of the current initial franchise fee — for 5 territories that could approach $60K+ in fees. How have existing franchisees navigated exits, and what does the resale market look like for Pink's locations?</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- COMPARISON TABLE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="section">
+    <div class="sec-label">Cross-System Comparison</div>
+    <table>
+      <tr>
+        <th class="h-dark" style="width:30%">Metric</th>
+        <th class="h-scent" style="width:35%">Scenthound</th>
+        <th class="h-pink" style="width:35%">Pink's Window Services</th>
+      </tr>
+      <tr><td class="metric">System Nova Score</td><td><strong>73 / 100</strong> &mdash; Good System</td><td><strong>44 / 100</strong> &mdash; Caution</td></tr>
+      <tr><td class="metric">Candidate Fit Rating</td><td>Conditional Fit</td><td>Stretch</td></tr>
+      <tr><td class="metric">Initial Fee (4+ units)</td><td>$119,900 (4-unit, &minus;40%)</td><td>$186,000 (4-unit dev fee)</td></tr>
+      <tr><td class="metric">Total Fee Burden</td><td>~8.6% of gross</td><td>~12.5&ndash;14%+ of gross</td></tr>
+      <tr><td class="metric">Investment Range</td><td>$318K&ndash;$499K / territory</td><td>$128K&ndash;$167K single; $560K&ndash;$790K CEO Model</td></tr>
+      <tr><td class="metric">Planning Amount</td><td>$549K / first territory</td><td>$869K CEO Model (5T high + 10%)</td></tr>
+      <tr><td class="metric">Item 19 Disclosed?</td><td>✓ Yes &mdash; 22 units full P&L</td><td>⚠ Affiliate-only, no franchisee data</td></tr>
+      <tr><td class="metric">Median AUV</td><td>$457K (franchisee)</td><td>$748K (affiliate-owned only)</td></div></td></tr>
+      <tr><td class="metric">Median NOI</td><td>$71K (13.8%)</td><td>$358K (47.8%) — affiliate only, unverified for franchisees</td></tr>
+      <tr><td class="metric">Annual Churn Rate</td><td>&lt;1% &mdash; 0 terminations in 3 yrs</td><td>N/A &mdash; too early, insufficient data</td></tr>
+      <tr><td class="metric">Exclusive Territory?</td><td>Yes &mdash; by zip code cluster</td><td><strong style="color:#b1456b">No</strong> &mdash; limited protection only</td></tr>
+      <tr><td class="metric">Franchisor Financing</td><td>None (SBA-friendly)</td><td>None (SBA compatibility unconfirmed)</td></tr>
+      <tr><td class="metric">Semi-Absentee OK?</td><td>Yes with qualified GM</td><td>Yes via CEO Model (5+ territories)</td></tr>
+      <tr><td class="metric">Recurring Revenue Model</td><td>✓ Membership ($40&ndash;$60/mo)</td><td>✗ Transactional only</td></tr>
+      <tr><td class="metric">Franchisor Maturity</td><td>Founded 2018, 71 units</td><td>Founded 2023, 2 total locations</td></tr>
+      <tr><td class="metric">Transfer Fee</td><td>Fee present (amount: confirm)</td><td>20% of initial fee (~$11,800+)</td></tr>
+      <tr><td class="metric">Franchisor Profitable?</td><td>Yes &mdash; clean audit</td><td>No &mdash; net loss $29K (year 1)</td></tr>
+    </table>
+  </div>
+
+  <!-- RECOMMENDATION -->
+  <div class="section">
+    <div class="rec-card">
+      <div class="sec-label">FN Recommendation</div>
+      <div class="rec-system">Scenthound &mdash; Proceed to Discovery Day</div>
+      <p class="rec-body">Scenthound is the right system for Leonard at this stage. The recommendation is grounded directly in his own investment thesis. Leonard stated he looks for <em>recurring subscription revenue, shared labor deployment across units, and moderate asset intensity</em>. Scenthound delivers all three: a $40&ndash;$60/month membership model with industry-leading retention, a GM-layer structure that scales across Scenters with shared back-office, and moderate build-out costs without heavy equipment or real estate requirements. The 4-unit development agreement reduces per-territory fees by 40% — making his stated target of 4+ units the optimal entry structure, not just a preference. Zero terminations across 3 years of rapid growth is the strongest system health signal in this comparison by a significant margin.</p>
+      <p class="rec-body">Pink's Window Services is not recommended for Leonard at this time for three specific reasons. First, it is a transactional revenue model — no subscription, no recurring membership — which directly contradicts the thesis Leonard articulated on his intake form. Second, the franchisor was formed in May 2023 with no independent franchisee financial performance data available; Leonard would be investing in a system with a single affiliate-owned location as the only benchmark. Third, the territory is not exclusive — in a multi-unit model, the absence of protected territory creates a structural risk to Leonard's entire investment. These are not solvable through capital structuring. They are fundamental mismatches between the system's architecture and Leonard's stated criteria.</p>
+      <div class="unlock-label">What FN Can Unlock for Leonard</div>
+      <ul class="unlock-list">
+        <li>SBA preferred lender introductions who work with net-worth-backed candidates &mdash; Leonard's $1M+ net worth is the primary capital lever, not liquid cash, and FN lenders understand how to structure around that</li>
+        <li>Franchisor introduction to Scenthound's development team for territory confirmation in Leonard's target markets and multi-unit agreement negotiation for 4+ territories</li>
+        <li>Capital stack modeling for the 4-unit development path &mdash; including equity extraction options from Leonard's net worth to meet the liquid capital requirement</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RISKS -->
+  <div class="section">
+    <div class="sec-label">Risks to Watch &mdash; Scenthound</div>
+    <ul class="risks-list">
+      <li><strong>Liquid capital gap is the primary constraint:</strong> Leonard's $50K&ndash;$100K liquid is well below the $549K planning amount. Net worth of $1M+ provides options (equity extraction, HELOC, cash-out refi) but these require documentation and timeline. This is FN's core work for this deal.</li>
+      <li><strong>Bottom-quartile NOI spread (1.2% vs 13.8% median):</strong> The spread between top and bottom quartile is wide. Understand what drives underperformance — specifically ask whether labor management and GM quality is the primary differentiator, since that is exactly what Leonard will be relying on.</li>
+      <li><strong>Semi-absentee narrative for SBA lender:</strong> Any SBA lender will require a written GM candidate, Scenthound corporate support documentation, and a management continuity plan. This needs to be structured before lender submission.</li>
+      <li><strong>Territory availability in target markets:</strong> Cannot be confirmed from the FDD — must be verified directly with Scenthound's development team. If Leonard's target geography is unavailable, the entire analysis needs to be revisited with a new system.</li>
+      <li><strong>Renewal terms (Item 23):</strong> Renewal is at franchisor discretion with conditions including upgrades, additional training, and a general release. Confirm the specific renewal conditions during Discovery Day before executing the franchise agreement.</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <p class="footer-main">Franchise Nova FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; June 2026 &nbsp;&middot;&nbsp; Candidate: Leonard Black &nbsp;&middot;&nbsp; Systems: Scenthound 2024 FDD &amp; Pink's Window Services 2024 FDD</p>
+    <p class="footer-note">Not financial, legal, or investment advice. Figures sourced from FDD documents and candidate intake form. Territory availability requires direct franchisor confirmation. Nova Guide review required before sharing with candidate.</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var sb = document.getElementById('stack-scent');
+  if(sb){
+    [{w:57,cls:'s-sba',lbl:'SBA 7(a) 57%'},{w:33,cls:'s-robs',lbl:'Net Worth 33%'},{w:10,cls:'s-cash',lbl:'Cash 10%'}].forEach(function(s){
+      var d=document.createElement('div');
+      d.className='seg '+s.cls;
+      d.style.width=s.w+'%';
+      d.textContent=s.w>=12?s.lbl:'';
+      sb.appendChild(d);
+    });
+  }
+})();
+</script>
+</body>
+</html>
