@@ -16,8 +16,11 @@ jobs:
         env:
           HS_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
         run: |
+          echo "=== STARTING HUBSPOT NOTE POST ==="
+
           NOTE_FILE=$(git diff-tree --no-commit-id -r --name-only ${{ github.sha }} | grep 'pending_notes/' | head -1)
-          echo "Processing: $NOTE_FILE"
+          echo "Note file: $NOTE_FILE"
+
           if [ -z "$NOTE_FILE" ]; then
             echo "No note file found"
             exit 0
@@ -25,35 +28,57 @@ jobs:
 
           CONTACT_EMAIL=$(jq -r '.contact_email' "$NOTE_FILE")
           NOTE_BODY=$(jq -r '.note_body' "$NOTE_FILE")
-          echo "Contact: $CONTACT_EMAIL"
+          echo "Contact email: $CONTACT_EMAIL"
+          echo "Note body length: ${#NOTE_BODY}"
+
+          # Check token is set
+          if [ -z "$HS_TOKEN" ]; then
+            echo "ERROR: HUBSPOT_TOKEN secret is empty or not set"
+            exit 1
+          fi
+          echo "Token present: YES (length ${#HS_TOKEN})"
 
           # Find contact in HubSpot
-          SEARCH_RESP=$(curl -s -X POST "https://api.hubapi.com/crm/v3/objects/contacts/search" \
+          echo "=== SEARCHING FOR CONTACT ==="
+          SEARCH_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST \
+            "https://api.hubapi.com/crm/v3/objects/contacts/search" \
             -H "Authorization: Bearer $HS_TOKEN" \
             -H "Content-Type: application/json" \
             -d "{\"filterGroups\":[{\"filters\":[{\"propertyName\":\"email\",\"operator\":\"EQ\",\"value\":\"$CONTACT_EMAIL\"}]}],\"properties\":[\"email\",\"firstname\",\"lastname\"]}")
 
-          CONTACT_ID=$(echo "$SEARCH_RESP" | jq -r '.results[0].id')
+          HTTP_STATUS=$(echo "$SEARCH_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
+          BODY=$(echo "$SEARCH_RESP" | grep -v "HTTP_STATUS:")
+          echo "Search HTTP status: $HTTP_STATUS"
+          echo "Search response: $BODY"
+
+          CONTACT_ID=$(echo "$BODY" | jq -r '.results[0].id // empty')
           echo "Contact ID: $CONTACT_ID"
 
-          if [ "$CONTACT_ID" = "null" ] || [ -z "$CONTACT_ID" ]; then
+          if [ -z "$CONTACT_ID" ]; then
             echo "ERROR: Contact not found for $CONTACT_EMAIL"
             exit 1
           fi
 
           # Post note
+          echo "=== POSTING NOTE ==="
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-          NOTE_RESP=$(curl -s -X POST "https://api.hubapi.com/crm/v3/objects/notes" \
+          NOTE_JSON=$(echo "$NOTE_BODY" | jq -Rs .)
+
+          NOTE_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST \
+            "https://api.hubapi.com/crm/v3/objects/notes" \
             -H "Authorization: Bearer $HS_TOKEN" \
             -H "Content-Type: application/json" \
-            -d "{\"properties\":{\"hs_timestamp\":\"$TIMESTAMP\",\"hs_note_body\":$(echo "$NOTE_BODY" | jq -Rs .)},\"associations\":[{\"to\":{\"id\":\"$CONTACT_ID\"},\"types\":[{\"associationCategory\":\"HUBSPOT_DEFINED\",\"associationTypeId\":202}]}]}")
+            -d "{\"properties\":{\"hs_timestamp\":\"$TIMESTAMP\",\"hs_note_body\":$NOTE_JSON},\"associations\":[{\"to\":{\"id\":\"$CONTACT_ID\"},\"types\":[{\"associationCategory\":\"HUBSPOT_DEFINED\",\"associationTypeId\":202}]}]}")
 
-          NOTE_ID=$(echo "$NOTE_RESP" | jq -r '.id')
-          echo "Note response: $NOTE_RESP"
+          NOTE_STATUS=$(echo "$NOTE_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
+          NOTE_BODY_RESP=$(echo "$NOTE_RESP" | grep -v "HTTP_STATUS:")
+          echo "Note HTTP status: $NOTE_STATUS"
+          echo "Note response: $NOTE_BODY_RESP"
 
-          if [ "$NOTE_ID" = "null" ] || [ -z "$NOTE_ID" ]; then
+          NOTE_ID=$(echo "$NOTE_BODY_RESP" | jq -r '.id // empty')
+          if [ -z "$NOTE_ID" ]; then
             echo "ERROR: Note creation failed"
             exit 1
           fi
 
-          echo "SUCCESS: Note posted — ID: $NOTE_ID"
+          echo "=== SUCCESS: Note ID $NOTE_ID posted to contact $CONTACT_ID ==="
