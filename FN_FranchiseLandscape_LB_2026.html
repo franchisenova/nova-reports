@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Your Franchise Landscape</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--ink:#15131f;--white:#fff;--indigo:#282560;--eggplant:#452e80;--purple:#664ca9;--cyan:#00aeef;--moon:#e1e3ee;--line:#d2d4e4;--accent:var(--purple);--accent-rgb:102,76,169;--display:'Montserrat','Neutraface Display Titling',system-ui,sans-serif;--body:'Lato',system-ui,sans-serif;}
+body.cls-supernova{--accent:var(--cyan);--accent-rgb:0,174,239;}
+body.cls-nova{--accent:var(--purple);--accent-rgb:102,76,169;}
+body.cls-nebula{--accent:var(--eggplant);--accent-rgb:69,46,128;}
+*{box-sizing:border-box;} html,body{margin:0;padding:0;}
+body{font-family:var(--body);color:var(--ink);background:var(--moon);line-height:1.5;-webkit-font-smoothing:antialiased;}
+.page{max-width:880px;margin:28px auto;background:var(--white);box-shadow:0 12px 50px rgba(20,19,31,0.18);overflow:hidden;}
+.cosmos{position:relative;color:var(--white);padding:34px 40px 30px;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 33% 70%,#fff,transparent),radial-gradient(1px 1px at 52% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 67% 58%,#fff,transparent),radial-gradient(1px 1px at 80% 35%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(1200px 380px at 78% 8%,rgba(var(--accent-rgb),0.42),transparent 60%),radial-gradient(900px 420px at 8% 110%,rgba(40,37,96,0.65),transparent 60%),linear-gradient(160deg,#05040a 0%,#0d0a1c 55%,#161033 100%);}
+.eyebrow{font-family:var(--display);font-weight:700;letter-spacing:.32em;font-size:11px;text-transform:uppercase;color:var(--cyan);margin:0 0 18px;}
+.mark{position:absolute;top:30px;right:40px;font-family:var(--display);font-weight:800;line-height:.86;font-size:20px;text-align:right;color:#fff;} .mark span{display:block;}
+.cand-name{font-family:var(--display);font-weight:900;font-size:40px;line-height:1.02;margin:0 0 6px;letter-spacing:-.01em;}
+.cand-meta{font-size:13px;color:#b9b6d6;margin:0 0 18px;font-weight:700;} .cand-meta b{color:var(--moon);}
+.snapshot{font-size:15.5px;color:#e7e6f4;max-width:62ch;margin:0;font-style:italic;}
+.intnote{margin:14px 0 0;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ff9bb6;}
+.verdict{display:flex;align-items:center;gap:26px;padding:26px 40px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(var(--accent-rgb),0.12),transparent 70%);}
+.badge{flex:0 0 auto;width:108px;height:108px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,var(--accent) 0%,var(--eggplant) 48%,var(--indigo) 80%,#0c0a1c 100%);box-shadow:0 0 0 6px rgba(var(--accent-rgb),0.16),0 0 38px 4px rgba(var(--accent-rgb),0.55);}
+.badge::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.8;background:radial-gradient(1px 1px at 30% 35%,#fff,transparent),radial-gradient(1px 1px at 68% 60%,#fff,transparent);}
+.badge b{font-family:var(--display);font-weight:900;font-size:15px;color:#fff;z-index:1;}
+.verdict-text h2{font-family:var(--display);font-weight:900;font-size:27px;margin:0 0 2px;color:var(--ink);}
+.verdict-text .accentline{color:var(--accent);}
+.verdict-text p{margin:2px 0 0;font-size:14px;color:#4a4860;max-width:48ch;}
+.conf{margin-top:8px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 11px;}
+section{padding:24px 40px;border-bottom:1px solid var(--line);}
+.sec-label{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--eggplant);margin:0 0 16px;}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;}
+.axis-block{display:flex;gap:22px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct,0)*1%),var(--line) 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:var(--display);font-weight:900;font-size:26px;color:var(--ink);line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy .lift-label{font-family:var(--display);font-weight:800;font-size:13px;color:var(--ink);margin:0 0 6px;}
+.lift-pills{display:flex;gap:6px;margin:0 0 8px;}
+.lift-pills .pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--moon);color:#6c6a85;}
+.lift-pills .pill.on{background:var(--eggplant);color:#fff;}
+.axis-copy .note{font-size:12.5px;color:#5a5872;margin:0;}
+.matrix{display:grid;grid-template-columns:74px repeat(3,1fr);grid-template-rows:auto repeat(3,40px);gap:4px;font-size:10px;}
+.matrix .col-h{font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.matrix .row-h{font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.matrix .cell{border-radius:5px;position:relative;}
+.cell.nebula{background:rgba(69,46,128,0.16);} .cell.nova{background:rgba(102,76,169,0.22);} .cell.supernova{background:rgba(0,174,239,0.20);}
+.cell .tag{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;}
+.cell.here{outline:2px solid var(--accent);}
+.cell .dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.25),0 0 14px var(--accent);top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:8px;}
+.dim{margin-bottom:13px;}
+.dim .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+.dim .row b{color:var(--ink);} .dim .row span{color:#7a7891;font-family:var(--display);font-weight:700;font-size:12px;}
+.bar{height:7px;background:var(--moon);border-radius:999px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--eggplant),var(--accent));border-radius:999px;}
+.dim small{display:block;font-size:11.5px;color:#6c6a85;margin-top:5px;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border:1px solid var(--line);border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 9px;}
+.quad.s h4{color:var(--cyan);} .quad.d h4{color:var(--purple);} .quad.o h4{color:var(--eggplant);} .quad.r h4{color:#b1456b;}
+.quad ul{margin:0;padding-left:16px;} .quad li{font-size:12.5px;margin-bottom:6px;color:#3c3a52;}
+.pathway{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway .sec-label{color:var(--cyan);}
+.pathway .route{font-family:var(--display);font-weight:800;font-size:17px;margin:0 0 4px;color:#fff;}
+.pathway .backup{font-size:12.5px;color:#b9b6d6;margin:0 0 12px;} .pathway p{font-size:13px;color:#d8d6ec;margin:0;}
+ol.roadmap{margin:0;padding-left:20px;} ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;} ol.roadmap li b{color:var(--ink);}
+.expect{background:linear-gradient(90deg,rgba(69,46,128,0.10),transparent 82%);border:1px solid var(--line);border-left:3px solid var(--eggplant);border-radius:0 9px 9px 0;padding:16px 18px;}
+.expect .erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:11px;}
+.expect .chip{font-family:var(--display);font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.expect .chip.exp{background:var(--moon);color:#5b5876;} .expect .chip.real{background:var(--eggplant);color:#fff;}
+.expect .arrow{font-size:16px;color:var(--eggplant);font-weight:800;}
+.expect p{margin:0 0 7px;font-size:12.5px;color:#3c3a52;} .expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:var(--eggplant);font-family:var(--display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+.action{background:rgba(var(--accent-rgb),0.12);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:16px;}
+.action b{font-family:var(--display);}
+.qs{margin:0;padding-left:18px;} .qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;} .gaps .g{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 10px;}
+/* ---- page 2 additions, same visual language ---- */
+.bg-copy{font-size:13.5px;color:#3c3a52;margin:0;max-width:70ch;}
+.thesis{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.tcard{border:1px solid var(--line);border-radius:9px;padding:14px 16px;background:linear-gradient(180deg,#fff,#fbfbfe);}
+.tcard h5{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--eggplant);margin:0 0 7px;}
+.tcard p{margin:0;font-size:12.5px;color:#3c3a52;}
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cellk{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:9px;padding:14px 15px;}
+.cellk .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9d9bc0;font-weight:700;margin:0 0 6px;font-family:var(--display);}
+.cellk .v{font-family:var(--display);font-weight:800;font-size:16px;color:#fff;line-height:1.15;}
+.cellk .s{font-size:11px;color:#b9b6d6;margin-top:4px;}
+.excl{background:linear-gradient(90deg,rgba(214,158,46,0.16),transparent 85%);border:1px solid #e7c878;border-left:3px solid #d69e2e;border-radius:0 9px 9px 0;padding:15px 18px;margin-bottom:6px;}
+.excl h4{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9c6b13;margin:0 0 10px;}
+.excl .ex{font-size:12.5px;color:#5a4a22;margin-bottom:9px;} .excl .ex:last-child{margin-bottom:0;} .excl .ex b{color:#7a5410;}
+.syscard{border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:16px;background:#fff;}
+.syscard .rankbar{height:5px;background:linear-gradient(90deg,var(--eggplant),var(--accent));}
+.syscard.gated .rankbar{background:linear-gradient(90deg,#7a5410,#d69e2e);}
+.sysbody{padding:16px 18px;}
+.syshead{display:flex;align-items:flex-start;gap:12px;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;}
+.sysrank{font-family:var(--display);font-weight:900;font-size:13px;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.syscard.gated .sysrank{background:#d69e2e;}
+.systitle{flex:1 1 auto;min-width:200px;}
+.systitle h3{font-family:var(--display);font-weight:900;font-size:17px;margin:0 0 4px;color:var(--ink);}
+.vbadge{display:inline-block;font-family:var(--display);font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--eggplant);background:rgba(69,46,128,0.10);border:1px solid rgba(69,46,128,0.30);border-radius:999px;padding:3px 9px;}
+.flagpill{display:inline-block;font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:#7a5410;background:rgba(214,158,46,0.18);border:1px solid #e7c878;border-radius:6px;padding:4px 9px;margin-top:6px;}
+.sysdesc{font-size:13px;color:#3c3a52;margin:0 0 12px;} .sysdesc .bc{font-family:var(--display);font-weight:800;color:var(--ink);}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:11px;}
+.stat{background:#f7f7fb;border:1px solid var(--line);border-radius:8px;padding:9px 11px;}
+.stat .l{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#8a88a0;font-weight:700;font-family:var(--display);margin-bottom:3px;}
+.stat .v{font-size:12.5px;color:var(--ink);font-weight:700;}
+.systags{display:flex;flex-wrap:wrap;gap:6px;}
+.systags span{font-size:10.5px;font-weight:700;color:#5a5872;background:var(--moon);border-radius:999px;padding:3px 10px;}
+.fnnote{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#d8d6ec;border-radius:10px;padding:18px 20px;}
+.fnnote .sec-label{color:var(--cyan);} .fnnote p{margin:0;font-size:13px;line-height:1.6;}
+.aboutbox{background:rgba(var(--accent-rgb),0.08);border:1px solid var(--line);border-radius:10px;padding:16px 18px;}
+.aboutbox p{margin:0;font-size:13.5px;color:#3c3a52;}
+.invnote{font-size:12px;color:#5a5872;background:#f7f7fb;border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:11px 14px;margin-top:4px;}
+.disc{padding:18px 40px 26px;background:var(--ink);color:#9a98b4;font-size:11px;} .disc p{margin:0;line-height:1.55;}
+footer{padding:18px 40px 26px;background:var(--ink);color:#9a98b4;font-size:11px;}
+footer .legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px;} footer .legend span{display:flex;align-items:center;gap:7px;color:#cbc9e0;font-weight:700;}
+footer .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+footer .leg-sn{background:var(--cyan);} footer .leg-n{background:var(--purple);} footer .leg-neb{background:var(--eggplant);} footer p{margin:0;line-height:1.55;}
+@media print{body{background:#fff;} .page{box-shadow:none;margin:0;max-width:none;} .cosmos{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media (max-width:720px){.two-col{grid-template-columns:1fr;} .swot{grid-template-columns:1fr;} .thesis{grid-template-columns:1fr;} .grid6{grid-template-columns:1fr 1fr;} .mark{position:static;text-align:left;margin-bottom:14px;}}
+</style></head>
+<body class="cls-supernova">
+<div class="page">
+  <header class="cosmos">
+    <div class="mark"><span>BLK</span><span>GRVTY</span></div>
+    <p class="eyebrow">Franchise Nova &middot; Your Franchise Landscape</p>
+    <h1 class="cand-name">L.B.</h1>
+    <p class="cand-meta">Home Services · Hospitality (Extended-Stay) &nbsp;&middot;&nbsp; Target: Atlanta metro, GA — North-metro core (Dunwoody/Sandy Springs, 30338) with regional/national expansion intent</p>
+    <p class="snapshot">A curated starting point — systems that fit your sectors, your recurring-revenue focus, and a semi-absentee, multi-unit plan.</p>
+  </header>
+
+  <section>
+    <p class="sec-label">About This List</p>
+    <div class="aboutbox"><p>This is an early-stage landscape of franchise systems that line up with your two areas of interest — <b>Home Services</b> and <b>Hospitality (extended-stay)</b> — and with what you told us you&rsquo;re looking for: recurring revenue, a model you can run semi-absentee through a manager, and room to grow into multiple units across the Atlanta metro. The home-services options are the most actionable near-term; the extended-stay entry is included because you flagged hospitality, with a note on what it really takes to pursue it.</p></div>
+    <div class="invnote"><b>Est. Investment = the total cost to open one location</b> (franchise fee + build-out/equipment + working capital) — <i>not</i> what you earn. Figures are estimates from publicly available sources and vary by territory and FDD year.</div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <p class="sec-label">Systems To Explore</p>
+    <div class="syscard "><div class="rankbar"></div><div class="sysbody"><div class="syshead"><div class="sysrank">1</div><div class="systitle"><h3>The Cleaning Authority</h3><span class="vbadge">FN Vertical · Home Services</span></div></div><p class="sysdesc"><span class="bc">B2C.</span> A residential cleaning brand built on repeat, every-other-week customers — predictable recurring revenue. It is designed to be run through an office manager rather than by you personally, with Monday–Friday hours, which fits a semi-absentee, multi-territory plan.</p><div class="stats"><div class="stat"><div class="l">Est. Investment / Unit (cost to open)</div><div class="v">$103,875 – $175,250</div></div><div class="stat"><div class="l">Revenue Model</div><div class="v">Recurring biweekly residential cleaning</div></div><div class="stat"><div class="l">Key Metric</div><div class="v">Mon–Fri ops · manager-led</div></div><div class="stat"><div class="l">System Size</div><div class="v">Established · founded 1977 · ~224–240 territories</div></div></div><div class="systags"><span>Recurring</span><span>Semi-absentee</span><span>Established</span><span>GA available</span><span>SBA-friendly</span></div></div></div><div class="syscard "><div class="rankbar"></div><div class="sysbody"><div class="syshead"><div class="sysrank">2</div><div class="systitle"><h3>TruBlue Total House Care</h3><span class="vbadge">FN Vertical · Home Services</span></div></div><p class="sysdesc"><span class="bc">B2C.</span> Ongoing home maintenance and repair for seniors aging in place and busy families, packaged as a monthly “House Care Plus” subscription — recurring revenue, year-round. It is home-based with the lowest entry cost here, and designed to be led through a manager rather than run hands-on.</p><div class="stats"><div class="stat"><div class="l">Est. Investment / Unit (cost to open)</div><div class="v">$65,050 – $91,400</div></div><div class="stat"><div class="l">Revenue Model</div><div class="v">Monthly “House Care Plus” subscription + repeat projects</div></div><div class="stat"><div class="l">Key Metric</div><div class="v">Lowest entry cost · year-round</div></div><div class="stat"><div class="l">System Size</div><div class="v">Emerging · ~70–105 units</div></div></div><div class="systags"><span>Recurring</span><span>Subscription</span><span>Semi-absentee</span><span>Year-round</span><span>Lowest capital</span><span>Emerging</span></div></div></div><div class="syscard "><div class="rankbar"></div><div class="sysbody"><div class="syshead"><div class="sysrank">3</div><div class="systitle"><h3>Pool Scouts</h3><span class="vbadge">FN Vertical · Home Services</span></div></div><p class="sysdesc"><span class="bc">B2C.</span> Weekly residential pool maintenance — recurring, route-based revenue with protected zip-code territories. Atlanta&rsquo;s climate and pool density make for a long service season, and the model supports semi-absentee ownership once a manager and routes are in place.</p><div class="stats"><div class="stat"><div class="l">Est. Investment / Unit (cost to open)</div><div class="v">$103,000 – $152,920</div></div><div class="stat"><div class="l">Revenue Model</div><div class="v">Recurring weekly pool maintenance contracts</div></div><div class="stat"><div class="l">Key Metric</div><div class="v">Protected zip territories · Sun-Belt density</div></div><div class="stat"><div class="l">System Size</div><div class="v">Growth · ~71–81 units</div></div></div><div class="systags"><span>Recurring</span><span>Route-based</span><span>Semi-absentee</span><span>GA / Sun-Belt</span><span>Mild seasonality</span></div></div></div><div class="syscard "><div class="rankbar"></div><div class="sysbody"><div class="syshead"><div class="sysrank">4</div><div class="systitle"><h3>Window Genie</h3><span class="vbadge">FN Vertical · Home Services</span></div></div><p class="sysdesc"><span class="bc">B2C.</span> Window cleaning, pressure washing, gutters and tinting under the Neighborly platform — a multi-service menu that brings customers back through the year. Built as an &ldquo;executive ownership&rdquo; model where you lead a team rather than do the work, and it&rsquo;s SBA-registered.</p><div class="stats"><div class="stat"><div class="l">Est. Investment / Unit (cost to open)</div><div class="v">$125,600 – $300,000</div></div><div class="stat"><div class="l">Revenue Model</div><div class="v">Repeat exterior maintenance (multi-service)</div></div><div class="stat"><div class="l">Key Metric</div><div class="v">Neighborly platform · SBA Directory</div></div><div class="stat"><div class="l">System Size</div><div class="v">Growth · ~100–200 territories</div></div></div><div class="systags"><span>Repeat revenue</span><span>Semi-absentee</span><span>Neighborly</span><span>Year-round</span><span>SBA-registered</span></div></div></div><div class="syscard "><div class="rankbar"></div><div class="sysbody"><div class="syshead"><div class="sysrank">5</div><div class="systitle"><h3>Mosquito Joe</h3><span class="vbadge">FN Vertical · Home Services</span></div></div><p class="sysdesc"><span class="bc">B2C.</span> Outdoor pest control (mosquito/tick/flea) for homes and businesses under the Neighborly platform. Customers sign up for repeat, season-long service, which builds a loyal recurring base, and the model is set up for owners who lead a team rather than spray themselves.</p><div class="stats"><div class="stat"><div class="l">Est. Investment / Unit (cost to open)</div><div class="v">$150,155 – $192,075</div></div><div class="stat"><div class="l">Revenue Model</div><div class="v">Season-long recurring service plans (retained customers)</div></div><div class="stat"><div class="l">Key Metric</div><div class="v">~35% of owners ≥ system avg revenue*</div></div><div class="stat"><div class="l">System Size</div><div class="v">Scaled · ~200–415 locations</div></div></div><div class="systags"><span>Recurring</span><span>Semi-absentee</span><span>Neighborly</span><span>Higher capital</span><span>Seasonal lean</span></div></div></div><div class="syscard gated"><div class="rankbar"></div><div class="sysbody"><div class="syshead"><div class="sysrank">6</div><div class="systitle"><h3>WoodSpring Suites (Choice Hotels)</h3><span class="vbadge">FN Vertical · Hospitality</span></div></div><p class="sysdesc"><span class="bc">B2C.</span> Economy extended-stay lodging (Choice Hotels), built around long-stay guests for steady occupancy with a lean staffing model. Worth knowing this is a real-estate development at the multi-million-dollar level — a longer-horizon goal that typically needs a capital partner or development group, rather than a near-term first step.</p><div class="stats"><div class="stat"><div class="l">Est. Investment / Unit (cost to open)</div><div class="v">$5,035,000 – $13,300,000 (real-estate development)</div></div><div class="stat"><div class="l">Revenue Model</div><div class="v">Long-stay occupancy (30+ night stays)</div></div><div class="stat"><div class="l">Key Metric</div><div class="v">~30-yr payback · GM-operated</div></div><div class="stat"><div class="l">System Size</div><div class="v">Established · 300+ U.S. locations</div></div></div><div class="systags"><span>Extended-stay</span><span>Capital-gated</span><span>Real-estate heavy</span><span>Master-Dev path</span><span>Longer horizon</span></div></div></div>
+  </section>
+
+  <footer>
+    <p>These suggestions are based on publicly available information. Franchise Nova has not reviewed the FDD for these systems on your behalf. Investment figures are estimates. Territory availability must be confirmed directly with each franchisor. This is a starting point for your research, not a recommendation to invest.</p>
+    <p style="margin-top:10px;color:#7a7891;">Franchise Nova &middot; A BLK GRVTY initiative.</p>
+  </footer>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.score-ring[data-score]').forEach(function(r){var v=parseFloat(r.getAttribute('data-score'))||0;r.style.setProperty('--pct',Math.max(0,Math.min(100,v)));});
+  document.querySelectorAll('.bar i[data-score]').forEach(function(b){var s=parseFloat(b.getAttribute('data-score'))||0,m=parseFloat(b.getAttribute('data-max'))||1;b.style.width=Math.round(s/m*100)+'%';});
+  document.querySelectorAll('.lift-pills[data-lift]').forEach(function(p){var w=(p.getAttribute('data-lift')||'').trim().toLowerCase();p.querySelectorAll('.pill').forEach(function(pl){if(pl.textContent.trim().toLowerCase()===w)pl.classList.add('on');});});
+  var badge=document.querySelector('.badge b');if(badge){if(document.body.classList.contains('cls-supernova'))badge.textContent='SUPER';else if(document.body.classList.contains('cls-nebula'))badge.textContent='NEBULA';else badge.textContent='NOVA';}
+  var mx=document.querySelector('.matrix[data-readiness]');if(mx){var col={emerging:0,developing:1,strong:2}[(mx.getAttribute('data-readiness')||'').trim().toLowerCase()];var row={high:0,moderate:1,low:2}[(mx.getAttribute('data-lift')||'').trim().toLowerCase()];if(col!=null&&row!=null){var c=mx.querySelectorAll('.cell')[row*3+col];if(c){c.classList.add('here');var d=document.createElement('span');d.className='dot';c.appendChild(d);}}}
+})();
+</script>
+</body></html>
