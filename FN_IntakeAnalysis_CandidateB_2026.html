@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Candidate B · Candidate Readiness</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: #e8eaf0; color: #15131f; line-height: 1.6; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+/* HEADER */
+.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; }
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%); pointer-events:none; }
+.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(0,174,239,0.2) 0%,transparent 65%); pointer-events:none; }
+.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
+.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#664ca9; margin-bottom:8px; }
+.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:36px; color:#fff; margin-bottom:6px; line-height:1.05; }
+.h-meta { font-size:13px; color:#b0aed0; margin-bottom:14px; }
+.h-meta strong { color:#e1e3ee; }
+.h-note { font-size:11px; color:rgba(255,255,255,0.35); font-style:italic; }
+
+/* CLASSIFICATION BANNER */
+.class-banner { display:flex; align-items:center; gap:22px; padding:22px 44px; background:linear-gradient(90deg,rgba(102,76,169,0.1),transparent 75%); border-bottom:1px solid #e8eaf0; }
+.badge { width:78px; height:78px; border-radius:50%; background:radial-gradient(circle at 45% 40%,#664ca9,#452e80 55%,#282560 80%); box-shadow:0 0 0 5px rgba(102,76,169,0.18),0 0 24px rgba(102,76,169,0.4); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.badge span { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; color:#fff; letter-spacing:.04em; text-align:center; line-height:1.3; }
+.class-info h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:21px; color:#15131f; margin-bottom:4px; }
+.class-info h2 em { color:#664ca9; font-style:normal; }
+.class-info p { font-size:13.5px; color:#555; max-width:50ch; }
+.conf-pill { display:inline-block; margin-top:7px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#664ca9; border:1px solid #664ca9; border-radius:999px; padding:3px 11px; }
+
+/* SECTIONS */
+.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
+.section:last-of-type { border-bottom:none; }
+.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+
+/* DIMENSIONS */
+.dims { display:flex; flex-direction:column; gap:16px; }
+.dim-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px; }
+.dim-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#15131f; }
+.dim-score { font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#aaa; }
+.bar-track { height:7px; background:#e8eaf0; border-radius:999px; overflow:hidden; margin-bottom:5px; }
+.bar-fill  { height:100%; background:linear-gradient(90deg,#452e80,#664ca9); border-radius:999px; }
+.dim-note  { font-size:12.5px; color:#666; line-height:1.55; }
+
+/* DATA GRID */
+.data-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.data-card { background:#f5f5fa; border-radius:8px; padding:12px 14px; border-top:3px solid #664ca9; }
+.data-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; color:#999; margin-bottom:5px; }
+.data-val { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; line-height:1.35; }
+
+/* NOTE CARD */
+.note-card { background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; padding:13px 17px; font-size:13px; color:#444; line-height:1.65; }
+
+/* GAPS */
+.gaps { display:flex; flex-wrap:wrap; gap:8px; }
+.gap-tag { font-size:11.5px; background:#fff; border:1px dashed #b1456b; color:#8a3554; border-radius:6px; padding:5px 11px; }
+
+/* FOOTER */
+.doc-footer { background:#0d0a1c; padding:14px 44px; }
+.footer-main { font-size:11.5px; color:#9a98b4; margin-bottom:3px; line-height:1.6; }
+.footer-note { font-size:10.5px; color:#555; line-height:1.5; }
+
+@media print { body{background:#fff;padding:0;} .doc{box-shadow:none;border-radius:0;} .header,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+@media (max-width:680px) { .data-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="header">
+  <div class="h-logo">BLK GRVTY  /  FRANCHISE NOVA</div>
+  <div class="h-eye">Candidate Readiness &middot; Internal Analysis</div>
+  <h1 class="h-name">Candidate B</h1>
+  <p class="h-meta">Detroit, MI &nbsp;·&nbsp; <strong>Real Estate Investor</strong> &nbsp;·&nbsp; Timeframe: 1 year</p>
+  <p class="h-note">Submitted on a prior version of the FN intake form — several current intake questions were not yet in place</p>
+</header>
+
+<!-- Classification -->
+<div class="class-banner">
+  <div class="badge"><span>DATA<br>INCOMPLETE</span></div>
+  <div class="class-info">
+    <h2>Classification: <em>Unscored</em></h2>
+    <p>This submission predates several core intake questions. A reliable Nova Score, FN Lift, and franchise landscape cannot be generated without making assumptions about missing fields.</p>
+    <span class="conf-pill">Confidence &middot; N/A — Incomplete Data</span>
+  </div>
+</div>
+
+<!-- What Was Captured -->
+<div class="section">
+  <div class="sec-label">What This Submission Captured</div>
+  <div class="data-grid">
+    <div class="data-card"><div class="data-label">Primary Interest</div><div class="data-val">Exploring franchise ownership</div></div>
+    <div class="data-card"><div class="data-label">Sectors Selected</div><div class="data-val">Home Services + Automotive</div></div>
+    <div class="data-card"><div class="data-label">Timeframe</div><div class="data-val">1 year</div></div>
+    <div class="data-card"><div class="data-label">Units Target</div><div class="data-val">1</div></div>
+    <div class="data-card"><div class="data-label">Liquid Capital</div><div class="data-val">&lt;$25,000</div></div>
+    <div class="data-card"><div class="data-label">Estimated Net Worth</div><div class="data-val">&lt;$250,000</div></div>
+    <div class="data-card"><div class="data-label">Credit Score Range</div><div class="data-val">640–699</div></div>
+    <div class="data-card"><div class="data-label">Bankruptcy / Litigation (7 yrs)</div><div class="data-val">No</div></div>
+    <div class="data-card"><div class="data-label">Self-Rated Sales Capability</div><div class="data-val">Adequate</div></div>
+    <div class="data-card"><div class="data-label">P&amp;L Experience &gt;$1M</div><div class="data-val">No</div></div>
+    <div class="data-card"><div class="data-label">Ownership Model</div><div class="data-val">Semi-absentee</div></div>
+    <div class="data-card"><div class="data-label">Day-to-Day Involvement (1–5)</div><div class="data-val">1 — minimal involvement</div></div>
+  </div>
+</div>
+
+<!-- Why This Sector -->
+<div class="section">
+  <div class="sec-label">Why This Sector — In Candidate's Own Words</div>
+  <p class="note-card">"They include essential services."</p>
+</div>
+
+<!-- Behavioral Signals -->
+<div class="section">
+  <div class="sec-label">Behavioral Signals (1–5 Scale)</div>
+  <div class="dims">
+    <div>
+      <div class="dim-top"><span class="dim-name">Results-Driven</span><span class="dim-score">4 / 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Innovative</span><span class="dim-score">3 / 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Conventional</span><span class="dim-score">5 / 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Vision vs. Autonomy</span><span class="dim-score">2 / 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:40%"></div></div>
+      <p class="dim-note">Leans toward needing autonomy rather than thriving within a shared vision.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Problem Solving Approach</span><span class="dim-score">3 / 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+      <p class="dim-note">Balanced between asking for advice and jumping right in.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Creative vs. Operator</span><span class="dim-score">5 / 5</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">Strongly leans toward executing existing plans over inventing new ideas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Data Gaps -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-label">Data Gaps — Not Captured on This Version of the Intake Form</div>
+  <div class="gaps">
+    <span class="gap-tag">Target geography / territory preference</span>
+    <span class="gap-tag">Professional background narrative</span>
+    <span class="gap-tag">Success vision (3–5 years)</span>
+    <span class="gap-tag">Capital financing strategy / thinking</span>
+    <span class="gap-tag">Brand stage preference (Emerging / Established)</span>
+    <span class="gap-tag">Seasonality preference</span>
+    <span class="gap-tag">Existing franchise ownership</span>
+    <span class="gap-tag">No specific franchise systems researched/named</span>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:14px;line-height:1.6;">Because this submission predates several current intake questions, a complete Nova Score and franchise landscape recommendation cannot be generated without making assumptions about missing fields. This document reflects only what was actually submitted.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova Intake Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; 2026</p>
+  <p class="footer-note">For internal FN use only &nbsp;&middot;&nbsp; Submitted using a prior version of the FN intake form</p>
+</div>
+
+</div>
+</body>
+</html>
