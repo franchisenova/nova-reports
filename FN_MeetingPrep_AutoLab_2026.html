@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Auto-Lab Meeting Prep Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: #e8eaf0; color: #15131f; line-height: 1.6; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+/* HEADER */
+.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; }
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(0,174,239,0.25) 0%,transparent 65%); pointer-events:none; }
+.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(102,76,169,0.2) 0%,transparent 65%); pointer-events:none; }
+.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
+.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#00aeef; margin-bottom:8px; }
+.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:32px; color:#fff; margin-bottom:6px; line-height:1.1; }
+.h-meta { font-size:13px; color:#b0aed0; margin-bottom:6px; }
+.h-meta strong { color:#e1e3ee; }
+.h-note { font-size:11px; color:rgba(255,255,255,0.35); font-style:italic; }
+
+/* SECTIONS */
+.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
+.section:last-of-type { border-bottom:none; }
+.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+
+/* PERSON CARD */
+.person-card { display:flex; align-items:flex-start; gap:20px; background:linear-gradient(135deg,#0d0a1c,#1a1340); border-radius:10px; padding:20px 22px; color:#eceaf8; }
+.person-avatar { width:56px; height:56px; border-radius:50%; background:radial-gradient(circle,#00aeef,#282560); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Montserrat',sans-serif; font-weight:900; font-size:18px; color:#fff; }
+.person-info h3 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:17px; color:#fff; margin-bottom:3px; }
+.person-role { font-size:12px; color:#00aeef; font-weight:700; margin-bottom:8px; }
+.person-bio { font-size:13px; color:#d8d6ec; line-height:1.65; }
+
+/* DATA GRID */
+.data-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.data-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.data-card { background:#f5f5fa; border-radius:8px; padding:12px 14px; border-top:3px solid #664ca9; }
+.data-card.cyan  { border-top-color:#00aeef; }
+.data-card.green { border-top-color:#1a7a4a; }
+.data-card.amber { border-top-color:#b86e00; }
+.data-card.red   { border-top-color:#b1456b; }
+.data-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; color:#999; margin-bottom:5px; }
+.data-val { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; line-height:1.4; }
+.data-val.good { color:#1a7a4a; }
+.data-val.warn { color:#b86e00; }
+.data-val.note { color:#452e80; }
+
+/* NOTE CARD */
+.note-card { background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; padding:13px 17px; font-size:13px; color:#444; line-height:1.65; }
+.note-card.amber { border-left-color:#b86e00; background:#fff8e1; }
+.note-card.purple { border-left-color:#452e80; background:#f0eefa; }
+.note-card.green { border-left-color:#1a7a4a; background:#eaf6ef; }
+.note-card.red { border-left-color:#b1456b; background:#fff0f4; }
+
+/* SWOT */
+.swot-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.quad { border-radius:9px; padding:14px 16px; }
+.quad h4 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:9px; }
+.quad ul { padding-left:14px; }
+.quad li { font-size:12.5px; margin-bottom:5px; line-height:1.5; color:#333; }
+.sw-s { background:#eaf6ef; border-left:3px solid #1a7a4a; }
+.sw-s h4 { color:#1a7a4a; }
+.sw-w { background:#fff8e1; border-left:3px solid #b86e00; }
+.sw-w h4 { color:#b86e00; }
+.sw-o { background:#f0eefa; border-left:3px solid #452e80; }
+.sw-o h4 { color:#452e80; }
+.sw-r { background:#fff0f4; border-left:3px solid #b1456b; }
+.sw-r h4 { color:#b1456b; }
+
+/* QUESTIONS */
+.q-list { padding-left:0; list-style:none; }
+.q-list li { display:flex; gap:10px; font-size:13.5px; color:#333; margin-bottom:10px; line-height:1.6; }
+.q-list li::before { content:'Q'; display:block; font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; color:#fff; background:#452e80; border-radius:4px; padding:2px 6px; flex-shrink:0; margin-top:3px; height:fit-content; }
+
+/* FLAGS */
+.flag-list { display:flex; flex-direction:column; gap:8px; }
+.flag { display:flex; align-items:flex-start; gap:10px; padding:11px 14px; border-radius:7px; font-size:13px; line-height:1.6; }
+.flag.amber { background:#fff8e1; border-left:3px solid #b86e00; color:#5a3e00; }
+.flag.red   { background:#fff0f4; border-left:3px solid #b1456b; color:#5a1f35; }
+.flag.green { background:#eaf6ef; border-left:3px solid #1a7a4a; color:#0d3d20; }
+.flag-icon  { font-size:14px; flex-shrink:0; margin-top:2px; }
+
+/* FOOTER */
+.doc-footer { background:#0d0a1c; padding:14px 44px; }
+.footer-main { font-size:11.5px; color:#9a98b4; line-height:1.6; }
+.footer-note { font-size:10.5px; color:#555; }
+
+@media print { body{background:#fff;padding:0;} .doc{box-shadow:none;border-radius:0;} .header,.person-card,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+@media (max-width:680px) { .data-grid,.data-grid-3,.swot-grid{grid-template-columns:1fr;} .section{padding:18px 20px;} .header{padding:24px 20px;} }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="header">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Meeting Prep Brief &middot; Internal Use Only</div>
+  <h1 class="h-name">Auto-Lab Complete Car Care Centers</h1>
+  <p class="h-meta">Meeting with <strong>Mark Sullivan</strong> &nbsp;·&nbsp; Co-Owner &amp; Director of Operations &nbsp;·&nbsp; Bloomfield Hills, MI</p>
+  <p class="h-note">All information sourced from publicly available records — Crain's Detroit Business, PRNewswire, FDD filings, and franchise directories</p>
+</header>
+
+<!-- WHO IS IN THE ROOM -->
+<div class="section">
+  <div class="sec-label">Who You're Meeting</div>
+  <div class="person-card">
+    <div class="person-avatar">MS</div>
+    <div class="person-info">
+      <h3>Mark Sullivan</h3>
+      <div class="person-role">Co-Owner &amp; Director of Operations — Auto-Lab Complete Car Care Centers</div>
+      <p class="person-bio">Mark Sullivan was Auto-Lab's top-performing franchisee before being brought in as co-owner and partner by CEO Stephen Wilson in 2023. He runs the Plymouth, Belleville, and Brighton Michigan locations personally. His stated mission is to create "carbon copies" of himself in different states — meaning he views the area operator model as a way to replicate his own operational playbook nationally. He personally developed the new area operator model that is now Auto-Lab's primary expansion vehicle. He is the public face of Auto-Lab's growth story and was quoted extensively in Crain's Detroit Business June 2025 feature on the company's national expansion plans.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMPANY SNAPSHOT -->
+<div class="section">
+  <div class="sec-label">Company Snapshot</div>
+  <div class="data-grid-3" style="margin-bottom:12px;">
+    <div class="data-card cyan"><div class="data-label">Founded</div><div class="data-val">1987 (Sturgis, MI)</div></div>
+    <div class="data-card cyan"><div class="data-label">Franchising Since</div><div class="data-val">1989 / 1992</div></div>
+    <div class="data-card cyan"><div class="data-label">Headquarters</div><div class="data-val">Bloomfield Hills, MI</div></div>
+    <div class="data-card"><div class="data-label">Current Locations</div><div class="data-val note">21 operating in 6 states</div></div>
+    <div class="data-card"><div class="data-label">States Operating</div><div class="data-val">MI, IN, IA, FL, TX, IL</div></div>
+    <div class="data-card"><div class="data-label">Expansion Target</div><div class="data-val note">FL, TX, AZ — territories open now</div></div>
+    <div class="data-card green"><div class="data-label">Avg. Revenue / Store (2024)</div><div class="data-val good">$972,000</div></div>
+    <div class="data-card green"><div class="data-label">Revenue at Acquisition (2019)</div><div class="data-val">$650K–$700K / store</div></div>
+    <div class="data-card green"><div class="data-label">Overall Sales Growth (Last Year)</div><div class="data-val good">$16.8M total · $1.1M net</div></div>
+  </div>
+  <div class="data-grid">
+    <div class="data-card amber"><div class="data-label">FPI Health Score (PeerSense)</div><div class="data-val warn">48 / 100 — Below average</div></div>
+    <div class="data-card amber"><div class="data-label">FDD Franchisee Turnover (2023)</div><div class="data-val warn">11% — 2 exits out of 18 units</div></div>
+    <div class="data-card"><div class="data-label">Warranty Offered</div><div class="data-val">24-month / 24,000-mile</div></div>
+    <div class="data-card"><div class="data-label">Proprietary Tech</div><div class="data-val">ALBMS® — POS, inventory, accounting</div></div>
+  </div>
+</div>
+
+<!-- OWNERSHIP HISTORY -->
+<div class="section">
+  <div class="sec-label">Ownership &amp; Leadership History</div>
+  <div class="flag-list">
+    <div class="flag green"><span class="flag-icon">📅</span><div><strong>1987</strong> — Founded as a single store in Sturgis, MI. Grew quickly to 5 locations before franchising.</div></div>
+    <div class="flag green"><span class="flag-icon">📅</span><div><strong>1989/1992</strong> — Began franchising. Original name: Auto-Lab Diagnostic and Tune-Up Centers.</div></div>
+    <div class="flag green"><span class="flag-icon">📅</span><div><strong>2019</strong> — Stephen Wilson (retail veteran) acquired the company from shareholder Frank Brandenberg and a private equity firm. Rebranded to Auto-Lab Complete Car Care Centers. Introduced 24-month/24,000-mile warranty. Rebuilt vendor relationships and laid groundwork for growth.</div></div>
+    <div class="flag green"><span class="flag-icon">📅</span><div><strong>2023</strong> — Mark Sullivan, then the brand's top-performing franchisee, joined Wilson as co-owner and Director of Operations. Sullivan developed the new area operator model to drive national expansion.</div></div>
+    <div class="flag green"><span class="flag-icon">📅</span><div><strong>May 2025</strong> — Press release celebrating 35+ years. New website launched. Territory expansion announced in FL, TX, AZ. Auto-Lab Express quick-service concept announced. 4 new locations added in the prior 18 months.</div></div>
+    <div class="flag green"><span class="flag-icon">📅</span><div><strong>June 2025</strong> — Crain's Detroit Business feature. Sullivan confirms goal: "An Auto-Lab location in every state within 10 years." Average store revenue up 40%+ since 2019.</div></div>
+  </div>
+</div>
+
+<!-- FRANCHISE SYSTEM DETAILS -->
+<div class="section">
+  <div class="sec-label">Franchise System — What They Offer</div>
+  <div class="data-grid" style="margin-bottom:12px;">
+    <div class="data-card"><div class="data-label">Est. Total Investment / Unit</div><div class="data-val note">$111K–$746K (range across sources)</div></div>
+    <div class="data-card"><div class="data-label">Franchise Fee</div><div class="data-val">$13,750–$27,500</div></div>
+    <div class="data-card"><div class="data-label">Royalty Fee</div><div class="data-val warn">6% of revenue</div></div>
+    <div class="data-card"><div class="data-label">Advertising Fee</div><div class="data-val">3% of revenue</div></div>
+    <div class="data-card green"><div class="data-label">Min. Liquid Capital</div><div class="data-val">$50,000</div></div>
+    <div class="data-card green"><div class="data-label">Min. Net Worth</div><div class="data-val">$150,000</div></div>
+    <div class="data-card"><div class="data-label">Payback Period (est.)</div><div class="data-val warn">5.6–7.6 years</div></div>
+    <div class="data-card green"><div class="data-label">SBA Approved</div><div class="data-val good">Yes — SBA approved franchise</div></div>
+    <div class="data-card"><div class="data-label">Training Program</div><div class="data-val">Up to 30 days at corporate HQ</div></div>
+    <div class="data-card"><div class="data-label">Proprietary System</div><div class="data-val">ALBMS® — integrated shop management</div></div>
+  </div>
+  <p class="note-card purple">The FDD notes that the franchise discloses lawsuits and/or bankruptcy information. PeerSense data shows only 2 SBA loans tracked across 2 lenders — a thin financing footprint for a 35-year-old system. The FDD does not include Item 19 financial performance representations, meaning franchisees cannot see validated unit economics in the disclosure document itself.</p>
+</div>
+
+<!-- AREA OPERATOR MODEL -->
+<div class="section">
+  <div class="sec-label">The Area Operator Model — Key to Their Expansion</div>
+  <p class="note-card" style="margin-bottom:12px;">This is the most important thing to understand about their current growth strategy. Sullivan developed this model specifically to replace the old structure where a single operator bought rights to an entire state — which was too expensive and operationally unrealistic.</p>
+  <div class="data-grid">
+    <div class="data-card cyan"><div class="data-label">Old Model</div><div class="data-val">Entire state territories — expensive, hard to develop</div></div>
+    <div class="data-card cyan"><div class="data-label">New Model</div><div class="data-val">Smaller quadrant territories within states</div></div>
+    <div class="data-card green"><div class="data-label">Florida Pilot Example</div><div class="data-val good">State split into 9 quadrants · $75,000 per quadrant</div></div>
+    <div class="data-card green"><div class="data-label">Sullivan's Goal</div><div class="data-val">6 stores running in Florida within 18 months</div></div>
+    <div class="data-card"><div class="data-label">Growth Target</div><div class="data-val">7–10 new stores per year nationwide</div></div>
+    <div class="data-card"><div class="data-label">Sullivan Quote</div><div class="data-val">"I'm basically making carbon copies of myself in different states"</div></div>
+  </div>
+</div>
+
+<!-- SERVICES OFFERED -->
+<div class="section">
+  <div class="sec-label">Services Offered</div>
+  <div class="data-grid-3">
+    <div class="data-card"><div class="data-label">Core Services</div><div class="data-val">Engine repair, oil changes, brakes, transmission, electrical, A/C, suspension</div></div>
+    <div class="data-card"><div class="data-label">Diagnostics</div><div class="data-val">Digital inspections, computer diagnostics, CARFAX service history</div></div>
+    <div class="data-card"><div class="data-label">New Concept</div><div class="data-val note">Auto-Lab Express — quick-service fluid maintenance (announced 2025)</div></div>
+    <div class="data-card"><div class="data-label">Fleet Services</div><div class="data-val">Individual vehicle owners + commercial fleet maintenance</div></div>
+    <div class="data-card"><div class="data-label">Technicians</div><div class="data-val">ASE-certified mechanics</div></div>
+    <div class="data-card green"><div class="data-label">Warranty</div><div class="data-val good">24-month / 24,000-mile on parts &amp; labor</div></div>
+  </div>
+</div>
+
+<!-- FN ALIGNMENT ANALYSIS -->
+<div class="section">
+  <div class="sec-label">FN Alignment Analysis — Where We Connect &amp; Where We Don't</div>
+  <div class="swot-grid">
+    <div class="quad sw-s">
+      <h4>Where FN &amp; Auto-Lab Align</h4>
+      <ul>
+        <li>Auto-Lab is in the <strong>Automotive vertical</strong> — one of FN's 10 core sectors (non-discretionary, recession-resistant)</li>
+        <li>Mark Sullivan is actively seeking franchisees to scale nationally — FN's pipeline could be a direct source of qualified candidates</li>
+        <li>Their area operator model ($75K per quadrant) is an accessible entry for the right FN candidate — lower capital than a full unit</li>
+        <li>SBA approved — aligns with FN's capital structuring approach for candidates</li>
+        <li>Multi-unit mindset — Sullivan's entire growth model is built on scale, which matches FN's mission</li>
+      </ul>
+    </div>
+    <div class="quad sw-w">
+      <h4>Where There's Tension</h4>
+      <ul>
+        <li>Auto-Lab is <strong>not a recurring revenue model</strong> — automotive repair is primarily transactional (per-visit, per-repair). FN's mission centers on membership/subscription recurring revenue</li>
+        <li>FPI health score of 48/100 is below average — thin SBA lending footprint, franchisee turnover worth watching</li>
+        <li>No Item 19 in the FDD — candidates cannot see validated unit-level financials without asking directly</li>
+        <li>The Wanda &amp; Larry situation — a prior FN-disqualified candidate is close with Mark. This dynamic needs to be navigated carefully</li>
+      </ul>
+    </div>
+    <div class="quad sw-o">
+      <h4>What FN Can Offer Auto-Lab</h4>
+      <ul>
+        <li>A qualified pipeline of pre-screened candidates specifically in the Automotive vertical</li>
+        <li>FN's capital structuring expertise — helping candidates get SBA-ready before they approach Auto-Lab</li>
+        <li>Chipo and the team can serve as an advisory layer between Auto-Lab and prospective franchisees — vetting before referral</li>
+        <li>Texas territory opportunity is currently open and FN has Dallas-area candidates in the pipeline (or will)</li>
+      </ul>
+    </div>
+    <div class="quad sw-r">
+      <h4>Watch Points Going Into the Meeting</h4>
+      <ul>
+        <li>The Wanda &amp; Larry dynamic — Robin disqualified them on financials, yet they remain close with Mark. Don't volunteer this history; let Mark bring it up if he does</li>
+        <li>FN's recurring revenue thesis doesn't naturally fit Auto-Lab's transactional model — be clear about FN's candidate profile rather than overpromising fit</li>
+        <li>Auto-Lab is in active expansion mode — they may want to move fast. Protect FN's vetting process and don't let urgency override due diligence</li>
+        <li>The 11% franchisee turnover in 2023 and thin FDD disclosures are worth noting internally — don't commit to referring candidates without reviewing the current FDD first</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SUGGESTED QUESTIONS -->
+<div class="section">
+  <div class="sec-label">Suggested Questions for the Meeting</div>
+  <ul class="q-list">
+    <li>Walk us through the area operator model in detail — what does day-to-day operations look like for an area operator versus a single-unit franchisee, and what does success look like in year one?</li>
+    <li>You mentioned territory expansion in Florida, Texas, and Arizona — what does the ideal franchisee profile look like for those markets, and what have you seen work in terms of background and capital?</li>
+    <li>How does Auto-Lab support franchisees who come from outside the automotive industry? What's the learning curve been like for non-car-background operators?</li>
+    <li>The area operator quadrant model is new — how has the Florida pilot performed so far, and what adjustments have you made?</li>
+    <li>How do you see organizations like Franchise Nova fitting into your growth pipeline — are you looking for franchise advisor partnerships, or more of a referral relationship?</li>
+    <li>What does the Auto-Lab Express quick-service concept look like — is that a separate franchise offering or a format variation within the existing system?</li>
+  </ul>
+</div>
+
+<!-- CONTEXT ON WANDA & LARRY -->
+<div class="section">
+  <div class="sec-label">Context — The Wanda &amp; Larry Situation</div>
+  <div class="flag-list">
+    <div class="flag amber">
+      <span class="flag-icon">⚠️</span>
+      <div><strong>What we know:</strong> Wanda and Larry are past Auto-Lab franchisees who were introduced to FN at some point. Robin (FN's advisor) disqualified them — the decision was made after their financials showed no promise. They remain personally close with Mark Sullivan.</div>
+    </div>
+    <div class="flag amber">
+      <span class="flag-icon">⚠️</span>
+      <div><strong>Why it matters:</strong> Mark may bring them up, reference them positively, or use the relationship as context for the FN conversation. There may be an expectation or assumption that FN should work with them again or reconsider.</div>
+    </div>
+    <div class="flag red">
+      <span class="flag-icon">🚩</span>
+      <div><strong>How to handle it:</strong> Do not volunteer the history. If it comes up, acknowledge the relationship warmly without relitigating the disqualification decision. FN's vetting process is a feature, not a flaw — the goal is to protect all parties including the franchisor from undercapitalized candidates.</div>
+    </div>
+    <div class="flag green">
+      <span class="flag-icon">✓</span>
+      <div><strong>The frame to use if needed:</strong> "FN's process is designed to make sure every candidate we refer is genuinely ready — financially and operationally. That protects you as much as it protects them."</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT TO WALK AWAY WITH -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-label">What FN Should Walk Away With</div>
+  <div class="flag-list">
+    <div class="flag green"><span class="flag-icon">✓</span><div>A clear understanding of their ideal franchisee profile — so FN knows exactly who from its pipeline to refer</div></div>
+    <div class="flag green"><span class="flag-icon">✓</span><div>Clarity on the area operator model pricing and territory availability — specifically Texas, which overlaps with FN's existing Dallas-area pipeline</div></div>
+    <div class="flag green"><span class="flag-icon">✓</span><div>A mutual understanding of what a FN referral relationship looks like — what FN delivers, what Auto-Lab expects, and how candidates move through the process</div></div>
+    <div class="flag green"><span class="flag-icon">✓</span><div>A copy of their current FDD — or a commitment to send it — so FN can review before making any referrals</div></div>
+    <div class="flag amber"><span class="flag-icon">⚑</span><div>If the Wanda &amp; Larry topic comes up: a clean, professional close to that chapter that doesn't create friction with Mark going forward</div></div>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova Meeting Prep Brief &nbsp;·&nbsp; A BLK GRVTY Initiative &nbsp;·&nbsp; Auto-Lab Complete Car Care Centers &nbsp;·&nbsp; July 2026</p>
+  <p class="footer-note">For internal FN use only &nbsp;·&nbsp; All data sourced from public records: Crain's Detroit Business, PRNewswire, FDD filings, franchise directories</p>
+</div>
+
+</div>
+</body>
+</html>
