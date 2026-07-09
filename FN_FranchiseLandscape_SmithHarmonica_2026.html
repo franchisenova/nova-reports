@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Systems Worth Exploring</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: #e8eaf0;
+  color: #15131f;
+  line-height: 1.6;
+  padding: 40px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+/* ── HEADER ── */
+.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; border-top: 4px solid #00aeef; }
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%); pointer-events:none; }
+.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(0,174,239,0.2) 0%,transparent 65%); pointer-events:none; }
+.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
+.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#00aeef; margin-bottom:8px; }
+.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:32px; color:#fff; margin-bottom:8px; line-height:1.1; }
+.h-meta { font-size:13px; color:#b0aed0; }
+.h-meta strong { color:#e1e3ee; }
+
+/* ── SECTIONS ── */
+.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
+.section:last-of-type { border-bottom:none; }
+.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+
+/* ── INTRO ── */
+.landscape-intro { font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; padding:12px 16px; background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; }
+.landscape-note  { font-size:11px; color:#aaa; font-style:italic; margin-bottom:16px; }
+
+/* ── LANDSCAPE CARDS ── */
+.ls-grid { display:flex; flex-direction:column; gap:12px; }
+.ls-card { border:1px solid #e8eaf0; border-radius:9px; overflow:hidden; background:#fafafa; }
+.ls-card-top { padding:13px 16px 10px; border-bottom:1px solid #e8eaf0; }
+.ls-card-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px; }
+.ls-name { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; }
+.ls-cat  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
+
+/* Vertical category badge colors — use exact FN vertical label */
+.ls-health   { background:rgba(69,46,128,0.1);  color:#452e80; }
+.ls-edu      { background:rgba(184,110,0,0.12); color:#7a4800; }
+.ls-home     { background:rgba(0,174,239,0.1);  color:#00709a; }
+.ls-senior   { background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+.ls-auto     { background:rgba(21,19,31,0.08);  color:#333; }
+.ls-pet      { background:rgba(102,76,169,0.1); color:#664ca9; }
+.ls-staffing { background:rgba(0,174,239,0.1);  color:#00709a; }
+.ls-tax      { background:rgba(184,110,0,0.12); color:#7a4800; }
+.ls-tech     { background:rgba(69,46,128,0.1);  color:#452e80; }
+.ls-hosp     { background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+
+.ls-why  { font-size:12.5px; color:#444; line-height:1.55; }
+.ls-card-bottom { padding:10px 16px; background:#f0eefa; display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.ls-stat { display:flex; flex-direction:column; gap:2px; }
+.ls-stat-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#888; }
+.ls-stat-val { font-size:12px; color:#15131f; font-weight:700; line-height:1.3; }
+.ls-stat-val.good { color:#1a7a4a; }
+.ls-stat-val.warn { color:#b86e00; }
+.ls-stat-val.note { color:#452e80; }
+.ls-tags { padding:8px 16px 12px; display:flex; flex-wrap:wrap; gap:6px; }
+.ls-tag  { font-size:10.5px; color:#555; background:#eeedf8; border-radius:5px; padding:3px 9px; font-family:'Montserrat',sans-serif; font-weight:700; }
+.ls-tag.sba   { color:#1a7a4a; background:#eaf6ef; }
+.ls-tag.geo   { color:#00709a; background:#e8f7fd; }
+.ls-tag.recur { color:#452e80; background:#ede9fa; }
+.ls-tag.warn  { color:#b86e00; background:#fdf5e6; }
+
+/* ── RANK BAR ── */
+.rank-bar-r1 { background:#452e80; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.rank-bar-r2,
+.rank-bar-r3,
+.rank-bar-r4,
+.rank-bar-r5,
+.rank-bar-r6 { background:#282560; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.rank-num  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; color:#fff; }
+.rank-note { font-size:10px; color:rgba(255,255,255,0.65); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background:#f5f5fa; border-top:1px solid #e8eaf0; padding:18px 44px; }
+.disclaimer p { font-size:11.5px; color:#888; line-height:1.7; }
+.disclaimer strong { color:#555; }
+
+/* ── FOOTER ── */
+.doc-footer { background:#0d0a1c; padding:14px 44px; }
+.footer-main { font-size:11.5px; color:#9a98b4; margin-bottom:3px; line-height:1.6; }
+
+@media print {
+  body { background:#fff; padding:0; }
+  .doc { box-shadow:none; border-radius:0; }
+  .header, .rank-bar-r1, .rank-bar-r2, .rank-bar-r3,
+  .rank-bar-r4, .rank-bar-r5, .rank-bar-r6,
+  .ls-card-bottom, .doc-footer { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+@media (max-width:640px) {
+  .section { padding:18px 20px; }
+  .header  { padding:24px 20px; }
+  .ls-card-bottom { grid-template-columns:1fr; }
+  .disclaimer { padding:16px 20px; }
+  .doc-footer { padding:14px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ══════════════════════════════════
+     HEADER
+     Replace all {{TOKENS}} with real data
+     ══════════════════════════════════ -->
+<header class="header">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Prepared for Your Review</div>
+  <h1 class="h-name">Harmonica Smith</h1>
+  <p class="h-meta">
+    <strong>Health, Wellness &amp; Fitness · Education &amp; Childcare</strong>
+    &nbsp;·&nbsp; Target: DC, North Carolina, Texas
+    &nbsp;·&nbsp; 3+ Units
+  </p>
+</header>
+
+<!-- ══════════════════════════════════
+     ABOUT THIS LIST
+     ══════════════════════════════════ -->
+<div class="section">
+  <div class="sec-label">About This List</div>
+  <p class="landscape-intro">
+    Based on the sectors you selected and your target geography, we put together a starting list of franchise systems worth exploring as you continue your journey with Franchise Nova. These systems were identified based on publicly available information — their territory availability, revenue model, ownership structure, and fit with your goals.<br><br>
+    This is a starting point for your own research and conversation with your Nova Guide — not a formal recommendation. Any system you want to explore further will go through Franchise Nova's full FDD analysis process before any decisions are made.<br><br>
+    <strong>Est. Investment</strong> = total estimated cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn. <strong>B2C</strong> = your customers are individual consumers. <strong>B2B</strong> = your customers are other businesses.
+  </p>
+  <p class="landscape-note">⚑ Public information only — no FDDs reviewed. Territory availability must be confirmed directly with each franchisor before proceeding.</p>
+</div>
+
+<!-- ══════════════════════════════════
+     FRANCHISE LANDSCAPE
+     Add/remove cards as needed.
+     Minimum 6 systems required.
+     ══════════════════════════════════ -->
+<div class="section">
+  <div class="sec-label">Systems Worth Exploring — Ranked by Fit</div>
+  <div class="ls-grid">
+
+    <!-- ── RANK 1 ── Best available fit -->
+    <div class="ls-card">
+      <div class="rank-bar-r1">
+        <span class="rank-num">RANK 1</span>
+        <span class="rank-note">Lowest capital barrier, fits your multi-unit goals</span>
+      </div>
+      <div class="ls-card-top">
+        <div class="ls-card-header">
+          <div class="ls-name">Fit4Mom</div>
+          <!-- Vertical badge class options: ls-health / ls-edu / ls-home / ls-senior /
+               ls-auto / ls-pet / ls-staffing / ls-tax / ls-tech / ls-hosp -->
+          <span class="ls-cat ls-health">Health &amp; Fitness</span>
+        </div>
+        <!-- Start with: <strong>B2C · [Revenue model type].</strong> or <strong>B2B · [Revenue model type].</strong> -->
+        <p class="ls-why"><strong>B2C · Membership/class-pack fitness for mothers.</strong> Pre- and postnatal group fitness classes for mothers at every stage. A low-cost “Lite” model starts around $2,000, making it one of the most accessible ways to open a first location while you build toward owning multiple units.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <!-- Investment = cost to open, never earnings. Use .note color for investment -->
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$2K&ndash;$29K*</span></div>
+        <!-- Revenue model: use .good for recurring ✓ -->
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Class-Pack / Membership ✓</span></div>
+        <!-- Key metric: SBA default rate, avg AUV, member retention, EBITDA, etc. -->
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">210+ units, 38 states</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">210+ units</span></div>
+      </div>
+      <div class="ls-tags">
+        <!-- geo = blue, recur = purple, sba = green, warn = amber, default = grey -->
+        <span class="ls-tag geo">TX/NC/DC Territory</span>
+        <span class="ls-tag recur">Recurring Classes</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+        <!-- Add .warn tag if territory needs verification -->
+        <!-- <span class="ls-tag warn">Verify availability with franchisor</span> -->
+      </div>
+    </div>
+
+    <!-- ── RANK 2 ── -->
+    <div class="ls-card">
+      <div class="rank-bar-r2">
+        <span class="rank-num">RANK 2</span>
+        <span class="rank-note">Matches your maternal-care passion directly</span>
+      </div>
+      <div class="ls-card-top">
+        <div class="ls-card-header">
+          <div class="ls-name">Let Mommy Sleep</div>
+          <span class="ls-cat ls-health">Education &amp; Childcare</span>
+        </div>
+        <p class="ls-why"><strong>B2C · Overnight newborn &amp; postpartum care.</strong> Registered-nurse and certified newborn-care support for new families, plus postpartum education classes. Home-based, low overhead, and headquartered in Washington, DC &mdash; one of your named markets.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$38K&ndash;$58K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Package/Recurring Bookings ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">26 territories nationwide</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">26 territories</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Verify Open Territory</span>
+        <span class="ls-tag recur">Recurring Bookings</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <!-- ── RANK 3 ── -->
+    <div class="ls-card">
+      <div class="rank-bar-r3">
+        <span class="rank-num">RANK 3</span>
+        <span class="rank-note">Strong recurring revenue</span>
+      </div>
+      <div class="ls-card-top">
+        <div class="ls-card-header">
+          <div class="ls-name">Mathnasium</div>
+          <span class="ls-cat ls-edu">Education &amp; Childcare</span>
+        </div>
+        <p class="ls-why"><strong>B2C · After-school math tutoring.</strong> Personalized math instruction with a membership-style monthly fee, similar to a gym membership. Available in DC, North Carolina, and Texas.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val warn">$113K&ndash;$150K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Monthly Membership ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">1,000+ US centers</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">1,000+ centers</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">DC/NC/TX Registered</span>
+        <span class="ls-tag recur">Recurring Enrollment</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Investment level requires financing</span>
+      </div>
+    </div>
+
+    <!-- ── RANK 4 ── -->
+    <div class="ls-card">
+      <div class="rank-bar-r4">
+        <span class="rank-num">RANK 4</span>
+        <span class="rank-note">Recurring membership, wellness-focused</span>
+      </div>
+      <div class="ls-card-top">
+        <div class="ls-card-header">
+          <div class="ls-name">Elements Massage</div>
+          <span class="ls-cat ls-edu">Health &amp; Fitness</span>
+        </div>
+        <p class="ls-why"><strong>B2C · Membership-based therapeutic massage.</strong> A monthly membership model for therapeutic massage, built around recurring visits rather than one-off appointments. Established brand with a strong SBA financing track record.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val warn">$312K&ndash;$561K*</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Monthly Membership ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">240+ units</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">240+ units</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Verify Territory</span>
+        <span class="ls-tag recur">Recurring Membership</span>
+        <span class="ls-tag warn">Investment level requires financing</span>
+      </div>
+    </div>
+
+    <!-- ── RANK 5 ── -->
+    <div class="ls-card">
+      <div class="rank-bar-r5">
+        <span class="rank-num">RANK 5</span>
+        <span class="rank-note">NC-based, matches your personal experience</span>
+      </div>
+      <div class="ls-card-top">
+        <div class="ls-card-header">
+          <div class="ls-name">Mom League</div>
+          <span class="ls-cat ls-edu">Education &amp; Childcare</span>
+        </div>
+        <p class="ls-why"><strong>B2C · Newborn &amp; parent-education classes.</strong> Newborn Series classes and parent playgroups led by licensed professionals, based in the Piedmont Triad, NC. A newer, emerging franchise system &mdash; ask about current investment and territory directly.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">Not publicly disclosed*</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Class/Series Revenue ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">Early-stage franchise</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">Early-stage, few locations</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">NC-Based</span>
+        <span class="ls-tag recur">Emerging Brand</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Contact franchisor for cost &amp; territory</span>
+      </div>
+    </div>
+
+    <!-- ── RANK 6 ── -->
+    <div class="ls-card">
+      <div class="rank-bar-r6">
+        <span class="rank-num">RANK 6</span>
+        <span class="rank-note">Lower-cost tutoring alternative</span>
+      </div>
+      <div class="ls-card-top">
+        <div class="ls-card-header">
+          <div class="ls-name">Kumon</div>
+          <span class="ls-cat ls-health">Education &amp; Childcare</span>
+        </div>
+        <p class="ls-why"><strong>B2C · Self-paced math &amp; reading centers.</strong> Self-paced worksheet-based math and reading instruction with a lower cost of entry than some other tutoring brands. Worth speaking with current franchisees about local demand before proceeding.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$64K&ndash;$166K*</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Monthly Tuition ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">1,500+ US centers</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">1,500+ centers</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">DC/NC/TX Available</span>
+        <span class="ls-tag recur">Recurring Tuition</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+        <span class="ls-tag warn">Speak with current franchisees on local demand</span>
+      </div>
+    </div>
+
+    <!-- ADD MORE CARDS HERE IF MORE THAN 6 SYSTEMS -->
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     DISCLAIMER
+     ══════════════════════════════════ -->
+<div class="disclaimer">
+  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates — actual costs vary by location and market. Territory availability must be confirmed directly with each franchisor before proceeding. This document is a starting point for your research and conversation with your Nova Guide, not a recommendation to invest in any specific franchise system. All investment decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+</div>
+
+<!-- ══════════════════════════════════
+     FOOTER
+     ══════════════════════════════════ -->
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;·&nbsp; A BLK GRVTY Initiative &nbsp;·&nbsp; Prepared for Harmonica Smith &nbsp;·&nbsp; 2026</p>
+</div>
+
+</div>
+</body>
+</html>
