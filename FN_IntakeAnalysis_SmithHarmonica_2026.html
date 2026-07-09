@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Candidate Readiness</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--ink:#15131f;--white:#fff;--indigo:#282560;--eggplant:#452e80;--purple:#664ca9;--cyan:#00aeef;--moon:#e1e3ee;--line:#d2d4e4;--accent:var(--purple);--accent-rgb:102,76,169;--display:'Montserrat','Neutraface Display Titling',system-ui,sans-serif;--body:'Lato',system-ui,sans-serif;}
+body.cls-supernova{--accent:var(--cyan);--accent-rgb:0,174,239;}
+body.cls-nova{--accent:var(--purple);--accent-rgb:102,76,169;}
+body.cls-nebula{--accent:var(--eggplant);--accent-rgb:69,46,128;}
+*{box-sizing:border-box;} html,body{margin:0;padding:0;}
+body{font-family:var(--body);color:var(--ink);background:var(--moon);line-height:1.5;-webkit-font-smoothing:antialiased;}
+.page{max-width:880px;margin:28px auto;background:var(--white);box-shadow:0 12px 50px rgba(20,19,31,0.18);overflow:hidden;}
+.cosmos{position:relative;color:var(--white);padding:34px 40px 30px;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 33% 70%,#fff,transparent),radial-gradient(1px 1px at 52% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 67% 58%,#fff,transparent),radial-gradient(1px 1px at 80% 35%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(1200px 380px at 78% 8%,rgba(var(--accent-rgb),0.42),transparent 60%),radial-gradient(900px 420px at 8% 110%,rgba(40,37,96,0.65),transparent 60%),linear-gradient(160deg,#05040a 0%,#0d0a1c 55%,#161033 100%);}
+.eyebrow{font-family:var(--display);font-weight:700;letter-spacing:.32em;font-size:11px;text-transform:uppercase;color:var(--cyan);margin:0 0 18px;}
+.mark{position:absolute;top:30px;right:40px;font-family:var(--display);font-weight:800;line-height:.86;font-size:20px;text-align:right;color:#fff;} .mark span{display:block;}
+.cand-name{font-family:var(--display);font-weight:900;font-size:40px;line-height:1.02;margin:0 0 6px;letter-spacing:-.01em;}
+.cand-meta{font-size:13px;color:#b9b6d6;margin:0 0 18px;font-weight:700;} .cand-meta b{color:var(--moon);}
+.snapshot{font-size:15.5px;color:#e7e6f4;max-width:62ch;margin:0;font-style:italic;}
+.verdict{display:flex;align-items:center;gap:26px;padding:26px 40px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(var(--accent-rgb),0.12),transparent 70%);}
+.badge{flex:0 0 auto;width:108px;height:108px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,var(--accent) 0%,var(--eggplant) 48%,var(--indigo) 80%,#0c0a1c 100%);box-shadow:0 0 0 6px rgba(var(--accent-rgb),0.16),0 0 38px 4px rgba(var(--accent-rgb),0.55);}
+.badge::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.8;background:radial-gradient(1px 1px at 30% 35%,#fff,transparent),radial-gradient(1px 1px at 68% 60%,#fff,transparent);}
+.badge b{font-family:var(--display);font-weight:900;font-size:15px;color:#fff;z-index:1;}
+.verdict-text h2{font-family:var(--display);font-weight:900;font-size:27px;margin:0 0 2px;color:var(--ink);}
+.verdict-text .accentline{color:var(--accent);}
+.verdict-text p{margin:2px 0 0;font-size:14px;color:#4a4860;max-width:48ch;}
+.conf{margin-top:8px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 11px;}
+section{padding:24px 40px;border-bottom:1px solid var(--line);}
+.sec-label{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--eggplant);margin:0 0 16px;}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;}
+.axis-block{display:flex;gap:22px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct,0)*1%),var(--line) 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:var(--display);font-weight:900;font-size:26px;color:var(--ink);line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy .lift-label{font-family:var(--display);font-weight:800;font-size:13px;color:var(--ink);margin:0 0 6px;}
+.lift-pills{display:flex;gap:6px;margin:0 0 8px;}
+.lift-pills .pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--moon);color:#6c6a85;}
+.lift-pills .pill.on{background:var(--eggplant);color:#fff;}
+.axis-copy .note{font-size:12.5px;color:#5a5872;margin:0;}
+.matrix{display:grid;grid-template-columns:74px repeat(3,1fr);grid-template-rows:auto repeat(3,40px);gap:4px;font-size:10px;}
+.matrix .col-h{font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.matrix .row-h{font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.matrix .cell{border-radius:5px;position:relative;}
+.cell.nebula{background:rgba(69,46,128,0.16);} .cell.nova{background:rgba(102,76,169,0.22);}
+.cell.supernova{background:rgba(0,174,239,0.20);}
+.cell .tag{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;}
+.cell.here{outline:2px solid var(--accent);}
+.cell .dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.25),0 0 14px var(--accent);top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:8px;}
+.dim{margin-bottom:13px;} .dim .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+.dim .row b{color:var(--ink);} .dim .row span{color:#7a7891;font-family:var(--display);font-weight:700;font-size:12px;}
+.bar{height:7px;background:var(--moon);border-radius:999px;overflow:hidden;} .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--eggplant),var(--accent));border-radius:999px;}
+.dim small{display:block;font-size:11.5px;color:#6c6a85;margin-top:5px;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border:1px solid var(--line);border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 9px;}
+.quad.s h4{color:var(--cyan);} .quad.d h4{color:var(--purple);} .quad.o h4{color:var(--eggplant);}
+.quad.r h4{color:#b1456b;}
+.quad ul{margin:0;padding-left:16px;} .quad li{font-size:12.5px;margin-bottom:6px;color:#3c3a52;}
+.pathway{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway .sec-label{color:var(--cyan);} .pathway .route{font-family:var(--display);font-weight:800;font-size:17px;margin:0 0 4px;color:#fff;}
+.pathway .backup{font-size:12.5px;color:#b9b6d6;margin:0 0 12px;} .pathway p{font-size:13px;color:#d8d6ec;margin:0;}
+ol.roadmap{margin:0;padding-left:20px;} ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;} ol.roadmap li b{color:var(--ink);}
+.expect{background:linear-gradient(90deg,rgba(69,46,128,0.10),transparent 82%);border:1px solid var(--line);border-left:3px solid var(--eggplant);border-radius:0 9px 9px 0;padding:16px 18px;}
+.expect .erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:11px;}
+.expect .chip{font-family:var(--display);font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.expect .chip.exp{background:var(--moon);color:#5b5876;} .expect .chip.real{background:var(--eggplant);color:#fff;}
+.expect .arrow{font-size:16px;color:var(--eggplant);font-weight:800;}
+.expect p{margin:0 0 7px;font-size:12.5px;color:#3c3a52;} .expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:var(--eggplant);font-family:var(--display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+.action{background:rgba(var(--accent-rgb),0.12);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:16px;}
+.action b{font-family:var(--display);}
+.qs{margin:0;padding-left:18px;} .qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;} .gaps .g{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 10px;}
+footer{padding:18px 40px 26px;background:var(--ink);color:#9a98b4;font-size:11px;}
+footer .legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px;} footer .legend span{display:flex;align-items:center;gap:7px;color:#cbc9e0;font-weight:700;} footer .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+footer .leg-sn{background:var(--cyan);} footer .leg-n{background:var(--purple);} footer .leg-neb{background:var(--eggplant);} footer p{margin:0;line-height:1.55;}
+
+/* Page 2 additions */
+.page2-header{position:relative;color:var(--white);padding:30px 40px 26px;background:linear-gradient(160deg,#05040a 0%,#0d0a1c 55%,#161033 100%);border-top:4px solid var(--cyan);}
+.page2-header .eyebrow{margin-bottom:12px;}
+.page2-header h2{font-family:var(--display);font-weight:900;font-size:26px;color:#fff;margin:0 0 4px;}
+.page2-header p{font-size:12.5px;color:#b9b6d6;margin:0;}
+.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.thesis-card{border:1px solid var(--line);border-radius:9px;padding:14px 16px;background:#fafafe;}
+.thesis-card h4{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--eggplant);margin:0 0 8px;}
+.thesis-card p{font-size:12.5px;color:#3c3a52;margin:0;line-height:1.55;}
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.research-item{font-size:12.5px;color:#3c3a52;}
+.research-item b{display:block;font-family:var(--display);font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7a7891;margin-bottom:4px;}
+.flag-note{background:#fdf5e6;border:1px solid #f0dca8;border-radius:7px;padding:10px 14px;font-size:12px;color:#7a4800;margin-top:10px;}
+.capital-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.cap-cell{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#fafafe;}
+.cap-cell b{display:block;font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#7a7891;margin-bottom:5px;}
+.cap-cell span{font-size:13.5px;font-weight:700;color:var(--ink);}
+.excl-box{background:#fdf5e6;border:1px solid #f0dca8;border-left:3px solid #b86e00;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:16px;font-size:12.5px;color:#5a4620;line-height:1.6;}
+.excl-box b{color:#7a4800;}
+.sys-card{border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-bottom:12px;}
+.sys-rank{background:var(--indigo);color:#fff;padding:7px 16px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;}
+.sys-body{padding:13px 16px;}
+.sys-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.sys-name{font-family:var(--display);font-weight:800;font-size:14px;color:var(--ink);}
+.sys-vert{font-family:var(--display);font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(69,46,128,0.1);color:#452e80;white-space:nowrap;}
+.sys-why{font-size:12.5px;color:#3c3a52;line-height:1.55;margin-bottom:10px;}
+.sys-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#f0eefa;border-radius:7px;padding:10px 12px;margin-bottom:8px;}
+.sys-stat b{display:block;font-family:var(--display);font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#888;margin-bottom:2px;}
+.sys-stat span{font-size:12px;font-weight:700;color:var(--ink);}
+.sys-stat span.good{color:#1a7a4a;} .sys-stat span.note{color:#452e80;} .sys-stat span.warn{color:#b86e00;}
+.sys-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.sys-tag{font-size:10px;font-weight:700;font-family:var(--display);color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;}
+.sys-tag.warn{color:#b86e00;background:#fdf5e6;} .sys-tag.sba{color:#1a7a4a;background:#eaf6ef;} .sys-tag.geo{color:#00709a;background:#e8f7fd;}
+.guide-note{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#d8d6ec;border-radius:9px;padding:16px 18px;font-size:12.5px;line-height:1.6;margin-top:6px;}
+.guide-note b{color:var(--cyan);font-family:var(--display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px;}
+.acq-card{border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin-bottom:10px;background:#fafafe;}
+.acq-card h4{font-family:var(--display);font-weight:800;font-size:13px;color:var(--ink);margin:0 0 6px;}
+.acq-card p{font-size:12px;color:#3c3a52;margin:0 0 6px;line-height:1.5;}
+@media print{body{background:#fff;} .page{box-shadow:none;margin:0;max-width:none;}
+.cosmos,.page2-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media (max-width:720px){.two-col{grid-template-columns:1fr;}
+.swot{grid-template-columns:1fr;} .mark{position:static;text-align:left;margin-bottom:14px;}
+.thesis-grid,.research-grid,.capital-grid{grid-template-columns:1fr;} .sys-stats{grid-template-columns:1fr;}}
+</style>
+</head>
+<body class="cls-nova">
+<div class="page">
+<header class="cosmos">
+<div class="mark"><span>BLK</span><span>GRVTY</span></div>
+<p class="eyebrow">Franchise Nova &middot; Candidate Readiness</p>
+<h1 class="cand-name">Harmonica Smith</h1>
+<p class="cand-meta">San Antonio, TX &nbsp;&middot;&nbsp; <b>Salon Owner (18 yrs)</b> &nbsp;&middot;&nbsp; Exploring Franchise Ownership &nbsp;&middot;&nbsp; Timeframe: 2+ years (exploring)</p>
+<p class="snapshot">18 years of proven ownership and team-building experience, channeling a deeply personal maternal-health passion into a multi-unit vision — capital structuring is the real lift here, not readiness.</p>
+<p style="font-size:10.5px;color:#8a88a0;margin-top:10px;letter-spacing:.04em;text-transform:uppercase;">For internal FN use only &mdash; do not share with candidate</p>
+</header>
+
+<div class="verdict">
+<div class="badge"><b>NOVA</b></div>
+<div class="verdict-text">
+<h2>Classification: <span class="accentline">Nova</span></h2>
+<p>A seasoned operator with real P&L and team-development experience translating lived maternal/postnatal experience into a franchise vision. The binding constraint is capital access, not operational readiness.</p>
+<span class="conf">Confidence &middot; High</span>
+</div>
+</div>
+
+<section>
+<p class="sec-label">The Two-Axis Read</p>
+<div class="two-col">
+<div><div class="axis-block">
+<div class="score-ring" data-score="72"><div class="inner"><span class="num">72</span><span class="den">/ 100</span></div></div>
+<div class="axis-copy">
+<p class="lift-label">Readiness &amp; Potential</p>
+<p class="lift-label" style="color:var(--eggplant);margin-top:14px;">FN Lift Required</p>
+<div class="lift-pills" data-lift="moderate"><span class="pill">Low</span><span class="pill">Moderate</span><span class="pill">High</span></div>
+<p class="note">Binding constraint is Capital Access — liquid capital is well below most researched systems' minimums, but strong net worth and credit support SBA/CDFI structuring.</p>
+</div>
+</div></div>
+<div>
+<div class="matrix" data-readiness="developing" data-lift="moderate">
+<div class="corner"></div><div class="col-h">Emerging</div><div class="col-h">Developing</div><div class="col-h">Strong</div>
+<div class="row-h">High</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+<div class="row-h">Moderate</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+<div class="row-h">Low</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell supernova"><span class="tag">Super</span></div>
+</div>
+<p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+</div>
+</div>
+</section>
+
+<section>
+<p class="sec-label">Readiness Dimensions <span style="color:#a9a7c0;font-weight:700;">(capital-free)</span></p>
+<div class="dim"><div class="row"><b>Operator Readiness &amp; Capability</b><span>28 / 35</span></div><div class="bar"><i data-score="28" data-max="35"></i></div><small>18 years owning and operating a curly-hair salon, developing multiple stylists into six-figure earners, launching a proprietary product line, and coaching other salon owners on their financials and systems. This is substantive, verified P&L and management experience — not self-reported filler.</small></div>
+<div class="dim"><div class="row"><b>Vision, Motivation &amp; Commitment</b><span>17 / 30</span></div><div class="bar"><i data-score="17" data-max="30"></i></div><small>Motivation is genuine and personally rooted (maternal/postnatal health), and the 3+ unit target signals real multi-unit ambition. The “2+ years, just exploring” timeline suggests lower near-term urgency, and the why-franchise answer is more aspirational than operational.</small></div>
+<div class="dim"><div class="row"><b>Sector &amp; Multi-Unit Fit</b><span>15 / 20</span></div><div class="bar"><i data-score="15" data-max="20"></i></div><small>Two valid FN verticals selected (Health, Wellness &amp; Fitness + Education &amp; Childcare) and a 3+ unit target both score well. Ownership/involvement model is still “Not sure yet,” which keeps this from scoring higher.</small></div>
+<div class="dim"><div class="row"><b>Coachability &amp; Ecosystem Fit</b><span>12 / 15</span></div><div class="bar"><i data-score="12" data-max="15"></i></div><small>Her background as a salon business coach — helping other owners build systems and read their numbers — is a genuine, verified coachability asset. Intake responses are rich, specific, and personal throughout, a strong engagement signal. Problem-Solving self-rating (2/5) is the one lower data point.</small></div>
+</section>
+
+<section>
+<p class="sec-label">SWOT</p>
+<div class="swot">
+<div class="quad s"><h4>Strengths</h4><ul><li>18 years of proven ownership, P&amp;L, and team-development experience</li><li>Has personally coached other business owners on financial systems — a rare, verified coachability asset</li><li>Clear, personally rooted motivation (lived maternal/postnatal experience)</li><li>750+ credit, no bankruptcy history</li></ul></div>
+<div class="quad d"><h4>Development Areas</h4><ul><li>Liquid capital ($25K&ndash;$50K) is below minimums for most researched systems</li><li>Ownership/involvement model still undecided (“Not sure yet”)</li><li>Why-franchise motivation reads as more personal/aspirational than a concrete operating thesis yet</li></ul></div>
+<div class="quad o"><h4>What FN Can Unlock</h4><ul><li>Fit4Mom's low-capital “Lite” model as a fast, low-risk entry point aligned with her real passion</li><li>SBA/CDFI packaging that leverages her strong net worth and credit against a modest liquid position</li><li>A phased multi-brand roadmap matching her explicit interest in “having multiple businesses”</li></ul></div>
+<div class="quad r"><h4>Risks to Watch</h4><ul><li>Capital gap could stall momentum without an early financing plan</li><li>Her website (welbingpostnatalhouse.com) suggests an independent postnatal venture already underway that isn't described in her professional background — clarify so FN doesn't duplicate or conflict with it</li><li>Long “just exploring” timeline may mean lower near-term conversion urgency</li></ul></div>
+</div>
+</section>
+
+<section>
+<div class="two-col">
+<div class="pathway"><p class="sec-label">Recommended Capital Pathway</p><p class="route">SBA 7(a), Net-Worth-Backed</p><p class="backup">Backup: CDFI / Community Impact Lender (maternal-health focus)</p><p>Her $25K–$50K liquid capital sits below minimums for most researched systems, but her $500K–$1M net worth and clean 750+ credit make her a strong SBA candidate. A CDFI or impact lender focused on maternal health or women-owned businesses is a strong secondary path given her sector.</p></div>
+<div><p class="sec-label">Path to Ownership</p><ol class="roadmap"><li><b>Package</b> her net worth and credit for SBA 7(a) or CDFI pre-qualification, given the liquid-capital gap</li><li><b>Clarify</b> the welbingpostnatalhouse.com venture before finalizing the landscape</li><li><b>Start</b> with the lowest-capital-barrier system (Fit4Mom Lite) to build operating history</li><li><b>Layer in</b> higher-investment systems (Mathnasium, Elements Massage) as capital and revenue build toward her 3+ unit vision</li></ol></div>
+</div>
+</section>
+
+<section>
+<p class="sec-label">Expectations Check</p>
+<div class="expect">
+<div class="erow"><span class="chip exp">Expects: 2+ years (just exploring)</span><span class="arrow">&rarr;</span><span class="chip real">Realistic: 12–24 months for a first unit</span></div>
+<p><b>Why</b> Her own stated timeline is already well-calibrated — unusually so. A first unit could open faster than 2 years if she prioritizes the lowest-capital entry point (Fit4Mom) while financing is arranged for later, larger units.</p>
+<p><b>On the call</b> Confirm whether she wants to start with one lower-cost concept to build toward her larger multi-brand vision, or wait to fund a higher-investment system first.</p>
+</div>
+</section>
+
+<section>
+<p class="sec-label">Recommended Next Action</p>
+<div class="action"><b>Begin SBA/CDFI capital packaging in parallel with FDD review of Fit4Mom (Lite model) as a low-barrier entry point. Clarify the existing welbingpostnatalhouse.com venture before finalizing the landscape.</b></div>
+<p class="sec-label" style="margin-top:4px;">Discovery-Call Questions</p>
+<ul class="qs"><li>Tell us about welbingpostnatalhouse.com — is that an existing business, and how does it relate to your franchise goals?</li><li>You mentioned wanting “multiple businesses” — same vertical, or across both Health/Wellness and Education/Childcare?</li><li>Given your liquid capital, would you consider starting with a lower-investment concept like Fit4Mom's Lite model to build toward your larger vision?</li><li>How involved do you want to be day-to-day — hands-on operator, or more of a manager-led owner?</li><li>Are you interested in acquiring an existing business in addition to, or instead of, opening a new franchise unit?</li><li>Within DC, North Carolina, and Texas, do you have specific cities in mind, or is that still open?</li></ul>
+</section>
+
+<section style="border-bottom:none;">
+<p class="sec-label">Data Gaps to Resolve</p>
+<div class="gaps"><span class="g">Ownership/involvement model not yet decided</span><span class="g">welbingpostnatalhouse.com venture undescribed — verify</span><span class="g">Acquisition interest left blank on intake</span><span class="g">Specific target cities within DC/NC/TX not provided</span></div>
+</section>
+
+<footer>
+<div class="legend"><span><i class="leg-sn"></i>SuperNova &mdash; ready, move fast</span><span><i class="leg-n"></i>Nova &mdash; strong potential, real FN lift</span><span><i class="leg-neb"></i>Nebula &mdash; not yet, door stays open</span></div>
+<p>Generated by the Franchise Nova intake system &middot; A BLK GRVTY initiative. Bands reflect operational posture, not candidate worth.</p>
+</footer>
+
+<!-- ══════════════════ PAGE 2 — DISCOVERY DAY PREP ══════════════════ -->
+<header class="page2-header">
+<div class="mark"><span>BLK</span><span>GRVTY</span></div>
+<p class="eyebrow">Franchise Nova &middot; Discovery Day Prep</p>
+<h2>Harmonica Smith</h2>
+<p>Internal briefing for Nova Guide &mdash; not for candidate distribution</p>
+</header>
+
+<section>
+<p class="sec-label">Professional Background</p>
+<p style="font-size:13px;color:#3c3a52;line-height:1.65;">“I have owned a curly hair salon for 18 years. During that time I developed my stylist to be six figure stylist for 10 years. I created a curly product line for wavy, curly and coiled hair, I was a salon business coach helping other salon owners understand their bottom line and how to create systems, and environments for their teams and develop their team so they can have a profit within their business.”</p>
+</section>
+
+<section>
+<p class="sec-label">Investment Thesis</p>
+<div class="thesis-grid">
+<div class="thesis-card"><h4>Why Franchise Ownership</h4><p>“Having multiple businesses is something of interest.”</p></div>
+<div class="thesis-card"><h4>Success in 3&ndash;5 Years</h4><p>“Health, family, peace and money as a powerful tool to use however, and when I want or need. Having multiple businesses that are internationally known and producing unimaginable numbers, jobs and mind blowing futures for those that are connecting to what I am doing in the world. And of course giving back in ways that are positively, impactful beyond what I ever would have thought.”</p></div>
+<div class="thesis-card"><h4>Day-to-Day Involvement</h4><p>Not sure yet</p></div>
+<div class="thesis-card"><h4>Capital Thinking</h4><p>Personal Finance</p></div>
+</div>
+</section>
+
+<section>
+<p class="sec-label">Franchise Research &amp; Geography</p>
+<div class="research-grid">
+<div class="research-item"><b>Systems Already Researched</b>“Let Mommy Sleep &middot; The New Mom School &middot; Mom League (fairly new to franchise)”</div>
+<div class="research-item"><b>Target Geography &amp; Units</b>DC, North Carolina, Texas &middot; 3+ unit target</div>
+<div class="research-item"><b>Brand Stage &amp; Seasonality</b>Open to Both brand stages &middot; Year-Round operation</div>
+<div class="research-item"><b>Existing Ownership / Acquisition</b>No existing franchise ownership (her salon is an independent business, not a franchise). Acquisition interest left blank on the intake — confirm directly; Step 3B not run pending that answer.</div>
+</div>
+<div class="flag-note">&#9873; Her website field (welbingpostnatalhouse.com) suggests a possible existing postnatal-focused venture not described in her professional background answer — clarify on the call before assuming FN is her first business in this space.</div>
+</section>
+
+<section>
+<p class="sec-label">Capital Profile</p>
+<div class="capital-grid">
+<div class="cap-cell"><b>Liquid Capital</b><span>$25K&ndash;$50K</span></div>
+<div class="cap-cell"><b>Net Worth</b><span>$500K&ndash;$1M</span></div>
+<div class="cap-cell"><b>Credit Range</b><span>750+</span></div>
+<div class="cap-cell"><b>SBA Potential</b><span>Good — strong credit/net worth offset modest liquidity; needs full collateral package</span></div>
+<div class="cap-cell"><b>Ownership Model</b><span>Not sure yet</span></div>
+<div class="cap-cell"><b>Total Accessible Capital</b><span>Likely $50K–$150K+ effective with SBA leverage — covers Fit4Mom/Let Mommy Sleep; a gap remains for Mathnasium/Elements/Kumon absent financing</span></div>
+</div>
+</section>
+
+<section>
+<p class="sec-label">Suggested Discovery Call Questions</p>
+<ul class="qs"><li>Tell us about welbingpostnatalhouse.com — is that an existing business, and how does it relate to your franchise goals?</li><li>You mentioned wanting “multiple businesses” — same vertical, or across both Health/Wellness and Education/Childcare?</li><li>Given your liquid capital, would you consider starting with a lower-investment concept like Fit4Mom's Lite model to build toward your larger vision?</li><li>How involved do you want to be day-to-day — hands-on operator, or more of a manager-led owner?</li><li>Are you interested in acquiring an existing business in addition to, or instead of, opening a new franchise unit?</li><li>Within DC, North Carolina, and Texas, do you have specific cities in mind, or is that still open?</li>2</ul>
+</section>
+
+<section>
+<p class="sec-label">Franchise Landscape &mdash; Internal Version</p>
+<div class="excl-box"><b>SATURATION NOTE:</b> Let Mommy Sleep already has active franchise locations in San Antonio, TX (her home market), Dallas, TX, and Charlotte, NC — three of her named geographies. This doesn't exclude the system, since 26 territories are open nationwide and the brand is actively expanding, but it does mean San Antonio and Charlotte are likely already claimed. She'd need to look at other TX/NC/DC-area territories (Austin, Houston, Fort Worth, Raleigh, Greensboro, or DC/Northern VA/Maryland suburbs) — confirm exact open territories directly with the franchisor. No systems were excluded for existing-ownership conflicts, since Harmonica does not currently own a franchise. Her welbingpostnatalhouse.com website is flagged as a data gap above rather than an exclusion, since it isn't a franchise.</div>
+<div class="sys-card">
+<div class="sys-rank"><span>RANK 1</span><span style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.8;">Lowest capital barrier, matches her stated multi-unit ambition</span></div>
+<div class="sys-body">
+<div class="sys-head"><div class="sys-name">Fit4Mom</div><span class="sys-vert">Health, Wellness &amp; Fitness</span></div>
+<p class="sys-why"><strong>B2C &middot; Membership/class-pack fitness for mothers.</strong> Pre- and postnatal group fitness classes for mothers at every stage. The “Lite” model opens the door at roughly $2,000, with the standard model topping out under $29K &mdash; by far the most accessible entry point researched for her, and a real structural fit for someone who wants multiple units/brands on a limited liquid-capital base. 210+ locations, established presence in TX and the South.</p>
+<div class="sys-stats">
+<div class="sys-stat"><b>Est. Total Investment / Unit</b><span class="note">$2K&ndash;$29K (Lite vs. Classic model)</span></div>
+<div class="sys-stat"><b>Revenue Model</b><span class="good">Class-Pack / Membership ✓</span></div>
+<div class="sys-stat"><b>System Size</b><span class="good">210+ units, 38 states</span></div>
+<div class="sys-stat"><b>System Size</b><span>210+ units</span></div>
+</div>
+<div class="sys-tags"><span class="sys-tag geo">Open territories in TX/NC/DC region</span><span class="sys-tag sba">Within stated liquid capital ✓</span><span class="sys-tag recur">Recurring Class Revenue</span></div>
+</div>
+</div>
+<div class="sys-card">
+<div class="sys-rank"><span>RANK 2</span><span style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.8;">Direct personal-passion match, DC-headquartered</span></div>
+<div class="sys-body">
+<div class="sys-head"><div class="sys-name">Let Mommy Sleep</div><span class="sys-vert">Education &amp; Childcare</span></div>
+<p class="sys-why"><strong>B2C &middot; Overnight newborn &amp; postpartum care.</strong> Registered-nurse and certified newborn-care-provider overnight support for new families, plus postpartum education classes &mdash; squarely inside her stated passion for maternal/postnatal care. Home-based operating model with low real estate overhead. Headquartered in Washington, DC.</p>
+<div class="sys-stats">
+<div class="sys-stat"><b>Est. Total Investment / Unit</b><span class="note">$38K&ndash;$58K</span></div>
+<div class="sys-stat"><b>Revenue Model</b><span class="good">Package/Recurring Bookings ✓</span></div>
+<div class="sys-stat"><b>System Size</b><span class="good">26 territories nationwide</span></div>
+<div class="sys-stat"><b>System Size</b><span>26 territories</span></div>
+</div>
+<div class="sys-tags"><span class="sys-tag warn">San Antonio &amp; Charlotte likely taken — verify open territory</span><span class="sys-tag sba">Within stated liquid capital ✓</span><span class="sys-tag recur">Corporate/recurring accounts</span></div>
+</div>
+</div>
+<div class="sys-card">
+<div class="sys-rank"><span>RANK 3</span><span style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.8;">Strong recurring revenue, requires financing</span></div>
+<div class="sys-body">
+<div class="sys-head"><div class="sys-name">Mathnasium</div><span class="sys-vert">Education &amp; Childcare</span></div>
+<p class="sys-why"><strong>B2C &middot; After-school math tutoring.</strong> Membership-style math tutoring for K&ndash;12 students, structured like a gym membership with monthly recurring fees. Available in DC, NC, and TX. Requires financing given her liquid capital position, but her net worth supports SBA qualification.</p>
+<div class="sys-stats">
+<div class="sys-stat"><b>Est. Total Investment / Unit</b><span class="note">$113K&ndash;$150K</span></div>
+<div class="sys-stat"><b>Revenue Model</b><span class="good">Monthly Membership ✓</span></div>
+<div class="sys-stat"><b>System Size</b><span class="good">1,000+ US centers</span></div>
+<div class="sys-stat"><b>System Size</b><span>1,000+ centers</span></div>
+</div>
+<div class="sys-tags"><span class="sys-tag geo">DC/NC/TX all registered</span><span class="sys-tag warn">Requires SBA/financing — exceeds stated liquid capital</span><span class="sys-tag recur">Recurring Enrollment</span></div>
+</div>
+</div>
+<div class="sys-card">
+<div class="sys-rank"><span>RANK 4</span><span style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.8;">Recurring membership, requires financing</span></div>
+<div class="sys-body">
+<div class="sys-head"><div class="sys-name">Elements Massage</div><span class="sys-vert">Health, Wellness &amp; Fitness</span></div>
+<p class="sys-why"><strong>B2C &middot; Membership-based therapeutic massage.</strong> Monthly membership model for therapeutic massage &mdash; strong recurring revenue and a proven SBA lending track record (0% default in recorded loans). Investment level requires financing beyond her stated liquid capital.</p>
+<div class="sys-stats">
+<div class="sys-stat"><b>Est. Total Investment / Unit</b><span class="note">$312,655&ndash;$560,736 (figures vary by source)</span></div>
+<div class="sys-stat"><b>Revenue Model</b><span class="good">Monthly Membership ✓</span></div>
+<div class="sys-stat"><b>System Size</b><span class="good">240+ units</span></div>
+<div class="sys-stat"><b>System Size</b><span>240+ units</span></div>
+</div>
+<div class="sys-tags"><span class="sys-tag warn">Requires SBA financing — exceeds stated liquid capital</span><span class="sys-tag sba">Strong SBA lending history</span><span class="sys-tag recur">Recurring Membership</span></div>
+</div>
+</div>
+<div class="sys-card">
+<div class="sys-rank"><span>RANK 5</span><span style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.8;">NC-based emerging brand, matches personal experience</span></div>
+<div class="sys-body">
+<div class="sys-head"><div class="sys-name">Mom League</div><span class="sys-vert">Education &amp; Childcare</span></div>
+<p class="sys-why"><strong>B2C &middot; Newborn &amp; parent-education classes.</strong> Newborn Series classes and parent/caregiver playgroups, led by licensed professionals — based in the Piedmont Triad, NC (one of her named geographies). Explicitly described by the candidate as “fairly new to franchise,” and we could not locate public investment figures, consistent with its very early franchise stage.</p>
+<div class="sys-stats">
+<div class="sys-stat"><b>Est. Total Investment / Unit</b><span class="note">Not publicly disclosed &mdash; contact franchisor directly</span></div>
+<div class="sys-stat"><b>Revenue Model</b><span class="good">Class/Series Revenue</span></div>
+<div class="sys-stat"><b>System Size</b><span class="good">Very small, early-stage franchise</span></div>
+<div class="sys-stat"><b>System Size</b><span>Early-stage, few locations</span></div>
+</div>
+<div class="sys-tags"><span class="sys-tag geo">NC-based, matches her target market</span><span class="sys-tag warn">Emerging brand — verify FDD, cost, and territory directly</span></div>
+</div>
+</div>
+<div class="sys-card">
+<div class="sys-rank"><span>RANK 6</span><span style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.8;">Lower-cost tutoring alternative &mdash; verify system health</span></div>
+<div class="sys-body">
+<div class="sys-head"><div class="sys-name">Kumon</div><span class="sys-vert">Education &amp; Childcare</span></div>
+<p class="sys-why"><strong>B2C &middot; Self-paced math &amp; reading centers.</strong> Self-paced worksheet-based math and reading instruction, lower cost of entry than Mathnasium. One independent analysis flagged a comparatively high annual closure rate and a declining after-school tutoring market as of 2026 &mdash; worth raising directly with current franchisees before proceeding.</p>
+<div class="sys-stats">
+<div class="sys-stat"><b>Est. Total Investment / Unit</b><span class="note">$64K&ndash;$166K (varies by source)</span></div>
+<div class="sys-stat"><b>Revenue Model</b><span class="good">Monthly Tuition ✓</span></div>
+<div class="sys-stat"><b>System Size</b><span class="good">1,500+ US centers</span></div>
+<div class="sys-stat"><b>System Size</b><span>1,500+ centers</span></div>
+</div>
+<div class="sys-tags"><span class="sys-tag warn">One analysis flags elevated closure rate — verify with current franchisees</span><span class="sys-tag recur">Recurring Tuition</span></div>
+</div>
+</div>
+<div class="guide-note"><b>FN Note for Nova Guide</b>Harmonica's capital profile is the binding constraint here — not sector fit or motivation, both of which are genuinely strong. Consider leading the Discovery Call with the Fit4Mom Lite model as a fast, low-risk proof point before layering in higher-investment systems. Clarify the welbingpostnatalhouse.com venture early: if she's already operating an independent postnatal business, FN's role may be more about systematizing and scaling what she has (or adding complementary franchise units) than starting from zero. Kumon's inclusion at Rank 6 comes with a system-health caveat &mdash; don't present it without flagging the closure-rate concern.</div>
+</section>
+
+
+
+<footer style="padding-top:20px;">
+<p>Franchise Nova &middot; A BLK GRVTY Initiative &middot; Internal document &middot; 2026</p>
+</footer>
+
+</div>
+<script>
+(function(){
+document.querySelectorAll('.score-ring[data-score]').forEach(function(r){var v=parseFloat(r.getAttribute('data-score'))||0;r.style.setProperty('--pct',Math.max(0,Math.min(100,v)));});
+document.querySelectorAll('.bar i[data-score]').forEach(function(b){var s=parseFloat(b.getAttribute('data-score'))||0,m=parseFloat(b.getAttribute('data-max'))||1;b.style.width=Math.round(s/m*100)+'%';});
+document.querySelectorAll('.lift-pills[data-lift]').forEach(function(p){var w=(p.getAttribute('data-lift')||'').trim().toLowerCase();p.querySelectorAll('.pill').forEach(function(pl){if(pl.textContent.trim().toLowerCase()===w)pl.classList.add('on');});});
+var badge=document.querySelector('.badge b');if(badge){if(document.body.classList.contains('cls-supernova'))badge.textContent='SUPER';else if(document.body.classList.contains('cls-nebula'))badge.textContent='NEBULA';else badge.textContent='NOVA';}
+var mx=document.querySelector('.matrix[data-readiness]');if(mx){var col={emerging:0,developing:1,strong:2}[(mx.getAttribute('data-readiness')||'').trim().toLowerCase()];var row={high:0,moderate:1,low:2}[(mx.getAttribute('data-lift')||'').trim().toLowerCase()];if(col!=null&&row!=null){var c=mx.querySelectorAll('.cell')[row*3+col];if(c){c.classList.add('here');var d=document.createElement('span');d.className='dot';c.appendChild(d);}}}
+})();
+</script>
+</body>
+</html>
