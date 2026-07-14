@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — How It Works</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+  :root{
+    --black:#000000;--void:#0A0A12;--indigo:#282560;--eggplant:#452E80;--purple:#664CA9;
+    --cyan:#00AEEF;--moon:#E1E3EE;--white:#FFFFFF;
+    --paper:#EEEFF6;--panel:#FFFFFF;--line:#D9DBE8;--text:#1A1A28;--muted:#565B73;--faint:#878BA3;
+    --c-person:#664CA9;--c-auto:#00AEEF;--c-prop:#10A06E;--c-note:#E0902B;--c-slack:#D2479A;
+    --c-book:#3F5BD6;--c-panda:#EE6240;--c-deal:#282560;--c-form:#0E9AB0;
+    --maxw:940px;--radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:'Lato',system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;}
+  h1,h2,h3,.mark,.tier .name{font-family:'Poppins',system-ui,sans-serif;}
+
+  .hero{position:relative;overflow:hidden;background:var(--black);color:var(--white);padding:42px 0 92px;}
+  .hero::before{content:"";position:absolute;inset:0;opacity:.85;pointer-events:none;background:
+    radial-gradient(1.4px 1.4px at 12% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 28% 64%, #cfd6ff 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 47% 14%, #fff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 63% 48%, #fff 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 78% 26%, #d9c9ff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 88% 70%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 36% 84%, #fff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 70% 88%, #bfe9ff 50%, transparent 51%);}
+  .hero::after{content:"";position:absolute;top:-160px;right:-140px;width:620px;height:620px;pointer-events:none;
+    background:radial-gradient(circle, rgba(102,76,169,.40) 0%, rgba(40,37,96,.28) 38%, rgba(0,174,239,.08) 60%, transparent 74%);filter:blur(6px);}
+  .hero .wrap{position:relative;z-index:1;}
+  .mark{font-weight:800;letter-spacing:.06em;line-height:.92;font-size:15px;color:#fff;margin:0 0 50px;}
+  .mark span{display:block;}
+  .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:#A6ABCB;margin:0 0 18px;font-weight:700;}
+  h1{font-weight:700;font-size:clamp(36px,6vw,62px);line-height:1.04;letter-spacing:-.015em;margin:0 0 20px;}
+  h1 .accent{color:#A593E8;}
+  .lede{font-size:clamp(17px,2.1vw,20px);color:#B9BDD6;max-width:52ch;margin:0;}
+
+  .tracks{background:var(--void);color:#fff;padding:30px 0 36px;border-top:1px solid rgba(255,255,255,.07);}
+  .tracks h2{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#A6ABCB;font-weight:700;margin:0 0 16px;}
+  .track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .tier{border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:16px 18px;background:rgba(255,255,255,.025);position:relative;overflow:hidden;}
+  .tier::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+  .tier.t1::before{background:#9B86E8;}.tier.t2::before{background:var(--purple);}.tier.t3::before{background:var(--eggplant);}
+  .tier .name{font-weight:600;font-size:19px;margin:0 0 2px;}
+  .tier .when{font-weight:700;font-size:14px;color:#fff;}.tier .when b{color:var(--cyan);}
+
+  .legend{background:var(--panel);border-bottom:1px solid var(--line);padding:26px 0 30px;}
+  .legend h2{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:0 0 16px;font-family:'Poppins';}
+  .legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px 16px;}
+  .leg{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);}
+  .leg .swatch{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:7px;flex:none;}
+
+  .tag{--c:var(--muted);display:inline-flex;align-items:center;gap:6px;font-family:'Lato';font-weight:700;font-size:12.5px;line-height:1;
+    color:var(--c);background:color-mix(in srgb, var(--c) 11%, white);border:1px solid color-mix(in srgb, var(--c) 34%, white);
+    padding:5px 10px 5px 8px;border-radius:999px;white-space:nowrap;}
+  .tag svg{width:15px;height:15px;flex:none;display:block;}
+  .tag .det{font-weight:400;opacity:.85;}
+  .tag.person{--c:var(--c-person);}.tag.auto{--c:var(--c-auto);}.tag.prop{--c:var(--c-prop);}.tag.note{--c:var(--c-note);}
+  .tag.slack{--c:var(--c-slack);}.tag.book{--c:var(--c-book);}.tag.panda{--c:var(--c-panda);}.tag.deal{--c:var(--c-deal);}.tag.form{--c:var(--c-form);}
+  .swatch.person{background:var(--c-person);}.swatch.auto{background:var(--c-auto);}.swatch.prop{background:var(--c-prop);}.swatch.note{background:var(--c-note);}
+  .swatch.slack{background:var(--c-slack);}.swatch.book{background:var(--c-book);}.swatch.panda{background:var(--c-panda);}.swatch.deal{background:var(--c-deal);}.swatch.form{background:var(--c-form);}
+  .swatch svg{width:15px;height:15px;color:#fff;}
+
+  .flow{padding:52px 0 26px;}
+  .flow .wrap{position:relative;}
+  .spine{position:absolute;left:47px;top:14px;bottom:64px;width:2px;background:linear-gradient(var(--cyan),var(--purple) 50%,var(--indigo));opacity:.30;}
+  .stage{position:relative;padding-left:98px;margin-bottom:38px;}
+  .node{position:absolute;left:28px;top:0;width:40px;height:40px;border-radius:50%;background:var(--void);border:2px solid var(--purple);
+    display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:700;font-size:16px;color:#fff;z-index:2;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:0 1px 0 rgba(20,20,40,.04);transition:transform .18s ease, box-shadow .18s ease;}
+  .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(40,37,96,.10);}
+  .stage h3{font-weight:600;font-size:21px;letter-spacing:-.01em;margin:0 0 9px;color:var(--text);}
+  .stage p{margin:0 0 13px;color:var(--muted);}
+  .stage p:last-of-type{margin-bottom:0;}
+  .stage .em{color:var(--text);font-weight:700;}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:15px;}
+
+  .phasebreak{position:relative;padding-left:98px;margin:6px 0 34px;}
+  .phasebreak .lbl{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins';font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--indigo);background:linear-gradient(90deg,rgba(40,37,96,.10),rgba(0,174,239,.08));border:1px solid var(--line);border-radius:999px;padding:7px 16px;}
+
+  .nurture{position:relative;padding-left:98px;margin:-14px 0 38px;}
+  .nurture .nhead{font-family:'Poppins';font-weight:600;font-size:15px;color:var(--text);margin:0 0 4px;}
+  .nurture .nsub{font-size:14px;color:var(--muted);margin:0 0 14px;}
+  .ncards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .ncard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;position:relative;overflow:hidden;}
+  .ncard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+  .ncard.t1::before{background:#9B86E8;}.ncard.t2::before{background:var(--purple);}.ncard.t3::before{background:var(--eggplant);}
+  .ncard .nt{font-family:'Poppins';font-weight:600;font-size:15px;margin:0 0 9px;color:var(--text);}
+  .ncard .cad{display:flex;flex-wrap:wrap;align-items:center;gap:5px;}
+  .ncard .step{font-family:'Lato';font-weight:700;font-size:12px;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 9px;}
+  .ncard .step.first{color:#0784B4;border-color:color-mix(in srgb,var(--cyan) 45%,white);background:color-mix(in srgb,var(--cyan) 12%,white);}
+  .ncard .arr{color:var(--faint);font-size:11px;}
+
+  .branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  .fork{border-radius:12px;padding:16px 18px;border:1px solid var(--line);background:var(--paper);}
+  .fork .ftitle{font-family:'Poppins';font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+  .fork .ftitle .arrow{color:var(--faint);font-weight:400;font-family:'Lato';}
+  .fork.good{border-left:3px solid var(--c-prop);}.fork.bad{border-left:3px solid var(--c-panda);}
+  .fork p{font-size:14.5px;margin:0 0 10px;color:var(--muted);}
+  .fork .meta{margin-top:11px;}
+  .manual-flag{display:block;margin-top:11px;font-size:13px;background:#FDEEE7;border:1px solid #F6D2C2;color:#A6442A;padding:9px 12px;border-radius:9px;line-height:1.45;}
+  .manual-flag b{font-weight:700;}
+
+  footer{background:var(--black);color:#9A9FBC;padding:34px 0;margin-top:28px;font-size:13.5px;}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center;}
+  footer .mark{margin:0;font-size:15px;}footer .note{text-align:right;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:5px;}
+
+  @media(max-width:680px){
+    body{font-size:16px;}.track-grid{grid-template-columns:1fr;}.legend-grid{grid-template-columns:1fr 1fr;}
+    .branch{grid-template-columns:1fr;}.spine{left:20px;}.stage,.phasebreak,.nurture{padding-left:60px;}.node{left:1px;width:38px;height:38px;}footer .note{text-align:left;}
+    .ncards{grid-template-columns:1fr;}
+  }
+  .reveal{opacity:0;transform:translateY(14px);}
+  .reveal.in{opacity:1;transform:none;transition:opacity .5s ease, transform .5s ease;}
+  @media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1;transform:none;transition:none;}.card{transition:none;}html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="i-person"><circle cx="8" cy="5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g id="i-auto"><path d="M8 1 L9.4 6.2 L14.6 8 L9.4 9.8 L8 15 L6.6 9.8 L1.4 8 L6.6 6.2 Z" fill="currentColor"/></g>
+  <g id="i-prop"><path d="M2.4 7.4 V2.6 a.7.7 0 0 1 .7-.7 H7.9 L14 8 a.9.9 0 0 1 0 1.3 l-4.7 4.7 a.9.9 0 0 1-1.3 0 L2.4 7.9 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="4.9" cy="4.9" r="1.1" fill="currentColor"/></g>
+  <g id="i-note"><rect x="3" y="2" width="10" height="12.5" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="5.4" y1="6" x2="10.6" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5.4" y1="8.6" x2="10.6" y2="8.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5.4" y1="11.2" x2="8.6" y2="11.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></g>
+  <g id="i-slack"><line x1="5.4" y1="2.2" x2="4.4" y2="13.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="11.6" y1="2.2" x2="10.6" y2="13.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="2.2" y1="6" x2="13.8" y2="5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="2.2" y1="11" x2="13.8" y2="10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></g>
+  <g id="i-book"><rect x="2.2" y="3" width="11.6" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="2.2" y1="6.2" x2="13.8" y2="6.2" stroke="currentColor" stroke-width="1.5"/><line x1="5.2" y1="1.4" x2="5.2" y2="4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="10.8" y1="1.4" x2="10.8" y2="4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="10" r="1.1" fill="currentColor"/></g>
+  <g id="i-panda"><rect x="3" y="2" width="10" height="12.5" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.2 11.4 q1.6-2 3.2 0 t 2.6-.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5.4" y1="5" x2="10.6" y2="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></g>
+  <g id="i-deal"><rect x="2" y="5.4" width="12" height="8" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.8 5.4 V3.6 a1 1 0 0 1 1-1 h2.4 a1 1 0 0 1 1 1 v1.8" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="2" y1="8.8" x2="14" y2="8.8" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="i-form"><rect x="3.2" y="3" width="9.6" height="12" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="5.6" y="1.5" width="4.8" height="2.8" rx="0.7" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="5.6" y1="7.4" x2="10.4" y2="7.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5.6" y1="10" x2="10.4" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5.6" y1="12.4" x2="8.4" y2="12.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></g>
+</defs></svg>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="mark"><span>BLK</span><span>GRVTY</span></p>
+    <p class="eyebrow">Franchise Nova · Process Map</p>
+    <h1>How a candidate moves through the<br><span class="accent">Franchise Nova pipeline</span>.</h1>
+    <p class="lede">From first intake to franchise analysis, every candidate follows the same path — sorted into a track, guided through their discovery call, and once they sign, moved into the deal pipeline stage by stage. Here's the full journey, and who does what along the way.</p>
+  </div>
+</header>
+
+<section class="legend">
+  <div class="wrap">
+    <h2>Reading the map — each tag is color-coded by what it touches</h2>
+    <div class="legend-grid">
+      <div class="leg"><span class="swatch person"><svg><use href="#i-person"/></svg></span>A person does it</div>
+      <div class="leg"><span class="swatch auto"><svg><use href="#i-auto"/></svg></span>Happens automatically</div>
+      <div class="leg"><span class="swatch prop"><svg><use href="#i-prop"/></svg></span>HubSpot property changes</div>
+      <div class="leg"><span class="swatch note"><svg><use href="#i-note"/></svg></span>HubSpot note logged</div>
+      <div class="leg"><span class="swatch slack"><svg><use href="#i-slack"/></svg></span>Slack notification</div>
+      <div class="leg"><span class="swatch book"><svg><use href="#i-book"/></svg></span>Booking link</div>
+      <div class="leg"><span class="swatch form"><svg><use href="#i-form"/></svg></span>Candidate form</div>
+      <div class="leg"><span class="swatch panda"><svg><use href="#i-panda"/></svg></span>PandaDoc agreement</div>
+      <div class="leg"><span class="swatch deal"><svg><use href="#i-deal"/></svg></span>Deal created</div>
+    </div>
+  </div>
+</section>
+
+<main class="flow">
+  <div class="wrap">
+    <div class="spine" aria-hidden="true"></div>
+
+    <div class="stage reveal">
+      <div class="node">1</div>
+      <div class="card">
+        <h3>Intake arrives</h3>
+        <p>A new candidate submits their intake. The team is notified right away so nothing sits unseen.</p>
+        <div class="meta">
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack <span class="det">· #fn_candidate_activity</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">2</div>
+      <div class="card">
+        <h3>Run the analysis</h3>
+        <p>Brenda runs the intake through the Claude prompt. When it finishes, <span class="em">two files</span> land in the #fn_candidate_activity Slack channel: the <span class="em">Internal Analysis</span> for the team, and the <span class="em">Landscape Analysis</span> — shared with the candidate before their kickoff call.</p>
+        <p>Both links are saved to the candidate's HubSpot notes, and the landscape link is written to the contact's Landscape URL property.</p>
+        <div class="meta">
+          <span class="tag person"><svg><use href="#i-person"/></svg>Brenda</span>
+          <span class="tag note"><svg><use href="#i-note"/></svg>HubSpot note</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Landscape URL</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">3</div>
+      <div class="card">
+        <h3>Validate the analysis &amp; track</h3>
+        <p>The team reviews the intake analysis, validates what it's showing, and confirms the candidate's track — <span class="em">SuperNova, Nova, or Nebula</span>. Once it's settled, Mel sets the track on the record.</p>
+        <div class="meta">
+          <span class="tag person"><svg><use href="#i-person"/></svg>Team</span>
+          <span class="tag person"><svg><use href="#i-person"/></svg>Mel</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FN Track</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">4</div>
+      <div class="card">
+        <h3>Invite to book the discovery call</h3>
+        <p>An automatic email — matched to the candidate's track — invites them to book. <span class="em">Every candidate gets a discovery call</span>; booking runs through Mel's Google booking link.</p>
+        <p>If they don't book, an automatic nurture sequence keeps reaching out until they do — the cadence differs by track, shown below.</p>
+        <div class="meta">
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag book"><svg><use href="#i-book"/></svg>Booking <span class="det">· Mel's Google link</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nurture reveal">
+      <p class="nhead">If a discovery call isn't booked — a nurture sequence runs by track until they book</p>
+      <p class="nsub">All three tracks get an automatic follow-up cadence. Booking a discovery call at any point exits the candidate from the sequence.</p>
+      <div class="ncards">
+        <div class="ncard t1">
+          <p class="nt">SuperNova</p>
+          <div class="cad"><span class="step first">48 hrs</span><span class="arr">→</span><span class="step">+14 d</span><span class="arr">→</span><span class="step">+24 d</span><span class="arr">→</span><span class="step">+56 d</span></div>
+        </div>
+        <div class="ncard t2">
+          <p class="nt">Nova</p>
+          <div class="cad"><span class="step first">5 days</span><span class="arr">→</span><span class="step">+14 d</span><span class="arr">→</span><span class="step">+24 d</span><span class="arr">→</span><span class="step">+56 d</span></div>
+        </div>
+        <div class="ncard t3">
+          <p class="nt">Nebula</p>
+          <div class="cad"><span class="step first">60 days</span><span class="arr">→</span><span class="step">+90 d</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">5</div>
+      <div class="card">
+        <h3>The call gets booked</h3>
+        <p>HubSpot updates on its own: the Discovery Call Outcome becomes <span class="em">Scheduled</span> and the date/time is saved. Reschedule and it updates; cancel and the date/time clears and the outcome flips to <span class="em">Cancelled</span>.</p>
+        <div class="meta">
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome</span></span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Date</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">6</div>
+      <div class="card">
+        <h3>The discovery call</h3>
+        <p>Where we get to know the candidate. The internal analysis includes suggested questions to dig deeper — the goal is to <span class="em">validate what the analysis is showing</span> and decide whether they're a fit. At the end, the Nova Guide marks the outcome.</p>
+        <div class="meta">
+          <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome → Completed / No Show</span></span>
+        </div>
+        <div class="branch">
+          <div class="fork good">
+            <div class="ftitle"><span class="arrow">→</span> Completed</div>
+            <p>A thank-you email goes out, letting them know they'll hear back with next steps in 5–7 business days.</p>
+            <div class="meta"><span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span></div>
+          </div>
+          <div class="fork bad">
+            <div class="ftitle"><span class="arrow">→</span> No show or cancelled</div>
+            <p>A nurture flow runs automatically to get them to reschedule, until they do.</p>
+            <div class="meta"><span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">7</div>
+      <div class="card">
+        <h3>The decision</h3>
+        <p>If the call showed the analysis had the track wrong, the Nova Guide updates the FN Track — otherwise it stays. Then they set the outcome: <span class="em">Accepted</span> or <span class="em">Not a Good Fit</span>.</p>
+        <div class="meta">
+          <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FN Track</span></span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome</span></span>
+        </div>
+        <div class="branch">
+          <div class="fork bad">
+            <div class="ftitle"><span class="arrow">→</span> Not a good fit</div>
+            <p>The Nova Guide sends <span class="em">Email 11 — Post Discovery Call, Not a Good Fit.</span></p>
+            <span class="manual-flag"><b>Manual send.</b> The guide adds personal detail before it goes out — the template has notes on what to include.</span>
+            <div class="meta"><span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span></div>
+          </div>
+          <div class="fork good">
+            <div class="ftitle"><span class="arrow">→</span> Accepted</div>
+            <p>A welcome email goes out automatically. The Nova Guide generates the PandaDoc participation agreement and sends it to the candidate and Chipo to sign.</p>
+            <p>Once signed, the fields update, a deal is created, and a Slack alert fires.</p>
+            <div class="meta">
+              <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+              <span class="tag panda"><svg><use href="#i-panda"/></svg>PandaDoc</span>
+              <span class="tag deal"><svg><use href="#i-deal"/></svg>Deal created</span>
+              <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phasebreak reveal"><span class="lbl">✦ Now a Deal — Post-Agreement</span></div>
+
+    <div class="stage reveal">
+      <div class="node">8</div>
+      <div class="card">
+        <h3>Agreement signed → kickoff</h3>
+        <p>The signed agreement automatically creates the deal and moves the candidate from Contact to Deal in HubSpot, and a Slack alert lets the team know. The Nova Guide and team prepare for the kickoff call.</p>
+        <p>Before the kickoff, the candidate receives their <span class="em">Landscape analysis</span> (the link on their profile under Landscape URL) to review and bring questions. On the call, they come prepared with a few franchise systems they're interested in — the goal is to understand their thinking and help them narrow toward what fits their goals.</p>
+        <div class="meta">
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag deal"><svg><use href="#i-deal"/></svg>Deal created</span>
+          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Landscape URL</span></span>
+          <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">9</div>
+      <div class="card">
+        <h3>Systems submission — 10 business days</h3>
+        <p>After the kickoff, the candidate has <span class="em">10 business days</span> to submit the <span class="em">2 systems</span> they want to move forward with, using the submission form in their email. The moment the form comes in, the team is notified so the analysis can begin.</p>
+        <div class="meta">
+          <span class="tag form"><svg><use href="#i-form"/></svg>Candidate form <span class="det">· 2 systems</span></span>
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">10</div>
+      <div class="card">
+        <h3>FDD &amp; financial analysis</h3>
+        <p>With the systems in, the team runs the <span class="em">FDD and financial analysis</span> on them. Once it's complete, the Nova Guide schedules the <span class="em">FDD / financial analysis call</span> to walk the candidate through what we found and talk through how to move forward.</p>
+        <div class="meta">
+          <span class="tag person"><svg><use href="#i-person"/></svg>Team</span>
+          <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="mark"><span>BLK</span><span>GRVTY</span></p>
+    <div class="note">Franchise Nova process · Intake through FDD Analysis — working draft</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in');});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+</body>
+</html>
