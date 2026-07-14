@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Candidate C · Candidate Readiness</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Lato', sans-serif; background: #e8eaf0; color: #15131f; line-height: 1.6; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+/* HEADER */
+.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; }
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%); pointer-events:none; }
+.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(0,174,239,0.2) 0%,transparent 65%); pointer-events:none; }
+.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
+.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#664ca9; margin-bottom:8px; }
+.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:36px; color:#fff; margin-bottom:6px; line-height:1.05; }
+.h-meta { font-family:'Lato',sans-serif; font-size:13px; color:#b0aed0; margin-bottom:6px; }
+.h-meta strong { color:#e1e3ee; }
+.h-note { font-size:11px; color:rgba(255,255,255,0.35); font-style:italic; }
+
+/* CLASSIFICATION BANNER */
+.class-banner { display:flex; align-items:center; gap:22px; padding:22px 44px; background:linear-gradient(90deg,rgba(102,76,169,0.1),transparent 75%); border-bottom:1px solid #e8eaf0; }
+.badge { width:88px; height:88px; border-radius:50%; background:radial-gradient(circle at 45% 40%,#664ca9,#452e80 55%,#282560 80%); box-shadow:0 0 0 5px rgba(102,76,169,0.18),0 0 24px rgba(102,76,169,0.4); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.badge span { font-family:'Montserrat',sans-serif; font-weight:900; font-size:13px; color:#fff; letter-spacing:.04em; }
+.class-info h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#15131f; margin-bottom:4px; }
+.class-info h2 em { color:#664ca9; font-style:normal; }
+.class-info p { font-size:13.5px; color:#555; max-width:52ch; }
+.conf-pill { display:inline-block; margin-top:8px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#664ca9; border:1px solid #664ca9; border-radius:999px; padding:3px 11px; }
+
+/* SECTIONS */
+.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
+.section:last-of-type { border-bottom:none; }
+.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+
+/* TWO-AXIS */
+.two-col { display:grid; grid-template-columns:1.1fr .9fr; gap:32px; }
+.axis-block { display:flex; gap:20px; align-items:flex-start; }
+.score-ring { flex:0 0 auto; width:96px; height:96px; border-radius:50%; background:conic-gradient(#664ca9 82%, #e8eaf0 0); display:flex; align-items:center; justify-content:center; }
+.score-ring .inner { width:74px; height:74px; border-radius:50%; background:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.score-ring .num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:26px; color:#15131f; line-height:1; }
+.score-ring .den { font-size:10px; color:#8a88a0; letter-spacing:.08em; margin-top:2px; }
+.axis-copy { display:flex; flex-direction:column; gap:10px; padding-top:4px; }
+.lift-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; color:#15131f; }
+.lift-pills { display:flex; gap:6px; }
+.pill { font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:#e8eaf0; color:#6c6a85; font-family:'Montserrat',sans-serif; }
+.pill.on { background:#452e80; color:#fff; }
+.lift-note { font-size:12px; color:#5a5872; line-height:1.5; }
+.matrix { display:grid; grid-template-columns:68px repeat(3,1fr); grid-template-rows:auto repeat(3,38px); gap:4px; font-size:10px; }
+.matrix .col-h { font-family:'Montserrat',sans-serif; font-weight:700; text-transform:uppercase; color:#7a7891; text-align:center; align-self:end; padding-bottom:3px; font-size:9px; }
+.matrix .row-h { font-family:'Montserrat',sans-serif; font-weight:700; text-transform:uppercase; color:#7a7891; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-size:9px; }
+.matrix .cell { border-radius:5px; position:relative; }
+.cell.nebula { background:rgba(69,46,128,0.16); }
+.cell.nova   { background:rgba(102,76,169,0.22); }
+.cell.super  { background:rgba(0,174,239,0.20); }
+.cell .tag   { position:absolute; top:4px; left:5px; font-size:8px; font-weight:700; color:#5b5876; text-transform:uppercase; font-family:'Montserrat',sans-serif; }
+.cell.here   { outline:2px solid #664ca9; }
+.cell .dot   { position:absolute; width:13px; height:13px; border-radius:50%; background:#664ca9; box-shadow:0 0 0 4px rgba(102,76,169,0.25),0 0 12px #664ca9; top:50%; left:50%; transform:translate(-50%,-50%); }
+.axis-foot { font-size:11px; color:#8a88a0; text-align:center; margin-top:6px; }
+
+/* DIMENSIONS */
+.dims { display:flex; flex-direction:column; gap:16px; }
+.dim-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px; }
+.dim-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#15131f; }
+.dim-score { font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#aaa; }
+.bar-track { height:7px; background:#e8eaf0; border-radius:999px; overflow:hidden; margin-bottom:5px; }
+.bar-fill  { height:100%; background:linear-gradient(90deg,#452e80,#664ca9); border-radius:999px; }
+.dim-note  { font-size:12.5px; color:#666; line-height:1.55; }
+
+/* SWOT */
+.swot { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.quad { border-radius:9px; padding:14px 16px; }
+.quad h4 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:9px; }
+.quad ul { padding-left:14px; }
+.quad li { font-size:12.5px; margin-bottom:5px; line-height:1.5; color:#333; }
+.sw-s { background:#eaf6ef; border-left:3px solid #1a7a4a; }
+.sw-s h4 { color:#1a7a4a; }
+.sw-w { background:#ede9fa; border-left:3px solid #664ca9; }
+.sw-w h4 { color:#452e80; }
+.sw-o { background:#f0eefa; border-left:3px solid #452e80; }
+.sw-o h4 { color:#452e80; }
+.sw-r { background:#fff0f4; border-left:3px solid #b1456b; }
+.sw-r h4 { color:#b1456b; }
+
+/* PATHWAY */
+.pathway-dark { background:linear-gradient(135deg,#0d0a1c,#1a1340); color:#eceaf8; border-radius:10px; padding:20px 22px; }
+.pathway-dark .sec-label { color:#00aeef; }
+.pathway-route { font-family:'Montserrat',sans-serif; font-weight:800; font-size:17px; color:#fff; margin-bottom:4px; }
+.pathway-backup { font-size:12.5px; color:#b9b6d6; margin-bottom:10px; }
+.pathway-note { font-size:13px; color:#d8d6ec; }
+ol.roadmap { padding-left:20px; margin:0; }
+ol.roadmap li { font-size:13px; margin-bottom:8px; color:#3c3a52; line-height:1.5; }
+ol.roadmap li strong { color:#15131f; }
+
+/* EXPECTATIONS */
+.expect { background:linear-gradient(90deg,rgba(69,46,128,0.08),transparent 82%); border:1px solid #e8eaf0; border-left:3px solid #452e80; border-radius:0 9px 9px 0; padding:16px 18px; }
+.erow { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+.chip { font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; padding:6px 13px; border-radius:999px; }
+.chip.exp  { background:#e8eaf0; color:#5b5876; }
+.chip.real { background:#452e80; color:#fff; }
+.arrow { font-size:16px; color:#452e80; font-weight:800; }
+.expect p { font-size:12.5px; color:#3c3a52; margin-bottom:6px; line-height:1.6; }
+.expect p:last-child { margin:0; color:#5a5872; }
+.expect p b { color:#452e80; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:.08em; text-transform:uppercase; margin-right:4px; }
+
+/* ACTION */
+.action { background:rgba(102,76,169,0.1); border-left:3px solid #664ca9; padding:13px 17px; border-radius:0 8px 8px 0; font-size:14px; margin-bottom:14px; }
+.action strong { font-family:'Montserrat',sans-serif; }
+.disc-qs { padding-left:18px; margin:0; }
+.disc-qs li { font-size:13px; margin-bottom:6px; color:#3c3a52; line-height:1.55; }
+
+/* GAPS */
+.gaps { display:flex; flex-wrap:wrap; gap:8px; }
+.gap-tag { font-size:11.5px; background:#fff; border:1px dashed #b1456b; color:#8a3554; border-radius:6px; padding:5px 11px; }
+
+/* DATA GRID */
+.data-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.data-card { background:#f5f5fa; border-radius:8px; padding:12px 14px; border-top:3px solid #664ca9; }
+.data-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; color:#999; margin-bottom:5px; }
+.data-val { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; line-height:1.35; }
+
+/* FOOTER */
+.doc-footer { background:#0d0a1c; padding:14px 44px; }
+.footer-main { font-size:11.5px; color:#9a98b4; margin-bottom:3px; line-height:1.6; }
+.footer-note { font-size:10.5px; color:#555; }
+
+@media print { body{background:#fff;padding:0;} .doc{box-shadow:none;border-radius:0;} .header,.pathway-dark,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+@media (max-width:720px) { .two-col{grid-template-columns:1fr;} .swot{grid-template-columns:1fr;} .data-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="header">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Candidate Readiness &middot; Internal Analysis</div>
+  <h1 class="h-name">Candidate C</h1>
+  <p class="h-meta">Atlanta, GA &nbsp;·&nbsp; <strong>Consulting / Franchise Operator</strong> &nbsp;·&nbsp; Timeframe: Within 6 months</p>
+  <p class="h-note">For internal FN use only — do not share with candidate</p>
+</header>
+
+<!-- CLASSIFICATION -->
+<div class="class-banner">
+  <div class="badge"><span>NOVA</span></div>
+  <div class="class-info">
+    <h2>Classification: <em>Nova</em></h2>
+    <p>Proven operator with existing franchise ownership and a strong multi-unit, semi-absentee investment thesis. Capital lift is the primary FN workstream — net worth is the unlock, not liquid cash.</p>
+    <span class="conf-pill">Confidence &middot; High</span>
+  </div>
+</div>
+
+<!-- TWO-AXIS READ -->
+<div class="section">
+  <div class="sec-label">The Two-Axis Read</div>
+  <div class="two-col">
+    <div>
+      <div class="axis-block">
+        <div class="score-ring">
+          <div class="inner">
+            <span class="num">82</span>
+            <span class="den">/ 100</span>
+          </div>
+        </div>
+        <div class="axis-copy">
+          <div class="lift-label">Readiness &amp; Potential</div>
+          <div style="margin-top:12px;">
+            <div class="lift-label" style="color:#452e80;">FN Lift Required</div>
+            <div class="lift-pills" style="margin-top:6px;">
+              <span class="pill">Low</span>
+              <span class="pill on">Moderate</span>
+              <span class="pill">High</span>
+            </div>
+          </div>
+          <p class="lift-note">Binding constraint: <strong>Capital</strong> — liquid cash of $50K–$100K is below system thresholds but $1M+ net worth provides multiple equity access routes for FN to structure around.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="matrix">
+        <div></div>
+        <div class="col-h">Emerging</div>
+        <div class="col-h">Developing</div>
+        <div class="col-h">Strong</div>
+        <div class="row-h">High</div>
+        <div class="cell nebula"><span class="tag">Nebula</span></div>
+        <div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Moderate</div>
+        <div class="cell nebula"><span class="tag">Nebula</span></div>
+        <div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="cell nova here"><span class="tag">Nova</span><span class="dot"></span></div>
+        <div class="row-h">Low</div>
+        <div class="cell nebula"><span class="tag">Nebula</span></div>
+        <div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="cell super"><span class="tag">Super</span></div>
+      </div>
+      <p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+    </div>
+  </div>
+</div>
+
+<!-- READINESS DIMENSIONS -->
+<div class="section">
+  <div class="sec-label">Readiness Dimensions <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;color:#a9a7c0;">(capital-free)</span></div>
+  <div class="dims">
+    <div>
+      <div class="dim-top"><span class="dim-name">Operator Readiness &amp; Capability</span><span class="dim-score">32 / 32</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">Proven at scale — consulting background, existing franchise ownership (PoolScouts), $1M+ budget P&L experience, and demonstrated ability to run operations without day-to-day involvement. This is the highest tier: runs a business, has done it before, and is actively building a portfolio.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Vision, Motivation &amp; Commitment</span><span class="dim-score">27 / 27</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">Committed and specific — within 6-month timeframe, targeting 4+ units, actively thinking about recurring subscription revenue and shared labor deployment. Has articulated a clear investment thesis, not just general interest. Legacy and wealth-building goal evident in the multi-unit intent.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Sector &amp; Multi-Unit Fit</span><span class="dim-score">18 / 18</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">Home Services and Hospitality are both FN verticals. 4+ unit target stated explicitly. Semi-absentee ownership preference aligns with multi-unit portfolio approach. Existing Home Services franchise ownership strengthens understanding of the sector.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Coachability &amp; Ecosystem Fit</span><span class="dim-score">5 / 13</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+      <p class="dim-note">Mixed signals. Strong systems orientation from consulting and franchise background — follows process well. However, group decision-making structure and emphasis on autonomous investment thesis suggest a candidate who will push back on recommendations. Not a barrier but Nova Guide should expect a co-development dynamic, not a directive one.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SWOT -->
+<div class="section">
+  <div class="sec-label">SWOT</div>
+  <div class="swot">
+    <div class="quad sw-s">
+      <h4>Strengths</h4>
+      <ul>
+        <li>Proven franchise operator with existing system ownership</li>
+        <li>Consulting background — systems-oriented, analytical, high operational IQ</li>
+        <li>$1M+ net worth unlocks capital structures unavailable to most FN candidates</li>
+        <li>Clear recurring revenue thesis — knows exactly what model type he's targeting</li>
+      </ul>
+    </div>
+    <div class="quad sw-w">
+      <h4>Development Areas</h4>
+      <ul>
+        <li>Liquid cash ($50K–$100K) is below threshold for most 4-unit agreements without leverage</li>
+        <li>Group decision-making dynamic may slow commitment timeline</li>
+        <li>Coachability score is lower than the rest of the profile — Nova Guide should plan for a peer-level conversation, not a guided one</li>
+      </ul>
+    </div>
+    <div class="quad sw-o">
+      <h4>What FN Can Unlock</h4>
+      <ul>
+        <li>SBA preferred lender introductions experienced with net-worth-backed multi-unit deals</li>
+        <li>Capital stack modeling — equity extraction from $1M+ net worth to meet liquid requirements</li>
+        <li>4-unit development agreement access and territory negotiation with target franchisors</li>
+      </ul>
+    </div>
+    <div class="quad sw-r">
+      <h4>Risks to Watch</h4>
+      <ul>
+        <li>6-month timeline is aggressive given the capital structuring required — equity extraction takes time</li>
+        <li>Existing franchise ownership creates competitor exclusion rules — some verticals and systems will be off the table</li>
+        <li>Group investment model adds complexity — all decision-makers need to be aligned and documented for SBA</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CAPITAL PROFILE -->
+<div class="section">
+  <div class="sec-label">Capital Profile</div>
+  <div class="data-grid">
+    <div class="data-card"><div class="data-label">Liquid Capital</div><div class="data-val">$50K–$100K</div></div>
+    <div class="data-card"><div class="data-label">Net Worth</div><div class="data-val">$1M+</div></div>
+    <div class="data-card"><div class="data-label">Credit Score Range</div><div class="data-val">750+</div></div>
+    <div class="data-card"><div class="data-label">SBA Potential</div><div class="data-val">Strong — 750+ credit, $1M+ NW</div></div>
+    <div class="data-card"><div class="data-label">Ownership Model</div><div class="data-val">Semi-absentee</div></div>
+    <div class="data-card"><div class="data-label">Total Accessible Capital (est.)</div><div class="data-val">$400K–$600K+ via equity extraction + SBA</div></div>
+  </div>
+</div>
+
+<!-- PATHWAY -->
+<div class="section">
+  <div class="sec-label">Capital Pathway &amp; Path to Ownership</div>
+  <div class="two-col">
+    <div class="pathway-dark">
+      <div class="sec-label">Recommended Capital Pathway</div>
+      <div class="pathway-route">SBA 7(a) + Net Worth Equity Extraction</div>
+      <div class="pathway-backup">Backup: CDFI / FN Capital Consortium bridge if equity extraction delayed</div>
+      <p class="pathway-note">750+ credit and $1M+ net worth make this candidate a strong SBA borrower on paper. The gap is liquid cash — FN's primary job is modeling the equity extraction strategy (HELOC, cash-out refinance, or asset liquidation) to meet the equity injection requirement before lender submission.</p>
+    </div>
+    <div>
+      <div class="sec-label">Path to Ownership</div>
+      <ol class="roadmap">
+        <li><strong>Discovery call:</strong> Confirm investment thesis, target systems, and group decision-making structure</li>
+        <li><strong>Capital modeling:</strong> Build equity extraction plan from $1M+ net worth to meet SBA injection threshold for 4-unit development</li>
+        <li><strong>System selection + FDD review:</strong> Identify 4-unit development agreements with territory availability in target geography</li>
+        <li><strong>SBA pre-qualification + franchisor introduction:</strong> Submit capital stack to preferred lender and secure 4-unit development agreement</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- EXPECTATIONS CHECK -->
+<div class="section">
+  <div class="sec-label">Expectations Check</div>
+  <div class="expect">
+    <div class="erow">
+      <span class="chip exp">Expects: Ownership within 6 months</span>
+      <span class="arrow">&rarr;</span>
+      <span class="chip real">Realistic: 9–14 months for 4-unit structure</span>
+    </div>
+    <p><b>Why</b> A 4-unit development agreement requires SBA approval with full equity extraction documentation, franchisor territory confirmation, and multi-unit agreement execution. Each of those steps has its own timeline. 6 months is achievable for a single unit; 4+ units is a 9–14 month runway with everything moving efficiently.</p>
+    <p><b>On the call</b> Acknowledge the 6-month urgency without dismissing it. Frame it as "let's move fast on the capital modeling so we compress the timeline as much as possible — the 4-unit path requires a few extra weeks of structuring that a single-unit deal doesn't."</p>
+  </div>
+</div>
+
+<!-- NEXT ACTION -->
+<div class="section">
+  <div class="sec-label">Recommended Next Action</div>
+  <div class="action"><strong>Book a discovery call to confirm the investment thesis and begin capital modeling for a 4-unit development path.</strong></div>
+  <div class="sec-label" style="margin-top:4px;">Discovery Call Questions</div>
+  <ul class="disc-qs">
+    <li>Walk me through the investment thesis in your own words — you mentioned recurring subscription revenue and shared labor deployment. What does a "successful" portfolio look like to you in 5 years?</li>
+    <li>Tell me about the group decision-making structure — who are the other decision-makers and at what point do they need to be involved in the capital and franchise selection process?</li>
+    <li>You own a PoolScouts franchise — what's working well in that business and what are you trying to do differently in the next franchise you acquire?</li>
+    <li>On the capital side — your net worth is over $1M but liquid cash is $50K–$100K. Have you thought about how you'd access more liquidity — HELOC, refi, partnership capital, or another structure?</li>
+    <li>You said 4+ units and within 6 months — is that 4 units operating within 6 months, or the agreement signed within 6 months? That distinction changes the capital and timeline strategy significantly.</li>
+    <li>Are there any franchise systems you've already been in conversations with, or that you've ruled out and why?</li>
+  </ul>
+</div>
+
+<!-- DATA GAPS -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-label">Data Gaps to Resolve</div>
+  <div class="gaps">
+    <span class="gap-tag">Target geography not specified — confirm target city/market</span>
+    <span class="gap-tag">Group decision-making structure — who are co-investors?</span>
+    <span class="gap-tag">Source of equity extraction — HELOC, refi, or other?</span>
+    <span class="gap-tag">Specific franchise systems already researched or ruled out</span>
+    <span class="gap-tag">PoolScouts territory and performance — any competitor exclusion implications?</span>
+    <span class="gap-tag">Brand stage preference — Emerging vs. Established?</span>
+    <span class="gap-tag">Seasonality preference not captured</span>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova Intake Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; 2026</p>
+  <p class="footer-note">For internal FN use only &nbsp;&middot;&nbsp; Do not share with candidate</p>
+</div>
+
+</div>
+</body>
+</html>
