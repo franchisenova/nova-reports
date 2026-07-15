@@ -97,6 +97,12 @@
   .ncard .step.first{color:#0784B4;border-color:color-mix(in srgb,var(--cyan) 45%,white);background:color-mix(in srgb,var(--cyan) 12%,white);}
   .ncard .arr{color:var(--faint);font-size:11px;}
 
+  .phasehead{position:relative;padding-left:98px;margin:2px 0 26px;}
+  .phasehead .peyebrow{display:block;font-family:'Poppins';font-weight:700;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin-bottom:4px;}
+  .phasehead .ptitle{font-family:'Poppins';font-weight:600;font-size:23px;color:var(--text);letter-spacing:-.01em;}
+  .phasehead .pnote{font-family:'Lato';font-weight:400;font-size:14px;color:var(--faint);}
+  .phasehead::after{content:"";display:block;margin-top:12px;height:2px;max-width:540px;background:linear-gradient(90deg,var(--purple),transparent);opacity:.35;}
+
   .branch{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
   .fork{border-radius:12px;padding:16px 18px;border:1px solid var(--line);background:var(--paper);}
   .fork .ftitle{font-family:'Poppins';font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;margin-bottom:7px;}
@@ -115,7 +121,7 @@
 
   @media(max-width:680px){
     body{font-size:16px;}.track-grid{grid-template-columns:1fr;}.legend-grid{grid-template-columns:1fr 1fr;}
-    .branch{grid-template-columns:1fr;}.spine{left:20px;}.stage,.phasebreak,.nurture{padding-left:60px;}.node{left:1px;width:38px;height:38px;}footer .note{text-align:left;}
+    .branch{grid-template-columns:1fr;}.spine{left:20px;}.stage,.phasebreak,.nurture,.phasehead{padding-left:60px;}.node{left:1px;width:38px;height:38px;}footer .note{text-align:left;}
     .ncards{grid-template-columns:1fr;}
   }
   .reveal{opacity:0;transform:translateY(14px);}
@@ -166,6 +172,11 @@
 <main class="flow">
   <div class="wrap">
     <div class="spine" aria-hidden="true"></div>
+
+    <div class="phasehead reveal">
+      <span class="peyebrow">Phase 1</span>
+      <span class="ptitle">Candidate Onboarding</span> <span class="pnote">— intake through accepted &amp; signed</span>
+    </div>
 
     <div class="stage reveal">
       <div class="node">1</div>
@@ -307,7 +318,10 @@
       </div>
     </div>
 
-    <div class="phasebreak reveal"><span class="lbl">✦ Now a Deal — Post-Agreement</span></div>
+    <div class="phasehead reveal">
+      <span class="peyebrow">Phase 2 · Now a Deal</span>
+      <span class="ptitle">Post-Agreement</span> <span class="pnote">— the candidate becomes a deal and moves into the pipeline</span>
+    </div>
 
     <div class="stage reveal">
       <div class="node">8</div>
