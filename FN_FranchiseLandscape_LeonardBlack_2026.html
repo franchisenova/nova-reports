@@ -3,384 +3,283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Franchise Nova — Systems Worth Exploring</title>
+<title>Franchise Nova — Leonard Black · Home Services Landscape (Updated)</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Lato', sans-serif;
-  background: #e8eaf0;
-  color: #15131f;
-  line-height: 1.6;
-  padding: 40px 20px;
-  -webkit-font-smoothing: antialiased;
-}
-.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:880px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.12);}
 
-/* ── HEADER ── */
-.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; border-top: 4px solid #00aeef; }
-.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%); pointer-events:none; }
-.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(0,174,239,0.2) 0%,transparent 65%); pointer-events:none; }
-.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
-.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#00aeef; margin-bottom:8px; }
-.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:32px; color:#fff; margin-bottom:8px; line-height:1.1; }
-.h-meta { font-size:13px; color:#b0aed0; }
-.h-meta strong { color:#e1e3ee; }
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#161033);padding:34px 44px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(69,46,128,0.38),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(0,174,239,0.18),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;color:#fff;margin-bottom:6px;line-height:1.1;position:relative;}
+.h-meta{font-size:13px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+.h-update{display:inline-block;margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#00aeef;border:1px solid rgba(0,174,239,0.4);border-radius:999px;padding:3px 11px;position:relative;}
 
-/* ── SECTIONS ── */
-.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
-.section:last-of-type { border-bottom:none; }
-.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+/* SECTIONS */
+.section{padding:24px 44px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
 
-/* ── INTRO ── */
-.landscape-intro { font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; padding:12px 16px; background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; }
-.landscape-note  { font-size:11px; color:#aaa; font-style:italic; margin-bottom:16px; }
+/* PIVOT NOTE */
+.pivot-note{padding:13px 16px;background:linear-gradient(90deg,rgba(0,174,239,0.08),transparent 80%);border-left:3px solid #00aeef;border-radius:0 8px 8px 0;font-size:13px;color:#444;line-height:1.7;margin-bottom:10px;}
+.pivot-note strong{color:#15131f;}
 
-/* ── LANDSCAPE CARDS ── */
-.ls-grid { display:flex; flex-direction:column; gap:12px; }
-.ls-card { border:1px solid #e8eaf0; border-radius:9px; overflow:hidden; background:#fafafa; }
-.ls-card-top { padding:13px 16px 10px; border-bottom:1px solid #e8eaf0; }
-.ls-card-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px; }
-.ls-name { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; }
-.ls-cat  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
-.ls-pet  { background:rgba(102,76,169,0.1); color:#664ca9; }
-.ls-why  { font-size:12.5px; color:#444; line-height:1.55; }
-.ls-card-bottom { padding:10px 16px; background:#f0eefa; display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-.ls-stat { display:flex; flex-direction:column; gap:2px; }
-.ls-stat-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#888; }
-.ls-stat-val { font-size:12px; color:#15131f; font-weight:700; line-height:1.3; }
-.ls-stat-val.good { color:#1a7a4a; }
-.ls-stat-val.warn { color:#b86e00; }
-.ls-stat-val.note { color:#452e80; }
-.ls-tags { padding:8px 16px 12px; display:flex; flex-wrap:wrap; gap:6px; }
-.ls-tag  { font-size:10.5px; color:#555; background:#eeedf8; border-radius:5px; padding:3px 9px; font-family:'Montserrat',sans-serif; font-weight:700; }
-.ls-tag.sba   { color:#1a7a4a; background:#eaf6ef; }
-.ls-tag.geo   { color:#00709a; background:#e8f7fd; }
-.ls-tag.recur { color:#452e80; background:#ede9fa; }
-.ls-tag.warn  { color:#b86e00; background:#fdf5e6; }
+/* EXCLUDED BOX */
+.excl-box{background:#fff8e1;border:1px solid #b86e00;border-left:3px solid #b86e00;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:10px;}
+.excl-box p{font-size:12px;color:#5a3e00;line-height:1.65;}
+.excl-box strong{color:#3a2a00;}
 
-/* ── RANK BAR ── */
-.rank-bar-r1 { background:#452e80; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
-.rank-bar-r2, .rank-bar-r3, .rank-bar-r4, .rank-bar-r5, .rank-bar-r6 { background:#282560; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
-.rank-num  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; color:#fff; }
-.rank-note { font-size:10px; color:rgba(255,255,255,0.65); }
+.landscape-note{font-size:11px;color:#aaa;font-style:italic;margin-top:10px;}
 
-/* ── DISCLAIMER ── */
-.disclaimer { background:#f5f5fa; border-top:1px solid #e8eaf0; padding:18px 44px; }
-.disclaimer p { font-size:11.5px; color:#888; line-height:1.7; }
-.disclaimer strong { color:#555; }
+/* SYSTEM CARDS */
+.ls-grid{display:flex;flex-direction:column;gap:14px;}
+.ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+.rank-bar{padding:7px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-bar.r1{background:#282560;}
+.rank-bar.r2{background:#2e2a6a;}
+.rank-bar.r3{background:#352f72;}
+.rank-bar.r4{background:#3c3578;}
+.rank-bar.excluded{background:#5a3e00;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;}
+.rank-note{font-size:10px;color:rgba(255,255,255,0.65);}
+.ls-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.ls-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:7px;}
+.ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13.5px;color:#15131f;}
+.ls-badges{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0;}
+.ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+.cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-excl{background:rgba(184,110,0,0.12);color:#b86e00;}
+.ls-parent{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+.p-neighborly{background:rgba(40,37,96,0.1);color:#282560;}
+.p-authority{background:rgba(69,46,128,0.1);color:#452e80;}
+.ls-why{font-size:12.5px;color:#444;line-height:1.6;}
+.ls-stats{padding:10px 16px;background:#f0eefa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ls-stat{display:flex;flex-direction:column;gap:2px;}
+.ls-slbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.ls-sval{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
+.ls-sval.good{color:#1a7a4a;}
+.ls-sval.warn{color:#b86e00;}
+.ls-sval.note{color:#452e80;}
+.ls-sval.red{color:#b1456b;}
+.ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.ls-tag.geo{color:#00709a;background:#e8f7fd;}
+.ls-tag.recur{color:#452e80;background:#ede9fa;}
+.ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
+.ls-tag.warn{color:#b86e00;background:#fdf5e6;}
+.ls-tag.red{color:#b1456b;background:#fff0f4;}
+.ls-tag.acq{color:#282560;background:rgba(40,37,96,0.1);}
 
-/* ── FOOTER ── */
-.doc-footer { background:#0d0a1c; padding:14px 44px; }
-.footer-main { font-size:11.5px; color:#9a98b4; line-height:1.6; }
+/* CAMP BOW WOW SECTION */
+.cbw-box{background:#f8f8fc;border:1px solid #e8eaf0;border-left:3px solid #282560;border-radius:0 9px 9px 0;padding:16px 20px;margin-bottom:0;}
+.cbw-box h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#282560;margin-bottom:10px;}
+.cbw-box p{font-size:13px;color:#444;line-height:1.7;}
 
-@media print {
-  body { background:#fff; padding:0; }
-  .doc { box-shadow:none; border-radius:0; }
-  .header, .rank-bar-r1, .rank-bar-r2, .rank-bar-r3, .rank-bar-r4, .rank-bar-r5, .rank-bar-r6, .ls-card-bottom, .doc-footer { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-}
-@media (max-width:640px) {
-  .section { padding:18px 20px; }
-  .header  { padding:24px 20px; }
-  .ls-card-bottom { grid-template-columns:1fr; }
-  .disclaimer { padding:16px 20px; }
-  .doc-footer { padding:14px 20px; }
-}
+/* DISCLAIMER */
+.disclaimer{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:18px 44px;}
+.disclaimer p{font-size:11.5px;color:#888;line-height:1.7;}
+.disclaimer strong{color:#555;}
+
+.doc-footer{background:#0d0a1c;padding:14px 44px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.rank-bar,.ls-stats,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:640px){.section{padding:18px 20px;}.hdr{padding:24px 20px;}.ls-stats{grid-template-columns:1fr;}.disclaimer{padding:16px 20px;}.doc-footer{padding:14px 20px;}}
 </style>
 </head>
 <body>
 <div class="doc">
 
-<header class="header">
+<header class="hdr">
   <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
-  <div class="h-eye">Prepared for Your Review</div>
+  <div class="h-eye">Prepared for Your Review — Updated</div>
   <h1 class="h-name">Leonard Black</h1>
-  <p class="h-meta">
-    <strong>Pet Services</strong> &nbsp;·&nbsp; Target: Atlanta, GA (30338 / Dunwoody / Sandy Springs) &nbsp;·&nbsp; Semi-Absentee
-  </p>
+  <p class="h-meta"><strong>Home Services</strong> &nbsp;&middot;&nbsp; Target: Cobb, Cherokee, Forsyth &amp; Gwinnett Counties, GA &nbsp;&middot;&nbsp; Neighborly &amp; Authority Brands Focus</p>
+  <span class="h-update">Updated · July 2026 — Pivoted to Home Services per your feedback</span>
 </header>
 
+<!-- PIVOT NOTE -->
 <div class="section">
-  <div class="sec-label">About This List</div>
-  <p class="landscape-intro">
-    A curated starting point — systems that fit the Pet Services sector, your recurring-revenue focus, and a semi-absentee, multi-unit plan. These systems were identified based on publicly available information — their territory availability, revenue model, ownership structure, and fit with your goals. Since you already own a PoolScouts franchise (Home Services), this list is fully independent of that — no overlap or conflict with your existing business.<br><br>
-    This is a starting point for your own research and conversation with your Nova Guide — not a formal recommendation. Any system you want to explore further will go through Franchise Nova's full FDD analysis process before any decisions are made.<br><br>
-    <strong>Est. Investment</strong> = total estimated cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn. <strong>B2C</strong> = your customers are individual consumers.
-  </p>
-  <p class="landscape-note">⚑ Public information only — no FDDs reviewed. Territory availability must be confirmed directly with each franchisor before proceeding.</p>
+  <div class="sec-label">About This Updated List</div>
+  <p class="pivot-note">Based on your latest feedback, this landscape has been fully updated to reflect your revised focus: <strong>Home Services only</strong>, specifically within the Neighborly and Authority Brands ecosystems, with a strong preference for acquisition of existing businesses over new unit build-outs. The systems you specifically mentioned — Window Genie, Mosquito Shield, The Grounds Guys, and Lawn Squad — have each been researched and addressed below, including territory availability in your four target counties (Cobb, Cherokee, Forsyth, Gwinnett).<br><br>Your Camp Bow Wow and Multi Revenue Pet Center interest from the prior landscape is also addressed separately at the bottom of this document.<br><br><strong>Est. Investment</strong> = total estimated cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn.</p>
+
+  <div class="excl-box">
+    <p><strong>Window Genie (Neighborly) — Cannot be offered in Georgia.</strong> Window Genie's 2026 FDD explicitly excludes Georgia from available franchise territories. Their published exclusion list reads: "Opportunities available throughout the US. Excluding: CA, GA, IN, MI, NC, TN." FN cannot refer this system for your Georgia markets regardless of territory availability within those counties. If this is a brand you feel strongly about, the Nova Guide can inquire directly with Neighborly about whether an exception process exists — but based on the current FDD, Georgia is excluded.</p>
+  </div>
+
+  <p class="landscape-note">⚑ Public information only — no FDDs reviewed. Territory availability in specific counties must be confirmed directly with each franchisor. Listings change daily. PoolScouts (your existing Home Services franchise) has no direct competitor conflict with the systems on this list.</p>
 </div>
 
+<!-- FRANCHISE SYSTEMS -->
 <div class="section">
-  <div class="sec-label">Systems Worth Exploring — Ranked by Fit</div>
+  <div class="sec-label">Your Shortlist — Researched &amp; Ranked</div>
   <div class="ls-grid">
 
-    <!-- RANK 1 -->
+    <!-- RANK 1: GROUNDS GUYS -->
     <div class="ls-card">
-      <div class="rank-bar-r1">
-        <span class="rank-num">RANK 1</span>
-        <span class="rank-note">Multi-territory native · 3+ territories standard · No confirmed locations in your zip</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Dog Training Elite</div>
-          <span class="ls-cat ls-pet">Pet Services</span>
+      <div class="rank-bar r1"><span class="rank-num">RANK 1 — STRONGEST FIT</span><span class="rank-note">Confirmed active in all 4 target counties · Neighborly · Formal resale program</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr">
+          <div class="ls-name">The Grounds Guys</div>
+          <div class="ls-badges">
+            <span class="ls-cat cat-home">Home Services</span>
+            <span class="ls-parent p-neighborly">Neighborly</span>
+          </div>
         </div>
-        <p class="ls-why"><strong>B2C · Recurring training package model.</strong> In-home and small-group dog training franchise with a strong recurring revenue structure — most popular package generates ongoing client relationships, not one-time transactions. Confirmed Atlanta-area locations exist in North Atlanta, West Atlanta, and Woodstock, but no confirmed presence found specifically in Dunwoody or Sandy Springs — a genuine opportunity to be first in your target zip. Franchise requires a 3-territory minimum and most owners hold 3+ territories, fitting a portfolio-builder profile. Low staffing requirement and a recession-resistant service category.</p>
+        <p class="ls-why"><strong>B2C/B2B · Recurring lawn care, landscaping, and maintenance contracts.</strong> Of the four brands on your shortlist, The Grounds Guys is the strongest fit right now. You identified confirmed active presence in all four of your target counties — Cobb, Cherokee, Forsyth, and Gwinnett — which is significant because it means franchisees in those areas are already building recurring client books and Neighborly has validated the market. Neighborly operates a formal resale program through their internal transfer process, meaning existing owners looking to exit can list through that channel before going to the open market. This is exactly the acquisition path you described — an operating business with existing clients, trained crews, and established revenue. Recurring mowing, landscaping maintenance, and seasonal service contracts generate predictable monthly cash flow. The executive ownership model (owner manages the business, crews do the work) supports your semi-absentee preference. Part of the Neighborly family means ProTradeNet buying power ($8.3M in rebates distributed to owners in 2025), shared technology, and a national brand backing.</p>
       </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$77K–$130K (per territory)</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring training packages ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Minimum Territories</span><span class="ls-stat-val good">3-pack standard</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">Multi-state · Established</span></div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$107K–$252K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring lawn &amp; landscape contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Georgia Status</div><div class="ls-sval good">Active in Cobb, Cherokee, Forsyth, Gwinnett ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">260+ locations · Established · Neighborly</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Franchise Fee</div><div class="ls-sval">$43,750</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Resale Program</div><div class="ls-sval good">Formal Neighborly resale channel ✓</div></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">No confirmed Dunwoody/Sandy Springs presence — first-mover</span>
-        <span class="ls-tag recur">Recurring training packages</span>
-        <span class="ls-tag">Semi-absentee ✓</span>
-        <span class="ls-tag">Multi-unit native — 3-pack minimum</span>
+        <span class="ls-tag geo">Active in all 4 target counties ✓</span>
+        <span class="ls-tag recur">Recurring maintenance contracts</span>
+        <span class="ls-tag sba">SBA-friendly · Neighborly preferred lenders</span>
+        <span class="ls-tag">Semi-absentee / Executive ownership ✓</span>
+        <span class="ls-tag acq">Formal resale program — ask Neighborly directly</span>
       </div>
     </div>
 
-    <!-- RANK 2 -->
+    <!-- RANK 2: LAWN SQUAD -->
     <div class="ls-card">
-      <div class="rank-bar-r2">
-        <span class="rank-num">RANK 2</span>
-        <span class="rank-note">Recognized regional brand · No confirmed Dunwoody/Sandy Springs location · Strong Atlanta metro presence</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Camp Bow Wow</div>
-          <span class="ls-cat ls-pet">Pet Services</span>
+      <div class="rank-bar r2"><span class="rank-num">RANK 2</span><span class="rank-note">Authority Brands · Georgia listed available · 111% growth in 2025 · Southeast priority 2026</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr">
+          <div class="ls-name">Lawn Squad</div>
+          <div class="ls-badges">
+            <span class="ls-cat cat-home">Home Services</span>
+            <span class="ls-parent p-authority">Authority Brands</span>
+          </div>
         </div>
-        <p class="ls-why"><strong>B2C · Membership and per-stay daycare/boarding model.</strong> One of the most recognized dog daycare and boarding brands in the country with 220+ locations. Confirmed Atlanta-metro locations exist in East Atlanta, Duluth, Alpharetta, Lawrenceville, and Woodstock — but nothing confirmed specifically in your target Dunwoody/Sandy Springs zip. The brand recognition reduces consumer education risk compared to a newer concept, while the specific territory remains open. All-inclusive pricing model and Camper Cam technology differentiate the customer experience from local independent competitors already in the area.</p>
+        <p class="ls-why"><strong>B2C/B2B · Recurring lawn treatment, fertilization, weed control, and pest services.</strong> Lawn Squad is the Authority Brands answer to recurring lawn treatment — and the only brand on your shortlist that lives within Authority Brands' ecosystem alongside your other interests. Georgia is explicitly listed as an available state, and the Southeast is Authority Brands' stated priority growth region for 2026. The system posted 111% growth in 2025 and executed 20 territories — it's a brand in active acceleration. The treatment-only model (no mowing) keeps operations lean and scalable: technicians handle the route, the owner manages the business. Recurring treatment plans generate predictable subscription-style revenue from the same clients season after season. Lawn Squad also has a documented cross-franchise synergy path — they've signed multi-system operators who run Lawn Squad alongside Mosquito Squad (also Authority Brands), which could be relevant to your portfolio-building thesis. One honest flag: Lawn Squad is a newer franchise system with a smaller unit count than The Grounds Guys — you're getting in earlier, which means first-mover advantage in your counties but less franchisee track record to evaluate.</p>
       </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val warn">$500K–$1M+</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Daycare/boarding · Recurring ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val good">220+ locations · Established</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Min. Capital Required</span><span class="ls-stat-val">$500K liquid</span></div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$93K–$132K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring treatment plans ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Georgia Status</div><div class="ls-sval good">Georgia listed as available · SE priority ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval warn">Early-stage — verify unit count with franchisor</div></div>
+        <div class="ls-stat"><div class="ls-slbl">2025 Growth</div><div class="ls-sval good">111% — 20 territories awarded</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Diversity Discount</div><div class="ls-sval good">$5,000 off franchise fee available</div></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">No confirmed Dunwoody/Sandy Springs location</span>
-        <span class="ls-tag recur">Recurring boarding/daycare revenue</span>
-        <span class="ls-tag">Semi-absentee ✓</span>
-        <span class="ls-tag warn">Higher investment threshold</span>
+        <span class="ls-tag geo">Georgia available · Southeast 2026 priority</span>
+        <span class="ls-tag recur">Recurring treatment subscriptions</span>
+        <span class="ls-tag sba">SBA-friendly · Authority Brands backing</span>
+        <span class="ls-tag">Semi-absentee / Executive ownership ✓</span>
+        <span class="ls-tag warn">Newer system — fewer franchisee data points to review</span>
+        <span class="ls-tag acq">Multi-brand portfolio path with Mosquito Squad</span>
       </div>
     </div>
 
-    <!-- RANK 3 -->
+    <!-- RANK 3: MOSQUITO SHIELD -->
     <div class="ls-card">
-      <div class="rank-bar-r3">
-        <span class="rank-num">RANK 3</span>
-        <span class="rank-note">Nationally expanding · No confirmed Georgia saturation found · Low investment entry</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Cooper's Scoopers</div>
-          <span class="ls-cat ls-pet">Pet Services</span>
+      <div class="rank-bar r3"><span class="rank-num">RANK 3</span><span class="rank-note">Ranked #1 pest control franchise · Recurring seasonal subscriptions · North Atlanta confirmed · Verify your 4 counties</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr">
+          <div class="ls-name">Mosquito Shield</div>
+          <div class="ls-badges">
+            <span class="ls-cat cat-home">Home Services</span>
+            <span class="ls-parent" style="background:rgba(26,122,74,0.1);color:#1a7a4a;">Independent</span>
+          </div>
         </div>
-        <p class="ls-why"><strong>B2C/B2B · Recurring residential and commercial waste removal contracts.</strong> Eco-friendly pet waste removal franchise backed by Loyalty Brands, expanding aggressively nationwide with a goal of 3,000 trucks. Home-based, mobile model with no retail space required. Recurring weekly/biweekly service contracts for both residential and commercial clients create predictable cash flow. Semi-absentee ownership explicitly supported — owner manages hired technicians rather than performing the service personally. No confirmed existing franchisee found in the Atlanta market, representing an open territory opportunity.</p>
+        <p class="ls-why"><strong>B2C · Recurring seasonal mosquito and pest control subscriptions.</strong> You cited Entrepreneur's #1 pest control franchise ranking (2023–2025 three-year run) as the rationale for Mosquito Shield — that's a legitimate signal. Their proprietary blend formulas are applied on a recurring subscription schedule from spring through fall, generating predictable seasonal revenue without requiring year-round labor. A confirmed North Atlanta Mosquito Shield location exists (serving that corridor), which validates the market. However, your four specific target counties — Cobb, Cherokee, Forsyth, Gwinnett — need direct territory verification with the franchisor (moshieldfranchise.com) before any conclusions about availability. At 435 locations nationally and 51 franchised units in the 2025 FDD data, this is an established brand with a PeerSense FPI health score of 67/100. Note that Mosquito Shield is not part of the Neighborly or Authority Brands ecosystems — it's an independent franchisor, which means no cross-brand portfolio synergy, but also no multi-brand complexity.</p>
       </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$51K–$75K (Area Rep: $159K–$320K)</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring service contracts ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">7 locations · Early-stage, expanding fast</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Liquid Capital Required</span><span class="ls-stat-val">$50,000</span></div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$120K–$158K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring seasonal subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">North Atlanta Status</div><div class="ls-sval good">Confirmed location serving North Atlanta ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Your 4 Counties</div><div class="ls-sval warn">⚠️ Must verify directly with franchisor</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Franchise Fee</div><div class="ls-sval">$54,500</div></div>
+        <div class="ls-stat"><div class="ls-slbl">FPI Health Score</div><div class="ls-sval">67/100 · Moderate</div></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">No confirmed Atlanta franchisee — open territory</span>
-        <span class="ls-tag recur">Recurring B2C/B2B contracts</span>
-        <span class="ls-tag">Semi-absentee ✓</span>
-        <span class="ls-tag warn">Early-stage brand — verify FDD financial history</span>
+        <span class="ls-tag geo">North Atlanta confirmed · Verify Cobb/Cherokee/Forsyth/Gwinnett</span>
+        <span class="ls-tag recur">Recurring seasonal subscriptions</span>
+        <span class="ls-tag sba">SBA-friendly</span>
+        <span class="ls-tag">Home-based · Low overhead · Executive ownership</span>
+        <span class="ls-tag warn">Not Neighborly or Authority Brands — independent system</span>
+        <span class="ls-tag warn">Seasonal revenue — limited winter income in Georgia</span>
       </div>
     </div>
 
-    <!-- RANK 4 -->
+    <!-- RANK 4: WINDOW GENIE -->
     <div class="ls-card">
-      <div class="rank-bar-r4">
-        <span class="rank-num">RANK 4</span>
-        <span class="rank-note">Multi-revenue stream model · Home-based · No confirmed Atlanta location found</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Pet Butler</div>
-          <span class="ls-cat ls-pet">Pet Services</span>
+      <div class="rank-bar excluded"><span class="rank-num">⚠️ WINDOW GENIE — GEORGIA EXCLUDED</span><span class="rank-note">Neighborly FDD explicitly excludes GA · Cannot be offered</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr">
+          <div class="ls-name">Window Genie (Neighborly)</div>
+          <div class="ls-badges">
+            <span class="ls-cat cat-excl">Excluded — GA</span>
+            <span class="ls-parent p-neighborly">Neighborly</span>
+          </div>
         </div>
-        <p class="ls-why"><strong>B2C/B2B · Recurring waste removal plus pet care and commercial contracts.</strong> Multi-revenue stream pet waste removal franchise — headquarters handles call scheduling and payments, reducing the owner's day-to-day administrative load. $147 billion pet industry backdrop with 85 million pet-owning households nationally. Recurring revenue model spans residential subscriptions, pet care add-ons, and commercial property contracts (HOAs, apartment complexes, dog parks). No confirmed existing Atlanta-area franchisee identified in available public listings.</p>
+        <p class="ls-why"><strong>Why you identified it:</strong> Your rationale was strong — Window Genie uniquely layers 5 service verticals (window cleaning, pressure washing, gutter cleaning, window tinting, holiday lighting) under one franchise, creating multiple recurring revenue streams from a single territory. In 2025, 43% of jobs were for recurring customers. The executive ownership model is explicitly designed for semi-absentee operators. Average gross sales reported at $475K across 90 reporting businesses. The Neighborly infrastructure (ProTradeNet, preferred lenders, national marketing) would have made this a strong portfolio brand alongside The Grounds Guys.<br><br><strong>Why it's off the table:</strong> The 2026 Window Genie FDD lists Georgia as an excluded state alongside CA, IN, MI, NC, and TN. Franchising in excluded states is not possible under the current disclosure. FN recommends asking your Neighborly contact directly whether this exclusion has a known timeline for resolution — if Georgia opens up, Window Genie should move to the top of this list.</p>
       </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$50K–$90K</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring multi-stream ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">Multi-state · Established</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Liquid Capital Required</span><span class="ls-stat-val">$50,000</span></div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Georgia Territory</div><div class="ls-sval red">Excluded per 2026 FDD · Not available ✗</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Avg Gross Sales</div><div class="ls-sval">$475K (90 reporting businesses)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Recurring Customer Rate</div><div class="ls-sval">43% of jobs in 2025</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Est. Investment / Unit</div><div class="ls-sval">$136K–$305K (if available)</div></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">No confirmed Atlanta franchisee found</span>
-        <span class="ls-tag recur">Recurring B2C/B2B revenue streams</span>
-        <span class="ls-tag">Semi-absentee ✓</span>
-        <span class="ls-tag warn">Verify territory availability directly</span>
-      </div>
-    </div>
-
-    <!-- RANK 5 -->
-    <div class="ls-card">
-      <div class="rank-bar-r5">
-        <span class="rank-num">RANK 5</span>
-        <span class="rank-note">Recurring subscription model · Mobile/scalable retail format · Verify Dunwoody zone</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Pet Wants</div>
-          <span class="ls-cat ls-pet">Pet Services</span>
-        </div>
-        <p class="ls-why"><strong>B2C · Recurring fresh pet food subscription/delivery model.</strong> The only national provider of freshly made pet food delivered direct to customers, with grooming recently added as a core service line. Actively expanding with Georgia named as one of the franchisor's priority growth states alongside Texas, North Carolina, and South Carolina. Starts as a mobile delivery model and can scale into a full retail storefront — flexible entry point. Subscription-based delivery creates strong recurring revenue and customer retention. Note: this is an active, hands-on ownership model — Pet Wants states it is not designed for fully absentee owners, though a manager-supported semi-absentee structure may still be workable depending on territory size.</p>
-      </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$130K–$202K</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring subscription delivery ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Georgia Expansion</span><span class="ls-stat-val good">Named priority growth state</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">60+ stores · Targeting 200 by 2026</span></div>
-      </div>
-      <div class="ls-tags">
-        <span class="ls-tag geo">Georgia named priority expansion state</span>
-        <span class="ls-tag recur">Recurring subscription revenue</span>
-        <span class="ls-tag warn">More owner-involved model — verify semi-absentee fit</span>
-      </div>
-    </div>
-
-    <!-- RANK 6 -->
-    <div class="ls-card">
-      <div class="rank-bar-r6">
-        <span class="rank-num">RANK 6</span>
-        <span class="rank-note">Mobile grooming model · Low overhead · Verify specific zip availability</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Zoomin' Groomin</div>
-          <span class="ls-cat ls-pet">Pet Services</span>
-        </div>
-        <p class="ls-why"><strong>B2C · Recurring mobile grooming appointments.</strong> Mobile pet grooming franchise expanding nationwide — set your own schedule with a fully mobile, van-based service model that avoids the retail saturation issue affecting fixed-location grooming and daycare concepts in the Dunwoody/Sandy Springs corridor. Recurring grooming appointments (typically every 4–6 weeks) create predictable repeat revenue. Lower overhead than a storefront concept since there's no lease or build-out cost — the investment is concentrated in the mobile unit and equipment. Semi-absentee ownership achievable with a hired groomer managing the van.</p>
-      </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit</span><span class="ls-stat-val note">$50K–$100K</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring grooming appointments ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Overhead</span><span class="ls-stat-val good">Low — mobile, no retail lease</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">Multi-state · Growing</span></div>
-      </div>
-      <div class="ls-tags">
-        <span class="ls-tag geo">Mobile model — bypasses fixed-location saturation</span>
-        <span class="ls-tag recur">Recurring grooming revenue</span>
-        <span class="ls-tag">Semi-absentee ✓</span>
-        <span class="ls-tag warn">Verify specific zip availability with franchisor</span>
+        <span class="ls-tag red">Georgia excluded per FDD — cannot be offered</span>
+        <span class="ls-tag warn">Ask Neighborly if/when GA exclusion lifts</span>
       </div>
     </div>
 
   </div>
 </div>
 
-
-<!-- ── ACQUISITION OPPORTUNITIES ── -->
+<!-- CAMP BOW WOW SECTION -->
 <div class="section">
-  <div class="sec-label">Acquisition Opportunities — Atlanta Metro Pet Services</div>
-  <p class="landscape-intro">
-    Given your background as a real estate investor and your interest in acquiring existing businesses, the Atlanta metro pet services market has active acquisition opportunities right now — businesses already operating with staff, clientele, and revenue in place. Acquisitions can be faster and lower-risk than a new franchise build-out since the customer base, location, and systems already exist. All listings below are publicly available on business-for-sale marketplaces as of 2025–2026. Listings change frequently — verify current status directly with the broker or seller before proceeding.
-  </p>
+  <div class="sec-label">On Camp Bow Wow &amp; the Multi Revenue Pet Center</div>
+  <div class="cbw-box">
+    <h4>Your Question — Answered</h4>
+    <p>You asked: <em>"Are the current owner(s) of the Camp Bow Wow locations in the Metro Atlanta market interested in selling?"</em><br><br>
+    <strong>What we know publicly:</strong> There is a confirmed Camp Bow Wow location serving the Milton/Forsyth County corridor (5665 Atlanta Hwy, Milton GA 30004), which covers Forsyth County — one of your four target counties. Camp Bow Wow was acquired by Propelled Brands in February 2024, which added a new layer of corporate oversight and resale process. Camp Bow Wow's investment range is $1.2M–$2M per the 2025 FDD — among the higher thresholds in the pet services category.<br><br>
+    <strong>What FN can do:</strong> FN can contact Camp Bow Wow's franchise development team directly through Propelled Brands to ask whether any Metro Atlanta owners are in the resale pipeline. This is a relationship inquiry, not a public listing — and it's exactly the kind of proprietary deal access FN can provide that you can't easily get on your own.<br><br>
+    <strong>However</strong> — given that you've stated your focus is returning to Home Services, it's worth confirming whether Camp Bow Wow is still on your active shortlist before FN spends time pursuing that inquiry. If yes, let your Nova Guide know and we'll reach out to Propelled Brands directly.<br><br>
+    <strong>On the Multi Revenue Pet Center:</strong> That was an active BizBuySell listing at the time of the prior landscape. Listings at that level (executively managed, semi-absentee, multi-revenue pet center in Atlanta) can move quickly — verify current status directly at BizBuySell.com searching "Atlanta pet center" or contact FN and we can check broker status.</p>
+  </div>
+</div>
 
-  <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+<!-- ACQUISITION PIVOT -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-label">Your Acquisition Focus — Where to Look for Home Services Resales</div>
+  <p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:16px;">Your stated preference is acquiring existing businesses over opening new locations. The following platforms and channels are your best starting points for Home Services resales in Cobb, Cherokee, Forsyth, and Gwinnett counties. Listings change daily — verify status with the listing broker before proceeding.</p>
 
-    <div class="ls-card">
-      <div class="rank-bar-r1">
-        <span class="rank-num">OPPORTUNITY 1</span>
-        <span class="rank-note">15-year established grooming salon · Affluent Metro Atlanta suburb · Turnkey</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Premier Pet Grooming Salon — Metro Atlanta Suburb</div>
-          <span class="ls-cat ls-pet">Pet Services · Acquisition</span>
-        </div>
-        <p class="ls-why"><strong>B2C · Recurring grooming appointments.</strong> A well-known and beloved pet grooming salon that has been a fixture in one of Metro Atlanta's most desirable suburbs for over 15 years. Known for personalized service, high-quality grooming, and a loyal recurring client base built over more than a decade. Described as turnkey — staff and operations in place. This type of established, high-retention grooming business in an affluent suburb is exactly the kind of recurring-revenue acquisition that fits a semi-absentee investor profile. Listed on BizBuySell — broker contact required for financials and exact location (confidential listing).</p>
-      </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Business Type</span><span class="ls-stat-val">Independent pet grooming salon</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Operating History</span><span class="ls-stat-val good">15+ years established</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring grooming appointments ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Where to Find</span><span class="ls-stat-val">BizBuySell — Atlanta Metro Pet Grooming</span></div>
-      </div>
-      <div class="ls-tags">
-        <span class="ls-tag geo">Metro Atlanta affluent suburb</span>
-        <span class="ls-tag recur">Recurring client base — 15+ years</span>
-        <span class="ls-tag">Turnkey — staff in place</span>
-        <span class="ls-tag warn">Exact location confidential — broker required</span>
-      </div>
-    </div>
-
-    <div class="ls-card">
-      <div class="rank-bar-r2">
-        <span class="rank-num">OPPORTUNITY 2</span>
-        <span class="rank-note">Multi-revenue pet center · Semi-absentee operated · Daycare + boarding + grooming + retail</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Multi-Revenue Pet Center — Atlanta Area</div>
-          <span class="ls-cat ls-pet">Pet Services · Acquisition</span>
-        </div>
-        <p class="ls-why"><strong>B2C · Multiple recurring revenue streams.</strong> A multi-revenue pet center in the Atlanta area offering interactive doggie daycare, overnight boarding, grooming, retail, and a pet taxi service — described as executively managed and operated with semi-absentee ownership already in place. High gross margins across diversified revenue streams described as very profitable and predictable. No prior experience needed — extensive training included with the sale. Multiple revenue streams with existing semi-absentee operations makes this a strong fit for a portfolio-builder investor profile.</p>
-      </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Business Type</span><span class="ls-stat-val">Full-service pet center</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Streams</span><span class="ls-stat-val good">Daycare · Boarding · Grooming · Retail ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Ownership Model</span><span class="ls-stat-val good">Semi-absentee — already structured</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Where to Find</span><span class="ls-stat-val">BizBuySell — Atlanta Pet Services</span></div>
-      </div>
-      <div class="ls-tags">
-        <span class="ls-tag geo">Atlanta area</span>
-        <span class="ls-tag recur">Multiple recurring revenue streams</span>
-        <span class="ls-tag">Semi-absentee already in place</span>
-        <span class="ls-tag warn">Verify financials with broker</span>
-      </div>
-    </div>
-
-    <div class="ls-card">
-      <div class="rank-bar-r3">
-        <span class="rank-num">OPPORTUNITY 3</span>
-        <span class="rank-note">Established pet waste removal · Atlanta, GA · Semi-absentee · Consistent profitability since 2019</span>
-      </div>
-      <div class="ls-card-top">
-        <div class="ls-card-header">
-          <div class="ls-name">Established Pet Waste Removal Business — Atlanta, GA</div>
-          <span class="ls-cat ls-pet">Pet Services · Acquisition</span>
-        </div>
-        <p class="ls-why"><strong>B2C/B2B · Recurring residential and commercial service contracts.</strong> A highly reputable pet waste removal business in Atlanta, GA, established in 2019 and demonstrating significant revenue growth and consistent profitability. Described as a non-franchise business model with steady cash flow designed for semi-absentee owners. Recurring service contracts across residential and commercial clients. This is a natural complement to your existing PoolScouts model — the same recurring home-services structure applied to the pet sector. Low overhead, route-based, scales with hired technicians. Currently listed on BizBuySell Georgia pet service businesses.</p>
-      </div>
-      <div class="ls-card-bottom">
-        <div class="ls-stat"><span class="ls-stat-label">Business Type</span><span class="ls-stat-val">Pet waste removal — independent</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Established</span><span class="ls-stat-val good">2019 · Consistent revenue growth</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Recurring service contracts ✓</span></div>
-        <div class="ls-stat"><span class="ls-stat-label">Where to Find</span><span class="ls-stat-val">BizBuySell — Georgia Pet Services</span></div>
-      </div>
-      <div class="ls-tags">
-        <span class="ls-tag geo">Atlanta, GA — confirmed location</span>
-        <span class="ls-tag recur">Recurring residential + commercial contracts</span>
-        <span class="ls-tag">Semi-absentee — built for it</span>
-        <span class="ls-tag">Complements existing PoolScouts model</span>
-        <span class="ls-tag warn">Non-franchise — verify financials thoroughly</span>
-      </div>
-    </div>
-
+  <div style="background:#f0eefa;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+    <div class="sec-label" style="color:#452e80;margin-bottom:10px;">Neighborly Resale Channel</div>
+    <p style="font-size:13px;color:#444;line-height:1.7;">The most direct path to acquiring a Grounds Guys or other Neighborly brand in your target counties. Neighborly manages transfers internally — when an owner wants to exit, the brand team can match them with qualified buyers before the listing goes to the open market. Ask your Neighborly contact specifically for any resale opportunities in Cobb, Cherokee, Forsyth, or Gwinnett counties across their Home Services brands: The Grounds Guys, Window Genie (when GA opens), Five Star Painting, Mr. Appliance, Lawn Pride.</p>
   </div>
 
-  <div style="margin-top:14px;background:#f5f5fa;border-radius:7px;padding:13px 16px;">
-    <p style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;margin-bottom:7px;">WHERE TO SEARCH FOR CURRENT ATLANTA PET SERVICES ACQUISITIONS</p>
-    <p style="font-size:12.5px;color:#444;line-height:1.65;"><strong>BizBuySell.com</strong> — largest business-for-sale marketplace. Search "Atlanta, GA" + "Pet Services" for current active listings. &nbsp;·&nbsp; <strong>DealStream.com</strong> — strong Southeast coverage for pet grooming and boarding. &nbsp;·&nbsp; <strong>PET|VET M&amp;A (petvetsales.com)</strong> — specialist broker focused exclusively on pet care industry acquisitions. &nbsp;·&nbsp; <strong>LoopNet.com</strong> — 16+ Georgia pet service businesses listed. Most listings are confidential until NDA is signed — work with a business broker to access financials and exact locations.</p>
+  <div style="background:#e8f7fd;border-radius:8px;padding:16px 20px;margin-bottom:12px;">
+    <div class="sec-label" style="color:#00709a;margin-bottom:10px;">Authority Brands Resale Channel</div>
+    <p style="font-size:13px;color:#444;line-height:1.7;">Authority Brands (Lawn Squad, Mosquito Squad, The Cleaning Authority, Benjamin Franklin Plumbing) also manages resales internally. If you're interested in Lawn Squad territories in your four counties, ask Authority Brands whether any early operators are looking to exit — first-mover owners sometimes sell quickly once the business is operational. Authority Brands' resale process is documented and active.</p>
+  </div>
+
+  <div style="background:#f5f5fa;border-radius:8px;padding:16px 20px;">
+    <div class="sec-label" style="color:#452e80;margin-bottom:10px;">Public Platforms — Georgia Home Services</div>
+    <p style="font-size:13px;color:#444;line-height:1.7;"><strong>BizBuySell.com</strong> — Search "Georgia home services" or specific county names. Lawn care, landscaping, and maintenance businesses come up regularly in the North Atlanta suburbs.<br><strong>LoopNet.com</strong> — Multiple home service franchise resales in Georgia active at any given time.<br><strong>FranchiseFlippers.com / FranchiseResales.com</strong> — Dedicated franchise resale marketplaces where The Grounds Guys and other Neighborly brands appear regularly.<br><strong>Transworld Business Advisors</strong> — Active Atlanta-area broker network with access to unlisted resales in the home services category.<br><strong>BizQuest.com</strong> — Additional platform for Georgia home services acquisition opportunities.</p>
   </div>
 </div>
 
 <div class="disclaimer">
-  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates — actual costs vary by location and market. Territory availability must be confirmed directly with each franchisor before proceeding. This document is a starting point for your research and conversation with your Nova Guide, not a recommendation to invest in any specific franchise system. All investment decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates — actual costs vary. Territory availability in specific counties must be confirmed directly with each franchisor. Window Genie's Georgia exclusion is based on their 2026 FDD as publicly referenced — confirm with Neighborly directly for the most current position. Acquisition listings change daily and must be verified with the listing broker before proceeding. All investment decisions should be made after full FDD review, legal counsel, and independent financial due diligence.</p>
 </div>
 
 <div class="doc-footer">
-  <p class="footer-main">Franchise Nova &nbsp;·&nbsp; A BLK GRVTY Initiative &nbsp;·&nbsp; Prepared for Leonard Black &nbsp;·&nbsp; 2026</p>
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Updated for Leonard Black &nbsp;&middot;&nbsp; July 2026 &nbsp;&middot;&nbsp; Home Services · Neighborly &amp; Authority Brands Focus</p>
 </div>
 
 </div>
