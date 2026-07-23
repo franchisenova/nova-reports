@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — KC Copeland · Candidate Readiness</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.13);}
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(0,174,239,0.38),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.hdr-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.hdr-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.hdr-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:36px;color:#fff;margin-bottom:6px;line-height:1.05;position:relative;}
+.hdr-meta{font-size:13px;color:#b0aed0;margin-bottom:6px;position:relative;}
+.hdr-meta strong{color:#e1e3ee;}
+.hdr-note{font-size:10.5px;color:rgba(255,255,255,0.32);font-style:italic;position:relative;}
+.cls-banner{display:flex;align-items:center;gap:22px;padding:22px 48px;background:linear-gradient(90deg,rgba(0,174,239,0.1),transparent 75%);border-bottom:1px solid #e8eaf0;}
+.cls-badge{width:86px;height:86px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#00aeef,#282560 58%,#0c0a1c 85%);box-shadow:0 0 0 5px rgba(0,174,239,0.18),0 0 22px rgba(0,174,239,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cls-badge span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;letter-spacing:.06em;text-align:center;line-height:1.3;}
+.cls-info h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:21px;color:#15131f;margin-bottom:4px;}
+.cls-info h2 em{color:#00aeef;font-style:normal;}
+.cls-info p{font-size:13.5px;color:#555;max-width:52ch;line-height:1.6;}
+.conf-pill{display:inline-block;margin-top:7px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#00aeef;border:1px solid #00aeef;border-radius:999px;padding:3px 11px;}
+.sec{padding:24px 48px;border-bottom:1px solid #e8eaf0;}
+.sec:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;}
+.axis-block{display:flex;gap:18px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(#00aeef 86%,#e8eaf0 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:26px;color:#15131f;line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy{display:flex;flex-direction:column;gap:10px;padding-top:4px;}
+.lift-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;color:#15131f;}
+.lift-pills{display:flex;gap:6px;}
+.pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:#e8eaf0;color:#6c6a85;font-family:'Montserrat',sans-serif;}
+.pill.on{background:#00aeef;color:#0d0a1c;}
+.lift-note{font-size:12px;color:#5a5872;line-height:1.5;}
+.matrix{display:grid;grid-template-columns:68px repeat(3,1fr);grid-template-rows:auto repeat(3,38px);gap:4px;font-size:9px;}
+.m-colh{font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.m-rowh{font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.mcell{border-radius:5px;position:relative;}
+.mcell.nebula{background:rgba(69,46,128,0.16);}
+.mcell.nova{background:rgba(102,76,169,0.22);}
+.mcell.super{background:rgba(0,174,239,0.2);}
+.mcell .tag{position:absolute;top:4px;left:5px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;font-family:'Montserrat',sans-serif;}
+.mcell.here{outline:2px solid #00aeef;}
+.mcell .dot{position:absolute;width:13px;height:13px;border-radius:50%;background:#00aeef;box-shadow:0 0 0 4px rgba(0,174,239,0.22),0 0 12px #00aeef;top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:6px;}
+.dims{display:flex;flex-direction:column;gap:16px;}
+.dim-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;}
+.dim-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:#15131f;}
+.dim-score{font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:#aaa;}
+.bar-track{height:7px;background:#e8eaf0;border-radius:999px;overflow:hidden;margin-bottom:5px;}
+.bar-fill{height:100%;background:linear-gradient(90deg,#282560,#00aeef);border-radius:999px;}
+.dim-note{font-size:12.5px;color:#666;line-height:1.55;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.quad{border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;}
+.quad ul{padding-left:14px;}
+.quad li{font-size:12.5px;margin-bottom:5px;line-height:1.5;color:#333;}
+.q-s{background:#eaf6ef;border-left:3px solid #1a7a4a;}.q-s h4{color:#1a7a4a;}
+.q-d{background:#ede9fa;border-left:3px solid #664ca9;}.q-d h4{color:#452e80;}
+.q-o{background:#e8f7fd;border-left:3px solid #00aeef;}.q-o h4{color:#00709a;}
+.q-r{background:#fff0f4;border-left:3px solid #b1456b;}.q-r h4{color:#b1456b;}
+.pathway-dk{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway-dk .sec-lbl{color:#00aeef;}
+.pw-route{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:#fff;margin-bottom:4px;}
+.pw-backup{font-size:12.5px;color:#b9b6d6;margin-bottom:10px;}
+.pw-note{font-size:13px;color:#d8d6ec;line-height:1.6;}
+ol.roadmap{padding-left:20px;margin:0;}
+ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;line-height:1.5;}
+ol.roadmap li strong{color:#15131f;}
+.expect{background:linear-gradient(90deg,rgba(0,174,239,0.06),transparent 82%);border:1px solid #e8eaf0;border-left:3px solid #00aeef;border-radius:0 9px 9px 0;padding:16px 18px;}
+.erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.chip{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.chip.exp{background:#e8eaf0;color:#5b5876;}
+.chip.real{background:#00aeef;color:#0d0a1c;}
+.arr{font-size:16px;color:#00aeef;font-weight:800;}
+.expect p{font-size:12.5px;color:#3c3a52;margin-bottom:6px;line-height:1.6;}
+.expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:#00aeef;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+.action{background:rgba(0,174,239,0.1);border-left:3px solid #00aeef;padding:13px 17px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:14px;}
+.action strong{font-family:'Montserrat',sans-serif;}
+.disc-qs{padding-left:18px;margin:0;}
+.disc-qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;line-height:1.55;}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;}
+.gap-tag{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 11px;}
+.p2hdr{background:linear-gradient(135deg,#0d0a1c,#1a1340);padding:24px 48px;border-top:4px solid #00aeef;}
+.p2hdr h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;color:#fff;margin-bottom:4px;}
+.p2hdr p{font-size:13px;color:#9a98b4;}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.dcard{background:#f5f5fa;border-radius:8px;padding:12px 14px;border-top:3px solid #00aeef;}
+.dlbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:5px;}
+.dval{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;line-height:1.35;}
+.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.tc{background:#f8f8fc;border-radius:8px;padding:13px 15px;border-top:3px solid #00aeef;}
+.tc-lbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:6px;}
+.tc-val{font-size:13px;color:#333;line-height:1.6;}
+.excl-box{background:#fff8e1;border:1px solid #b86e00;border-left:3px solid #b86e00;border-radius:0 8px 8px 0;padding:13px 17px;margin-bottom:16px;}
+.excl-box .sec-lbl{color:#b86e00;margin-bottom:8px;}
+.excl-box p{font-size:12.5px;color:#5a3e00;line-height:1.6;}
+.ls-grid{display:flex;flex-direction:column;gap:12px;}
+.ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+.rank-bar{padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-bar.r1{background:#282560;}
+.rank-bar.r2,.rank-bar.r3,.rank-bar.r4,.rank-bar.r5,.rank-bar.r6{background:#1a1340;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;}
+.rank-note{font-size:10px;color:rgba(255,255,255,0.6);}
+.ls-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.ls-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;}
+.ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-senior{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.ls-why{font-size:12.5px;color:#444;line-height:1.55;}
+.ls-stats{padding:10px 16px;background:#e8f7fd;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ls-stat{display:flex;flex-direction:column;gap:2px;}
+.ls-slbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.ls-sval{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
+.ls-sval.good{color:#1a7a4a;}
+.ls-sval.warn{color:#b86e00;}
+.ls-sval.note{color:#00709a;}
+.ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.ls-tag.geo{color:#00709a;background:#e8f7fd;}
+.ls-tag.recur{color:#452e80;background:#ede9fa;}
+.ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
+.ls-tag.warn{color:#b86e00;background:#fdf5e6;}
+.fn-note{background:#0d0a1c;border-radius:8px;padding:14px 18px;margin-top:10px;}
+.fn-note .sec-lbl{color:#00aeef;margin-bottom:8px;}
+.fn-note p{font-size:12.5px;color:#b9b6d6;line-height:1.6;}
+.acq-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;margin-bottom:12px;}
+.acq-bar{background:#1a1340;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;}
+.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;}
+.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);}
+.acq-body{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.acq-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;margin-bottom:6px;}
+.acq-desc{font-size:12.5px;color:#444;line-height:1.55;}
+.acq-stats{padding:10px 16px;background:#f5f5fa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.where-search{background:#e8f7fd;border-radius:8px;padding:14px 18px;margin-top:14px;}
+.where-search .sec-lbl{color:#00709a;}
+.where-search p{font-size:12.5px;color:#444;line-height:1.7;}
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10.5px;color:#555;}
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.rank-bar,.ls-stats,.fn-note,.acq-bar,.p2hdr,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:720px){.two-col{grid-template-columns:1fr;}.swot{grid-template-columns:1fr;}.dgrid{grid-template-columns:1fr 1fr;}.thesis-grid{grid-template-columns:1fr;}.ls-stats{grid-template-columns:1fr;}.sec{padding:18px 20px;}.hdr{padding:24px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="hdr">
+  <div class="hdr-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="hdr-eye">Candidate Readiness &middot; Internal Analysis</div>
+  <h1 class="hdr-name">KC Copeland</h1>
+  <p class="hdr-meta">Atlanta, GA &nbsp;&middot;&nbsp; <strong>Full Time Searcher / Real Estate Investor / Former Morgan Stanley ED</strong> &nbsp;&middot;&nbsp; Within 6 months &nbsp;&middot;&nbsp; Home Services · Senior Care</p>
+  <p class="hdr-note">For internal FN use only — do not share with candidate</p>
+</header>
+
+<!-- CLASSIFICATION -->
+<div class="cls-banner">
+  <div class="cls-badge"><span>SUPER<br>NOVA</span></div>
+  <div class="cls-info">
+    <h2>Classification: <em>Super Nova</em></h2>
+    <p>KC is among the highest-readiness candidates FN will see. Capital markets expertise, Morgan Stanley executive background, $1M+ net worth, 750+ credit, SBA pre-approval at $2M, and a within-6-months timeline. This candidate is ready — the Nova Guide's job is to move fast and get her to Discovery Day.</p>
+    <span class="conf-pill">Confidence &middot; High</span>
+  </div>
+</div>
+
+<!-- TWO-AXIS -->
+<div class="sec">
+  <div class="sec-lbl">The Two-Axis Read</div>
+  <div class="two-col">
+    <div>
+      <div class="axis-block">
+        <div class="score-ring"><div class="inner"><span class="num">86</span><span class="den">/ 100</span></div></div>
+        <div class="axis-copy">
+          <div class="lift-lbl">Readiness &amp; Potential</div>
+          <div style="margin-top:12px;">
+            <div class="lift-lbl" style="color:#452e80;">FN Lift Required</div>
+            <div class="lift-pills" style="margin-top:6px;">
+              <span class="pill on">Low</span><span class="pill">Moderate</span><span class="pill">High</span>
+            </div>
+          </div>
+          <p class="lift-note">Binding constraint: <strong>System selection</strong> — KC has everything she needs financially. FN's primary job is helping her select the right franchise system and navigate the first-time franchise owner learning curve. This is a low-lift, high-impact relationship.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="matrix">
+        <div></div><div class="m-colh">Emerging</div><div class="m-colh">Developing</div><div class="m-colh">Strong</div>
+        <div class="m-rowh">High</div>
+        <div class="mcell nebula"><span class="tag">Nebula</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="m-rowh">Moderate</div>
+        <div class="mcell nebula"><span class="tag">Nebula</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="m-rowh">Low</div>
+        <div class="mcell nebula"><span class="tag">Nebula</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="mcell super here"><span class="tag">Super</span><span class="dot"></span></div>
+      </div>
+      <p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+    </div>
+  </div>
+</div>
+
+<!-- READINESS DIMENSIONS -->
+<div class="sec">
+  <div class="sec-lbl">Readiness Dimensions <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;color:#a9a7c0;">(capital-free)</span></div>
+  <div class="dims">
+    <div>
+      <div class="dim-top"><span class="dim-name">Operator Readiness &amp; Capability</span><span class="dim-score">32 / 32</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">This is about as strong an operator profile as FN will see. Executive Director at Morgan Stanley — capital markets, proprietary mortgage trading desk, digital transformation program management. MBA from Duke. Management consulting background. Led strategic initiatives across integrated AI platforms, data, and client engagement channels. The real estate investing and private lending overlay adds business ownership experience. Runs a holding company (Shiloh Horizons) — this candidate already thinks like a portfolio operator.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Vision, Motivation &amp; Commitment</span><span class="dim-score">24 / 27</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:89%"></div></div>
+      <p class="dim-note">Within 6 months, legacy-building motivation, generational wealth thesis, holding company structure already in place. The vision is clear and personal — "cement a legacy and participate in the upside of the American business ecosystem as an owner." Specific systems (DryMedic, senior/veteran housing) already researched. Minor gap: single-unit target for now, which limits multi-unit score slightly.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Sector &amp; Multi-Unit Fit</span><span class="dim-score">15 / 18</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:83%"></div></div>
+      <p class="dim-note">Home Services and Senior Care are both strong FN verticals — non-discretionary, essential, recession-resistant. The real estate angle gives Home Services a natural personal familiarity advantage. Senior Care alignment with her passion for veterans and seniors makes the sector selection personally grounded, not just financial. Single-unit initial target caps the multi-unit score, but the holding company structure signals eventual portfolio intent.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Coachability &amp; Ecosystem Fit</span><span class="dim-score">15 / 13</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">Strong results orientation, analytical rigor, and openness to new frameworks (she used AI-enabled platforms at Morgan Stanley). Financial literacy background means she will engage deeply with FDD analysis and capital structuring conversations — this is a candidate who will push for real depth, not surface-level recommendations. Excellent ecosystem fit.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SWOT -->
+<div class="sec">
+  <div class="sec-lbl">SWOT</div>
+  <div class="swot">
+    <div class="quad q-s"><h4>Strengths</h4><ul>
+      <li>Morgan Stanley Executive Director — capital markets, AI transformation, P&L at scale</li>
+      <li>Duke MBA + Management Consulting background</li>
+      <li>SBA pre-approved for $2M with Truliance — ready to move</li>
+      <li>$1M+ net worth + 750+ credit + $100K–$250K liquid</li>
+      <li>Holding company (Shiloh Horizons) already established — portfolio operator mindset</li>
+      <li>Real estate lending experience — understands capital structure and risk</li>
+    </ul></div>
+    <div class="quad q-d"><h4>Development Areas</h4><ul>
+      <li>First-time franchise owner — the FDD/Item 19/royalty structure will be a new operating model</li>
+      <li>Owner-operator intent creates a time commitment that needs to be scoped carefully given her current business activities</li>
+      <li>Single-unit initial target — strong for de-risking entry, though multi-unit potential is clearly there</li>
+    </ul></div>
+    <div class="quad q-o"><h4>What FN Can Unlock</h4><ul>
+      <li>FDD analysis expertise — KC will want depth, and FN can deliver the rigorous system-level analysis her background demands</li>
+      <li>Senior care and home services network introductions at the right level (Discovery Day, not cold outreach)</li>
+      <li>ROBS structuring for retirement rollover if she wants to diversify beyond SBA</li>
+      <li>Path to multi-unit portfolio under Shiloh Horizons — FN can build that roadmap now</li>
+    </ul></div>
+    <div class="quad q-r"><h4>Risks to Watch</h4><ul>
+      <li>DryMedic has no available territories in Georgia per their site — do not refer without confirming directly with Authority Brands</li>
+      <li>Owner-operator intent at 6 months needs to be scoped — can she truly be day-to-day given her current commitments?</li>
+      <li>Timeline urgency (within 6 months) is real but FDD review and SBA closing take time — set realistic sub-milestones</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- PATHWAY -->
+<div class="sec">
+  <div class="two-col">
+    <div class="pathway-dk">
+      <div class="sec-lbl">Recommended Capital Pathway</div>
+      <div class="pw-route">SBA 7(a) — Pre-Approved $2M · Truliance</div>
+      <div class="pw-backup">Backup: ROBS retirement rollover + SBA blend</div>
+      <p class="pw-note">KC is already pre-approved for $2M SBA through Truliance — this is the strongest capital position FN will see. The question isn't whether she can fund; it's selecting the right system and structuring the deal. ROBS is an additional tool if she wants to reduce debt service. The capital is ready. Move fast.</p>
+    </div>
+    <div>
+      <div class="sec-lbl">Path to Ownership</div>
+      <ol class="roadmap">
+        <li><strong>Discovery call this week:</strong> Confirm system shortlist (DryMedic territory issue needs immediate verification), ownership model scope, and Georgia geography priority</li>
+        <li><strong>FDD review:</strong> KC will want rigorous analysis — schedule FDD deep-dive within 2 weeks of system selection</li>
+        <li><strong>Truliance pre-approval activation:</strong> KC has $2M SBA pre-approval — submit with selected system as soon as FDD is reviewed</li>
+        <li><strong>Franchise agreement + close:</strong> Execute within 90–120 days if Discovery Day confirms fit</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- EXPECTATIONS -->
+<div class="sec">
+  <div class="sec-lbl">Expectations Check</div>
+  <div class="expect">
+    <div class="erow">
+      <span class="chip exp">Expects: Ownership within 6 months</span>
+      <span class="arr">&rarr;</span>
+      <span class="chip real">Realistic: 4–6 months if system confirmed in 30 days</span>
+    </div>
+    <p><b>Why</b> KC's capital is ready and her SBA is pre-approved. The 6-month window is genuinely achievable if system selection happens in the next 30 days. The main variable is FDD review timeline and Discovery Day scheduling. The DryMedic territory issue needs immediate resolution — if Georgia is unavailable, she needs to pivot to an alternative system quickly.</p>
+    <p><b>On the call</b> Match her urgency. Don't slow her down unnecessarily. Give her a concrete 30-60-90 day roadmap with specific milestones so she can track progress the way a Morgan Stanley ED tracks a project.</p>
+  </div>
+</div>
+
+<!-- ACTION -->
+<div class="sec">
+  <div class="sec-lbl">Recommended Next Action</div>
+  <div class="action"><strong>Book discovery call immediately — confirm DryMedic territory availability in Georgia and identify 2–3 alternative systems if unavailable. KC is ready to move.</strong></div>
+  <div class="sec-lbl" style="margin-top:4px;">Discovery Call Questions</div>
+  <ul class="disc-qs">
+    <li>You mentioned DryMedic — we need to flag that their site shows no available territories in Georgia right now. Have you already spoken with Authority Brands directly, or would you like us to verify and identify alternatives?</li>
+    <li>Walk me through what drew you to DryMedic specifically — was it the restoration/emergency services model, the Authority Brands network, or something else? That helps us identify the right alternatives if DryMedic isn't available.</li>
+    <li>On the Senior Care side — you mentioned businesses that assist seniors and veterans with housing and non-medical needs. Have you looked at home care brands like Amada Senior Care or Comfort Keepers specifically, or is it more conceptual at this point?</li>
+    <li>Your Truliance SBA pre-approval is for $2M — are you looking to deploy the full amount in one location, or are you thinking about a multi-unit or multi-brand approach under Shiloh Horizons from the start?</li>
+    <li>You noted owner-operator as your ownership model — given your current real estate business and other activities, what does "day-to-day" look like for you in practice? Are you thinking full-time transition, or owner-operator with a strong general manager?</li>
+    <li>Your real estate background is a genuine differentiator for Home Services — have you thought about how KC Horizons and a Home Services franchise might complement each other strategically?</li>
+  </ul>
+</div>
+
+<!-- GAPS -->
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Data Gaps to Resolve</div>
+  <div class="gaps">
+    <span class="gap-tag">DryMedic Georgia territory — verify availability before recommending</span>
+    <span class="gap-tag">Senior Care system — specific brand or conceptual?</span>
+    <span class="gap-tag">Multi-unit intent — 1 unit or Shiloh Horizons portfolio approach?</span>
+    <span class="gap-tag">Owner-operator vs. GM-led — scope of personal involvement</span>
+    <span class="gap-tag">ROBS — retirement assets available for rollover?</span>
+    <span class="gap-tag">Priority sector — Home Services vs. Senior Care first?</span>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="p2hdr">
+  <h2>Discovery Day Prep &nbsp;&middot;&nbsp; KC Copeland</h2>
+  <p>Internal Nova Guide reference &nbsp;&middot;&nbsp; Do not share with candidate</p>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Professional Background</div>
+  <p style="font-size:13.5px;color:#333;line-height:1.7;">KC Copeland is the President of KC Horizons LLC, a real estate investment company providing private lending to residential investors and developers. Her professional career began in Management Consulting, followed by an MBA from Duke University. She spent the majority of her career on Wall Street — proprietary Mortgage Trading desk during the Great Financial Crisis, then capital markets, wealth management, trading, operations, and technology roles. Her most recent corporate role was Executive Director of Morgan Stanley's Digital Marketing Program Management Office, where she led strategic initiatives to transform client engagement channels using integrated tools, data, and AI-enabled platforms. She is now a Full Time Searcher focused on business acquisition through her holding company, Shiloh Horizons.</p>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Investment Thesis</div>
+  <div class="thesis-grid">
+    <div class="tc"><div class="tc-lbl">Why Franchise Ownership</div><div class="tc-val">"To build wealth, cement a legacy and to participate/contribute in the upside of the American business ecosystem as an owner."</div></div>
+    <div class="tc"><div class="tc-lbl">Success in 3–5 Years</div><div class="tc-val">"Own an additional profitable business that sustains my life and family and creates opportunities for wealth and employment of others."</div></div>
+    <div class="tc"><div class="tc-lbl">Day-to-Day Involvement</div><div class="tc-val">Owner-Operator — 2–4 years experience</div></div>
+    <div class="tc"><div class="tc-lbl">Capital &amp; Financing</div><div class="tc-val">"SBA lending (pre-approved for $2M with Truliance). Potentially open to ROBS."</div></div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Franchise Research &amp; Geography</div>
+  <p style="font-size:13px;color:#333;line-height:1.7;margin-bottom:10px;"><strong>Systems researched:</strong> DryMedic (Home Services — restoration); businesses that assist seniors and veterans with housing and non-medical needs. ⚠️ DryMedic shows no Georgia territories currently available per their site — verify with Authority Brands before proceeding.</p>
+  <p style="font-size:13px;color:#333;line-height:1.7;margin-bottom:10px;"><strong>Target geography:</strong> Atlanta, greater Georgia, and/or businesses within two hours travel time. <strong>Brand stage:</strong> Established Brand. <strong>Acquisition interest:</strong> Yes. <strong>Seasonality:</strong> No Preference.</p>
+  <p style="font-size:13px;color:#333;line-height:1.7;"><strong>Sector rationale:</strong> "I am interested in businesses that complement my real estate experience and knowledge." — Home Services is a natural complement; Senior Care aligns with her philanthropic focus on veterans and seniors.</p>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Capital Profile</div>
+  <div class="dgrid">
+    <div class="dcard"><div class="dlbl">Liquid Capital</div><div class="dval">$100K–$250K</div></div>
+    <div class="dcard"><div class="dlbl">Net Worth</div><div class="dval">$1M+</div></div>
+    <div class="dcard"><div class="dlbl">Credit Score</div><div class="dval">750+</div></div>
+    <div class="dcard"><div class="dlbl">SBA Pre-Approval</div><div class="dval">$2M — Truliance ✓</div></div>
+    <div class="dcard"><div class="dlbl">ROBS Potential</div><div class="dval">Open — retirement assets TBD</div></div>
+    <div class="dcard"><div class="dlbl">Total Accessible</div><div class="dval">$2M+ SBA + liquid + potential ROBS</div></div>
+  </div>
+</div>
+
+<!-- LANDSCAPE -->
+<div class="sec">
+  <div class="sec-lbl">Franchise Landscape — Internal Version</div>
+  <div class="excl-box">
+    <div class="sec-lbl">Saturation &amp; Territory Notes</div>
+    <p>DryMedic: Georgia territories showing unavailable on their site — excluded from landscape pending verification with Authority Brands. No existing franchise ownership to exclude. Established Brand filter applied. Landscape focused on Atlanta, greater Georgia, within 2-hour travel. Home Services and Senior Care verticals only.</p>
+  </div>
+  <div class="ls-grid">
+
+    <div class="ls-card">
+      <div class="rank-bar r1"><span class="rank-num">RANK 1</span><span class="rank-note">SBA $2M pre-approved · Georgia territory confirmed available · Recurring contracts</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Amada Senior Care</div><span class="ls-cat cat-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C · Recurring non-medical senior home care contracts.</strong> Amada Senior Care has confirmed Atlanta Metro territory available — their own website lists it as open and directs interested parties to start the discovery process. Non-medical home care (personal care, companion care, home health aide services) for seniors and veterans aligns directly with KC's stated interest in "businesses that assist seniors and veterans." Recurring care contracts create predictable revenue. SBA-friendly. Owner-operator model documented. KC's $2M SBA pre-approval with Truliance is well above the investment threshold.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$75K–$155K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring home care contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Territory Status</div><div class="ls-sval good">Atlanta Metro confirmed available ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Customer</div><div class="ls-sval">Seniors + veterans — KC's stated focus</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Atlanta Metro territory confirmed open ✓</span>
+        <span class="ls-tag recur">Recurring care contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Owner-operator ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r2"><span class="rank-num">RANK 2</span><span class="rank-note">Comfort Keepers · Georgia territory active · National established brand · Senior care</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Comfort Keepers</div><span class="ls-cat cat-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C · Recurring non-medical in-home senior care.</strong> One of the most established senior care brands nationally, Comfort Keepers is expanding across Georgia with active territories confirmed. Non-medical home care for seniors — personal care, companionship, light housekeeping, transportation. Recurring contract model with the same seniors over months and years. Owner-operator documented as the primary ownership model. KC's capital profile (750+ credit, $2M SBA, $1M+ net worth) makes her one of the most qualified candidates in their pipeline. Georgia is a priority expansion market.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$89K–$155K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring care contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Georgia Status</div><div class="ls-sval good">Expanding across Georgia — active ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">700+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia territory active ✓</span>
+        <span class="ls-tag recur">Recurring senior care contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Owner-operator ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r3"><span class="rank-num">RANK 3</span><span class="rank-note">DryMedic alternative · Restoration services · Authority Brands · Georgia territory verify</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Benjamin Franklin Plumbing (Authority Brands)</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential plumbing service and maintenance contracts.</strong> KC researched DryMedic — which is under Authority Brands alongside Benjamin Franklin Plumbing, Mister Sparky (electrical), and others. If DryMedic is unavailable in Georgia, Benjamin Franklin Plumbing is the natural adjacent Authority Brands option. Non-discretionary plumbing creates recurring service demand, and the maintenance agreement model generates predictable repeat revenue. Real estate investors make natural owners of property service businesses — KC's background is a direct advantage. Georgia territory availability to be confirmed directly with Authority Brands.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$125K–$272K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring plumbing service contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Parent Company</div><div class="ls-sval">Authority Brands — same as DryMedic</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">200+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Verify Georgia territory with Authority Brands</span>
+        <span class="ls-tag recur">Recurring maintenance contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Confirm availability before presenting</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r4"><span class="rank-num">RANK 4</span><span class="rank-note">Home care · Veterans focus · Established brand · Georgia active</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Homewatch CareGivers</div><span class="ls-cat cat-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C · Recurring total care home services for seniors and veterans.</strong> Homewatch CareGivers is part of the Authority Brands network (same parent as DryMedic) and explicitly serves seniors and veterans — KC's stated population of focus. The brand recently expanded to Boston, California, Florida, and Maryland in 2025 with Georgia listed as an active growth market. Recurring care hour contracts create predictable monthly revenue. The Authority Brands network means KC would benefit from the same infrastructure she researched with DryMedic.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$89K–$155K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring care hours ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Parent</div><div class="ls-sval">Authority Brands — same as DryMedic</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Focus Population</div><div class="ls-sval good">Seniors + veterans — KC's stated interest</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia active growth market</span>
+        <span class="ls-tag recur">Recurring care contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Owner-operator ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r5"><span class="rank-num">RANK 5</span><span class="rank-note">Home restoration · Entrepreneur 500 · Authority Brands network · Verify GA territory</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">DRYmedic Restoration Services</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Emergency property damage restoration — water, fire, smoke, mold.</strong> KC's original researched system. DRYmedic (Authority Brands) handles emergency restoration services — non-discretionary, insurance-backed work with recurring service relationships. Georgia territory availability showing limited on their public site as of research date — explicitly listed as unavailable in Detroit, Denver, Cincinnati, Indianapolis but Georgia status is ambiguous. This must be verified directly with Authority Brands (888-718-7513) before presenting to KC. If territory is available in her specific Atlanta/2-hour travel zone, it should be ranked #1.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$168K–$396K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Insurance-backed restoration ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Georgia Territory</div><div class="ls-sval warn">⚠️ Verify with Authority Brands before presenting</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">200+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia territory status: MUST VERIFY</span>
+        <span class="ls-tag recur">Insurance-backed recurring revenue</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Do not present until territory confirmed</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r6"><span class="rank-num">RANK 6</span><span class="rank-note">Home services · Real estate complement · Established · Georgia active</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">The Cleaning Authority</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential cleaning subscriptions.</strong> The Cleaning Authority (Authority Brands) creates the same infrastructure synergy as DryMedic — same parent company network, same support systems. Recurring biweekly cleaning subscriptions generate predictable revenue from a loyal residential customer base. Georgia has active territory availability. KC's real estate background means she already knows the homeowner demographic well — her existing KC Horizons client relationships could even be a referral source. Lower capital entry than restoration concepts and genuinely complementary to a real estate-oriented business portfolio.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$55K–$130K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring cleaning subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Georgia Status</div><div class="ls-sval good">Active territory available ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">200+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia territory available ✓</span>
+        <span class="ls-tag recur">Recurring subscription revenue</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Real estate complement ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-note" style="margin-top:14px;">
+    <div class="sec-lbl">FN Note for Nova Guide</div>
+    <p>KC is the highest-readiness candidate in the current pipeline. Move fast — she has capital ready, SBA pre-approved, and a 6-month timeline. The single most important action before the discovery call is verifying DryMedic Georgia territory availability with Authority Brands directly. If it's available, that goes to Rank 1 immediately. If unavailable, Homewatch CareGivers (same Authority Brands network) is the natural bridge — she gets the infrastructure she researched with DryMedic while hitting her seniors/veterans mission. Amada is the strongest guaranteed territory bet regardless. Her Spelman and Duke connections in Atlanta make this a particularly strong home market opportunity — the alumni network could be a meaningful referral base for a senior care operation.</p>
+  </div>
+</div>
+
+<!-- ACQUISITION OPPORTUNITIES -->
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Acquisition Opportunities — Atlanta / Home Services &amp; Senior Care</div>
+  <p style="font-size:13px;color:#555;margin-bottom:16px;line-height:1.6;">KC indicated interest in acquisitions as part of Shiloh Horizons. The following are active or recently listed opportunities in the Atlanta area matching her sectors.</p>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 1</span><small>DealStream · Georgia · Senior Care Franchises Active</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Senior Care Franchise Resales — Greater Georgia</div>
+      <div class="acq-desc">DealStream lists active senior care franchise opportunities and resales in Georgia, including in-home care, adult day services, and non-medical home care. Resales offer an existing client base, trained caregiver staff, and established revenue from day one — ideal for KC's timeline. Contact a senior care-specialized broker to surface unlisted opportunities not yet public.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-slbl">Location</div><div class="ls-sval">Greater Georgia</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Advantage</div><div class="ls-sval good">Day-1 revenue from existing clients</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Type</div><div class="ls-sval">Franchise resale</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Source</div><div class="ls-sval">DealStream.com</div></div>
+    </div>
+  </div>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 2</span><small>LoopNet · Georgia · 32 Health &amp; Senior Care Franchises Available</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Health &amp; Senior Care Franchise Opportunities — Georgia (32 Active)</div>
+      <div class="acq-desc">LoopNet lists 32 health and senior care franchise opportunities currently available in Georgia. This includes both new unit opportunities and resale listings across multiple brands. KC's capital position ($2M SBA pre-approved) makes her qualified for a wide range of options in this pool. Recommend Nova Guide filter to Atlanta metro and within-2-hours travel radius to narrow to her geography.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-slbl">Location</div><div class="ls-sval">Georgia — 32 active listings</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Capital Required</div><div class="ls-sval good">KC qualifies for wide range</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Type</div><div class="ls-sval">Mix of new units and resales</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Source</div><div class="ls-sval">LoopNet.com</div></div>
+    </div>
+  </div>
+
+  <div class="where-search">
+    <div class="sec-label" style="color:#00709a;">Where to Search for Additional Opportunities</div>
+    <p><strong>DealStream.com</strong> — Senior care and home services franchise resales in Georgia.<br>
+    <strong>LoopNet.com</strong> — 32 health and senior care franchise opportunities in Georgia currently.<br>
+    <strong>PET|VET M&amp;A equivalent for senior care</strong> — Specialized senior care business brokers surface unlisted resales before they hit public platforms.<br>
+    <strong>Authority Brands resale network</strong> — If DryMedic or Homewatch has existing owners looking to exit in the Atlanta area, Authority Brands can surface those opportunities directly.</p>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova Intake Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; KC Copeland &nbsp;&middot;&nbsp; 2026</p>
+  <p class="footer-note">For internal FN use only &nbsp;&middot;&nbsp; Do not share with candidate &nbsp;&middot;&nbsp; kchorizonhomes@gmail.com</p>
+</div>
+
+</div>
+</body>
+</html>
