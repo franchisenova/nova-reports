@@ -185,7 +185,7 @@
         <p>A new candidate submits their intake. The team is notified right away so nothing sits unseen.</p>
         <div class="meta">
           <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
-          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack <span class="det">· #fn_candidate_activity</span></span>
+          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack <span class="det">· #fn-candidate-activity</span></span>
         </div>
       </div>
     </div>
@@ -194,8 +194,8 @@
       <div class="node">2</div>
       <div class="card">
         <h3>Run the analysis</h3>
-        <p>Brenda runs the intake through the Claude prompt. When it finishes, <span class="em">two files</span> land in the #fn_candidate_activity Slack channel: the <span class="em">Internal Analysis</span> for the team, and the <span class="em">Landscape Analysis</span> — shared with the candidate before their kickoff call.</p>
-        <p>Both links are saved to the candidate's HubSpot notes, and the landscape link is written to the contact's Landscape URL property.</p>
+        <p>Brenda runs the intake through the Claude prompt. When it finishes, up to <span class="em">three files</span> land in the #fn-candidate-activity Slack channel: the <span class="em">Internal Analysis</span> for the team, the <span class="em">Landscape Analysis</span> — shared with the candidate before their kickoff call — and, if we need something to send the candidate about their intake, a <span class="em">Readiness Snapshot</span>.</p>
+        <p>The links are saved to the candidate's HubSpot notes, and the landscape link is written to the contact's Landscape URL property.</p>
         <div class="meta">
           <span class="tag person"><svg><use href="#i-person"/></svg>Brenda</span>
           <span class="tag note"><svg><use href="#i-note"/></svg>HubSpot note</span>
@@ -214,6 +214,17 @@
           <span class="tag person"><svg><use href="#i-person"/></svg>Mel</span>
           <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FN Track</span></span>
         </div>
+        <div class="branch">
+          <div class="fork good">
+            <div class="ftitle"><span class="arrow">→</span> Move forward</div>
+            <p>The candidate is invited to a discovery call (next step).</p>
+          </div>
+          <div class="fork bad">
+            <div class="ftitle"><span class="arrow">→</span> Forgo the call</div>
+            <p>If the analysis says a discovery call isn't warranted, mark <span class="em">FN Track = Reviewed / Not a Fit</span> and <span class="em">Franchise Nova Stage = Not Moving Forward</span>.</p>
+            <div class="meta"><span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FN Track / Franchise Nova Stage</span></span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -221,7 +232,7 @@
       <div class="node">4</div>
       <div class="card">
         <h3>Invite to book the discovery call</h3>
-        <p>An automatic email — matched to the candidate's track — invites them to book. <span class="em">Every candidate gets a discovery call</span>; booking runs through Mel's Google booking link.</p>
+        <p>An automatic email — matched to the candidate's track — invites them to book. <span class="em">Every candidate we move forward with gets a discovery call</span>; booking runs through Mel's Google booking link.</p>
         <p>If they don't book, an automatic nurture sequence keeps reaching out until they do — the cadence differs by track, shown below.</p>
         <div class="meta">
           <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
@@ -290,16 +301,16 @@
       <div class="node">7</div>
       <div class="card">
         <h3>The decision</h3>
-        <p>If the call showed the analysis had the track wrong, the Nova Guide updates the FN Track — otherwise it stays. Then they set the outcome: <span class="em">Accepted</span> or <span class="em">Not a Good Fit</span>.</p>
+        <p>Based on the call, the Nova Guide sets the outcome — <span class="em">Accepted</span> or <span class="em">Not a Good Fit</span> — and updates the Franchise Nova Stage to match.</p>
         <div class="meta">
           <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
-          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FN Track</span></span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Franchise Nova Stage</span></span>
           <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome</span></span>
         </div>
         <div class="branch">
           <div class="fork bad">
             <div class="ftitle"><span class="arrow">→</span> Not a good fit</div>
-            <p>The Nova Guide sends <span class="em">Email 11 — Post Discovery Call, Not a Good Fit.</span></p>
+            <p>The Nova Guide sends <span class="em">Email 10 — Post Discovery Call, Not a Good Fit.</span></p>
             <span class="manual-flag"><b>Manual send.</b> The guide adds personal detail before it goes out — the template has notes on what to include.</span>
             <div class="meta"><span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span></div>
           </div>
@@ -342,12 +353,23 @@
     <div class="stage reveal">
       <div class="node">9</div>
       <div class="card">
-        <h3>Systems submission — 10 business days</h3>
-        <p>After the kickoff, the candidate has <span class="em">10 business days</span> to submit the <span class="em">2 systems</span> they want to move forward with, using the submission form in their email. The moment the form comes in, the team is notified so the analysis can begin.</p>
+        <h3>Kickoff call outcome</h3>
+        <p>After the kickoff call, the Nova Guide updates the <span class="em">Kickoff Call Status</span> — <span class="em">Completed</span> or <span class="em">No Show</span>.</p>
         <div class="meta">
-          <span class="tag form"><svg><use href="#i-form"/></svg>Candidate form <span class="det">· 2 systems</span></span>
-          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
-          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack</span>
+          <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Kickoff Call Status → Completed / No Show</span></span>
+        </div>
+        <div class="branch">
+          <div class="fork good">
+            <div class="ftitle"><span class="arrow">→</span> Completed</div>
+            <p>An automatic email thanks the candidate and reminds them of their homework: submit their <span class="em">2 systems</span> within <span class="em">10 business days</span>. A reminder email goes out automatically <span class="em">3 days before</span> the deadline.</p>
+            <div class="meta"><span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span></div>
+          </div>
+          <div class="fork bad">
+            <div class="ftitle"><span class="arrow">→</span> No show</div>
+            <p>A nurture flow runs to get the kickoff call rescheduled, until they rebook.</p>
+            <div class="meta"><span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -355,11 +377,29 @@
     <div class="stage reveal">
       <div class="node">10</div>
       <div class="card">
-        <h3>FDD &amp; financial analysis</h3>
-        <p>With the systems in, the team runs the <span class="em">FDD and financial analysis</span> on them. Once it's complete, the Nova Guide schedules the <span class="em">FDD / financial analysis call</span> to walk the candidate through what we found and talk through how to move forward.</p>
+        <h3>Systems submitted</h3>
+        <p>Using the form from that email, the candidate submits the <span class="em">2 systems</span> they want to move forward with. The moment the form comes in, a <span class="em">Slack notification</span> posts to #fn-candidate-activity so Brenda can run the FDD analysis on the systems they submitted.</p>
         <div class="meta">
-          <span class="tag person"><svg><use href="#i-person"/></svg>Team</span>
-          <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
+          <span class="tag form"><svg><use href="#i-form"/></svg>Candidate form <span class="det">· 2 systems</span></span>
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack <span class="det">· #fn-candidate-activity</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <div class="node">11</div>
+      <div class="card">
+        <h3>FDD &amp; financial analysis</h3>
+        <p>Brenda runs the <span class="em">FDD and financial analysis</span> on the submitted systems. When it's complete, the <span class="em">live link is posted in Slack</span> and updated on the deal in HubSpot, and the team reviews the analysis.</p>
+        <p>Once the team gives a thumbs-up, the Nova Guide sets <span class="em">FDD Status = Delivered</span> — which triggers an automatic email inviting the candidate to schedule their <span class="em">FDD call</span>. After the call, the Nova Guide sets <span class="em">FDD Status = Reviewed</span>.</p>
+        <div class="meta">
+          <span class="tag person"><svg><use href="#i-person"/></svg>Brenda</span>
+          <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack <span class="det">· live link</span></span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FDD Analysis URL</span></span>
+          <span class="tag person"><svg><use href="#i-person"/></svg>Team review</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· FDD Status → Delivered / Reviewed</span></span>
+          <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic <span class="det">· schedule FDD call</span></span>
         </div>
       </div>
     </div>
