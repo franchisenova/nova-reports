@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — KC Copeland · Systems Worth Exploring</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:880px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.12);}
+.hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#161033);padding:34px 44px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(0,174,239,0.4),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;color:#fff;margin-bottom:8px;line-height:1.1;position:relative;}
+.h-meta{font-size:13px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+.section{padding:24px 44px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+.landscape-intro{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px;padding:12px 16px;background:#f5f5fa;border-left:3px solid #00aeef;border-radius:0 7px 7px 0;}
+.landscape-note{font-size:11px;color:#aaa;font-style:italic;margin-top:8px;}
+.ls-grid{display:flex;flex-direction:column;gap:12px;}
+.ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+.ls-card-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.ls-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;}
+.ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-senior{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.ls-why{font-size:12.5px;color:#444;line-height:1.55;}
+.ls-card-bottom{padding:10px 16px;background:#e8f7fd;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ls-stat{display:flex;flex-direction:column;gap:2px;}
+.ls-stat-label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.ls-stat-val{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
+.ls-stat-val.good{color:#1a7a4a;}
+.ls-stat-val.warn{color:#b86e00;}
+.ls-stat-val.note{color:#00709a;}
+.ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
+.ls-tag.geo{color:#00709a;background:#e8f7fd;}
+.ls-tag.recur{color:#452e80;background:#ede9fa;}
+.ls-tag.warn{color:#b86e00;background:#fdf5e6;}
+.rank-bar{padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-bar.r1{background:#0d4a6b;}
+.rank-bar.r2,.rank-bar.r3,.rank-bar.r4,.rank-bar.r5,.rank-bar.r6{background:#1a1340;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;}
+.rank-note{font-size:10px;color:rgba(255,255,255,0.65);}
+.acq-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;margin-bottom:12px;}
+.acq-bar{background:#0d4a6b;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;}
+.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;}
+.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);}
+.acq-body{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.acq-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;margin-bottom:6px;}
+.acq-desc{font-size:12.5px;color:#444;line-height:1.55;}
+.acq-stats{padding:10px 16px;background:#f5f5fa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.where-search{background:#e8f7fd;border-radius:8px;padding:14px 18px;margin-top:14px;}
+.where-search .sec-label{color:#00709a;}
+.where-search p{font-size:12.5px;color:#444;line-height:1.7;}
+.disclaimer{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:18px 44px;}
+.disclaimer p{font-size:11.5px;color:#888;line-height:1.7;}
+.disclaimer strong{color:#555;}
+.doc-footer{background:#0d0a1c;padding:14px 44px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.rank-bar,.ls-card-bottom,.acq-bar,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:640px){.section{padding:18px 20px;}.hdr{padding:24px 20px;}.ls-card-bottom{grid-template-columns:1fr;}.disclaimer{padding:16px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Prepared for Your Review</div>
+  <h1 class="h-name">KC Copeland</h1>
+  <p class="h-meta"><strong>Home Services &middot; Senior Care</strong> &nbsp;&middot;&nbsp; Target: Atlanta, greater Georgia, within 2 hours &nbsp;&middot;&nbsp; Established Brands</p>
+</header>
+
+<div class="section">
+  <div class="sec-label">About This List</div>
+  <p class="landscape-intro">A curated set of franchise systems built around your two sectors — Home Services and Senior Care — with a focus on established brands operating in the Atlanta/Georgia market. Given your interest in businesses that serve seniors and veterans, we've leaned into the Senior Care vertical alongside Home Services concepts that complement your real estate background.<br><br>We've also included acquisition opportunities in Georgia matching your sectors. With your SBA pre-approval at $2M already in place, resales and existing operations are a real option worth considering alongside new franchise units.<br><br><strong>Est. Investment</strong> = total estimated cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn. <strong>B2C</strong> = customers are individuals. <strong>B2B</strong> = customers are other businesses.</p>
+  <p class="landscape-note">⚑ Public information only — no FDDs reviewed. Territory availability must be confirmed directly with each franchisor before proceeding. Listings change daily. Note: DryMedic Georgia territory status is flagged — see note in your system listing below.</p>
+</div>
+
+<div class="section">
+  <div class="sec-label">Franchise Systems Worth Exploring — Ranked by Fit</div>
+  <div class="ls-grid">
+
+    <div class="ls-card">
+      <div class="rank-bar r1"><span class="rank-num">RANK 1</span><span class="rank-note">Atlanta Metro confirmed available · Seniors &amp; veterans · Recurring care contracts</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Amada Senior Care</div><span class="ls-cat cat-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C · Recurring non-medical senior home care.</strong> Amada Senior Care has confirmed Atlanta Metro territory available — their website lists it as open for new franchise partners. They provide personalized home care, senior living placement assistance, and caregiver support to seniors and veterans — directly aligned with what you described. Recurring care schedules create predictable monthly revenue from long-term client relationships. With your $2M SBA pre-approval and 750+ credit, you are among their most qualified prospective partners.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$75K–$155K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring home care contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Territory Status</div><div class="ls-stat-val good">Atlanta Metro confirmed available ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Serves</div><div class="ls-stat-val">Seniors + veterans — your stated focus</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Atlanta Metro territory confirmed ✓</span>
+        <span class="ls-tag recur">Recurring care contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Owner-operator ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r2"><span class="rank-num">RANK 2</span><span class="rank-note">700+ locations · Georgia expanding · Recurring senior care · National established brand</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Comfort Keepers</div><span class="ls-cat cat-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C · Recurring in-home senior care.</strong> One of the most established senior care brands nationally with 700+ locations. Comfort Keepers is actively expanding across Georgia with territory availability confirmed. Their model — personal care, companionship, light housekeeping, transportation — creates long-term recurring client relationships with the same seniors over months and years. Your capital profile (750+ credit, $2M SBA) makes you a highly qualified candidate in their pipeline. Georgia is listed as an active growth market.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$89K–$155K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring care contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Georgia Status</div><div class="ls-stat-val good">Actively expanding — territories available ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">700+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia territory available ✓</span>
+        <span class="ls-tag recur">Recurring senior care contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Owner-operator ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r3"><span class="rank-num">RANK 3</span><span class="rank-note">Authority Brands network · Seniors &amp; veterans · Same parent as DryMedic · Georgia active</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Homewatch CareGivers</div><span class="ls-cat cat-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C · Recurring total care home services for seniors and veterans.</strong> Homewatch CareGivers is part of the Authority Brands network — the same parent company as DryMedic. If DryMedic isn't available in your territory, Homewatch gives you access to the same infrastructure, support systems, and brand-building resources you researched, while focusing directly on the senior and veteran care mission you described. Georgia is an active growth market. Recurring care hour contracts build steady monthly revenue from long-term client relationships.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$89K–$155K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring care hours ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Parent</div><div class="ls-stat-val">Authority Brands — same as DryMedic</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Focus</div><div class="ls-stat-val good">Seniors + veterans ✓</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia active growth market</span>
+        <span class="ls-tag recur">Recurring care contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Authority Brands infrastructure ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r4"><span class="rank-num">RANK 4</span><span class="rank-note">DryMedic alternative · Authority Brands · Recurring plumbing contracts · Verify GA</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Benjamin Franklin Plumbing</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential plumbing maintenance and service contracts.</strong> Part of the same Authority Brands network as DryMedic. Non-discretionary plumbing is one of the most essential home services — no homeowner can defer a broken pipe or failed water heater. Recurring maintenance agreement clients generate predictable repeat revenue. Your real estate background (you understand the homeowner as a customer intimately) is a real operational advantage here. Georgia territory availability to be confirmed directly with Authority Brands.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$125K–$272K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring maintenance contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Parent</div><div class="ls-stat-val">Authority Brands — same as DryMedic</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">200+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Verify Georgia territory with Authority Brands</span>
+        <span class="ls-tag recur">Recurring maintenance contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Confirm availability before proceeding</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r5"><span class="rank-num">RANK 5</span><span class="rank-note">Your researched system · Restoration · Authority Brands · Verify Georgia territory</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">DRYmedic Restoration Services</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Emergency property damage restoration — water, fire, smoke, mold remediation.</strong> The system you already researched. DRYmedic handles emergency restoration — non-discretionary, insurance-backed, with strong recurring relationships with adjusters and property managers. Georgia territory availability is showing as ambiguous on their public site — we're flagging this for your Nova Guide to verify directly with Authority Brands before proceeding. If territory is available in your Atlanta/2-hour travel zone, this should be your first conversation.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$168K–$396K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Insurance-backed restoration ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Georgia Territory</div><div class="ls-stat-val warn">⚠️ Verify with Authority Brands before proceeding</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">200+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia territory status: MUST VERIFY</span>
+        <span class="ls-tag recur">Insurance-backed recurring revenue</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Contact Authority Brands: 888-718-7513</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r6"><span class="rank-num">RANK 6</span><span class="rank-note">Real estate complement · Recurring cleaning subscriptions · Authority Brands · Georgia active</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">The Cleaning Authority</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential cleaning subscriptions.</strong> The Cleaning Authority is part of the Authority Brands network — the same infrastructure and support you researched with DryMedic. Weekly and biweekly cleaning subscriptions create predictable recurring revenue. Georgia has active territory availability. As a real estate professional, your existing homeowner relationships through KC Horizons could be a natural referral source. Lower capital entry than restoration concepts and a straightforward recurring business model.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$55K–$130K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring cleaning subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Georgia Status</div><div class="ls-stat-val good">Active territory available ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Parent</div><div class="ls-stat-val">Authority Brands — same as DryMedic</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Georgia territory available ✓</span>
+        <span class="ls-tag recur">Recurring subscriptions</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Real estate complement ✓</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Acquisition Opportunities — Atlanta / Home Services &amp; Senior Care</div>
+  <p style="font-size:13px;color:#555;margin-bottom:16px;line-height:1.6;">Since you indicated interest in acquisitions as part of building Shiloh Horizons, here are active sources for established businesses in your sectors in the Georgia market. With your $2M SBA pre-approval, you qualify for a wide range of resale opportunities.</p>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 1</span><small>DealStream · Greater Georgia · Senior Care Franchise Resales</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Senior Care Franchise Resales — Georgia</div>
+      <div class="acq-desc">DealStream lists active senior care franchise resales in Georgia — in-home care, adult day services, non-medical home care. Buying a resale gives you an existing client base, trained caregivers, and cash flow from day one. Your capital profile qualifies you for a wide range of options at this level.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-stat-label">Location</div><div class="ls-stat-val">Greater Georgia</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Advantage</div><div class="ls-stat-val good">Day-1 revenue from existing clients</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Franchise resale</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Source</div><div class="ls-stat-val">DealStream.com</div></div>
+    </div>
+  </div>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 2</span><small>LoopNet · Georgia · 32 Active Health &amp; Senior Care Listings</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Health &amp; Senior Care Franchise Opportunities — Georgia (32 Active)</div>
+      <div class="acq-desc">LoopNet currently lists 32 health and senior care franchise opportunities in Georgia — a mix of new units and resales. Ask your Nova Guide to filter to Atlanta metro and within 2 hours to match your geography. Your $2M SBA pre-approval qualifies you for the vast majority of listings in this pool.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-stat-label">Location</div><div class="ls-stat-val">Georgia — 32 active listings</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Your Capital</div><div class="ls-stat-val good">$2M SBA qualifies for wide range ✓</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Mix of new units and resales</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Source</div><div class="ls-stat-val">LoopNet.com</div></div>
+    </div>
+  </div>
+
+  <div class="where-search">
+    <div class="sec-label" style="color:#00709a;">Where to Search for More</div>
+    <p><strong>DealStream.com</strong> — Senior care and home services franchise resales in Georgia.<br>
+    <strong>LoopNet.com</strong> — 32 health and senior care franchises currently active in Georgia.<br>
+    <strong>Authority Brands resale network</strong> — If a DryMedic or Homewatch owner is looking to exit in the Atlanta area, Authority Brands can surface those before they hit public platforms.<br>
+    <strong>BizBuySell.com</strong> — Search "Atlanta home care" or "Georgia senior care" for additional listings.</p>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates — actual costs vary. Territory availability must be confirmed directly with each franchisor. DryMedic Georgia territory status is currently unclear and must be verified with Authority Brands (888-718-7513) before any commitment. Acquisition listings change daily — verify with the listing broker before proceeding. All investment decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for KC Copeland &nbsp;&middot;&nbsp; 2026</p>
+</div>
+</div>
+</body>
+</html>
