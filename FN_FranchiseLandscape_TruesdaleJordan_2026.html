@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Jordan Truesdale · Systems Worth Exploring</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:880px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.12);}
+.hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#161033);padding:34px 44px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(69,46,128,0.38),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(0,174,239,0.18),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;color:#fff;margin-bottom:8px;line-height:1.1;position:relative;}
+.h-meta{font-size:13px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+.section{padding:24px 44px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+.landscape-intro{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px;padding:12px 16px;background:#f5f5fa;border-left:3px solid #00aeef;border-radius:0 7px 7px 0;}
+.landscape-note{font-size:11px;color:#aaa;font-style:italic;margin-top:8px;}
+.ls-grid{display:flex;flex-direction:column;gap:12px;}
+.ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+.ls-card-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.ls-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;}
+.ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-auto{background:rgba(21,19,31,0.08);color:#333;}
+.ls-why{font-size:12.5px;color:#444;line-height:1.55;}
+.ls-card-bottom{padding:10px 16px;background:#f0eefa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ls-stat{display:flex;flex-direction:column;gap:2px;}
+.ls-stat-label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.ls-stat-val{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
+.ls-stat-val.good{color:#1a7a4a;}
+.ls-stat-val.warn{color:#b86e00;}
+.ls-stat-val.note{color:#452e80;}
+.ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
+.ls-tag.geo{color:#00709a;background:#e8f7fd;}
+.ls-tag.recur{color:#452e80;background:#ede9fa;}
+.ls-tag.warn{color:#b86e00;background:#fdf5e6;}
+.rank-bar-r1{background:#282560;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6{background:#3a2e70;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;}
+.rank-note{font-size:10px;color:rgba(255,255,255,0.65);}
+/* ACQ */
+.acq-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;margin-bottom:12px;}
+.acq-bar{background:#1a1340;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;}
+.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;}
+.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);}
+.acq-body{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.acq-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;margin-bottom:6px;}
+.acq-desc{font-size:12.5px;color:#444;line-height:1.55;}
+.acq-stats{padding:10px 16px;background:#f5f5fa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.where-search{background:#f0eefa;border-radius:8px;padding:14px 18px;margin-top:14px;}
+.where-search .sec-label{color:#452e80;}
+.where-search p{font-size:12.5px;color:#444;line-height:1.7;}
+.disclaimer{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:18px 44px;}
+.disclaimer p{font-size:11.5px;color:#888;line-height:1.7;}
+.disclaimer strong{color:#555;}
+.doc-footer{background:#0d0a1c;padding:14px 44px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.rank-bar-r1,.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.ls-card-bottom,.acq-bar,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:640px){.section{padding:18px 20px;}.hdr{padding:24px 20px;}.ls-card-bottom{grid-template-columns:1fr;}.disclaimer{padding:16px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Prepared for Your Review</div>
+  <h1 class="h-name">Jordan Truesdale</h1>
+  <p class="h-meta"><strong>Home Services &middot; Automotive</strong> &nbsp;&middot;&nbsp; Target: Michigan, Research Triangle, Texas &nbsp;&middot;&nbsp; Established Brands</p>
+</header>
+
+<div class="section">
+  <div class="sec-label">About This List</div>
+  <p class="landscape-intro">A curated starting point — systems that fit the Home Services and Automotive sectors, your recurring-revenue focus, and your interest in acquiring an operating business with a semi-absentee ownership model. All systems are established brands with 5+ years of franchising history and active territory availability in your target markets.<br><br>We also included a set of acquisition opportunities in Michigan — established businesses for sale that match your sectors and recurring-revenue criteria. These represent a path to ownership that complements the franchise route.<br><br><strong>Est. Investment</strong> = total estimated cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn. <strong>B2C</strong> = customers are individual consumers. <strong>B2B</strong> = customers are other businesses.</p>
+  <p class="landscape-note">⚑ Public information only — no FDDs reviewed. Territory availability must be confirmed directly with each franchisor or broker before proceeding. Listings change daily.</p>
+</div>
+
+<div class="section">
+  <div class="sec-label">Franchise Systems Worth Exploring — Ranked by Fit</div>
+  <div class="ls-grid">
+
+    <div class="ls-card">
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Established brand · Recurring subscriptions · Michigan territory available</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Molly Maid (Neighborly)</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential cleaning subscriptions.</strong> One of the most recognized home cleaning brands in the country with 700+ locations and 40+ years in franchising. Weekly and biweekly cleaning subscriptions create the predictable recurring cash flow you described as your target. Michigan has active territory availability in Oakland and Macomb County. Semi-absentee ownership is explicitly supported with a manager-led team model. Lower entry cost than most service concepts and SBA-friendly with preferred lender access through the Neighborly network.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$109K–$157K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring cleaning subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">700+ locations · 40+ years franchising</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Liquid Capital Required</div><div class="ls-stat-val">$50K minimum</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available — Oakland/Macomb County</span>
+        <span class="ls-tag recur">Recurring subscription revenue</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">Michigan hometown brand · Monthly membership car wash · 161% growth rate</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Tommy's Express Car Wash</div><span class="ls-cat cat-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Monthly membership unlimited car wash subscription.</strong> Founded in Holland, MI — Tommy's is a true hometown brand with one of the strongest recurring revenue models in automotive. Customers pay a flat monthly fee for unlimited washes, creating the predictable subscription income you described. Average revenue per location is $1.82M with 161% network growth. Semi-absentee via a hired site manager. Michigan expansion is active. This is a capital-heavier investment but the financial model is among the strongest in the category.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val warn">$3.5M–$5.5M (site + equipment)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Monthly membership subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Avg Revenue / Location</div><div class="ls-stat-val good">$1.82M</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">100+ locations · Michigan founded</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan home brand — active expansion</span>
+        <span class="ls-tag recur">Monthly membership revenue</span>
+        <span class="ls-tag warn">Capital-intensive — outside investment likely needed</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Entrepreneur 500 top-ranked · $1M+ avg sales · Michigan territory active</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Mr. Handyman (Neighborly)</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential and commercial repair and maintenance.</strong> Ranked as a top home repair/handyman franchise on the 2026 Entrepreneur Franchise 500 with $1.05M average gross sales for 2-unit operators. Home-based — no storefront or retail space required. Michigan has active territory availability. Recurring maintenance agreement clients generate predictable repeat work. Your project management background (scope, scheduling, client communication) translates directly to this operating model.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$122K–$175K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring maintenance agreements ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Avg Gross Sales (2-unit)</div><div class="ls-stat-val good">$1.05M</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">300+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available</span>
+        <span class="ls-tag recur">Recurring maintenance agreements</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar-r4"><span class="rank-num">RANK 4</span><span class="rank-note">B2B commercial cleaning · Recurring monthly contracts · Low entry cost</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Jan-Pro Commercial Cleaning</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2B · Recurring commercial cleaning contracts.</strong> Jan-Pro operates on monthly B2B commercial cleaning contracts — offices, healthcare facilities, retail — with 10,000+ locations nationally. The commercial client base tends toward longer-term contracts than residential, and the manager-led team model is semi-absentee by design. Lower capital entry than most concepts. Michigan's commercial and industrial base supports strong demand. A good fit if you want to build a business on recurring business-to-business relationships rather than consumer-facing work.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$4K–$55K (regional/master varies)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring B2B monthly contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val good">10,000+ units nationally</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Overhead</div><div class="ls-stat-val good">Low — no storefront required</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available</span>
+        <span class="ls-tag recur">Recurring B2B contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+        <span class="ls-tag warn">Confirm unit vs. master franchise structure</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar-r5"><span class="rank-num">RANK 5</span><span class="rank-note">700+ locations · Non-discretionary automotive · Michigan car culture fit</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Meineke Car Care Centers</div><span class="ls-cat cat-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Recurring automotive maintenance — brakes, oil, tires, diagnostics, EV.</strong> Meineke is one of the most established names in automotive repair with 700+ locations nationally. Michigan's deep automotive culture makes this a natural market fit — 63.6% of Detroit commuters drive to work alone, and the average US vehicle age hit 12.6 years in 2025, driving more service demand to independent and franchised shops. Non-discretionary services create steady recurring visits. Semi-absentee with an experienced service manager is a documented ownership path.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val warn">$200K–$650K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring maintenance visits ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val good">700+ locations · Established</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Industry Driver</div><div class="ls-stat-val">Avg vehicle age 12.6 yrs → growing demand</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available — verify specific zip</span>
+        <span class="ls-tag recur">Recurring service visits</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Higher capital — outside investment may be needed</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar-r6"><span class="rank-num">RANK 6</span><span class="rank-note">Acquisition opportunity · Premium Metro Detroit territories · Motivated seller</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Mosquito Squad — Premium Metro Detroit Territories</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring seasonal pest control subscriptions.</strong> Premium mosquito control territories covering some of Metro Detroit's most affluent communities — lakefront properties, golf communities, high-income neighborhoods — are available at below-open-cost pricing from a motivated seller who can no longer develop the territories. This is a hybrid acquisition opportunity: you're buying into an established brand (Authority Brands network) at a resale price, with an existing territory and subscription model. Matches your acquisition interest and recurring revenue criteria directly.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><div class="ls-stat-label">Investment</div><div class="ls-stat-val note">Below cost of opening (motivated seller)</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring subscription treatments ✓</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Territory</div><div class="ls-stat-val good">Large protected Metro Detroit territories</div></div>
+        <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Franchise resale — motivated seller</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Premium Metro Detroit territories</span>
+        <span class="ls-tag recur">Recurring subscription model</span>
+        <span class="ls-tag">Acquisition opportunity ✓</span>
+        <span class="ls-tag warn">Verify current status with listing broker</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Acquisition Opportunities — Michigan / Home Services &amp; Automotive</div>
+  <p style="font-size:13px;color:#555;margin-bottom:16px;line-height:1.6;">Since you indicated interest in acquiring an operating business, here are active listings from public platforms that match your sectors and recurring-revenue criteria. These represent an alternative to building a new franchise from scratch — you'd be buying an established operation with existing customers, staff, and cash flow.</p>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 1</span><small>BizBuySell · Troy / Sterling Heights · SBA Pre-Qualified</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Budget Blinds Franchise — Troy &amp; Sterling Heights, MI</div>
+      <div class="acq-desc">Well-established Budget Blinds franchise serving Troy and Sterling Heights with an existing customer base and recurring re-order revenue. SBA pre-qualified — home-based, flexible schedule. Home Services vertical. Semi-absentee potential once a team is in place.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-stat-label">Location</div><div class="ls-stat-val">Troy / Sterling Heights, MI</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">SBA Status</div><div class="ls-stat-val good">SBA Pre-Qualified ✓</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Franchise resale</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Source</div><div class="ls-stat-val">BizBuySell.com</div></div>
+    </div>
+  </div>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 2</span><small>BizBuySell · Royal Oak · 80% Recurring Revenue</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Established Landscaping &amp; Property Maintenance — Royal Oak, MI</div>
+      <div class="acq-desc">Owner-operated landscaping business serving Royal Oak and surrounding areas with 80% of revenue from recurring lawn care contracts. Day-1 cash flow from an existing contract base. Home Services vertical. Active listing — motivated seller.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-stat-label">Location</div><div class="ls-stat-val">Royal Oak, Metro Detroit</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">80% recurring contracts ✓</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Independent — no royalties</div></div>
+      <div class="ls-stat"><div class="ls-stat-label">Source</div><div class="ls-stat-val">BizBuySell.com</div></div>
+    </div>
+  </div>
+
+  <div class="where-search">
+    <div class="sec-label">Where to Search for More</div>
+    <p><strong>BizBuySell.com</strong> — Search "Michigan home services" or "Detroit automotive" for current active listings.<br>
+    <strong>BusinessBroker.net</strong> — Detroit-area service business resales including franchise exits.<br>
+    <strong>Transworld Business Advisors</strong> — Active in Michigan, specializes in franchise resale M&amp;A.</p>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates — actual costs vary. Territory availability must be confirmed directly with each franchisor. Acquisition listings change daily and must be verified with the listing broker. This is a starting point for your research and conversation with your Nova Guide — not a recommendation to invest in any specific system. All investment decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for Jordan Truesdale &nbsp;&middot;&nbsp; 2026</p>
+</div>
+</div>
+</body>
+</html>
