@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Jordan Truesdale · Candidate Readiness</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.13);}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(69,46,128,0.4) 0%,transparent 65%);pointer-events:none;}
+.hdr::after{content:'';position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(0,174,239,0.18) 0%,transparent 65%);pointer-events:none;}
+/* stars */
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(69,46,128,0.45),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.6),transparent 60%);pointer-events:none;}
+.hdr-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.hdr-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#452e80;margin-bottom:8px;position:relative;}
+.hdr-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:36px;color:#fff;margin-bottom:6px;line-height:1.05;position:relative;}
+.hdr-meta{font-size:13px;color:#b0aed0;margin-bottom:6px;position:relative;}
+.hdr-meta strong{color:#e1e3ee;}
+.hdr-note{font-size:10.5px;color:rgba(255,255,255,0.32);font-style:italic;position:relative;}
+
+/* CLASSIFICATION */
+.cls-banner{display:flex;align-items:center;gap:22px;padding:22px 48px;background:linear-gradient(90deg,rgba(69,46,128,0.12),transparent 75%);border-bottom:1px solid #e8eaf0;}
+.cls-badge{width:86px;height:86px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#452e80,#282560 60%,#0c0a1c 85%);box-shadow:0 0 0 5px rgba(69,46,128,0.18),0 0 22px rgba(69,46,128,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cls-badge span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;letter-spacing:.06em;text-align:center;line-height:1.3;}
+.cls-info h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:21px;color:#15131f;margin-bottom:4px;}
+.cls-info h2 em{color:#452e80;font-style:normal;}
+.cls-info p{font-size:13.5px;color:#555;max-width:52ch;line-height:1.6;}
+.conf-pill{display:inline-block;margin-top:7px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;border:1px solid #452e80;border-radius:999px;padding:3px 11px;}
+
+/* SECTIONS */
+.sec{padding:24px 48px;border-bottom:1px solid #e8eaf0;}
+.sec:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* TWO-AXIS */
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;}
+.axis-block{display:flex;gap:18px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(#452e80 49%,#e8eaf0 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:26px;color:#15131f;line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy{display:flex;flex-direction:column;gap:10px;padding-top:4px;}
+.lift-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;color:#15131f;}
+.lift-pills{display:flex;gap:6px;}
+.pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:#e8eaf0;color:#6c6a85;font-family:'Montserrat',sans-serif;}
+.pill.on{background:#452e80;color:#fff;}
+.lift-note{font-size:12px;color:#5a5872;line-height:1.5;}
+
+/* MATRIX */
+.matrix{display:grid;grid-template-columns:68px repeat(3,1fr);grid-template-rows:auto repeat(3,38px);gap:4px;font-size:9px;}
+.m-colh{font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.m-rowh{font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.mcell{border-radius:5px;position:relative;}
+.mcell.nebula{background:rgba(69,46,128,0.16);}
+.mcell.nova{background:rgba(102,76,169,0.22);}
+.mcell.super{background:rgba(0,174,239,0.2);}
+.mcell .tag{position:absolute;top:4px;left:5px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;font-family:'Montserrat',sans-serif;}
+.mcell.here{outline:2px solid #452e80;}
+.mcell .dot{position:absolute;width:13px;height:13px;border-radius:50%;background:#452e80;box-shadow:0 0 0 4px rgba(69,46,128,0.22),0 0 12px #452e80;top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:6px;}
+
+/* DIMS */
+.dims{display:flex;flex-direction:column;gap:16px;}
+.dim-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;}
+.dim-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:#15131f;}
+.dim-score{font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:#aaa;}
+.bar-track{height:7px;background:#e8eaf0;border-radius:999px;overflow:hidden;margin-bottom:5px;}
+.bar-fill{height:100%;background:linear-gradient(90deg,#282560,#452e80);border-radius:999px;}
+.dim-note{font-size:12.5px;color:#666;line-height:1.55;}
+
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.quad{border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;}
+.quad ul{padding-left:14px;}
+.quad li{font-size:12.5px;margin-bottom:5px;line-height:1.5;color:#333;}
+.q-s{background:#eaf6ef;border-left:3px solid #1a7a4a;}.q-s h4{color:#1a7a4a;}
+.q-d{background:#ede9fa;border-left:3px solid #664ca9;}.q-d h4{color:#452e80;}
+.q-o{background:#f0eefa;border-left:3px solid #452e80;}.q-o h4{color:#452e80;}
+.q-r{background:#fff0f4;border-left:3px solid #b1456b;}.q-r h4{color:#b1456b;}
+
+/* PATHWAY */
+.pathway-dk{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway-dk .sec-lbl{color:#00aeef;}
+.pw-route{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:#fff;margin-bottom:4px;}
+.pw-backup{font-size:12.5px;color:#b9b6d6;margin-bottom:10px;}
+.pw-note{font-size:13px;color:#d8d6ec;line-height:1.6;}
+ol.roadmap{padding-left:20px;margin:0;}
+ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;line-height:1.5;}
+ol.roadmap li strong{color:#15131f;}
+
+/* EXPECTATIONS */
+.expect{background:linear-gradient(90deg,rgba(69,46,128,0.07),transparent 82%);border:1px solid #e8eaf0;border-left:3px solid #452e80;border-radius:0 9px 9px 0;padding:16px 18px;}
+.erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.chip{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.chip.exp{background:#e8eaf0;color:#5b5876;}
+.chip.real{background:#452e80;color:#fff;}
+.arr{font-size:16px;color:#452e80;font-weight:800;}
+.expect p{font-size:12.5px;color:#3c3a52;margin-bottom:6px;line-height:1.6;}
+.expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:#452e80;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+
+/* ACTION */
+.action{background:rgba(69,46,128,0.1);border-left:3px solid #452e80;padding:13px 17px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:14px;}
+.action strong{font-family:'Montserrat',sans-serif;}
+.disc-qs{padding-left:18px;margin:0;}
+.disc-qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;line-height:1.55;}
+
+/* GAPS */
+.gaps{display:flex;flex-wrap:wrap;gap:8px;}
+.gap-tag{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 11px;}
+
+/* PAGE 2 HEADER */
+.p2hdr{background:linear-gradient(135deg,#0d0a1c,#1a1340);padding:24px 48px;border-top:4px solid #00aeef;}
+.p2hdr h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:20px;color:#fff;margin-bottom:4px;}
+.p2hdr p{font-size:13px;color:#9a98b4;}
+
+/* DATA GRID */
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.dcard{background:#f5f5fa;border-radius:8px;padding:12px 14px;border-top:3px solid #452e80;}
+.dlbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:5px;}
+.dval{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;line-height:1.35;}
+
+/* THESIS CARDS */
+.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.tc{background:#f8f8fc;border-radius:8px;padding:13px 15px;border-top:3px solid #664ca9;}
+.tc-lbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:6px;}
+.tc-val{font-size:13px;color:#333;line-height:1.6;}
+
+/* LANDSCAPE SECTION */
+.excl-box{background:#fff8e1;border:1px solid #b86e00;border-left:3px solid #b86e00;border-radius:0 8px 8px 0;padding:13px 17px;margin-bottom:16px;}
+.excl-box .sec-lbl{color:#b86e00;margin-bottom:8px;}
+.excl-box p{font-size:12.5px;color:#5a3e00;line-height:1.6;}
+
+.ls-grid{display:flex;flex-direction:column;gap:12px;}
+.ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+.rank-bar{padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-bar.r1{background:#282560;}
+.rank-bar.r2,.rank-bar.r3,.rank-bar.r4,.rank-bar.r5,.rank-bar.r6{background:#3a2e70;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;}
+.rank-note{font-size:10px;color:rgba(255,255,255,0.6);}
+.ls-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.ls-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;}
+.ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-auto{background:rgba(21,19,31,0.08);color:#333;}
+.ls-why{font-size:12.5px;color:#444;line-height:1.55;}
+.ls-stats{padding:10px 16px;background:#f0eefa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ls-stat{display:flex;flex-direction:column;gap:2px;}
+.ls-slbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.ls-sval{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
+.ls-sval.good{color:#1a7a4a;}
+.ls-sval.warn{color:#b86e00;}
+.ls-sval.note{color:#452e80;}
+.ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.ls-tag.geo{color:#00709a;background:#e8f7fd;}
+.ls-tag.recur{color:#452e80;background:#ede9fa;}
+.ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
+.ls-tag.warn{color:#b86e00;background:#fdf5e6;}
+
+/* FN NOTE */
+.fn-note{background:#0d0a1c;border-radius:8px;padding:14px 18px;margin-top:10px;}
+.fn-note .sec-lbl{color:#00aeef;margin-bottom:8px;}
+.fn-note p{font-size:12.5px;color:#b9b6d6;line-height:1.6;}
+
+/* ACQ SECTION */
+.acq-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;margin-bottom:12px;}
+.acq-bar{background:#1a1340;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;}
+.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;}
+.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);}
+.acq-body{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.acq-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;margin-bottom:6px;}
+.acq-desc{font-size:12.5px;color:#444;line-height:1.55;}
+.acq-stats{padding:10px 16px;background:#f5f5fa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.where-search{background:#f0eefa;border-radius:8px;padding:14px 18px;margin-top:14px;}
+.where-search .sec-lbl{color:#452e80;margin-bottom:8px;}
+.where-search p{font-size:12.5px;color:#444;line-height:1.7;}
+
+/* FOOTER */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10.5px;color:#555;}
+
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.rank-bar,.ls-stats,.fn-note,.acq-bar,.p2hdr,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:720px){.two-col{grid-template-columns:1fr;}.swot{grid-template-columns:1fr;}.dgrid{grid-template-columns:1fr 1fr;}.thesis-grid{grid-template-columns:1fr;}.ls-stats{grid-template-columns:1fr;}.sec{padding:18px 20px;}.hdr{padding:24px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="hdr-eye">Candidate Readiness &middot; Internal Analysis</div>
+  <h1 class="hdr-name">Jordan Truesdale</h1>
+  <p class="hdr-meta">Detroit, MI &nbsp;&middot;&nbsp; <strong>Freelance Project Manager &amp; Real Estate Investor</strong> &nbsp;&middot;&nbsp; Timeframe: 2+ years (exploring) &nbsp;&middot;&nbsp; Home Services · Automotive</p>
+  <p class="hdr-note">For internal FN use only — do not share with candidate</p>
+</header>
+
+<!-- CLASSIFICATION -->
+<div class="cls-banner">
+  <div class="cls-badge"><span>NEBULA</span></div>
+  <div class="cls-info">
+    <h2>Classification: <em>Nebula</em></h2>
+    <p>Jordan is in the early exploration stage — the 2+ year timeframe, solo operation history, and capital constraints create a longer runway to ownership. FN's role is to build the foundation now so the door stays open and the path shortens over time.</p>
+    <span class="conf-pill">Confidence &middot; Medium</span>
+  </div>
+</div>
+
+<!-- TWO-AXIS -->
+<div class="sec">
+  <div class="sec-lbl">The Two-Axis Read</div>
+  <div class="two-col">
+    <div>
+      <div class="axis-block">
+        <div class="score-ring"><div class="inner"><span class="num">49</span><span class="den">/ 100</span></div></div>
+        <div class="axis-copy">
+          <div class="lift-lbl">Readiness &amp; Potential</div>
+          <div style="margin-top:12px;">
+            <div class="lift-lbl" style="color:#452e80;">FN Lift Required</div>
+            <div class="lift-pills" style="margin-top:6px;">
+              <span class="pill">Low</span><span class="pill">Moderate</span><span class="pill on">High</span>
+            </div>
+          </div>
+          <p class="lift-note">Binding constraint: <strong>Timeline + Capital</strong> — 2+ year horizon and sub-$250K net worth both signal a candidate who needs FN to help accelerate readiness, not just route to a system.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="matrix">
+        <div></div><div class="m-colh">Emerging</div><div class="m-colh">Developing</div><div class="m-colh">Strong</div>
+        <div class="m-rowh">High</div>
+        <div class="mcell nebula here"><span class="tag">Nebula</span><span class="dot"></span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="m-rowh">Moderate</div>
+        <div class="mcell nebula"><span class="tag">Nebula</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="m-rowh">Low</div>
+        <div class="mcell nebula"><span class="tag">Nebula</span></div>
+        <div class="mcell nova"><span class="tag">Nova</span></div>
+        <div class="mcell super"><span class="tag">Super</span></div>
+      </div>
+      <p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+    </div>
+  </div>
+</div>
+
+<!-- READINESS DIMENSIONS -->
+<div class="sec">
+  <div class="sec-lbl">Readiness Dimensions <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;color:#a9a7c0;">(capital-free)</span></div>
+  <div class="dims">
+    <div>
+      <div class="dim-top"><span class="dim-name">Operator Readiness &amp; Capability</span><span class="dim-score">20 / 32</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:63%"></div></div>
+      <p class="dim-note">Jordan has professional depth in project management, HR, and early-career talent pipeline work — transferable skills in relationship management and coordination. Solo self-employment signals independence but limited team leadership and no multi-unit or P&L management above the individual contributor level.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Vision, Motivation &amp; Commitment</span><span class="dim-score">9 / 27</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:33%"></div></div>
+      <p class="dim-note">The 2+ year "just exploring" timeframe is the primary drag on this score — it signals early curiosity rather than committed momentum. The acquisition thesis is promising and the business rationale (essential services, recession-protection) is solid, but specificity and urgency are both low.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Sector &amp; Multi-Unit Fit</span><span class="dim-score">11 / 18</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:61%"></div></div>
+      <p class="dim-note">Home Services and Automotive are both strong FN verticals — recession-resistant, non-discretionary, and essential. However, 1-unit target and solo operation both reduce the multi-unit fit score. The acquisition interest is a positive signal for future scale.</p>
+    </div>
+    <div>
+      <div class="dim-top"><span class="dim-name">Coachability &amp; Ecosystem Fit</span><span class="dim-score">9 / 13</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:69%"></div></div>
+      <p class="dim-note">Strong results-driven and innovative scores with moderate conventional and autonomy signals — Jordan appears open to systems while also having a go-getter independent streak. Response quality is sincere and engaged. Good ecosystem fit overall.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SWOT -->
+<div class="sec">
+  <div class="sec-lbl">SWOT</div>
+  <div class="swot">
+    <div class="quad q-s"><h4>Strengths</h4><ul>
+      <li>Project management background — process-oriented, deadline-driven</li>
+      <li>Real estate investing experience — asset evaluation mindset</li>
+      <li>Recession-resistant sector selection (Home Services + Automotive)</li>
+      <li>Open to acquisition — flexibility in path to ownership</li>
+    </ul></div>
+    <div class="quad q-d"><h4>Development Areas</h4><ul>
+      <li>No P&L management or team leadership experience documented</li>
+      <li>Sub-$250K net worth limits capital access routes</li>
+      <li>640–699 credit score — within range but needs attention</li>
+      <li>2+ year timeline signals exploration, not commitment</li>
+    </ul></div>
+    <div class="quad q-o"><h4>What FN Can Unlock</h4><ul>
+      <li>Credit coaching resources to reach 700+ and expand SBA pathways</li>
+      <li>Equity + down payment assistance structuring for low liquid capital</li>
+      <li>Franchise education pathway so Jordan arrives informed, not cold</li>
+      <li>Acquisition pipeline access for established service businesses in Michigan</li>
+    </ul></div>
+    <div class="quad q-r"><h4>Risks to Watch</h4><ul>
+      <li>2+ year timeline may extend further without structured milestones</li>
+      <li>Semi-absentee intent with no prior team management experience</li>
+      <li>Systems researched (Zax, Jax, Public Storage) are outside FN verticals — needs reorientation</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- PATHWAY -->
+<div class="sec">
+  <div class="two-col">
+    <div class="pathway-dk">
+      <div class="sec-lbl">Recommended Capital Pathway</div>
+      <div class="pw-route">Credit Building + Down Payment Assistance</div>
+      <div class="pw-backup">Backup: Outside investment partner + equity from real estate</div>
+      <p class="pw-note">With 640–699 credit and &lt;$250K net worth, the near-term priority is building to 700+ to unlock SBA 7(a) pathways. Jordan mentioned real estate equity and outside investment — FN should explore those structures during discovery.</p>
+    </div>
+    <div>
+      <div class="sec-lbl">Path to Ownership</div>
+      <ol class="roadmap">
+        <li><strong>Discovery call:</strong> Align on realistic timeline and capital building plan</li>
+        <li><strong>Credit action plan:</strong> Map path from 640–699 to 700+ to unlock SBA access</li>
+        <li><strong>Sector education:</strong> Focus on Home Services/Automotive systems that match semi-absentee + recurring revenue criteria</li>
+        <li><strong>Capital stack modeling:</strong> Explore real estate equity extraction + outside investment as bridge to acquisition or franchise</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- EXPECTATIONS -->
+<div class="sec">
+  <div class="sec-lbl">Expectations Check</div>
+  <div class="expect">
+    <div class="erow">
+      <span class="chip exp">Expects: Ownership in 2+ years</span>
+      <span class="arr">&rarr;</span>
+      <span class="chip real">Realistic: 18–30 months with active credit + capital work</span>
+    </div>
+    <p><b>Why</b> The 2+ year horizon is actually closer to realistic given credit and capital constraints — but it's only achievable if work starts now. Without structured milestones, 2+ years can easily drift to 3–4. FN's value here is creating the roadmap that makes 18 months possible.</p>
+    <p><b>On the call</b> Frame the timeline positively — "you're in a great position to use this time intentionally." Give Jordan 2–3 concrete actions to take in the next 90 days so the exploration phase feels productive, not passive.</p>
+  </div>
+</div>
+
+<!-- ACTION -->
+<div class="sec">
+  <div class="sec-lbl">Recommended Next Action</div>
+  <div class="action"><strong>Book a discovery call — focus on credit building, capital structuring, and narrowing the franchise/acquisition thesis to FN verticals.</strong></div>
+  <div class="sec-lbl" style="margin-top:4px;">Discovery Call Questions</div>
+  <ul class="disc-qs">
+    <li>You mentioned Zax, Jax, and Public Storage — those are outside our focus verticals. Tell me more about what attracted you to those concepts. What drew you to Home Services and Automotive specifically on the intake form?</li>
+    <li>Walk me through the real estate investing side — are you holding rental properties? How much equity is accessible there if you needed to tap it for a down payment on a business?</li>
+    <li>You mentioned outside investment. Do you have a specific partner or group in mind, or is that something you're still building?</li>
+    <li>Semi-absentee is the ownership model — have you managed anyone in a professional or real estate context? Who would you lean on as your day-to-day manager?</li>
+    <li>You said acquisition interests you. What would an ideal acquisition look like — how big, what kind of operation, what's most important to you in what you buy?</li>
+    <li>What does the next 90 days look like for you? What would feel like real progress toward ownership in that window?</li>
+  </ul>
+</div>
+
+<!-- GAPS -->
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Data Gaps to Resolve</div>
+  <div class="gaps">
+    <span class="gap-tag">Real estate equity amount — accessible for business down payment?</span>
+    <span class="gap-tag">Outside investment partner — identified or hypothetical?</span>
+    <span class="gap-tag">Credit score improvement plan — timeline to 700+?</span>
+    <span class="gap-tag">Prior team management experience — any examples?</span>
+    <span class="gap-tag">Acquisition vs. franchise preference — what would change that?</span>
+    <span class="gap-tag">Specific target geography within Michigan/Research Triangle/Texas</span>
+  </div>
+</div>
+
+<!-- ══ PAGE 2 ══ -->
+<div class="p2hdr">
+  <h2>Discovery Day Prep &nbsp;&middot;&nbsp; Jordan Truesdale</h2>
+  <p>Internal Nova Guide reference &nbsp;&middot;&nbsp; Do not share with candidate</p>
+</div>
+
+<!-- PROFESSIONAL BACKGROUND -->
+<div class="sec">
+  <div class="sec-lbl">Professional Background</div>
+  <p style="font-size:13.5px;color:#333;line-height:1.7;">Jordan began their career in Human Resources — specifically Coordination and Talent Acquisition, with the most significant time spent in Early Career programming managing university relationships for talent pipelines. This transitioned into Project Management across various types of organizations. Currently operating as a Freelance Project Manager and Real Estate Investor, working solo/self-employed. The PM background brings real operational discipline (scope, timeline, stakeholder coordination) but the solo/freelance structure means no documented experience managing employees or teams.</p>
+</div>
+
+<!-- THESIS CARDS -->
+<div class="sec">
+  <div class="sec-lbl">Investment Thesis</div>
+  <div class="thesis-grid">
+    <div class="tc"><div class="tc-lbl">Why Franchise Ownership</div><div class="tc-val">"I am interested in acquiring an operating franchise in the service industry."</div></div>
+    <div class="tc"><div class="tc-lbl">Success in 3–5 Years</div><div class="tc-val">"A successful 1st acquisition of a service-based cash-flowing business and the search for the next best acquisition opportunity in progress."</div></div>
+    <div class="tc"><div class="tc-lbl">Day-to-Day Involvement</div><div class="tc-val">Semi-absentee with a manager — 2–4 years experience noted</div></div>
+    <div class="tc"><div class="tc-lbl">Capital Thinking</div><div class="tc-val">"Equity from real estate, outside investment and down payment assistance."</div></div>
+  </div>
+</div>
+
+<!-- FRANCHISE RESEARCH -->
+<div class="sec">
+  <div class="sec-lbl">Franchise Research &amp; Geography</div>
+  <p style="font-size:13px;color:#333;line-height:1.7;margin-bottom:10px;"><strong>Systems researched:</strong> Zax, Jax, Public Storage — note these are outside FN verticals (food/storage). Reorientation to Home Services and Automotive is a key discovery call priority.</p>
+  <p style="font-size:13px;color:#333;line-height:1.7;margin-bottom:10px;"><strong>Target geography:</strong> Michigan, Research Triangle (NC), Texas — broad multi-state intent for a 1-unit target suggests flexibility on location.</p>
+  <p style="font-size:13px;color:#333;line-height:1.7;margin-bottom:10px;"><strong>Brand stage:</strong> Established Brand (500+ units, 5+ years). <strong>Seasonality:</strong> No Preference. <strong>Acquisition interest:</strong> Yes — open to acquiring an operating franchise rather than building from zero.</p>
+</div>
+
+<!-- CAPITAL PROFILE -->
+<div class="sec">
+  <div class="sec-lbl">Capital Profile</div>
+  <div class="dgrid">
+    <div class="dcard"><div class="dlbl">Liquid Capital</div><div class="dval">$50K–$100K</div></div>
+    <div class="dcard"><div class="dlbl">Net Worth</div><div class="dval">&lt;$250K</div></div>
+    <div class="dcard"><div class="dlbl">Credit Score</div><div class="dval">640–699</div></div>
+    <div class="dcard"><div class="dlbl">SBA Potential</div><div class="dval">Moderate — credit building needed to reach 700+</div></div>
+    <div class="dcard"><div class="dlbl">Ownership Model</div><div class="dval">Semi-absentee w/ manager</div></div>
+    <div class="dcard"><div class="dlbl">Total Accessible (est.)</div><div class="dval">$75K liquid + real estate equity + outside investor (TBD)</div></div>
+  </div>
+</div>
+
+<!-- LANDSCAPE INTERNAL -->
+<div class="sec">
+  <div class="sec-lbl">Franchise Landscape — Internal Version</div>
+  <div class="excl-box">
+    <div class="sec-lbl">Saturation &amp; Exclusion Notes</div>
+    <p>Systems researched by Jordan (Zax, Jax, Public Storage) are outside FN verticals entirely — excluded from landscape. No existing franchise ownership to exclude. Territory saturation research focused on Michigan/Detroit area for Home Services and Automotive established brands with semi-absentee support and recurring revenue. Established Brand filter applied (500+ units, 5+ years).</p>
+  </div>
+  <div class="ls-grid">
+
+    <div class="ls-card">
+      <div class="rank-bar r1"><span class="rank-num">RANK 1</span><span class="rank-note">Established brand · Recurring maintenance contracts · Michigan territory available</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Neighborly / Molly Maid</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential cleaning subscriptions.</strong> Molly Maid (under Neighborly, 700+ locations) delivers weekly/biweekly cleaning subscriptions that generate predictable recurring revenue — the exact model Jordan's acquisition thesis calls for. Established brand with 40+ years in franchising. Michigan has active territory availability particularly outside Detroit proper (Oakland County, Macomb County). Semi-absentee ownership is explicitly documented with a manager-led team structure. SBA-friendly with preferred lender relationships through Neighborly's franchise development network.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$109K–$157K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring cleaning subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">700+ locations · 40+ years franchising</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Liquid Capital Required</div><div class="ls-sval">$50K minimum</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available — Oakland/Macomb County</span>
+        <span class="ls-tag recur">Recurring subscription revenue</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r2"><span class="rank-num">RANK 2</span><span class="rank-note">Subscription car wash · Recurring model · Southeast Michigan expansion active</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Tommy's Express Car Wash</div><span class="ls-cat cat-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Monthly membership unlimited car wash subscription.</strong> Founded in Holland, MI — Tommy's is a hometown brand with 161% growth rate and average revenue of $1.82M per location. The monthly subscription model (customers pay monthly for unlimited washes) creates the recurring predictable cash flow Jordan explicitly cited as the goal. Southeast Michigan expansion is active and the brand is well-known in the state, reducing consumer awareness cost. Semi-absentee via hired site manager documented in their franchise model.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval warn">$3.5M–$5.5M (site + equipment heavy)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Monthly membership subscriptions ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Avg Revenue / Location</div><div class="ls-sval good">$1.82M</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">100+ locations · Founded MI 1969</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan home brand — active expansion</span>
+        <span class="ls-tag recur">Monthly membership revenue</span>
+        <span class="ls-tag warn">Capital-intensive — will need outside investment</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r3"><span class="rank-num">RANK 3</span><span class="rank-note">Handyman / home repair · Established · Recurring service contracts · B2C</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Mr. Handyman</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring residential and commercial repair contracts.</strong> Mr. Handyman (Neighborly network, Entrepreneur Franchise 500 top-ranked 2026) generated $1.05M average gross sales for 2-unit operators. Home-based, no storefront required — lower overhead than retail concepts. Michigan has active territory availability. Recurring maintenance agreement customers generate predictable repeat work. Jordan's PM background (scope management, client communication, scheduling) translates directly to this operating model.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$122K–$175K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring service agreements ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Avg Gross Sales (2-unit)</div><div class="ls-sval good">$1.05M</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">300+ locations · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available</span>
+        <span class="ls-tag recur">Recurring maintenance agreements</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r4"><span class="rank-num">RANK 4</span><span class="rank-note">Commercial cleaning · B2B recurring contracts · Low entry · Michigan active</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Jan-Pro Commercial Cleaning</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2B · Recurring commercial cleaning contracts (offices, healthcare, retail).</strong> Jan-Pro operates on B2B commercial cleaning contracts — recurring monthly revenue from businesses, not individual consumers. Lower capital entry than residential concepts, and the commercial client base tends toward longer-term contracts. Manager-led team model is semi-absentee by design. Michigan has active territory availability and commercial office/industrial base supports the demand model. Accessible startup investment with recession-resistant revenue profile.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval note">$4K–$55K (master franchise varies)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">B2B commercial contracts ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Contract Type</div><div class="ls-sval good">Monthly recurring B2B</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval">10,000+ units nationally · Established</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available</span>
+        <span class="ls-tag recur">Recurring B2B contracts</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+        <span class="ls-tag warn">Confirm master franchise vs. unit structure with franchisor</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r5"><span class="rank-num">RANK 5</span><span class="rank-note">Oil change / quick lube · Meineke · Established · Michigan active</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Meineke Car Care Centers</div><span class="ls-cat cat-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Recurring automotive maintenance — brakes, oil, tires, diagnostics.</strong> Meineke (700+ locations, Driven Brands) is one of the most recognized automotive repair brands with broad service coverage including EV diagnostics — positioning it well as the vehicle fleet ages and diversifies. Non-discretionary automotive repair is among the most recession-resistant categories. Michigan's deep car culture makes automotive services a natural market fit. Semi-absentee with experienced service manager documented as viable ownership model.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Total Investment / Unit</div><div class="ls-sval warn">$200K–$650K (cost to open — not earnings)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring maintenance visits ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">System Size</div><div class="ls-sval good">700+ locations · Established</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Industry Trend</div><div class="ls-sval">Avg vehicle age 12.6 years → growing demand</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Michigan territory available — verify specific zip</span>
+        <span class="ls-tag recur">Recurring service visits</span>
+        <span class="ls-tag sba">SBA-friendly ✓</span>
+        <span class="ls-tag warn">Higher capital — outside investment may be needed</span>
+      </div>
+    </div>
+
+    <div class="ls-card">
+      <div class="rank-bar r6"><span class="rank-num">RANK 6</span><span class="rank-note">First-mover · Mosquito/pest control · Metro Detroit premium territories · Recurring</span></div>
+      <div class="ls-top">
+        <div class="ls-hdr"><div class="ls-name">Mosquito Squad / Premium Pest Control Territories</div><span class="ls-cat cat-home">Home Services</span></div>
+        <p class="ls-why"><strong>B2C · Recurring seasonal treatment subscriptions.</strong> Premium mosquito control franchise territories covering affluent Metro Detroit communities (lakefront properties, golf communities, high-income neighborhoods) are available at below-open cost due to an existing owner unable to develop — this is a resale/acquisition hybrid. Proprietary automated misting system technology + protected territory + recurring subscription model. Matches Jordan's acquisition interest and recurring revenue criteria. Authority Brands parent (same as DRYmedic) provides infrastructure support.</p>
+      </div>
+      <div class="ls-stats">
+        <div class="ls-stat"><div class="ls-slbl">Est. Investment / Territory</div><div class="ls-sval note">Below-cost of opening (motivated seller)</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">Recurring subscription treatments ✓</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Territory Status</div><div class="ls-sval good">Large protected Metro Detroit territories</div></div>
+        <div class="ls-stat"><div class="ls-slbl">Type</div><div class="ls-sval">Franchise resale — motivated seller</div></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag geo">Premium Metro Detroit territories available now</span>
+        <span class="ls-tag recur">Recurring subscription model</span>
+        <span class="ls-tag">Acquisition opportunity ✓</span>
+        <span class="ls-tag warn">Verify current status with listing broker</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="fn-note" style="margin-top:14px;">
+    <div class="sec-lbl">FN Note for Nova Guide</div>
+    <p>Jordan's Michigan geography has genuine franchise opportunity — the auto culture is real, commercial and residential service demand is strong, and established brands have active territory availability in the suburbs (Oakland, Macomb, Metro Detroit). The main reorientation task is getting Jordan off food/storage concepts (Zax, Jax, Public Storage) and onto the FN vertical map. The acquisition angle is a real asset — Jordan may be better served by a franchise resale in 12–18 months than a new unit. The Mosquito Squad resale opportunity above is worth surfacing on the call as a concrete near-term option that matches the acquisition thesis without requiring credit improvement first. Research Triangle and Texas are secondary — start with Michigan.</p>
+  </div>
+</div>
+
+<!-- ACQUISITION OPPORTUNITIES -->
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Acquisition Opportunities — Michigan / Home Services &amp; Automotive</div>
+  <p style="font-size:13px;color:#555;margin-bottom:16px;line-height:1.6;">Jordan indicated interest in acquisitions. The following are active or recently listed opportunities sourced from public platforms. Listings change daily — verify current status before presenting to candidate.</p>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 1</span><small>BizBuySell · Metro Detroit · SBA Pre-Qualified</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Budget Blinds Franchise — Troy &amp; Sterling Heights, MI</div>
+      <div class="acq-desc">Well-established Budget Blinds franchise serving Troy and Sterling Heights areas. SBA pre-qualified listing — home-based business, flexible schedule, established customer base. Home improvement/window treatment aligns with Home Services vertical. Recurring re-order and referral revenue model from existing customer relationships. Semi-absentee potential once team is in place.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-slbl">Location</div><div class="ls-sval">Troy / Sterling Heights, MI</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Type</div><div class="ls-sval">Franchise resale — established</div></div>
+      <div class="ls-stat"><div class="ls-slbl">SBA Status</div><div class="ls-sval good">SBA Pre-Qualified ✓</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Source</div><div class="ls-sval">BizBuySell.com</div></div>
+    </div>
+  </div>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 2</span><small>BizBuySell · Royal Oak Area · Recurring Revenue</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Landscaping &amp; Outdoor Property Maintenance — Royal Oak, MI</div>
+      <div class="acq-desc">Established owner-operated landscaping business serving Royal Oak and surrounding areas. 80% of revenue from recurring lawn care contracts — exactly the recurring model Jordan described. Recurring contract base means day-1 revenue from an existing customer list. Home Services vertical. Active on BizBuySell — motivated seller signaled in listing.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-slbl">Location</div><div class="ls-sval">Royal Oak area, Metro Detroit</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval good">80% recurring contracts ✓</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Type</div><div class="ls-sval">Independent — no royalties</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Source</div><div class="ls-sval">BizBuySell.com</div></div>
+    </div>
+  </div>
+
+  <div class="acq-card">
+    <div class="acq-bar"><span>Opportunity 3</span><small>BizBuySell · Metro Detroit · Home Improvement · Recurring</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Leading Home Improvement Business — Metro Detroit Market</div>
+      <div class="acq-desc">A rare opportunity described as a leading home improvement business serving the entire Metro Detroit market. Simple home improvement service completable in 1–2 days. Listed as a strong business with loyal client base and focus on customer satisfaction with steady recurring demand. Home Services vertical. Active listing on BizBuySell.</div>
+    </div>
+    <div class="acq-stats">
+      <div class="ls-stat"><div class="ls-slbl">Location</div><div class="ls-sval">Metro Detroit (full market)</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Revenue Model</div><div class="ls-sval">Recurring loyal client base</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Type</div><div class="ls-sval">Independent — verify details with broker</div></div>
+      <div class="ls-stat"><div class="ls-slbl">Source</div><div class="ls-sval">BizBuySell.com</div></div>
+    </div>
+  </div>
+
+  <div class="where-search">
+    <div class="sec-lbl">Where to Search for Additional Opportunities</div>
+    <p><strong>BizBuySell.com</strong> — Search "Michigan home services" or "Detroit automotive service" for current active listings.<br>
+    <strong>BusinessBroker.net</strong> — Active Detroit-area service business listings including franchise resales.<br>
+    <strong>LoopNet.com</strong> — 119+ Michigan home services franchise opportunities currently listed.<br>
+    <strong>Transworld Business Advisors</strong> — World leader in franchise resale M&amp;A, active in Michigan.<br>
+    <strong>Franchise Resales</strong> — Ask your Nova Guide about resale opportunities for brands like Mr. Handyman or Molly Maid where existing owners may be exiting in the Michigan market.</p>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova Intake Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Jordan Truesdale &nbsp;&middot;&nbsp; 2026</p>
+  <p class="footer-note">For internal FN use only &nbsp;&middot;&nbsp; Do not share with candidate &nbsp;&middot;&nbsp; hello@23acquisitions.com</p>
+</div>
+
+</div>
+</body>
+</html>
