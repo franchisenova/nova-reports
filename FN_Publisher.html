@@ -83,7 +83,7 @@ body {
 /* ── Drop Zones ── */
 .drop-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 14px;
   margin-bottom: 16px;
 }
@@ -342,7 +342,7 @@ body {
 }
 .reset-btn:hover { color: #e1e3ee; border-color: rgba(255,255,255,0.2); }
 
-@media (max-width: 560px) {
+@media (max-width: 700px) {
   .drop-grid { grid-template-columns: 1fr; }
   .card { padding: 20px; }
 }
@@ -362,7 +362,7 @@ body {
   <div class="header">
     <div class="logo">BLK GRVTY &nbsp;·&nbsp; FRANCHISE NOVA</div>
     <h1 class="title">FN Publisher</h1>
-    <p class="subtitle">Drop both files from Claude, enter the candidate's email, and publish everything in one click.</p>
+    <p class="subtitle">Drop all three files from Claude, enter the candidate's email, and publish everything in one click.</p>
   </div>
 
   <!-- Step 1 — Files -->
@@ -381,6 +381,12 @@ body {
         <div class="drop-title">Candidate Landscape</div>
         <div class="drop-hint" id="hint-candidate">FN_FranchiseLandscape_XX_2026.html</div>
       </div>
+      <div class="drop-zone" id="zone-snapshot" ondragover="handleDragOver(event,'snapshot')" ondragleave="handleDragLeave(event,'snapshot')" ondrop="handleDrop(event,'snapshot')">
+        <input type="file" accept=".html" onchange="handleFileInput(event,'snapshot')">
+        <span class="drop-icon">📊</span>
+        <div class="drop-title">Readiness Snapshot</div>
+        <div class="drop-hint" id="hint-snapshot">FN_ReadinessSnapshot_XX_2026.html</div>
+      </div>
     </div>
   </div>
 
@@ -398,7 +404,7 @@ body {
   <div class="card">
     <div class="card-label">Step 3 — Publish Everything</div>
     <p style="font-size:13px;color:#6b6992;margin-bottom:16px;line-height:1.6;">
-      Pushes both files to GitHub Pages, posts a note to HubSpot,
+      Pushes all three files to GitHub Pages, posts a note to HubSpot,
       and updates the Landscape URL property. Takes about 10 seconds.
     </p>
     <button class="publish-btn" id="publish-btn" onclick="runPublish()" disabled>
@@ -434,6 +440,15 @@ body {
       </div>
     </div>
 
+    <div class="result-row">
+      <div class="result-label" style="color:#00aeef;">📊 Candidate Readiness Snapshot</div>
+      <div class="result-note">Ready to share — send this link to the candidate</div>
+      <div class="link-row">
+        <a id="snapshot-link" href="#" target="_blank"></a>
+        <button class="copy-btn" onclick="copyLink('snapshot-link', this)">Copy</button>
+      </div>
+    </div>
+
     <div class="hs-confirm" id="hs-confirm"></div>
 
     <button class="reset-btn" onclick="resetTool()">Start New Candidate</button>
@@ -450,7 +465,7 @@ function getGHToken() { return localStorage.getItem('fn_github_token') || ''; }
 function getHSToken() { return localStorage.getItem('fn_hubspot_token') || ''; }
 
 // ── STATE ─────────────────────────────────────────────────────
-const files = { internal: null, candidate: null };
+const files = { internal: null, candidate: null, snapshot: null };
 
 // ── FILE HANDLING ─────────────────────────────────────────────
 function handleDragOver(e, type) {
@@ -482,7 +497,7 @@ function loadFile(file, type) {
 }
 function checkReady() {
   const email = document.getElementById('candidate-email').value.trim();
-  const ready = files.internal && files.candidate && email;
+  const ready = files.internal && files.candidate && files.snapshot && email;
   document.getElementById('publish-btn').disabled = !ready;
 }
 document.getElementById('candidate-email').addEventListener('input', checkReady);
@@ -545,9 +560,10 @@ async function runPublish() {
   const btn        = document.getElementById('publish-btn');
   const email = document.getElementById('candidate-email').value.trim();
 
-  // Extract initials from filenames
+  // Extract filenames
   const internalName  = files.internal.name;
   const candidateName = files.candidate.name;
+  const snapshotName  = files.snapshot.name;
 
   btn.disabled = true;
   btn.textContent = 'Publishing…';
@@ -561,6 +577,7 @@ async function runPublish() {
 
   let internalUrl  = '';
   let candidateUrl = '';
+  let snapshotUrl  = '';
 
   try {
     // Step 1 — Push internal analysis
@@ -577,14 +594,22 @@ async function runPublish() {
     candidateUrl = `${GITHUB_BASE}/${candidateName}`;
     log(`Candidate landscape live: ${candidateUrl}`, 'ok');
 
-    // Step 3 — Push FN_current_note.json to trigger GitHub Action
+    // Step 3 — Push readiness snapshot
+    log('Pushing readiness snapshot to GitHub…', 'spin');
+    await pushToGitHub(snapshotName, files.snapshot.content,
+      `FN readiness snapshot — ${snapshotName} — ${today.toISOString().split('T')[0]}`);
+    snapshotUrl = `${GITHUB_BASE}/${snapshotName}`;
+    log(`Readiness snapshot live: ${snapshotUrl}`, 'ok');
+
+    // Step 4 — Push FN_current_note.json to trigger GitHub Action
     log('Triggering HubSpot + Slack via GitHub Action…', 'spin');
     const noteJson = JSON.stringify({
       candidate_name: internalName.replace('FN_IntakeAnalysis_','').replace('.html',''),
       contact_email: email,
       candidate_link: candidateUrl,
       internal_link: internalUrl,
-      note_body: `Franchise Nova — Intake Analysis Generated · ${dateStr}\n\nInternal Intake Analysis (Nova Guide only)\n${internalUrl}\n\nCandidate Franchise Landscape (share with candidate)\n${candidateUrl}\n\nGenerated by Franchise Nova · BLK GRVTY`,
+      snapshot_link: snapshotUrl,
+      note_body: `Franchise Nova — Intake Analysis Generated · ${dateStr}\n\nInternal Intake Analysis (Nova Guide only)\n${internalUrl}\n\nCandidate Franchise Landscape (share with candidate)\n${candidateUrl}\n\nCandidate Readiness Snapshot (share with candidate)\n${snapshotUrl}\n\nGenerated by Franchise Nova · BLK GRVTY`,
       generated: new Date().toISOString()
     }, null, 2);
 
@@ -595,13 +620,17 @@ async function runPublish() {
     log('✓ Slack notification sending to team now', 'info');
     log('✓ Landscape URL property updating on contact record', 'info');
 
-    log('✓ All done — check Slack for both live links', 'ok');
+    log('✓ All done — check Slack for all three live links', 'ok');
 
     // Show results
     document.getElementById('internal-link').href = internalUrl;
     document.getElementById('internal-link').textContent = internalUrl;
     document.getElementById('candidate-link').href = candidateUrl;
     document.getElementById('candidate-link').textContent = candidateUrl;
+    if (document.getElementById('snapshot-link')) {
+      document.getElementById('snapshot-link').href = snapshotUrl;
+      document.getElementById('snapshot-link').textContent = snapshotUrl;
+    }
 
     const hsConfirm = document.getElementById('hs-confirm');
     hsConfirm.innerHTML = `
@@ -634,10 +663,15 @@ function copyLink(elId, btn) {
 function resetTool() {
   files.internal = null;
   files.candidate = null;
-  ['internal','candidate'].forEach(t => {
+  files.snapshot = null;
+  const hints = {
+    internal: 'FN_IntakeAnalysis_XX_2026.html',
+    candidate: 'FN_FranchiseLandscape_XX_2026.html',
+    snapshot:  'FN_ReadinessSnapshot_XX_2026.html'
+  };
+  ['internal','candidate','snapshot'].forEach(t => {
     document.getElementById('zone-' + t).classList.remove('loaded','drag-over');
-    document.getElementById('hint-' + t).textContent =
-      t === 'internal' ? 'FN_IntakeAnalysis_XX_2026.html' : 'FN_FranchiseLandscape_XX_2026.html';
+    document.getElementById('hint-' + t).textContent = hints[t];
   });
   ['candidate-email'].forEach(id => {
     document.getElementById(id).value = '';
