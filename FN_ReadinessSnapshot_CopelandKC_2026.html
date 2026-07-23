@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — KC Copeland · Your Readiness Snapshot</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:840px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.12);}
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:36px 48px 30px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(0,174,239,0.45),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.45),transparent 60%);pointer-events:none;}
+.hdr-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.hdr-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.hdr-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:34px;color:#fff;margin-bottom:6px;line-height:1.05;position:relative;}
+.hdr-sub{font-size:13px;color:#b0aed0;position:relative;}
+.hdr-sub strong{color:#e1e3ee;}
+.intro-card{background:linear-gradient(90deg,rgba(0,174,239,0.1),transparent 80%);border-left:3px solid #00aeef;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 48px 0;}
+.intro-card p{font-size:13.5px;color:#444;line-height:1.7;}
+.sec{padding:28px 48px;border-bottom:1px solid #e8eaf0;}
+.sec:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:18px;}
+.dims{display:flex;flex-direction:column;gap:20px;}
+.dim-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:#15131f;margin-bottom:6px;}
+.bar-track{height:9px;background:#e8eaf0;border-radius:999px;overflow:hidden;margin-bottom:8px;}
+.bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#282560,#00aeef);}
+.dim-note{font-size:13px;color:#555;line-height:1.65;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border-radius:10px;padding:16px 18px;}
+.quad h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.quad ul{padding-left:15px;}
+.quad li{font-size:13px;margin-bottom:6px;line-height:1.55;color:#333;}
+.q-s{background:#eaf6ef;border-left:3px solid #1a7a4a;}.q-s h4{color:#1a7a4a;}
+.q-d{background:#ede9fa;border-left:3px solid #664ca9;}.q-d h4{color:#452e80;}
+.q-o{background:#e8f7fd;border-left:3px solid #00aeef;}.q-o h4{color:#00709a;}
+.q-r{background:#fff0f4;border-left:3px solid #b1456b;}.q-r h4{color:#b1456b;}
+.pathway-dk{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:12px;padding:24px 26px;}
+.pathway-dk .sec-lbl{color:#00aeef;margin-bottom:12px;}
+.pw-route{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#fff;margin-bottom:6px;}
+.pw-backup{font-size:13px;color:#b9b6d6;margin-bottom:12px;}
+.pw-note{font-size:13.5px;color:#d8d6ec;line-height:1.7;}
+.pw-steps{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);}
+.pw-steps h5{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#9a98b4;margin-bottom:10px;}
+ol.steps{padding-left:20px;}
+ol.steps li{font-size:13px;color:#d8d6ec;margin-bottom:7px;line-height:1.5;}
+ol.steps li strong{color:#fff;}
+.disc{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:16px 48px;}
+.disc p{font-size:11.5px;color:#888;line-height:1.7;}
+.disc strong{color:#555;}
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.pathway-dk,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:720px){.swot{grid-template-columns:1fr;}.sec{padding:20px;}.hdr{padding:26px 20px;}.intro-card{margin:16px 20px 0;}.disc{padding:14px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="hdr">
+  <div class="hdr-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="hdr-eye">Your Readiness Snapshot</div>
+  <h1 class="hdr-name">KC Copeland</h1>
+  <p class="hdr-sub">Atlanta, GA &nbsp;&middot;&nbsp; <strong>Home Services &amp; Senior Care</strong> &nbsp;&middot;&nbsp; Prepared July 2026</p>
+</header>
+
+<div class="intro-card">
+  <p>Based on your intake, you're one of the most ready candidates we see — financially, professionally, and in terms of the clarity of your purpose. This snapshot shows where you stand, what you bring, and the path forward. The short version: you're ready. Let's move.</p>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Your Readiness Profile</div>
+  <div class="dims">
+    <div>
+      <div class="dim-name">Operator Readiness &amp; Capability</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">Executive Director at Morgan Stanley, Duke MBA, Management Consulting, proprietary trading desk experience during the financial crisis, real estate lending, and now running your own holding company. This is one of the strongest operator profiles we work with. You understand capital, risk, systems, and people — the core ingredients of franchise success.</p>
+    </div>
+    <div>
+      <div class="dim-name">Vision, Motivation &amp; Commitment</div>
+      <div class="bar-track"><div class="bar-fill" style="width:89%"></div></div>
+      <p class="dim-note">You came in with a clear "why" and a specific timeline — that combination is rare. Legacy, generational wealth, and contributing to the economic ecosystem as an owner are the kinds of motivations that sustain operators through the hard parts of building a business. Your holding company structure (Shiloh Horizons) tells us you're already thinking like a portfolio operator, not just a first-time owner.</p>
+    </div>
+    <div>
+      <div class="dim-name">Sector &amp; Franchise Fit</div>
+      <div class="bar-track"><div class="bar-fill" style="width:83%"></div></div>
+      <p class="dim-note">Home Services and Senior Care are both excellent choices — non-discretionary, essential, recession-resistant, and built around recurring revenue relationships. Your real estate background gives you an edge in home services specifically (you already understand the homeowner as a customer). And your passion for seniors and veterans isn't just personal — it's a real competitive advantage for building trust in a care business.</p>
+    </div>
+    <div>
+      <div class="dim-name">Coachability &amp; Ecosystem Fit</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+      <p class="dim-note">You bring the analytical rigor and openness to new frameworks that franchise ownership rewards. You'll engage deeply with the FDD, the financial models, and the operational details — and that depth is exactly what separates successful franchise owners from ones who are surprised by the realities of the business.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Strengths, Growth Areas &amp; Opportunities</div>
+  <div class="swot">
+    <div class="quad q-s"><h4>What You Bring</h4><ul>
+      <li>World-class financial and capital markets experience</li>
+      <li>Real estate investing — you understand assets, risk, and recurring income</li>
+      <li>SBA pre-approved for $2M — your capital is ready to deploy</li>
+      <li>Holding company structure already in place for portfolio growth</li>
+      <li>Passion for seniors and veterans — a genuine differentiator in care business</li>
+    </ul></div>
+    <div class="quad q-d"><h4>Things to Think Through</h4><ul>
+      <li>First time as a franchise owner — the FDD, royalty structure, and system compliance are a new operating model to learn</li>
+      <li>Owner-operator day-to-day needs to be well-defined given your current business activities</li>
+      <li>Your 6-month urgency is achievable — but FDD review and SBA closing take time, so milestones matter</li>
+    </ul></div>
+    <div class="quad q-o"><h4>What FN Can Unlock</h4><ul>
+      <li>Deep FDD analysis — the kind of rigorous system-level review your background demands</li>
+      <li>Direct access to Discovery Day with the right brands in Georgia</li>
+      <li>ROBS structuring if you want to supplement SBA with retirement capital</li>
+      <li>Multi-unit portfolio roadmap under Shiloh Horizons — we can build that now</li>
+    </ul></div>
+    <div class="quad q-r"><h4>One Thing to Know Upfront</h4><ul>
+      <li>DryMedic — the specific system you mentioned — may have limited Georgia availability. We're verifying that now and will have alternatives ready if needed. The good news is you researched the right category and we have strong options.</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Your Recommended Capital Pathway</div>
+  <div class="pathway-dk">
+    <div class="sec-lbl">SBA 7(a) Pre-Approved · $2M · Truliance</div>
+    <div class="pw-route">Your Capital Is Ready — Now It's About Selecting the Right System</div>
+    <div class="pw-backup">Additional option: ROBS retirement rollover to blend with SBA and reduce debt service</div>
+    <p class="pw-note">You are in the strongest capital position of any candidate we work with at this stage. Pre-approved for $2M SBA with Truliance, $1M+ net worth, 750+ credit, and $100K–$250K liquid. The financing question is already answered. What's left is selecting the right franchise system in Georgia, completing FDD review, and executing. This can happen in 4–6 months if we move efficiently.</p>
+    <div class="pw-steps">
+      <h5>Your path forward</h5>
+      <ol class="steps">
+        <li><strong>Discovery call this week:</strong> Confirm your system shortlist, DryMedic territory status, and whether Senior Care or Home Services is your priority first move</li>
+        <li><strong>FDD review:</strong> Rigorous analysis of your top 2 systems — in the depth your background calls for</li>
+        <li><strong>Discovery Day:</strong> Visit the franchisor, ask the hard questions, validate what the FDD says against what operators experience</li>
+        <li><strong>Activate Truliance pre-approval + execute:</strong> Franchise agreement and SBA closing in 90–120 days</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="disc">
+  <p><strong>About this snapshot:</strong> This document reflects Franchise Nova's assessment of your readiness based on your intake responses. It is not a financial recommendation and does not constitute advice to invest in any specific franchise system. Franchise Nova has not reviewed any FDD on your behalf. All franchise investment decisions should be made after full FDD review, legal counsel, and independent financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for KC Copeland &nbsp;&middot;&nbsp; 2026</p>
+</div>
+</div>
+</body>
+</html>
