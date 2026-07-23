@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Jordan Truesdale · Your Readiness Snapshot</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:840px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.12);}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:36px 48px 30px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(69,46,128,0.45),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.6),transparent 60%);pointer-events:none;}
+.hdr-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.hdr-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.hdr-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:34px;color:#fff;margin-bottom:6px;line-height:1.05;position:relative;}
+.hdr-sub{font-size:13px;color:#b0aed0;position:relative;}
+.hdr-sub strong{color:#e1e3ee;}
+
+/* INTRO CARD */
+.intro-card{background:linear-gradient(90deg,rgba(0,174,239,0.08),transparent 80%);border-left:3px solid #00aeef;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 48px 0;}
+.intro-card p{font-size:13.5px;color:#444;line-height:1.7;}
+
+/* SECTIONS */
+.sec{padding:28px 48px;border-bottom:1px solid #e8eaf0;}
+.sec:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:18px;}
+
+/* READINESS DIMENSIONS — candidate-facing (no scores on right) */
+.dims{display:flex;flex-direction:column;gap:20px;}
+.dim-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:#15131f;margin-bottom:6px;}
+.bar-track{height:9px;background:#e8eaf0;border-radius:999px;overflow:hidden;margin-bottom:8px;}
+.bar-fill{height:100%;border-radius:999px;}
+.bar-fill.nebula{background:linear-gradient(90deg,#282560,#452e80);}
+.bar-fill.moderate{background:linear-gradient(90deg,#282560,#452e80);}
+.bar-fill.high{background:linear-gradient(90deg,#282560,#664ca9);}
+.dim-note{font-size:13px;color:#555;line-height:1.65;}
+
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border-radius:10px;padding:16px 18px;}
+.quad h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.quad ul{padding-left:15px;}
+.quad li{font-size:13px;margin-bottom:6px;line-height:1.55;color:#333;}
+.q-s{background:#eaf6ef;border-left:3px solid #1a7a4a;}.q-s h4{color:#1a7a4a;}
+.q-d{background:#ede9fa;border-left:3px solid #664ca9;}.q-d h4{color:#452e80;}
+.q-o{background:#f0eefa;border-left:3px solid #452e80;}.q-o h4{color:#452e80;}
+.q-r{background:#fff0f4;border-left:3px solid #b1456b;}.q-r h4{color:#b1456b;}
+
+/* PATHWAY */
+.pathway-dk{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:12px;padding:24px 26px;}
+.pathway-dk .sec-lbl{color:#00aeef;margin-bottom:12px;}
+.pw-route{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#fff;margin-bottom:6px;}
+.pw-backup{font-size:13px;color:#b9b6d6;margin-bottom:12px;}
+.pw-note{font-size:13.5px;color:#d8d6ec;line-height:1.7;}
+.pw-steps{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);}
+.pw-steps h5{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#9a98b4;margin-bottom:10px;}
+ol.steps{padding-left:20px;}
+ol.steps li{font-size:13px;color:#d8d6ec;margin-bottom:7px;line-height:1.5;}
+ol.steps li strong{color:#fff;}
+
+/* DISCLAIMER */
+.disc{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:16px 48px;}
+.disc p{font-size:11.5px;color:#888;line-height:1.7;}
+.disc strong{color:#555;}
+
+/* FOOTER */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.pathway-dk,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:720px){.swot{grid-template-columns:1fr;}.sec{padding:20px;}.hdr{padding:26px 20px;}.intro-card{margin:16px 20px 0;}.disc{padding:14px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="hdr">
+  <div class="hdr-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="hdr-eye">Your Readiness Snapshot</div>
+  <h1 class="hdr-name">Jordan Truesdale</h1>
+  <p class="hdr-sub">Detroit, MI &nbsp;&middot;&nbsp; <strong>Home Services &amp; Automotive</strong> &nbsp;&middot;&nbsp; Prepared July 2026</p>
+</header>
+
+<div class="intro-card">
+  <p>This snapshot reflects where you stand today based on your intake responses — what you're bringing to the table, where there's room to grow, and what FN can help you build. Think of it as your starting point, not your ceiling.</p>
+</div>
+
+<!-- READINESS DIMENSIONS -->
+<div class="sec">
+  <div class="sec-lbl">Your Readiness Profile</div>
+  <div class="dims">
+    <div>
+      <div class="dim-name">Operator Readiness &amp; Capability</div>
+      <div class="bar-track"><div class="bar-fill moderate" style="width:63%"></div></div>
+      <p class="dim-note">Your project management and HR background brings real operational discipline — scope management, relationship coordination, and timeline accountability are all transferable to running a franchise operation. The next step is building experience managing a team directly, which franchise ownership will develop quickly once you're in it.</p>
+    </div>
+    <div>
+      <div class="dim-name">Vision, Motivation &amp; Commitment</div>
+      <div class="bar-track"><div class="bar-fill nebula" style="width:33%"></div></div>
+      <p class="dim-note">Your instinct — service businesses, essential categories, cash flow over hype — is solid. What will sharpen this score is moving from exploration mode into commitment mode. The more specific your target (sector, geography, structure), the faster FN can build a real path. The 2+ year timeline is realistic; the key is making it an active 2 years, not a passive one.</p>
+    </div>
+    <div>
+      <div class="dim-name">Sector &amp; Franchise Fit</div>
+      <div class="bar-track"><div class="bar-fill moderate" style="width:61%"></div></div>
+      <p class="dim-note">Home Services and Automotive are two of the strongest categories in the FN portfolio — recession-resistant, non-discretionary, and built for recurring revenue. You're pointed in the right direction. Your interest in acquisitions is a real asset; some of the best entry points in these sectors come through resales, not new units.</p>
+    </div>
+    <div>
+      <div class="dim-name">Coachability &amp; Ecosystem Fit</div>
+      <div class="bar-track"><div class="bar-fill high" style="width:69%"></div></div>
+      <p class="dim-note">You're results-driven and open to new approaches — strong signals for franchise ownership, where following a proven system is the whole point. Your independent streak is an asset as long as it's channeled into execution rather than reinvention. You'll do best with a franchise system that gives you real operational latitude within a proven framework.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SWOT -->
+<div class="sec">
+  <div class="sec-lbl">Strengths, Growth Areas &amp; Opportunities</div>
+  <div class="swot">
+    <div class="quad q-s"><h4>What You Bring</h4><ul>
+      <li>Project management discipline — process-oriented and deadline-driven</li>
+      <li>Real estate investing experience — you already think like an asset evaluator</li>
+      <li>Recession-resistant sector instincts (Home Services + Automotive)</li>
+      <li>Open to acquisition — one of the most effective entry paths in these sectors</li>
+    </ul></div>
+    <div class="quad q-d"><h4>Where to Grow</h4><ul>
+      <li>Building toward 700+ credit — this opens the most favorable financing options</li>
+      <li>Team management experience — franchise ownership will build this fast</li>
+      <li>Capital access strategy — real estate equity + outside investment need to be mapped and ready</li>
+    </ul></div>
+    <div class="quad q-o"><h4>What FN Can Unlock</h4><ul>
+      <li>Credit building roadmap to reach SBA-qualifying thresholds</li>
+      <li>Capital stack structuring using your real estate equity and outside investment</li>
+      <li>Acquisition pipeline access — established service businesses in Michigan and beyond</li>
+      <li>Systems education so you arrive at Discovery Day informed, not cold</li>
+    </ul></div>
+    <div class="quad q-r"><h4>Things to Stay Ahead Of</h4><ul>
+      <li>The 2+ year window is an asset only if it's structured — passive exploration becomes passive waiting</li>
+      <li>Semi-absentee ownership requires a reliable manager — identify who that person could be early</li>
+      <li>Staying focused on the right systems — some concepts you've researched are outside our focus areas</li>
+    </ul></div>
+  </div>
+</div>
+
+<!-- PATHWAY -->
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Your Recommended Capital Pathway</div>
+  <div class="pathway-dk">
+    <div class="sec-lbl">Credit Building + Real Estate Equity + Outside Investment</div>
+    <div class="pw-route">Build to 700+ Credit &middot; Map Your Equity &middot; Structure the Stack</div>
+    <div class="pw-backup">Additional option: Down payment assistance programs + CDFI/community lending</div>
+    <p class="pw-note">Your real estate investing background is actually a significant advantage here — equity from existing properties can be part of the capital stack that gets you to ownership. The priority is building a clear picture of what's accessible and when. With 640–699 credit, a focused 12–18 month runway to 700+ opens the SBA 7(a) path, which is the most favorable for franchise financing.</p>
+    <div class="pw-steps">
+      <h5>Your path forward</h5>
+      <ol class="steps">
+        <li><strong>Discovery call:</strong> Get aligned on realistic timeline, geography priority, and what makes the most sense — new franchise unit or acquisition</li>
+        <li><strong>Capital mapping:</strong> Document real estate equity, outside investment potential, and current capital picture</li>
+        <li><strong>Credit action plan:</strong> Targeted steps to reach 700+ and unlock SBA financing options</li>
+        <li><strong>System &amp; acquisition shortlist:</strong> Identify 3–5 specific opportunities that fit your capital profile and geography in the next 90 days</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="disc">
+  <p><strong>About this snapshot:</strong> This document reflects Franchise Nova's assessment of your readiness based on your intake responses. It is not a financial recommendation and does not constitute advice to invest in any specific franchise system. Franchise Nova has not reviewed any FDD on your behalf. All franchise investment decisions should be made after full FDD review, legal counsel, and independent financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for Jordan Truesdale &nbsp;&middot;&nbsp; 2026</p>
+</div>
+
+</div>
+</body>
+</html>
