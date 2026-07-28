@@ -232,10 +232,11 @@
       <div class="node">4</div>
       <div class="card">
         <h3>Invite to book the discovery call</h3>
-        <p>An automatic email — matched to the candidate's track — invites them to book. <span class="em">Every candidate we move forward with gets a discovery call</span>; booking runs through Mel's Google booking link.</p>
+        <p>An automatic email — matched to the candidate's track — invites them to book, and the Franchise Nova Stage automatically updates to <span class="em">Discovery Call Pending</span>. <span class="em">Every candidate we move forward with gets a discovery call</span>; booking runs through Mel's Google booking link.</p>
         <p>If they don't book, an automatic nurture sequence keeps reaching out until they do — the cadence differs by track, shown below.</p>
         <div class="meta">
           <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Stage → Discovery Call Pending</span>
           <span class="tag book"><svg><use href="#i-book"/></svg>Booking <span class="det">· Mel's Google link</span></span>
         </div>
       </div>
@@ -264,11 +265,12 @@
       <div class="node">5</div>
       <div class="card">
         <h3>The call gets booked</h3>
-        <p>HubSpot updates on its own: the Discovery Call Outcome becomes <span class="em">Scheduled</span> and the date/time is saved. Reschedule and it updates; cancel and the date/time clears and the outcome flips to <span class="em">Cancelled</span>.</p>
+        <p>HubSpot updates on its own: the Discovery Call Outcome becomes <span class="em">Scheduled</span>, the date/time is saved, and the Franchise Nova Stage updates to <span class="em">Discovery Call Scheduled</span>. Reschedule and it updates; cancel and the date/time clears and the outcome flips to <span class="em">Cancelled</span>.</p>
         <div class="meta">
           <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
           <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome</span></span>
           <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Date</span></span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Stage → Discovery Call Scheduled</span>
         </div>
       </div>
     </div>
@@ -301,25 +303,25 @@
       <div class="node">7</div>
       <div class="card">
         <h3>The decision</h3>
-        <p>Based on the call, the Nova Guide sets the outcome — <span class="em">Accepted</span> or <span class="em">Not a Good Fit</span> — and updates the Franchise Nova Stage to match.</p>
+        <p>Based on the call, the Nova Guide sets the <span class="em">Discovery Call Outcome</span> — <span class="em">Accepted</span> or <span class="em">Not a Good Fit</span>. The Franchise Nova Stage then updates automatically from there.</p>
         <div class="meta">
           <span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span>
-          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Franchise Nova Stage</span></span>
-          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome</span></span>
+          <span class="tag prop"><svg><use href="#i-prop"/></svg>Property <span class="det">· Discovery Call Outcome → Accepted / Not a Good Fit</span></span>
         </div>
         <div class="branch">
           <div class="fork bad">
             <div class="ftitle"><span class="arrow">→</span> Not a good fit</div>
-            <p>The Nova Guide sends <span class="em">Email 10 — Post Discovery Call, Not a Good Fit.</span></p>
+            <p>The Franchise Nova Stage automatically updates to <span class="em">Not Moving Forward</span>. The Nova Guide sends <span class="em">Email 10 — Post Discovery Call, Not a Good Fit.</span></p>
             <span class="manual-flag"><b>Manual send.</b> The guide adds personal detail before it goes out — the template has notes on what to include.</span>
-            <div class="meta"><span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span></div>
+            <div class="meta"><span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span><span class="tag prop"><svg><use href="#i-prop"/></svg>Stage → Not Moving Forward</span><span class="tag person"><svg><use href="#i-person"/></svg>Nova Guide</span></div>
           </div>
           <div class="fork good">
             <div class="ftitle"><span class="arrow">→</span> Accepted</div>
             <p>A welcome email goes out automatically. The Nova Guide generates the PandaDoc participation agreement and sends it to the candidate and Chipo to sign.</p>
-            <p>Once signed, the fields update, a deal is created, and a Slack alert fires.</p>
+            <p>The Franchise Nova Stage updates itself as things move: <span class="em">Accepted – Agreement Sent</span> once the agreement is sent, then <span class="em">Agreement Signed</span> once it's signed — at which point a deal is created and a Slack alert fires.</p>
             <div class="meta">
               <span class="tag auto"><svg><use href="#i-auto"/></svg>Automatic</span>
+              <span class="tag prop"><svg><use href="#i-prop"/></svg>Stage → Accepted – Agreement Sent → Agreement Signed</span>
               <span class="tag panda"><svg><use href="#i-panda"/></svg>PandaDoc</span>
               <span class="tag deal"><svg><use href="#i-deal"/></svg>Deal created</span>
               <span class="tag slack"><svg><use href="#i-slack"/></svg>Slack</span>
