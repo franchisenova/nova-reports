@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Nurturing SOP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap');
+
+  :root{
+    --bg:#ffffff;
+    --panel:#f7f7fa;
+    --hair:#e3e3ec;
+    --navy:#1b2140;
+    --gold:#b8860b;
+    --grey:#6b6b7d;
+    --text:#20202c;
+
+    --person:#7c3aed;
+    --automatic:#0891b2;
+    --property:#15803d;
+    --note:#b45309;
+    --slack:#be185d;
+    --booking:#1d4ed8;
+    --form:#0f766e;
+    --pandadoc:#c2410c;
+    --deal:#4338ca;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:'Lato',sans-serif; line-height:1.65; font-size:16px;}
+  h1,h2,h3,.eyebrow{font-family:'Poppins',sans-serif;}
+
+  .hero{position:relative; padding:70px 8vw 50px; text-align:center; background:linear-gradient(180deg,#fbfaf5 0%, #ffffff 100%); border-bottom:3px solid var(--gold);}
+  .wordmark{position:relative; font-size:13px; letter-spacing:0.35em; color:var(--gold); font-weight:700;}
+  .wordmark span{display:block; color:var(--grey); letter-spacing:0.3em; font-size:11px; margin-top:5px;}
+  h1.title{position:relative; font-size:clamp(26px,4vw,42px); color:var(--navy); margin:16px 0 10px; font-weight:800;}
+  .subtitle{position:relative; color:var(--grey); font-style:italic; max-width:620px; margin:0 auto;}
+
+  main{max-width:900px; margin:0 auto; padding:50px 8vw 100px;}
+
+  .legend{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:26px auto 0; max-width:820px; position:relative;}
+  .legend .chip{display:flex; align-items:center; gap:7px; font-size:12px; color:var(--grey); background:#fff; border:1px solid var(--hair); padding:6px 12px; border-radius:20px; box-shadow:0 1px 2px rgba(0,0,0,0.04);}
+  .legend .dot{width:9px; height:9px; border-radius:50%; flex:0 0 auto;}
+
+  .eyebrow{color:var(--gold); letter-spacing:0.18em; font-size:12px; font-weight:700; text-transform:uppercase; margin-bottom:6px;}
+  h2{font-size:25px; color:var(--navy); margin:54px 0 14px; padding-bottom:10px; border-bottom:2px solid var(--hair); font-weight:700;}
+  h2:first-of-type{margin-top:0;}
+  h3{font-size:17px; color:var(--automatic); margin:26px 0 8px; font-weight:700;}
+  p{margin:0 0 12px; color:#33333f;}
+
+  .deftable{width:100%; border-collapse:separate; border-spacing:0 10px; margin:16px 0 20px;}
+  .deftable td{background:var(--panel); border:1px solid var(--hair); padding:14px 16px; vertical-align:top;}
+  .deftable tr td:first-child{border-radius:8px 0 0 8px; border-right:none; width:230px; white-space:nowrap;}
+  .deftable tr td:last-child{border-radius:0 8px 8px 0; border-left:none;}
+  .term{font-family:'Poppins',sans-serif; font-weight:700; font-size:14.5px;}
+  .term.direct{color:var(--person);}
+  .term.indirect{color:var(--automatic);}
+  .term.consortium{color:var(--deal);}
+
+  .callout{background:#fdf8ec; border-left:3px solid var(--gold); padding:16px 20px; border-radius:6px; margin:18px 0;}
+  .callout b{color:var(--gold);}
+
+  .step{display:flex; gap:16px; margin:16px 0; padding:16px 18px; background:var(--panel); border-radius:8px; border:1px solid var(--hair);}
+  .step .num{flex:0 0 30px; height:30px; border-radius:50%; background:var(--deal); color:#fff; font-family:'Poppins',sans-serif; font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center;}
+  .step .body b{color:var(--navy);}
+  .step .tags{margin-top:8px; display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; color:#fff;}
+  .tag.person{background:var(--person);}
+  .tag.automatic{background:var(--automatic);}
+  .tag.property{background:var(--property);}
+  .tag.note{background:var(--note);}
+  .tag.slack{background:var(--slack);}
+  .tag.booking{background:var(--booking);}
+  .tag.form{background:var(--form);}
+  .tag.pandadoc{background:var(--pandadoc);}
+  .tag.deal{background:var(--deal);}
+
+  ul{padding-left:20px; color:#33333f;}
+  li{margin-bottom:6px;}
+  .phase-head{margin-top:60px; padding:10px 0; border-top:1px solid var(--hair);}
+  .phase-head .eyebrow{color:var(--gold);}
+  .phase-head h2{border:none; margin-top:6px;}
+  code{background:#f0f0f5; color:#0f766e; padding:1px 6px; border-radius:4px; font-size:13.5px; border:1px solid var(--hair);}
+  table.plain{width:100%; border-collapse:collapse; margin:14px 0 22px; font-size:14.5px;}
+  table.plain th{background:var(--navy); color:#fff; text-align:left; padding:10px 12px; font-family:'Poppins',sans-serif; font-size:13px;}
+  table.plain td{padding:10px 12px; border-bottom:1px solid var(--hair);}
+  table.plain tr:nth-child(even) td{background:var(--panel);}
+  .footer{text-align:center; padding:40px 0 10px; color:var(--grey); font-size:12.5px; border-top:1px solid var(--hair); margin-top:60px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wordmark">BLK GRVTY</div>
+  <h1 class="title">Lead Nurturing SOP</h1>
+  <p class="subtitle">How a lead moves from first contact through nurture, engagement, or closure — and what starts, stops, and restarts along the way.</p>
+</div>
+
+<main>
+
+<h2>1. Definitions</h2>
+
+<h3>BG Lead Status</h3>
+<p>One property answers "where does this person stand with us right now," regardless of which initiative they belong to.</p>
+
+<table class="deftable">
+  <tr>
+    <td><span class="term direct">Active –<br>Nurturing</span></td>
+    <td>In an automated nurture sequence, hasn't responded yet. Set automatically when someone enters nurture.</td>
+  </tr>
+  <tr>
+    <td><span class="term indirect">Engaged</span></td>
+    <td>They've responded, or a person is actively in conversation with them. A human owns the follow-up — no automated emails go out while someone is Engaged.</td>
+  </tr>
+  <tr>
+    <td><span class="term consortium">Lost Lead –<br>Unresponsive</span></td>
+    <td>Went through a full nurture sequence and never responded. Not permanent — attending a future event puts them back into nurture.</td>
+  </tr>
+</table>
+
+<h3>Lead vs. In the Pipeline</h3>
+<table class="plain">
+  <tr><th>Stage</th><th>Definition</th></tr>
+  <tr><td><b>Lead</b></td><td>A connection we're nurturing — has not yet completed an intake form.</td></tr>
+  <tr><td><b>In the Pipeline</b></td><td>Has completed an intake form (or, for certain partner-side records, been manually entered). This is the only trigger that moves someone from Lead to Pipeline.</td></tr>
+</table>
+
+<div class="callout">
+  <b>Partner-side records</b> (organizations or systems we work with directly, rather than individual candidates): the intake form isn't built for these. If real work is happening with one of these without a formal intake/agreement step, manually add them to the pipeline at whatever stage reflects the actual work underway.
+</div>
+
+<div class="callout">
+  <b>One-off / informal engagements</b> (e.g. connecting a candidate directly to a capital partner without the full program): going forward, everyone should go through an intake form unless it's a genuine one-off. One-offs still get placed into the pipeline at whatever stage they're actually at.
+</div>
+
+<h2>2. How a lead enters nurture</h2>
+<p>There are three ways in. Each behaves differently on purpose.</p>
+
+<h3>Path A — They registered for an event</h3>
+<p>Everyone who registers for an event enters the nurture sequence for that event's initiative, 7 days after the event. Whether or not they actually showed up doesn't change this — registering is enough of a signal to keep the conversation going.</p>
+
+<div class="callout">
+  <b>The one exception:</b> anyone already marked <b>Engaged</b> is skipped. A live conversation is never interrupted by an automated sequence.
+</div>
+
+<h3>Path B — Added manually from a call or email</h3>
+<p>Someone we met, spoke with, or emailed who wasn't tied to an event. A real conversation is already underway, so these leads do <b>not</b> go into nurture — automated "nice to meet you" emails landing on top of a live thread undercut the relationship.</p>
+
+<div class="step">
+  <div class="num">1</div>
+  <div class="body">
+    <b>Create the Contact</b> with name, email, and phone.
+  </div>
+</div>
+<div class="step">
+  <div class="num">2</div>
+  <div class="body">
+    <b>Set BG Initiative</b> based on whatever conversation led to them being added.
+  </div>
+</div>
+<div class="step">
+  <div class="num">3</div>
+  <div class="body">
+    <b>Set BG Lead Status to Engaged.</b> You own the follow-up from here — no automation will run for them.
+  </div>
+</div>
+
+<div class="callout">
+  <b>Engaged is not a parking spot.</b> Marking someone Engaged means a person is responsible for them. Section 5's weekly review exists specifically to catch Engaged contacts that have gone quiet, so nobody sits untouched for months.
+</div>
+
+<h3>Path C — Re-entry after a new event</h3>
+<p>Someone previously marked Lost Lead – Unresponsive who shows up at another event gets a second run — automatically, in the nurture sequence for whichever initiative that new event belonged to.</p>
+
+<div class="callout">
+  <b>The one exception:</b> if they're currently <b>Engaged</b>, nothing happens. A live conversation is never interrupted by an automated sequence, even if they attend something new.
+</div>
+
+<h2>3. What happens during nurture</h2>
+<p>Each initiative has its own nurture sequence — its own emails, its own cadence, its own voice. What's identical across all of them is the surrounding logic:</p>
+
+<ul>
+  <li>On entry, BG Lead Status is set to <b>Active – Nurturing</b></li>
+  <li>The sequence runs its emails on schedule</li>
+  <li>At any point, engaging pulls them out immediately (Section 4)</li>
+  <li>If the sequence finishes with no engagement, they're marked <b>Lost Lead – Unresponsive</b></li>
+</ul>
+
+<div class="callout">
+  <b>Nobody is ever in two nurture sequences at once.</b> Entering one sets Active – Nurturing; engaging exits it entirely.
+</div>
+
+<h2>4. How nurture stops — engagement</h2>
+<p>One workflow watches for engagement across every initiative and sets BG Lead Status to <b>Engaged</b>. Every nurture sequence has a single unenrollment trigger tied to that status, so the moment someone engages, all automated email stops.</p>
+
+<table class="plain">
+  <tr><th>Signal</th><th>How it's caught</th></tr>
+  <tr><td>Replies to one of our emails</td><td>Automatic</td></tr>
+  <tr><td>Submits the intake form or another engagement form</td><td>Automatic</td></tr>
+  <tr><td>Calls, texts, or talks to us in person</td><td><b>Manual</b> — whoever hears from them sets BG Lead Status to Engaged</td></tr>
+</table>
+
+<div class="callout">
+  <b>The manual one matters most.</b> Phone calls, texts, and hallway conversations leave no trace HubSpot can detect. If you hear from someone by any channel and don't set their status, they'll keep receiving automated emails as though they'd never responded — which is exactly the impression we don't want to give.
+</div>
+
+<div class="callout">
+  <b>Registration and check-in forms are deliberately excluded</b> from engagement detection. They're forms, but submitting one means someone signed up for an event — not that they responded to us. Counting them would mark every registrant as Engaged and stop nurture before it ever starts.
+</div>
+
+<h2>5. Weekly review — Engaged leads that have gone quiet</h2>
+<p>Engaged contacts have no automation running for them, by design. That protection becomes a liability if the person responsible gets busy — which is how leads historically went months without contact.</p>
+
+<div class="step">
+  <div class="num">1</div>
+  <div class="body">
+    <b>Open the "Engaged – No Recent Activity" dashboard view.</b> It surfaces anyone marked Engaged with no activity in 14+ days.
+  </div>
+</div>
+<div class="step">
+  <div class="num">2</div>
+  <div class="body">
+    <b>For each one, decide:</b> reach out personally, or hand them back to automation by changing BG Lead Status to <b>Active – Nurturing</b> and enrolling them in the right initiative's nurture sequence.
+  </div>
+</div>
+<div class="step">
+  <div class="num">3</div>
+  <div class="body">
+    <b>If the relationship is genuinely over,</b> mark them Lost Lead – Unresponsive so they're not counted as live.
+  </div>
+</div>
+
+<div class="callout">
+  <b>This view should stay short.</b> A growing one means leads are being marked Engaged and then forgotten — the exact problem this system exists to prevent.
+</div>
+
+<h2>6. Lost leads</h2>
+<p><b>Lost Lead – Unresponsive</b> means someone completed a full nurture sequence without ever responding. It's a status, not a deletion — they keep their Contact record, their BG Initiative tags, and their full history.</p>
+
+<div class="callout">
+  <b>Nothing is permanent.</b> Attending any future event puts a lost lead straight back into nurture for that event's initiative. People's timing changes; the system assumes a "no" is about right now, not forever.
+</div>
+
+<h2>7. Capital Consortium — status detail</h2>
+<table class="plain">
+  <tr><th>Status</th><th>Meaning</th></tr>
+  <tr><td>Lead</td><td>Initial contact made; interest not yet confirmed.</td></tr>
+  <tr><td>Considering</td><td>In conversation, evaluating fit.</td></tr>
+  <tr><td>Active Partner</td><td>Confirmed working relationship — we actively send candidates to them.</td></tr>
+  <tr><td>Inactive</td><td>Previously active, currently dormant.</td></tr>
+  <tr><td>Declined</td><td>Said no / not moving forward.</td></tr>
+</table>
+<p>Capital partners are tracked as Contacts with <code>BG Initiative</code> set to Capital Consortium. Because it's its own initiative, Capital Consortium gets its own nurture workflow — separate emails, separate cadence, written for capital partners rather than candidates.</p>
+
+<h2>8. When a Lead becomes a Deal</h2>
+<p>A candidate becomes a <b>Deal</b> in HubSpot when they <b>sign the participation agreement</b>. The signed agreement is what creates the Deal record, and each contact gets added to a deal pipeline depending on the BG Initiative.</p>
+
+<div class="footer">BLK GRVTY · Internal SOP — living document, update as process changes</div>
+
+</main>
+</body>
+</html>
