@@ -94,14 +94,6 @@
   <div class="wordmark">BLK GRVTY</div>
   <h1 class="title">Reporting & Pipeline SOP</h1>
   <p class="subtitle">How every connection, event, and candidate gets tracked in HubSpot — from first contact to investor report.</p>
-  <div class="legend">
-    <div class="chip"><span class="dot" style="background:var(--person);"></span>Event coordinator</div>
-    <div class="chip"><span class="dot" style="background:var(--automatic);"></span>Happens automatically</div>
-    <div class="chip"><span class="dot" style="background:var(--property);"></span>HubSpot property</div>
-    <div class="chip"><span class="dot" style="background:var(--form);"></span>Form</div>
-    <div class="chip"><span class="dot" style="background:var(--note);"></span>Note or attachment</div>
-    <div class="chip"><span class="dot" style="background:var(--deal);"></span>Workflow</div>
-  </div>
 </div>
 
 <main>
@@ -112,7 +104,7 @@
 <table class="deftable">
   <tr>
     <td><span class="term consortium">BG<br>Initiative</span></td>
-    <td>Which of BG's seven initiatives a lead belongs to — Franchise Nova, BG Enterprise, Wealth Through Women's Wellbeing, Refuge, Preservation Home &amp; Land, Equipped, or Proximate Leaders. Set on every Contact the moment they come in.</td>
+    <td>Which BG initiative a lead belongs to — Franchise Nova, BG Enterprise, Wealth Through Women's Wellbeing, Refuge, Preservation Home &amp; Land, Equipped, Proximate Leaders, or Capital Consortium. Set on every Contact the moment they come in.</td>
   </tr>
   <tr>
     <td><span class="term direct">Direct Participants<br>(Count)</span></td>
@@ -120,7 +112,7 @@
   </tr>
   <tr>
     <td><span class="term direct">Direct Participants<br>(Confirmed)</span></td>
-    <td>We captured a name + email — through registration, a check-in form, a QR code scan, or a list we imported. This is <b>not a typed-in number</b>: it's everyone marked <b>Attended</b> on the Marketing Event, which HubSpot counts for you.</td>
+    <td>We captured a name + email — through registration, a check-in form, a QR code scan, or a list we imported. This is <b>not a typed-in number</b>: it's everyone marked <b>Attended</b> on the Marketing Event.</td>
   </tr>
   <tr>
     <td><span class="term indirect">Indirect<br>Participants</span></td>
@@ -128,12 +120,16 @@
   </tr>
   <tr>
     <td><span class="term consortium">Capital<br>Consortium</span></td>
-    <td>Banks and capital partners in our referral network for candidate capital access. Tracked at the Company level by status — not counted alongside participant metrics. See Section 9 for the full status list.</td>
+    <td>Banks and capital partners in our referral network for candidate capital access. Tracked as <b>Contacts</b> with BG Initiative set to Capital Consortium, plus a status — not counted alongside participant metrics. See Section 11 for the full status list.</td>
   </tr>
 </table>
 
 <div class="callout">
-  <b>Not tracked at all:</b> we had no formal presence at an event — attending as a guest, wandering a conference floor with no booth or speaking role. No aggregate number gets logged. Anyone individually engaged in that setting still gets entered as a Contact.
+  <b>No aggregate number:</b> if we had no formal presence at an event — attending as a guest, wandering a conference floor with no booth or speaking role — there's no total to log, so nothing goes in Direct Participants (Count) or Indirect Participants.
+</div>
+
+<div class="callout">
+  <b>But individual contacts still count.</b> Anyone you personally engaged with and got info from — business cards, contact info written down — is a <b>Direct Participant (Confirmed)</b>. To capture them properly, put them in a spreadsheet with <b>Name</b>, <b>Email</b>, <b>Phone Number</b>, and <b>BG Initiative</b> (the initiative for the event they attended), then import them as <b>Attended</b> on that specific Marketing Event. That's what puts them on the record — otherwise the connection is lost.
 </div>
 
 <div class="callout">
@@ -147,7 +143,6 @@
   <div class="num">1</div>
   <div class="body">
     <b>Create the Marketing Event</b> and name it using this exact format every time: <b>EVENT NAME - DATE</b>. Consistent naming is what makes events findable and reportable later.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
@@ -155,7 +150,6 @@
   <div class="body">
     <b>Fill in every field:</b>
     <ul>
-      <li><b>Status</b> — Pending</li>
       <li><b>Description</b> — what the event is, and anything worth knowing at a glance</li>
       <li><b>Organizer</b> — who's running it (us or the host organization)</li>
       <li><b>Event Type</b> — see the list below</li>
@@ -163,7 +157,6 @@
       <li><b>Partnered Event</b> — Yes or No</li>
       <li><b>Partner Name(s)</b> — leave blank if Partnered Event is No</li>
     </ul>
-    <div class="tags"><span class="tag property">HubSpot property</span></div>
   </div>
 </div>
 
@@ -186,28 +179,24 @@
   <div class="num">1</div>
   <div class="body">
     <b>Create an event landing page.</b> This is where people will register.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">2</div>
   <div class="body">
     <b>Clone the event registration form</b> and change the form title to <b>Event Name - Date (Registration)</b>.
-    <div class="tags"><span class="tag form">Form</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">3</div>
   <div class="body">
     <b>Customize the form however you need</b> before saving — add photos, add fields for anything specific you want to capture from registrants, adjust the copy. The form is yours to shape per event; just don't remove the hidden <code>BG Initiative</code> field, and make sure it's set to this event's initiative.
-    <div class="tags"><span class="tag form">Form</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">4</div>
   <div class="body">
     <b>Embed the registration form on the landing page</b> so registrations are captured.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 
@@ -216,21 +205,18 @@
   <div class="num">1</div>
   <div class="body">
     <b>Verify what kind of list you've been given.</b> Ask whoever provided it: is this a <i>registration</i> list or an <i>attendance</i> list? They're not the same, and importing one as the other will throw off every number downstream. If they can give you <b>both</b>, ask for both — that's the ideal.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">2</div>
   <div class="body">
     <b>Prepare the spreadsheet before importing.</b> Add a column called <b>BG Initiative</b> and type the correct initiative for every row. It must be spelled exactly as HubSpot has it — see the list below.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">3</div>
   <div class="body">
     <b>Import the list.</b> Open the Marketing Event in HubSpot → scroll down the middle column to <b>Imports</b> → click <b>Import event contacts</b>. During import, select whether these contacts are <b>Registered</b> or <b>Attended</b>.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
@@ -241,7 +227,7 @@
 </div>
 
 <div class="callout">
-  <b>BG Initiative — type exactly one of these:</b> Franchise Nova · BG Enterprise · Wealth Through Women's Wellbeing · Refuge · Preservation Home &amp; Land · Equipped · Proximate Leaders
+  <b>BG Initiative — type exactly one of these:</b> Franchise Nova · BG Enterprise · Wealth Through Women's Wellbeing · Refuge · Preservation Home &amp; Land · Equipped · Proximate Leaders · Capital Consortium
 </div>
 
 <h3>Path C — Count only</h3>
@@ -249,7 +235,6 @@
   <div class="num">1</div>
   <div class="body">
     <b>Open the Marketing Event and fill in the right number.</b> Use <code>Direct Participants (Count)</code> if this was a specific direct-engagement moment (a team member spoke or moderated) with a known reach but no names. Use <code>Indirect Participants</code> if it's a general attendance total with no specific engagement.
-    <div class="tags"><span class="tag property">HubSpot property</span></div>
   </div>
 </div>
 
@@ -259,14 +244,12 @@
   <div class="num">1</div>
   <div class="body">
     <b>Clone the check-in form</b> and change the title to <b>Event Name - Date (Check-in)</b>.
-    <div class="tags"><span class="tag form">Form</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">2</div>
   <div class="body">
     <b>Confirm the hidden <code>BG Initiative</code> field</b> is set to this event's initiative, then save.
-    <div class="tags"><span class="tag form">Form</span></div>
   </div>
 </div>
 
@@ -277,7 +260,6 @@
   <div class="num">1</div>
   <div class="body">
     <b>Clone the Registration workflow and the Attended workflow.</b> Rename each to <b>Event Name - Date (Registration)</b> and <b>Event Name - Date (Attended)</b>.
-    <div class="tags"><span class="tag deal">Workflow</span></div>
   </div>
 </div>
 <div class="step">
@@ -288,14 +270,12 @@
       <li>Click <b>Group 1</b> and change it to this event's matching form</li>
       <li>Click <b>1. Add participant to marketing event</b> and change it to this event</li>
     </ul>
-    <div class="tags"><span class="tag deal">Workflow</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">3</div>
   <div class="body">
-    <b>On the Attended workflow only:</b> click <b>4. Add to workflow</b> and change it to the correct BG Initiative nurture workflow. This is what puts the lead into the right nurturing sequence — if it's wrong, people get another initiative's emails, and the mistake is silent.
-    <div class="tags"><span class="tag deal">Workflow</span></div>
+    <b>On the Attended workflow only:</b> click <b>Add to workflow</b> under the <b>"Not met"</b> branch and change it to the correct BG Initiative nurture workflow. This is what puts the lead into the right nurturing sequence — if it's wrong, people get another initiative's emails, and the mistake is silent.
   </div>
 </div>
 <div class="step">
@@ -311,7 +291,6 @@
   <div class="num">1</div>
   <div class="body">
     <b>Create a campaign</b> for the event.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
@@ -342,43 +321,37 @@
 <div class="step">
   <div class="num">1</div>
   <div class="body">
-    <b>Bulk import the attendance list</b> — only if you didn't use a check-in form. Same process as Path B: Marketing Event → Imports → Import event contacts → mark as Attended.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
+    <b>Bulk import the attendance list, if applicable</b> — only needed if you didn't use a check-in form. Same process as Path B: Marketing Event → Imports → Import event contacts → mark as Attended.
   </div>
 </div>
 <div class="step">
   <div class="num">2</div>
   <div class="body">
     <b>Add Direct Participants (Count)</b> if applicable.
-    <div class="tags"><span class="tag property">HubSpot property</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">3</div>
   <div class="body">
     <b>Add Indirect Participants</b> if applicable.
-    <div class="tags"><span class="tag property">HubSpot property</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">4</div>
   <div class="body">
     <b>Add takeaway notes.</b> Click <b>Activities</b> → <b>Notes</b> and write down anything worth remembering — what worked, what didn't, standout conversations, whether it's worth doing again.
-    <div class="tags"><span class="tag note">Note</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">5</div>
   <div class="body">
     <b>Create a segment for the event.</b> Clone the <b>Event Segment Template</b>, change the event in the template to this event, then save it.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 <div class="step">
   <div class="num">6</div>
   <div class="body">
     <b>Send the Event Thank You email to that segment.</b> Personalize it before sending — reference something specific about the event so it doesn't read like a form letter.
-    <div class="tags"><span class="tag person">Event coordinator</span></div>
   </div>
 </div>
 
@@ -408,20 +381,16 @@
 <h2>10. When a Lead becomes a Deal</h2>
 <p>A candidate becomes a <b>Deal</b> in HubSpot when they <b>sign the participation agreement</b>. The signed agreement is what creates the Deal record, and each contact gets added to a deal pipeline depending on the BG Initiative.</p>
 
-<div class="callout">
-  <b>Note:</b> events are no longer tracked as deals — that's what Marketing Events replaced. Deals are now used only for candidates who've signed a participation agreement.
-</div>
-
 <h2>11. Capital Consortium — status detail</h2>
 <table class="plain">
   <tr><th>Status</th><th>Meaning</th></tr>
   <tr><td>Lead</td><td>Initial contact made; interest not yet confirmed.</td></tr>
   <tr><td>Considering</td><td>In conversation, evaluating fit.</td></tr>
-  <tr><td>Active</td><td>Confirmed working relationship — we actively send candidates to them.</td></tr>
+  <tr><td>Active Partner</td><td>Confirmed working relationship — we actively send candidates to them.</td></tr>
   <tr><td>Inactive</td><td>Previously active, currently dormant.</td></tr>
   <tr><td>Declined</td><td>Said no / not moving forward.</td></tr>
 </table>
-<p>All consortium meetings and calls get entered as Marketing Events going forward, so the annual total lives in one place.</p>
+<p>Capital partners are tracked as Contacts with <code>BG Initiative</code> set to Capital Consortium. All consortium meetings and calls get entered as Marketing Events going forward, so the annual total lives in one place.</p>
 
 <h2>12. Reporting cadence</h2>
 <table class="plain">
