@@ -351,6 +351,12 @@ handles all publishing automatically.
 FILENAME: FN_FDDAnalysis_[LastName][FirstName]_[YYYY].html
 EXAMPLE:  FN_FDDAnalysis_TruesdaleJordan_2026.html
 
+REQUIRED META TAG — add inside <head> of every FDD analysis file:
+<meta name="fn-systems" content="[System A Name], [System B Name], [System C Name]">
+EXAMPLE: <meta name="fn-systems" content="Molly Maid, Meineke, Jan-Pro">
+This tag lets the FDD Publisher auto-detect the systems analyzed
+without the Nova Guide having to type anything manually.
+
 BRAND STANDARDS:
   Colors: Cyan #00AEEF · Indigo #282560 · Eggplant #452E80
           Purple #664CA9 · Moon Gray #E1E3EE
