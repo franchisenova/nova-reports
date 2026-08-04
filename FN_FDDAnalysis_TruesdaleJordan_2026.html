@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fn-systems" content="Molly Maid, Meineke Car Care Centers, Jan-Pro Commercial Cleaning">
+<title>Franchise Nova — FDD Analysis · Jordan Truesdale</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.page{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 48px rgba(0,0,0,0.14);}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 15% 28%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#cfd6ff,transparent),radial-gradient(1px 1px at 82% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 78%,#e9d8ff,transparent),radial-gradient(1px 1px at 8% 85%,#fff,transparent),radial-gradient(900px 380px at 80% 5%,rgba(0,174,239,0.3),transparent 60%),radial-gradient(700px 320px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,0.35);margin-bottom:12px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:30px;color:#fff;margin-bottom:5px;position:relative;}
+.h-meta{font-size:12.5px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+
+/* ── CANDIDATE STRIP ── */
+.cand-strip{display:flex;flex-wrap:wrap;border-bottom:1px solid #e8eaf0;background:#f9f9fc;}
+.ci{padding:12px 16px;border-right:1px solid #e8eaf0;flex:1;min-width:100px;}
+.ci:last-child{border-right:none;}
+.ci-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:3px;}
+.ci-v{font-size:12.5px;color:#15131f;font-weight:700;line-height:1.35;}
+
+/* ── THESIS ── */
+.thesis-bar{background:#fff8e1;border-left:4px solid #b86e00;padding:14px 20px;margin:0 48px 0;border-radius:0 8px 8px 0;}
+.thesis-bar p{font-size:13px;color:#5a4000;line-height:1.65;font-style:italic;}
+.thesis-bar .attr{font-size:11px;color:#aaa;margin-top:6px;font-style:normal;}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:20px 48px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* ── ACCORDION ── */
+.accordion{border:1px solid #e8eaf0;border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.accordion:last-of-type{margin-bottom:0;}
+
+.acc-hdr{display:flex;align-items:center;gap:16px;padding:0;cursor:pointer;background:#fafafa;border:none;width:100%;text-align:left;transition:background .15s;}
+.acc-hdr:hover{background:#f0eefa;}
+.acc-hdr.open{background:linear-gradient(90deg,rgba(69,46,128,0.07),transparent 70%);}
+
+.sys-band{width:5px;align-self:stretch;flex-shrink:0;}
+.sys-band.s1{background:linear-gradient(180deg,#00aeef,#282560);}
+.sys-band.s2{background:linear-gradient(180deg,#664ca9,#452e80);}
+.sys-band.s3{background:linear-gradient(180deg,#1a7a4a,#0d4a2e);}
+
+.acc-main{flex:1;padding:14px 16px 14px 0;}
+.acc-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;color:#15131f;margin-bottom:4px;}
+.acc-sub{font-size:11.5px;color:#888;}
+.acc-pills{display:flex;gap:8px;align-items:center;margin-top:7px;flex-wrap:wrap;}
+
+.score-badge{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;padding:4px 12px;border-radius:999px;color:#fff;}
+.sb-cyan{background:linear-gradient(90deg,#0088c2,#00aeef);}
+.sb-purple{background:linear-gradient(90deg,#452e80,#664ca9);}
+.sb-green{background:linear-gradient(90deg,#0d4a2e,#1a7a4a);}
+
+.fit-pill{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+.fp-strong{background:rgba(26,122,74,0.12);color:#1a7a4a;border:1px solid rgba(26,122,74,0.3);}
+.fp-cond{background:rgba(184,110,0,0.1);color:#b86e00;border:1px solid rgba(184,110,0,0.3);}
+.fp-stretch{background:rgba(177,69,107,0.1);color:#b1456b;border:1px solid rgba(177,69,107,0.3);}
+
+.acc-chevron{font-size:11px;color:#aaa;margin-right:16px;transition:transform .2s;flex-shrink:0;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+
+/* ── ACCORDION BODY ── */
+.acc-body{display:none;border-top:1px solid #e8eaf0;}
+.acc-body.open{display:block;}
+
+/* Signal grid */
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #e8eaf0;}
+.sg-cell{padding:11px 16px;border-bottom:1px solid #f0eef8;border-right:1px solid #f0eef8;position:relative;}
+.sg-cell:nth-child(even){border-right:none;}
+.sg-cell:nth-last-child(-n+2){border-bottom:none;}
+.sg-item-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.sg-val{font-size:12.5px;color:#333;line-height:1.5;}
+.sg-val strong{color:#15131f;}
+.sg-val .flag{color:#b1456b;font-weight:700;}
+.sig{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.sig.G{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.sig.A{background:rgba(184,110,0,0.1);color:#b86e00;}
+.sig.R{background:rgba(177,69,107,0.1);color:#b1456b;}
+
+/* More/less toggle */
+.more-toggle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;color:#664ca9;background:none;border:none;cursor:pointer;padding:3px 0 0;display:block;}
+.more-toggle:hover{color:#452e80;}
+.more-detail{display:none;font-size:12px;color:#555;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #e8eaf0;}
+.more-detail.open{display:block;}
+
+/* Match grid */
+.match-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;}
+.match-card{background:#f5f5fa;border-radius:8px;padding:11px 13px;}
+.match-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:5px;}
+.match-v{font-size:12.5px;color:#15131f;line-height:1.5;}
+.mv-good{color:#1a7a4a;font-weight:700;}
+.mv-warn{color:#b86e00;font-weight:700;}
+.mv-bad{color:#b1456b;font-weight:700;}
+
+/* Capital stack */
+.stack-wrap{padding:0 16px 16px;}
+.stack-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+.stack-bar{height:22px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:8px;}
+.seg{display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9.5px;white-space:nowrap;padding:0 6px;color:#fff;}
+.s-cash{background:#664ca9;}
+.s-sba{background:#00aeef;color:#0d0a1c;}
+.s-heloc{background:#282560;}
+.s-cdfi{background:#1a7a4a;}
+.stack-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px;}
+.sl{display:flex;align-items:center;gap:5px;font-size:11.5px;color:#555;}
+.sl-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+.stack-note{font-size:12px;color:#666;line-height:1.6;font-style:italic;}
+
+/* Discovery questions */
+.qs-wrap{padding:0 16px 16px;border-top:1px solid #f0eef8;}
+.qs-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;padding:12px 0 8px;}
+.qs-list{padding-left:0;list-style:none;}
+.qs-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:8px;line-height:1.6;}
+.q-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;background:#452e80;border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;height:fit-content;}
+
+/* ── COMPARISON TABLE ── */
+.comp-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left;}
+.th-dark{background:#0d0a1c;color:#fff;}
+.th-s1{background:#0a1a30;color:#00aeef;}
+.th-s2{background:#140d28;color:#9b8fc8;}
+.th-s3{background:#0a1a10;color:#4aad7a;}
+td{padding:9px 14px;border-bottom:1px solid #e8eaf0;vertical-align:top;line-height:1.5;color:#333;}
+tr:nth-child(even) td{background:#f9f9fc;}
+td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;color:#452e80;}
+.td-good{color:#1a7a4a;font-weight:700;}
+.td-warn{color:#b86e00;font-weight:700;}
+.td-bad{color:#b1456b;font-weight:700;}
+
+/* ── RECOMMENDATION ── */
+.rec-card{background:linear-gradient(135deg,#0d0a1c,#1a1340);border-radius:10px;padding:26px 28px;color:#eceaf8;}
+.rec-card .sec-lbl{color:#00aeef;}
+.rec-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:19px;color:#fff;margin-bottom:10px;}
+.rec-body{font-size:13px;color:#d8d6ec;line-height:1.75;margin-bottom:12px;}
+.unlock-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc8;margin-bottom:9px;}
+.unlock-list{padding-left:18px;}
+.unlock-list li{font-size:13px;color:#d8d6ec;margin-bottom:6px;line-height:1.55;}
+
+/* ── RISKS ── */
+.risks-list{padding-left:18px;}
+.risks-list li{font-size:13px;color:#333;margin-bottom:9px;line-height:1.6;}
+.risks-list li strong{color:#b1456b;}
+
+/* ── FOOTER ── */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10px;color:#555;margin-top:3px;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .page{box-shadow:none;border-radius:0;}
+  .hdr,.rec-card,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .acc-body{display:block!important;}
+  .more-detail{display:block!important;}
+}
+@media(max-width:720px){
+  .signal-grid,.match-grid{grid-template-columns:1fr;}
+  .sg-cell:nth-child(even){border-right:none;}
+  .cand-strip{flex-direction:column;}
+  .ci{border-right:none;border-bottom:1px solid #e8eaf0;}
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .thesis-bar{margin:0 20px;}
+  .doc-footer{padding:14px 20px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">FDD Analysis &middot; Candidate–System Match &middot; Internal Use Only</div>
+  <h1 class="h-name">Jordan Truesdale — FDD Analysis</h1>
+  <p class="h-meta">3 systems analyzed &nbsp;&middot;&nbsp; July 2026 &nbsp;&middot;&nbsp; <strong>Nova Guide: [Nova Guide Name]</strong></p>
+</header>
+
+<!-- CANDIDATE STRIP -->
+<div class="cand-strip">
+  <div class="ci"><div class="ci-k">Classification</div><div class="ci-v">Nebula</div></div>
+  <div class="ci"><div class="ci-k">FN Lift</div><div class="ci-v">High — Timeline + Capital</div></div>
+  <div class="ci"><div class="ci-k">Liquid Capital</div><div class="ci-v">$50K–$100K</div></div>
+  <div class="ci"><div class="ci-k">Net Worth</div><div class="ci-v">&lt;$250K</div></div>
+  <div class="ci"><div class="ci-k">Credit</div><div class="ci-v">640–699</div></div>
+  <div class="ci"><div class="ci-k">Monthly Debt</div><div class="ci-v">$2,000–$4,000</div></div>
+  <div class="ci"><div class="ci-k">Sectors</div><div class="ci-v">Home Services · Automotive</div></div>
+  <div class="ci"><div class="ci-k">Timeframe</div><div class="ci-v">2+ years</div></div>
+</div>
+
+<!-- THESIS -->
+<div class="section" style="padding-top:18px;padding-bottom:18px;">
+  <div class="thesis-bar">
+    <p>"I am interested in acquiring an operating franchise in the service industry — essential, recession-resistant businesses with recurring revenue and semi-absentee ownership potential."</p>
+    <p class="attr">Jordan Truesdale · Intake Form, July 2026 · Capital sources: Personal savings ($75K), real estate equity (HELOC TBD), outside investor (TBD)</p>
+  </div>
+</div>
+
+<!-- SYSTEMS ANALYZED -->
+<div class="section">
+  <div class="sec-lbl">Systems Analyzed — Click to Expand</div>
+
+  <!-- ══ SYSTEM 1: MOLLY MAID ══ -->
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s1"></div>
+      <div class="acc-main">
+        <div class="acc-title">Molly Maid (Neighborly) &mdash; 2025 FDD</div>
+        <div class="acc-sub">Recurring residential cleaning subscriptions &middot; 700+ locations &middot; KKR-backed · Established 1979</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-cyan">79 / 100</span>
+          <span class="fit-pill fp-cond">Conditional Fit</span>
+          <span style="font-size:11px;color:#888;">Good System</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+
+      <!-- Signal Grid -->
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fee <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$29,900</strong> single unit · Multi-unit discounts via Neighborly</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Fee scales with territory size. Neighborly preferred lender network allows fee financing in some cases. Fully non-refundable once territory is awarded, standard for the system.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Fee Burden <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>~8.5%</strong> total — Royalty 6.5% + Ad fund 2%</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Competitive for a Neighborly brand. National marketing support and ProTradeNet buying power ($8.3M in owner rebates system-wide in 2025) partially offset the ad fund cost. No technology fee on top.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Investment Range <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$109K–$157K</strong> · Planning amt: $173K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Home-based launch — no build-out or retail lease required. Primary costs are equipment, vehicle wrap, initial marketing, and working capital. Low end fits Jordan's liquid capital range without additional financing.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig A">Amber</span></div>
+          <div class="sg-val">No direct financing · <strong>SBA approved ✓</strong> · Neighborly preferred lenders</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">No in-house franchisor financing but Neighborly has deep SBA lender relationships who understand home services semi-absentee operations. CDFI-compatible at lower capital levels.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig G">Green</span></div>
+          <div class="sg-val">Semi-absentee <strong>explicitly supported</strong> · Team leader model</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Owner manages the business; a trained team leader manages crews day-to-day. This is the standard Molly Maid structure — not an exception. Jordan's PM background maps directly to managing a team leader and coordinating client schedules.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>Protected territory</strong> by household count · Michigan open ✓</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Oakland and Macomb County territories confirmed open per Neighborly territory map. First-mover opportunity in select North Detroit suburbs. Performance milestones required to maintain exclusivity — standard and achievable.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig G">Green</span></div>
+          <div class="sg-val">Full disclosure · Median AUV <strong>$612K</strong> · Top quartile $1.1M+</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">40-year system with one of the most statistically robust Item 19 data sets in home services. Bottom quartile ~$290K — spread is meaningful. Key driver of variance appears to be team leader quality and retention, which FN should explore at Discovery Day.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig G">Green</span></div>
+          <div class="sg-val">700+ units · Low churn · Satisfaction surveys published</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Established system with strong franchisor support infrastructure. ProTradeNet buying power is a genuine financial benefit. Annual franchisee satisfaction surveys are a transparency signal — most systems don't publish these.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Health <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>Neighborly / KKR</strong> · $5B+ enterprise value · Clean audit</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">KKR-backed at scale — franchisor continuity risk is very low. Revenue growing. No material financial distress indicators. One of the most financially stable franchisor situations on this analysis.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 23 — Exit Rights <span class="sig A">Amber</span></div>
+          <div class="sg-val">Transfer fee: <strong>15% of current fee</strong> · ROFR present</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Right of first refusal means Neighborly can buy back the territory before Jordan can sell externally. Standard for the network. Active resale market given 700+ unit maturity. Renewal at franchisor discretion with standard upgrade conditions.</div>
+        </div>
+      </div>
+
+      <!-- Match Grid -->
+      <div class="match-grid">
+        <div class="match-card">
+          <div class="match-k">Capital Gap</div>
+          <div class="match-v"><span class="mv-good">Manageable</span> — Low end $109K fits current liquid. HELOC needed for upper range. Missing: real estate equity amount.</div>
+        </div>
+        <div class="match-card">
+          <div class="match-k">Ownership Model</div>
+          <div class="match-v"><span class="mv-good">Strong match</span> — Semi-absentee is the standard structure. Team leader model is built in.</div>
+        </div>
+        <div class="match-card">
+          <div class="match-k">Timeline</div>
+          <div class="match-v"><span class="mv-warn">Stretched</span> — 2+ yr works but needs active credit building to unlock SBA. 12–18 months with focused work.</div>
+        </div>
+        <div class="match-card">
+          <div class="match-k">Geography</div>
+          <div class="match-v"><span class="mv-good">Strong</span> — Michigan is Jordan's primary market. Oakland/Macomb territories confirmed open.</div>
+        </div>
+        <div class="match-card">
+          <div class="match-k">Recurring Revenue</div>
+          <div class="match-v"><span class="mv-good">Direct match</span> — Weekly/biweekly cleaning subscriptions. Exactly the recurring cash flow thesis Jordan stated.</div>
+        </div>
+        <div class="match-card">
+          <div class="match-k">Monthly Debt Service Est.</div>
+          <div class="match-v"><span class="mv-good">Fits</span> — SBA loan at low end ~$900–$1,100/mo. Jordan's $2K–$4K monthly debt range has capacity.</div>
+        </div>
+      </div>
+
+      <!-- Capital Stack -->
+      <div class="stack-wrap">
+        <div class="stack-lbl">Illustrative Capital Stack — Low End ($109K)</div>
+        <div class="stack-bar">
+          <div class="seg s-cash" style="width:69%;">Personal Cash ~69%</div>
+          <div class="seg s-heloc" style="width:31%;">HELOC TBD</div>
+        </div>
+        <div class="stack-legend">
+          <div class="sl"><div class="sl-dot" style="background:#664ca9;"></div>Personal liquid ~$75K</div>
+          <div class="sl"><div class="sl-dot" style="background:#282560;"></div>HELOC / real estate equity — amount TBD (key missing field)</div>
+        </div>
+        <p class="stack-note">At the $109K low end, Jordan may not need any additional financing — liquid capital alone may cover it. Confirm real estate equity availability before SBA conversations.</p>
+      </div>
+
+      <!-- Discovery Questions -->
+      <div class="qs-wrap">
+        <div class="qs-lbl">Discovery Day Questions — Molly Maid</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>Your Item 19 shows a wide spread — $290K to $1.1M+. What are the primary operational differences between your top quartile and bottom quartile franchisees? Is team leader quality the main variable?</li>
+          <li><span class="q-num">Q</span>If my team leader quits in month three, what does Neighborly provide in terms of backup support and what's the typical hiring timeline for a replacement?</li>
+          <li><span class="q-num">Q</span>I'm looking specifically at Oakland County, Michigan. Are those territories available, and do you have existing franchisees in adjacent territories I can speak with?</li>
+          <li><span class="q-num">Q</span>On the resale side — do you have any existing Molly Maid locations in Michigan where the current owner is looking to exit? I'm specifically interested in acquiring an operating business.</li>
+          <li><span class="q-num">Q</span>Your renewal requires compliance with then-current standards. Can you give me a concrete example of what a renewal-triggered upgrade requirement has looked like in practice?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SYSTEM 2: MEINEKE ══ -->
+  <div class="accordion">
+    <button class="acc-hdr" onclick="toggleAcc(this)">
+      <div class="sys-band s2"></div>
+      <div class="acc-main">
+        <div class="acc-title">Meineke Car Care Centers (Driven Brands) &mdash; 2025 FDD</div>
+        <div class="acc-sub">Full-service automotive repair and maintenance &middot; 700+ locations &middot; Roark Capital / Nasdaq DRVN · Est. 1972</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-purple">67 / 100</span>
+          <span class="fit-pill fp-stretch">Stretch — Capital Gap</span>
+          <span style="font-size:11px;color:#888;">Solid System</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body">
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fee <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$40,000</strong> single location · Multi-unit dev discounts available</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Standard fee for an established automotive brand. Multi-unit development agreements reduce the per-unit fee for operators committing to multiple locations upfront. Driven Brands occasionally offers promotional reductions for priority markets.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Fee Burden <span class="sig R">Red</span></div>
+          <div class="sg-val"><strong class="flag">~15% total</strong> — Royalty 7% + Advertising 8%</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The 8% advertising requirement is unusually high — significantly above the home services category. At $500K gross revenue that's $75K/year in fees alone. Must be stress-tested against actual NOI before committing. This is the primary financial concern with Meineke for Jordan's profile.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Investment Range <span class="sig R">Red</span></div>
+          <div class="sg-val"><strong>$200K–$650K</strong> · Planning amt: $715K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Wide range driven by whether Jordan acquires an existing shop (lower) vs. building new (upper). Even at $200K, Jordan's liquid capital alone doesn't cover it. Real estate equity and outside investment both needed to close the gap.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig A">Amber</span></div>
+          <div class="sg-val">Equipment financing available · <strong>SBA approved ✓</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Driven Brands has automotive-specific SBA lender relationships. Equipment financing for lifts and diagnostic tools reduces upfront cash need. No direct equity financing from franchisor. SBA 7(a) is the primary pathway but requires 700+ credit — Jordan is currently at 640–699.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig A">Amber</span></div>
+          <div class="sg-val">Semi-absentee possible · <strong>Licensed service manager required</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Regulatory requirement — not just a preference. Automotive service must have a certified technician/manager on-site at all times. This is a mandatory labor cost Jordan must model from day one. Adds ~$60K–$80K/year in labor that home services concepts don't have.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>Protected territory</strong> · Michigan available · Verify zip-level</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Michigan's automotive culture creates natural consumer demand density. Detroit commuter base and aging vehicle fleet (avg 12.6 years in 2025) drives non-discretionary service demand. Specific Oakland/Macomb zip availability must be confirmed with Driven Brands development team.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig A">Amber</span></div>
+          <div class="sg-val">Disclosed but limited · Median AUV ~<strong>$680K</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Item 19 disclosed but reporting businesses represent a subset of the system. Wide AUV variance suggests significant operator-quality dependency. NOI margin not broken out separately — must ask at Discovery Day what the actual margin picture looks like after the 15% fee burden.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig A">Amber</span></div>
+          <div class="sg-val">700+ locations · Some post-acquisition turnover</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Established 50+ year system. Some franchisee turnover in recent years as Driven Brands optimized its portfolio post-acquisition. Franchisee association active — positive signal for operator engagement and brand accountability.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Health <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>Driven Brands / Nasdaq DRVN</strong> · Profitable · Public company</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Publicly traded — financials are transparent and audited quarterly. Growing revenue. Roark Capital PE backing. Some complexity from multi-brand M&A but franchisor continuity risk is low given public company status and scale.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 23 — Exit Rights <span class="sig G">Green</span></div>
+          <div class="sg-val">Transfer fee: <strong>$10,000</strong> · Active resale market</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Lowest transfer fee on this analysis. Active resale market — automotive shops trade well given real estate and equipment value. Used shop acquisitions are common and often priced below new-unit build cost, which aligns with Jordan's acquisition preference.</div>
+        </div>
+      </div>
+      <div class="match-grid">
+        <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-bad">Significant</span> — $200K min vs $75K liquid. Requires real estate equity + outside investor. Both amounts currently unknown.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Model</div><div class="match-v"><span class="mv-warn">Conditional</span> — Semi-absentee possible but licensed service manager is a mandatory cost from day one.</div></div>
+        <div class="match-card"><div class="match-k">Timeline</div><div class="match-v"><span class="mv-bad">Stretched</span> — Capital gap + credit building (640→700+) + outside investor alignment = 24–30 months minimum.</div></div>
+        <div class="match-card"><div class="match-k">Geography</div><div class="match-v"><span class="mv-good">Strong</span> — Michigan automotive culture is a genuine advantage. Aging fleet creates structural demand.</div></div>
+        <div class="match-card"><div class="match-k">Recurring Revenue</div><div class="match-v"><span class="mv-warn">Partial</span> — High-repeat transactional, not subscription. No contractual recurring billing model.</div></div>
+        <div class="match-card"><div class="match-k">Monthly Debt Service Est.</div><div class="match-v"><span class="mv-warn">Tight</span> — SBA on $200K+ adds ~$2,000–$2,800/mo. Sits at top of Jordan's $2K–$4K monthly obligation range.</div></div>
+      </div>
+      <div class="qs-wrap">
+        <div class="qs-lbl">Discovery Day Questions — Meineke</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>Your advertising fee is 8% — significantly above most automotive brands. What does that buy in terms of actual customer acquisition in a Michigan market, and what's the split between national and local activation?</li>
+          <li><span class="q-num">Q</span>What does a licensed service manager look like in the Michigan market — ASE certification, years of experience, and typical compensation range?</li>
+          <li><span class="q-num">Q</span>Are there existing Meineke owners in Oakland or Macomb County looking to exit? I'm specifically interested in an acquisition rather than building new.</li>
+          <li><span class="q-num">Q</span>Your Item 19 shows wide AUV variance. What do top-performing semi-absentee operators do differently at the operational level?</li>
+          <li><span class="q-num">Q</span>How has the Meineke brand strategy changed under Driven Brands, and what does the product/service roadmap look like for EV diagnostics specifically?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SYSTEM 3: JAN-PRO ══ -->
+  <div class="accordion">
+    <button class="acc-hdr" onclick="toggleAcc(this)">
+      <div class="sys-band s3"></div>
+      <div class="acc-main">
+        <div class="acc-title">Jan-Pro Commercial Cleaning &mdash; 2025 FDD</div>
+        <div class="acc-sub">B2B recurring commercial cleaning contracts · 10,000+ units · Empower Brands / Roark Capital</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-green">71 / 100</span>
+          <span class="fit-pill fp-strong">Strong Fit — B2B Recurring</span>
+          <span style="font-size:11px;color:#888;">Good System</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body">
+      <div class="signal-grid">
+        <div class="sg-cell"><div class="sg-item-lbl">Item 5 — Initial Fee <span class="sig G">Green</span></div><div class="sg-val"><strong>$4K–$55K</strong> unit · Regional dev: $135K–$500K+</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">Unit level is among the lowest entry thresholds in commercial services — Jordan could enter today with current liquid capital. Regional developer level requires more capital but creates a passive income layer from unit royalties. Jordan's profile better fits regional over time.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 6 — Fee Burden <span class="sig G">Green</span></div><div class="sg-val">~10% unit → regional · <strong>Passive income layer</strong> if regional dev</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">If Jordan operates as regional developer, unit franchisees pay royalties TO Jordan — creating a passive income stream on top of his own operations. This is a fundamentally different wealth-building structure than Molly Maid or Meineke.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 7 — Investment Range <span class="sig G">Green</span></div><div class="sg-val">Unit: <strong>$4K–$55K</strong> · Jordan can enter today</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">Unit level fits Jordan's current capital without any external financing. Regional developer ($135K–$500K) requires equity or outside investment. Unit entry could serve as proof-of-concept while building toward regional developer status over 12–18 months.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig G">Green</span></div><div class="sg-val"><strong>Direct unit financing available</strong> in some markets</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">One of the few commercial cleaning brands with direct unit-level financing — can eliminate the need for SBA at entry level entirely. This is significant for Jordan given the current 640–699 credit range. SBA friendly at regional developer level.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig G">Green</span></div><div class="sg-val"><strong>Semi-absentee by design</strong> at regional level</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">Regional developer model is inherently semi-absentee — Jordan manages unit franchisees and business development, not cleaning operations. This is the most naturally semi-absentee model on this analysis. Jordan's PM background maps directly to managing a portfolio of unit operators.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 12 — Territory <span class="sig G">Green</span></div><div class="sg-val">Exclusive regional territories · Michigan likely available</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">Regional developer territories are geographically exclusive. Michigan's commercial and industrial base (Metro Detroit, Oakland County business corridors) provides strong B2B demand. No confirmed Jan-Pro regional developer found in Jordan's specific Michigan target territory.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig A">Amber</span></div><div class="sg-val">Limited disclosure · Highly variable by contract book size</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">Jan-Pro's unit economics depend heavily on the size and quality of the commercial contract book. Regional developer earnings depend on unit growth in territory. Limited Item 19 data — must do validation calls with existing regional developers before committing.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 20 — System Health <span class="sig G">Green</span></div><div class="sg-val">10,000+ units · Established infrastructure</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">One of the largest commercial cleaning networks nationally. Long operating history. Some unit-level churn is normal at the low entry price point — regional developer network is more stable with higher commitment and contract book investment.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 21 — Franchisor Health <span class="sig A">Amber</span></div><div class="sg-val">Empower Brands / Roark Capital · Financials not public</div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">PE ownership adds some exit uncertainty — Roark could sell the brand. No public financials. Brand is established and actively growing. Ask directly about ownership plans and any pending portfolio changes during Discovery Day.</div></div>
+        <div class="sg-cell"><div class="sg-item-lbl">Item 23 — Exit Rights <span class="sig A">Amber</span></div><div class="sg-val">Regional territories transferable · <strong>Limited resale market</strong></div><button class="more-toggle" onclick="toggleMore(this)">+ More</button><div class="more-detail">This is the primary wealth-building risk — smaller buyer pool for regional developer territories compared to consumer-facing brands. Must plan for this explicitly. B2B contract books can be transferred but require relationship continuity with commercial clients.</div></div>
+      </div>
+      <div class="match-grid">
+        <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-good">No gap at unit level</span> — Jordan can enter today. Regional path needs equity/investor. Clarify target entry level on discovery call.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Model</div><div class="match-v"><span class="mv-good">Best match on analysis</span> — Regional developer is semi-absentee by design. PM background fits directly.</div></div>
+        <div class="match-card"><div class="match-k">Timeline</div><div class="match-v"><span class="mv-good">Strong</span> — Unit entry possible now. Regional path aligns with 2+ year horizon. Unit entry = proof of concept.</div></div>
+        <div class="match-card"><div class="match-k">Recurring Revenue</div><div class="match-v"><span class="mv-good">Direct match</span> — Monthly B2B contracts are recurring by definition. Contract book compounds over time.</div></div>
+        <div class="match-card"><div class="match-k">B2B vs B2C</div><div class="match-v"><span class="mv-warn">Different model</span> — Jordan's sectors are B2C focused. B2B sales motion is different. Confirm comfort level at discovery.</div></div>
+        <div class="match-card"><div class="match-k">Monthly Debt Service Est.</div><div class="match-v"><span class="mv-good">Fits well</span> — Unit level: no SBA needed. Regional: ~$1,200–$1,800/mo on SBA. Well within Jordan's range.</div></div>
+      </div>
+      <div class="qs-wrap">
+        <div class="qs-lbl">Discovery Day Questions — Jan-Pro</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>Walk me through the regional developer model specifically — what does day-to-day look like in year one versus year three, and how many unit franchisees do successful regional developers typically manage?</li>
+          <li><span class="q-num">Q</span>Your Item 19 has limited data at the regional level. Can you connect me with 2–3 existing regional developers in markets similar to Metro Detroit?</li>
+          <li><span class="q-num">Q</span>What's the realistic timeline from signing a regional development agreement to having a meaningful recurring contract book? What does ramp-up look like in a new market?</li>
+          <li><span class="q-num">Q</span>On the exit side — how liquid is a Jan-Pro regional territory? What multiples have regional territories sold for, and who are the realistic buyers?</li>
+          <li><span class="q-num">Q</span>How much of the regional developer role is active B2B sales versus operational management, and what does Jan-Pro provide in terms of commercial sales training and lead generation?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="section">
+  <div class="sec-lbl">Cross-System Comparison</div>
+  <div class="comp-wrap">
+    <table>
+      <tr>
+        <th class="th-dark" style="width:26%">Metric</th>
+        <th class="th-s1" style="width:25%">Molly Maid</th>
+        <th class="th-s2" style="width:25%">Meineke</th>
+        <th class="th-s3" style="width:24%">Jan-Pro (Regional)</th>
+      </tr>
+      <tr><td class="metric">System Nova Score</td><td><strong>79 / 100</strong></td><td><strong>67 / 100</strong></td><td><strong>71 / 100</strong></td></tr>
+      <tr><td class="metric">Candidate Fit</td><td class="td-warn">Conditional Fit</td><td class="td-bad">Stretch</td><td class="td-good">Strong Fit</td></tr>
+      <tr><td class="metric">Investment Range</td><td>$109K–$157K</td><td class="td-bad">$200K–$650K</td><td class="td-good">$4K–$55K (unit) / $135K–$500K (regional)</td></tr>
+      <tr><td class="metric">Fits Jordan's Capital Today?</td><td class="td-good">✓ Yes — low end</td><td class="td-bad">✗ No — gap ~$125K+</td><td class="td-good">✓ Yes — unit level</td></tr>
+      <tr><td class="metric">Total Fee Burden</td><td class="td-good">~8.5%</td><td class="td-bad">~15% ⚠</td><td class="td-good">~10% (passive income flip at regional)</td></tr>
+      <tr><td class="metric">Item 19 Disclosed?</td><td class="td-good">✓ Full — mature data</td><td class="td-warn">⚠ Partial</td><td class="td-warn">⚠ Limited</td></tr>
+      <tr><td class="metric">Median AUV</td><td>$612,000</td><td>~$680,000</td><td>Varies by contract book</td></tr>
+      <tr><td class="metric">Recurring Revenue Model</td><td class="td-good">✓ Subscription</td><td class="td-warn">⚠ Transactional</td><td class="td-good">✓ Monthly B2B contracts</td></tr>
+      <tr><td class="metric">Semi-Absentee Supported</td><td class="td-good">✓ Yes — team leader</td><td class="td-warn">⚠ Needs licensed mgr</td><td class="td-good">✓ By design at regional</td></tr>
+      <tr><td class="metric">Michigan Territory</td><td class="td-good">✓ Oakland/Macomb open</td><td class="td-warn">⚠ Verify zip-level</td><td class="td-warn">⚠ Likely available — verify</td></tr>
+      <tr><td class="metric">SBA Credit Threshold</td><td>680+ preferred</td><td class="td-bad">700+ required</td><td class="td-good">N/A at unit (direct financing)</td></tr>
+      <tr><td class="metric">Monthly Debt Service Est.</td><td class="td-good">~$900–$1,100/mo</td><td class="td-warn">~$2,000–$2,800/mo</td><td class="td-good">~$1,200–$1,800/mo (regional SBA)</td></tr>
+      <tr><td class="metric">Acquisition Path</td><td class="td-good">✓ Active resale market</td><td class="td-good">✓ Used shop acquisitions common</td><td class="td-warn">⚠ Limited regional resale market</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="section">
+  <div class="rec-card">
+    <div class="sec-lbl">FN Recommendation</div>
+    <div class="rec-sys">Molly Maid — Proceed to Discovery Day &nbsp;·&nbsp; Jan-Pro Regional as Second Conversation</div>
+    <p class="rec-body">Molly Maid is the right first move for Jordan. It is the only system on this analysis Jordan can pursue with current capital — the $109K low end fits today's liquid position without requiring the unconfirmed real estate equity. The recurring subscription model matches exactly what Jordan said on the intake form. Michigan territory is confirmed open. The 40-year system maturity and KKR-backed franchisor give it the most reliable Item 19 data and the most stable franchisor picture of the three. Jordan's PM background — scope management, team coordination, client communication — maps directly to running a team-leader-based Molly Maid operation.</p>
+    <p class="rec-body">Jan-Pro Regional is the second conversation, specifically the regional developer path. The regional structure is the most naturally semi-absentee model on this analysis and creates a passive income layer that Molly Maid and Meineke don't offer. The key questions to answer first: B2B sales comfort, Michigan regional territory availability, and exit market liquidity. Jordan's 2+ year horizon and portfolio-building instinct make this worth running in parallel. Unit-level entry today could serve as a low-cost proof of concept while Jordan builds toward regional developer status.</p>
+    <p class="rec-body">Meineke is not recommended at this stage. The 15% fee burden is a structural drag, the capital gap is significant without confirmed equity, and the revenue model is transactional — not the subscription structure Jordan explicitly asked for. Worth revisiting if real estate equity proves substantial and Jordan has deep automotive operational experience to manage the licensed service manager requirement.</p>
+    <div class="unlock-lbl">What FN Can Unlock for Jordan</div>
+    <ul class="unlock-list">
+      <li>Credit building roadmap from 640–699 to 700+ over 12–18 months — targeted actions to unlock favorable SBA terms for the Molly Maid upper range or future Meineke path</li>
+      <li>Neighborly preferred lender introductions who specialize in home services and understand team-leader-based semi-absentee operations for SBA packaging</li>
+      <li>Real estate equity assessment — once HELOC or cash-out refi potential is quantified, the complete Molly Maid capital stack is confirmed and lender submission can begin</li>
+      <li>Jan-Pro regional developer introduction and validation calls with existing Michigan-area regional developers to pressure-test the B2B model against Jordan's background</li>
+    </ul>
+  </div>
+</div>
+
+<!-- RISKS -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">Risks to Watch</div>
+  <ul class="risks-list">
+    <li><strong>Missing financial data must be collected before lender conversations begin.</strong> Real estate equity amount and outside investor commitment are both unconfirmed. Capital stack for Molly Maid is illustrative until these are known. Do not submit a lender package without them.</li>
+    <li><strong>Credit building is the long pole.</strong> Jordan's 640–699 range puts SBA terms at a disadvantage. A focused 12–18 month plan could meaningfully change the picture — this is FN's primary near-term workstream for this candidate.</li>
+    <li><strong>Semi-absentee SBA narrative.</strong> Any SBA lender will require documentation that Jordan has an identified team leader and that Molly Maid supports absentee operators. Both are true — this is about documentation and presentation, not substance.</li>
+    <li><strong>Jan-Pro B2B sales motion.</strong> Jordan has no documented B2B sales background. The regional developer role requires active commercial business development. Assess comfort level explicitly before recommending Jan-Pro as a primary path.</li>
+    <li><strong>Geography confirmation.</strong> This entire analysis assumes Michigan as primary market. If Jordan's actual priority is Research Triangle or Texas, territory analysis and FDD review need to be revisited for those markets.</li>
+  </ul>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; July 2026 &nbsp;&middot;&nbsp; Candidate: Jordan Truesdale &nbsp;&middot;&nbsp; Systems: Molly Maid · Meineke · Jan-Pro</p>
+  <p class="footer-note">For internal FN use only — not financial, legal, or investment advice. Nova Guide must review before sharing any portion with the candidate. Figures sourced from FDD documents and candidate intake form. Missing financial data flagged above — update capital stack before lending conversations. Territory availability requires direct franchisor confirmation.</p>
+</div>
+
+</div>
+
+<script>
+// ── Accordion toggle ─────────────────────────────────────────
+function toggleAcc(btn){
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── More/less toggle ─────────────────────────────────────────
+function toggleMore(btn){
+  const detail = btn.nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+ More' : '− Less';
+}
+
+// ── Print: expand all ────────────────────────────────────────
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.more-detail').forEach(d => d.classList.add('open'));
+  document.querySelectorAll('.more-toggle').forEach(t => t.style.display = 'none');
+});
+</script>
+</body>
+</html>
