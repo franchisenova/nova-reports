@@ -36,10 +36,10 @@ input[type=email]{width:100%;background:rgba(255,255,255,0.06);border:1px solid 
 input[type=email]::placeholder{color:#4a4860;}
 input[type=email]:focus{border-color:#664ca9;}
 
-/* SYSTEMS FIELD */
-textarea.systems-input{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:8px;padding:11px 14px;color:#fff;font-size:13px;font-family:'Lato',sans-serif;outline:none;resize:vertical;min-height:64px;transition:border-color .2s;}
-textarea.systems-input::placeholder{color:#4a4860;}
-textarea.systems-input:focus{border-color:#664ca9;}
+/* SYSTEMS DETECTED */
+.systems-detected{background:rgba(0,174,239,0.06);border:1px solid rgba(0,174,239,0.2);border-radius:8px;padding:10px 14px;font-size:12.5px;color:#b0e8ff;line-height:1.6;display:none;}
+.systems-detected.visible{display:block;}
+.systems-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#664ca9;margin-bottom:5px;display:block;}
 
 /* PUBLISH BUTTON */
 .pub-btn{width:100%;background:linear-gradient(135deg,#452e80,#664ca9);border:none;border-radius:10px;padding:16px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;letter-spacing:.06em;color:#fff;cursor:pointer;transition:opacity .2s;margin-top:4px;}
@@ -144,10 +144,11 @@ textarea.systems-input:focus{border-color:#664ca9;}
       <label class="field-lbl" for="candidate-email">Candidate Email</label>
       <input type="email" id="candidate-email" placeholder="candidate@email.com" oninput="checkReady()">
     </div>
-    <div>
-      <label class="field-lbl" for="systems-analyzed">Systems Analyzed (for Slack &amp; HubSpot note)</label>
-      <textarea class="systems-input" id="systems-analyzed"
-        placeholder="e.g. Molly Maid, Meineke, Jan-Pro" oninput="checkReady()"></textarea>
+    <div id="systems-row" style="display:none;">
+      <div class="systems-detected visible" id="systems-detected">
+        <span class="systems-lbl">Systems Detected from File</span>
+        <span id="systems-display"></span>
+      </div>
     </div>
   </div>
 
@@ -225,22 +226,71 @@ function processFile(file,type){
   if(!file||!file.name.endsWith('.html')) return;
   const r=new FileReader();
   r.onload=ev=>{
-    files[type]={name:file.name, content:ev.target.result};
+    const html=ev.target.result;
+    // Extract system names from FDD analysis HTML
+    const systems=extractSystems(html);
+    files[type]={name:file.name, content:html, systems:systems};
     const zone=document.getElementById('zone-'+type);
     zone.classList.add('loaded');
     zone.classList.remove('drag-over');
     const hint=document.getElementById('hint-'+type);
     hint.textContent='✓ '+file.name;
     hint.classList.add('loaded');
+    // Show detected systems
+    if(systems){
+      document.getElementById('systems-row').style.display='block';
+      document.getElementById('systems-display').textContent=systems;
+    }
     checkReady();
   };
   r.readAsText(file);
 }
 
+// ── Extract system names from FDD HTML ───────────────────────
+function extractSystems(html){
+  // Parse the HTML and look for system header h2 elements
+  // FDD analysis files have <h2>SystemName — YYYY FDD</h2> pattern
+  // Try multiple extraction strategies in order of reliability
+  const strategies = [
+    // Strategy 1: data-systems meta tag (future-proof — prompt adds this)
+    () => {
+      const m = html.match(/<meta[^>]+name="fn-systems"[^>]+content="([^"]+)"/i);
+      return m ? m[1] : null;
+    },
+    // Strategy 2: sys-hdr h2 tags (stacked accordion design)
+    () => {
+      const matches = [...html.matchAll(/<h2[^>]*class="[^"]*sys[^"]*"[^>]*>([^<]+)<\/h2>/gi)];
+      if(matches.length){
+        return matches.map(m=>m[1].replace(/\s*[—–-]\s*\d{4}\s*FDD.*/i,'').trim()).join(', ');
+      }
+      return null;
+    },
+    // Strategy 3: <h2>SystemName — YYYY FDD</h2> pattern anywhere
+    () => {
+      const matches = [...html.matchAll(/<h2[^>]*>([^<]+?)\s*[—–-]\s*\d{4}\s*FDD/gi)];
+      if(matches.length){
+        return matches.map(m=>m[1].replace(/<[^>]+>/g,'').trim()).join(', ');
+      }
+      return null;
+    },
+    // Strategy 4: page-meta or header subtitle that lists systems
+    () => {
+      const m = html.match(/systems analyzed[^:]*:[^<]*<\/[^>]+>([^<]+)/i);
+      return m ? m[1].trim() : null;
+    },
+    // Strategy 5: filename fallback — extract candidate name at least
+    () => null
+  ];
+  for(const fn of strategies){
+    const result = fn();
+    if(result && result.length > 2) return result;
+  }
+  return null;
+}
+
 function checkReady(){
   const email=document.getElementById('candidate-email').value.trim();
-  const systems=document.getElementById('systems-analyzed').value.trim();
-  const ready=files.fdd && email && systems;
+  const ready=files.fdd && email && files.fdd.systems;
   document.getElementById('publish-btn').disabled=!ready;
 }
 
@@ -278,7 +328,7 @@ async function pushToGitHub(filename,content,message){
 async function runPublish(){
   const btn=document.getElementById('publish-btn');
   const email=document.getElementById('candidate-email').value.trim();
-  const systems=document.getElementById('systems-analyzed').value.trim();
+  const systems=files.fdd.systems || 'See FDD analysis document';
   const fddName=files.fdd.name;
 
   btn.disabled=true;
@@ -358,7 +408,8 @@ function resetTool(){
   document.getElementById('hint-fdd').textContent='FN_FDDAnalysis_LastNameFirst_2026.html';
   document.getElementById('hint-fdd').classList.remove('loaded');
   document.getElementById('candidate-email').value='';
-  document.getElementById('systems-analyzed').value='';
+  document.getElementById('systems-row').style.display='none';
+  document.getElementById('systems-display').textContent='';
   document.getElementById('log-card').classList.remove('visible');
   document.getElementById('result-card').classList.remove('visible');
   document.getElementById('log-lines').innerHTML='';
