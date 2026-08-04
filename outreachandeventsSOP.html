@@ -124,18 +124,6 @@
   </tr>
 </table>
 
-<div class="callout">
-  <b>No aggregate number:</b> if we had no formal presence at an event — attending as a guest, wandering a conference floor with no booth or speaking role — there's no total to log, so nothing goes in Direct Participants (Count) or Indirect Participants.
-</div>
-
-<div class="callout">
-  <b>But individual contacts still count.</b> Anyone you personally engaged with and got info from — business cards, contact info written down — is a <b>Direct Participant (Confirmed)</b>. To capture them properly, put them in a spreadsheet with <b>Name</b>, <b>Email</b>, <b>Phone Number</b>, and <b>BG Initiative</b> (the initiative for the event they attended), then import them as <b>Attended</b> on that specific Marketing Event. That's what puts them on the record — otherwise the connection is lost.
-</div>
-
-<div class="callout">
-  <b>Registered ≠ attended:</b> registering alone doesn't make someone a Direct Participant. Only people marked <b>Attended</b> on the Marketing Event count toward Direct Participants (Confirmed) — registrants who never show up stay at Registered, which automatically excludes them from that number while still keeping them as a real Contact you can follow up with.
-</div>
-
 <h2>2. Every event starts here — create the Marketing Event</h2>
 <p><b>Every single event gets a Marketing Event record</b> — whether we host it, someone else hosts it, or we're just attending. No exceptions. This is the one place all event data lives.</p>
 
@@ -200,6 +188,25 @@
     <b>Embed the registration form on the landing page</b> so registrations are captured.
   </div>
 </div>
+<div class="step">
+  <div class="num">5</div>
+  <div class="body">
+    <b>Create a QR code pointing to the landing page</b> — not to the form. Do this whenever we're hosting, or any time we're allowed to post our own signage at an event.
+  </div>
+</div>
+
+<div class="callout">
+  <b>Always point the QR at the landing page, never straight at the form.</b> A landing page tracks its own views, so you get a real count of how many people scanned the code at the event. If the QR goes directly to the form, form views can't be separated from anyone else who happened to open that form during the same window — and the number stops meaning anything. Make sure the landing page also tells people plainly what to do next.
+</div>
+
+<div class="callout">
+  <b>The landing page has a second life after registration closes.</b> Swap the embedded form for whichever one fits the moment:
+  <ul>
+    <li><b>The check-in form</b> — so the same QR code people already scanned now checks them in at the door</li>
+    <li><b>The intake form</b> — if the event is over and the next step is getting people into a program</li>
+  </ul>
+  Add any extra fields worth capturing from attendees for this particular event, and <b>always keep the hidden BG Initiative field</b> — without it, everyone who comes through lands in HubSpot untagged and disconnected from the initiative that earned them.
+</div>
 
 <h3>Path B — Someone else hosts, we get a list</h3>
 <div class="step">
@@ -260,7 +267,7 @@
       <li><b>Name</b></li>
       <li><b>Email</b></li>
       <li><b>Phone Number</b> — if we have it</li>
-      <li><b>Notes</b> — what you discussed, so whoever follows up has context instead of starting cold</li>
+      <li><b>Notes</b> — what was discussed, if we have that, so whoever follows up has context instead of starting cold</li>
       <li><b>BG Initiative</b> — the initiative this event relates to</li>
     </ul>
     Then import the list to the Marketing Event as <b>Attended</b>. These are Direct Participants (Confirmed).
@@ -269,7 +276,7 @@
 <div class="step">
   <div class="num">3</div>
   <div class="body">
-    <b>Add Direct Participants (Count) for anyone you talked to but didn't get info from.</b> If you had real conversations with 10 people and only came away with contact info for 5, the other 5 go in this number — they were direct engagement, we just can't reach them again.
+    <b>Add Direct Participants (Count) for anyone they talked to but didn't get info from.</b> If they had real conversations with 10 people and only came away with contact info for 5, the other 5 go in this number — they were direct engagement, we just can't reach them again.
   </div>
 </div>
 
@@ -289,6 +296,12 @@
   <div class="num">2</div>
   <div class="body">
     <b>Confirm the hidden <code>BG Initiative</code> field</b> is set to this event's initiative, then save.
+  </div>
+</div>
+<div class="step">
+  <div class="num">3</div>
+  <div class="body">
+    <b>Create a QR code if applicable</b> — for a booth, a table tent, signage, or a slide. Point it at the landing page with the check-in form embedded, not at the form itself, for the same tracking reason as registration.
   </div>
 </div>
 
