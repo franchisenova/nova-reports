@@ -1,0 +1,145 @@
+name: Post FDD Analysis to HubSpot Deal
+
+on:
+  push:
+    paths:
+      - 'pending_notes/FN_fdd_note.json'
+
+jobs:
+  post-fdd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Post FDD note to HubSpot Deal and notify Slack
+        env:
+          HS_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          echo "=== FN FDD ANALYSIS PIPELINE ==="
+
+          NOTE_FILE="pending_notes/FN_fdd_note.json"
+          echo "Reading: $NOTE_FILE"
+
+          CONTACT_EMAIL=$(jq -r '.contact_email' "$NOTE_FILE")
+          NOTE_BODY=$(jq -r '.note_body' "$NOTE_FILE")
+          FDD_URL=$(jq -r '.fdd_url' "$NOTE_FILE")
+          CANDIDATE_NAME=$(jq -r '.candidate_name' "$NOTE_FILE")
+          SYSTEMS_ANALYZED=$(jq -r '.systems_analyzed' "$NOTE_FILE")
+
+          echo "Contact email: $CONTACT_EMAIL"
+          echo "FDD URL: $FDD_URL"
+          echo "Systems: $SYSTEMS_ANALYZED"
+
+          # ── Step 1: Find contact by email ──────────────────────
+          echo "=== SEARCHING FOR CONTACT ==="
+          CONTACT_RESP=$(curl -s -X POST \
+            "https://api.hubapi.com/crm/v3/objects/contacts/search" \
+            -H "Authorization: Bearer $HS_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"filterGroups\":[{\"filters\":[{\"propertyName\":\"email\",\"operator\":\"EQ\",\"value\":\"$CONTACT_EMAIL\"}]}],\"properties\":[\"email\",\"firstname\",\"lastname\"]}")
+
+          CONTACT_ID=$(echo "$CONTACT_RESP" | jq -r '.results[0].id // empty')
+          echo "Contact ID: $CONTACT_ID"
+
+          if [ -z "$CONTACT_ID" ]; then
+            echo "ERROR: Contact not found for $CONTACT_EMAIL"
+            curl -s -X POST "$SLACK_WEBHOOK" \
+              -H "Content-Type: application/json" \
+              -d "{\"text\":\"⚠️ *FN FDD Analysis — HubSpot Error*\nContact not found for $CONTACT_EMAIL — post manually.\n\n📊 *FDD Analysis*\n$FDD_URL\"}"
+            exit 1
+          fi
+
+          # ── Step 2: Find the Deal associated with this contact ──
+          echo "=== SEARCHING FOR ASSOCIATED DEAL ==="
+          DEALS_RESP=$(curl -s \
+            "https://api.hubapi.com/crm/v3/objects/contacts/$CONTACT_ID/associations/deals" \
+            -H "Authorization: Bearer $HS_TOKEN")
+
+          echo "Deals response: $DEALS_RESP"
+
+          DEAL_ID=$(echo "$DEALS_RESP" | jq -r '.results | sort_by(.id | tonumber) | last | .id // empty')
+          echo "Deal ID (most recent): $DEAL_ID"
+
+          if [ -z "$DEAL_ID" ]; then
+            echo "WARNING: No deal found for contact $CONTACT_ID — posting note to contact instead"
+            # Fall back to contact if no deal exists
+            ASSOC_JSON="[{\"to\":{\"id\":\"$CONTACT_ID\"},\"types\":[{\"associationCategory\":\"HUBSPOT_DEFINED\",\"associationTypeId\":202}]}]"
+            FALLBACK_TO_CONTACT=true
+          else
+            # Associate note with deal (associationTypeId 214 = note to deal)
+            ASSOC_JSON="[{\"to\":{\"id\":\"$DEAL_ID\"},\"types\":[{\"associationCategory\":\"HUBSPOT_DEFINED\",\"associationTypeId\":214}]}]"
+            FALLBACK_TO_CONTACT=false
+          fi
+
+          # ── Step 3: Post the note ───────────────────────────────
+          echo "=== POSTING NOTE ==="
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+          NOTE_JSON=$(echo "$NOTE_BODY" | jq -Rs .)
+
+          NOTE_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST \
+            "https://api.hubapi.com/crm/v3/objects/notes" \
+            -H "Authorization: Bearer $HS_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"properties\":{\"hs_timestamp\":\"$TIMESTAMP\",\"hs_note_body\":$NOTE_JSON},\"associations\":$ASSOC_JSON}")
+
+          NOTE_STATUS=$(echo "$NOTE_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
+          NOTE_BODY_RESP=$(echo "$NOTE_RESP" | grep -v "HTTP_STATUS:")
+          NOTE_ID=$(echo "$NOTE_BODY_RESP" | jq -r '.id // empty')
+          echo "Note HTTP status: $NOTE_STATUS — Note ID: $NOTE_ID"
+
+          if [ -z "$NOTE_ID" ]; then
+            echo "ERROR: Note creation failed"
+            echo "Response: $NOTE_BODY_RESP"
+            exit 1
+          fi
+          echo "✓ Note posted"
+
+          # ── Step 4: Update fdd_analysis_url on Deal record ─────
+          if [ "$FALLBACK_TO_CONTACT" = "false" ]; then
+            echo "=== UPDATING FDD URL ON DEAL ==="
+            PROP_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X PATCH \
+              "https://api.hubapi.com/crm/v3/objects/deals/$DEAL_ID" \
+              -H "Authorization: Bearer $HS_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d "{\"properties\":{\"fdd_analysis_url\":\"$FDD_URL\"}}")
+
+            PROP_STATUS=$(echo "$PROP_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
+            echo "Deal property update HTTP status: $PROP_STATUS"
+            if [ "$PROP_STATUS" = "200" ]; then
+              echo "✓ fdd_analysis_url updated on Deal $DEAL_ID"
+            else
+              echo "WARNING: Deal property update failed — check that fdd_analysis_url exists on Deal object"
+              echo "Response: $(echo "$PROP_RESP" | grep -v HTTP_STATUS)"
+            fi
+          fi
+
+          # ── Step 5: Slack notification ─────────────────────────
+          echo "=== SENDING SLACK NOTIFICATION ==="
+
+          if [ "$FALLBACK_TO_CONTACT" = "true" ]; then
+            DEAL_LINE="⚠️ No deal found — note posted to contact record"
+          else
+            DEAL_LINE="✅ Note posted to Deal · FDD URL saved to Deal record"
+          fi
+
+          SLACK_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$SLACK_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d "{\"blocks\":[
+              {\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"📊 Franchise Nova — FDD Analysis Ready\"}},
+              {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Candidate:* $CANDIDATE_NAME · $CONTACT_EMAIL\"}},
+              {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Systems Analyzed:* $SYSTEMS_ANALYZED\"}},
+              {\"type\":\"divider\"},
+              {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"📊 *FDD Analysis Document*\n_Internal use only — Nova Guide review before sharing_\n$FDD_URL\"}},
+              {\"type\":\"context\",\"elements\":[{\"type\":\"mrkdwn\",\"text\":\"$DEAL_LINE · Generated by Franchise Nova · BLK GRVTY\"}]}
+            ]}")
+
+          echo "Slack HTTP status: $SLACK_STATUS"
+          [ "$SLACK_STATUS" = "200" ] && echo "✓ Slack sent" || echo "WARNING: Slack failed"
+
+          echo "=== ALL DONE ==="
+          echo "  Note ID: $NOTE_ID"
+          echo "  Contact ID: $CONTACT_ID"
+          echo "  Deal ID: $DEAL_ID"
+          echo "  FDD URL: $FDD_URL"
