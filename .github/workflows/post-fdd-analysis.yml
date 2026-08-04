@@ -96,21 +96,21 @@ jobs:
           fi
           echo "✓ Note posted"
 
-          # ── Step 4: Update fdd_analysis_url on Deal record ─────
+          # ── Step 4: Update fddfinancial_analysis_url on Deal record ─────
           if [ "$FALLBACK_TO_CONTACT" = "false" ]; then
             echo "=== UPDATING FDD URL ON DEAL ==="
             PROP_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X PATCH \
               "https://api.hubapi.com/crm/v3/objects/deals/$DEAL_ID" \
               -H "Authorization: Bearer $HS_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "{\"properties\":{\"fdd_analysis_url\":\"$FDD_URL\"}}")
+              -d "{\"properties\":{\"fddfinancial_analysis_url\":\"$FDD_URL\"}}")
 
             PROP_STATUS=$(echo "$PROP_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
             echo "Deal property update HTTP status: $PROP_STATUS"
             if [ "$PROP_STATUS" = "200" ]; then
-              echo "✓ fdd_analysis_url updated on Deal $DEAL_ID"
+              echo "✓ fddfinancial_analysis_url updated on Deal $DEAL_ID"
             else
-              echo "WARNING: Deal property update failed — check that fdd_analysis_url exists on Deal object"
+              echo "WARNING: Deal property update failed — check that fddfinancial_analysis_url exists on Deal object"
               echo "Response: $(echo "$PROP_RESP" | grep -v HTTP_STATUS)"
             fi
           fi
@@ -143,3 +143,4 @@ jobs:
           echo "  Contact ID: $CONTACT_ID"
           echo "  Deal ID: $DEAL_ID"
           echo "  FDD URL: $FDD_URL"
+
