@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLK GRVTY — HubSpot Cleanup: Team Brief</title><style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#14141f; --ink2:#26263a; --gold:#c9a227; --gold-soft:#e9d9a0;
+  --paper:#faf8f3; --card:#ffffff; --line:#e6e1d5; --text:#33333d; --muted:#7a7686;
+  --new:#64748b; --nurt:#c9911f; --eng:#2e8b57; --done:#8b7bb0; --inv:#c0392b; --dnc:#4b4b57; --intl:#5b7a99;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--text);line-height:1.62;-webkit-font-smoothing:antialiased}
+.hero{background:var(--ink);color:#fff;padding:82px 40px 66px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;border-radius:50%;
+  border:1px solid rgba(201,162,39,.28);box-shadow:0 0 0 40px rgba(201,162,39,.05), inset 0 0 90px rgba(201,162,39,.06)}
+.hero::after{content:"";position:absolute;right:-40px;top:70px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 22px 4px rgba(201,162,39,.5)}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:2}
+.wordmark{font-family:'Inter';font-weight:700;letter-spacing:.42em;font-size:13px;color:var(--gold);text-transform:uppercase;margin-bottom:26px}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:14px}
+.hero h1{font-family:'Fraunces';font-weight:600;font-size:clamp(38px,6vw,66px);line-height:1.02;letter-spacing:-.01em;margin-bottom:20px}
+.hero p{font-size:18px;color:#d7d4e0;max-width:620px}
+main{max-width:900px;margin:0 auto;padding:64px 40px 90px}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-bottom:60px}
+.toc h4{font-family:'Inter';font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t;columns:2;column-gap:44px}
+.toc li{counter-increment:t;margin-bottom:9px;font-size:14.5px;break-inside:avoid}
+.toc li::before{content:counter(t,decimal-leading-zero);color:var(--gold);font-weight:700;margin-right:12px;font-variant-numeric:tabular-nums}
+.toc a{color:var(--text);text-decoration:none;border-bottom:1px solid transparent;transition:.15s}
+.toc a:hover{border-color:var(--gold)}
+section{margin-bottom:58px;scroll-margin-top:24px}
+.sec-num{font-family:'Fraunces';font-size:15px;color:var(--gold);font-weight:600;display:block;margin-bottom:6px;font-variant-numeric:tabular-nums}
+h2{font-family:'Fraunces';font-weight:600;font-size:30px;line-height:1.12;letter-spacing:-.01em;color:var(--ink);margin-bottom:18px;padding-bottom:0}
+h3{font-family:'Inter';font-weight:700;font-size:17px;color:var(--ink);margin:26px 0 10px}
+p{margin-bottom:14px;font-size:15.5px}
+strong{color:var(--ink);font-weight:600}
+.lede{font-size:18px;color:var(--ink2);border-left:3px solid var(--gold);padding-left:20px;margin-bottom:24px;line-height:1.55}
+.callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:18px 22px;margin:20px 0;font-size:15px}
+.callout.warn{border-left-color:var(--inv);background:#fdf6f5}
+.callout.win{border-left-color:var(--eng);background:#f4faf6}
+.callout b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14.5px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{background:var(--ink);color:#fff;text-align:left;padding:12px 16px;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#fbfaf6}
+.pill{display:inline-block;padding:3px 11px;border-radius:100px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.p-new{background:var(--new)} .p-nurt{background:var(--nurt)} .p-eng{background:var(--eng)}
+.p-done{background:var(--done)} .p-inv{background:var(--inv)} .p-dnc{background:var(--dnc)} .p-intl{background:var(--intl)}
+.steps{counter-reset:s;margin:20px 0}
+.step{counter-increment:s;position:relative;padding:4px 0 18px 52px;border-left:2px solid var(--line);margin-left:16px}
+.step:last-child{border-left-color:transparent}
+.step::before{content:counter(s);position:absolute;left:-16px;top:0;width:32px;height:32px;background:var(--ink);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Fraunces'}
+.step h4{font-weight:700;color:var(--ink);font-size:15.5px;margin-bottom:4px}
+.step p{font-size:14.5px;margin-bottom:0}
+code{background:#f0ede4;padding:2px 7px;border-radius:5px;font-family:ui-monospace,monospace;font-size:13px;color:var(--ink2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.mini{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.mini h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.mini p{font-size:14px;margin-bottom:0;color:var(--muted)}
+.footer{border-top:1px solid var(--line);margin-top:60px;padding-top:24px;font-size:13px;color:var(--muted);text-align:center}
+.footer b{color:var(--gold);letter-spacing:.3em;font-weight:700}
+.reveal{opacity:0;transform:translateY(14px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:640px){.toc ol{columns:1}.grid2{grid-template-columns:1fr}main{padding:40px 22px 70px}.hero{padding:56px 24px 44px}}
+@media print{.hero::before,.hero::after{display:none}.reveal{opacity:1;transform:none}body{background:#fff}}
+
+.updates{list-style:none;margin:18px 0}
+.updates li{position:relative;padding:14px 16px 14px 46px;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;font-size:15px}
+.updates li::before{content:"✓";position:absolute;left:16px;top:13px;width:20px;height:20px;background:var(--eng);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.updates li b{color:var(--ink)}
+.task{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:16px 20px;margin-bottom:12px}
+.task h4{font-size:15.5px;color:var(--ink);font-weight:700;margin-bottom:5px}
+.task p{font-size:14px;margin-bottom:8px;color:var(--muted)}
+.task a{display:inline-block;background:var(--ink);color:var(--gold);text-decoration:none;font-size:13px;font-weight:600;padding:7px 15px;border-radius:7px;letter-spacing:.02em}
+.task a:hover{background:var(--ink2)}
+.reminder{display:block;margin:10px 0 12px;padding:9px 12px;background:#f4faf6;border-left:3px solid var(--eng);border-radius:6px;font-size:13px;color:#1f6b3f}
+.reminder b{color:#155030}
+.owner-chip{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 15px;margin:4px 6px 4px 0;font-size:14px;font-weight:600;color:var(--ink)}
+.flow{counter-reset:f;margin:22px 0}
+.flow .step{counter-increment:f}
+.flow .step::before{content:counter(f)}
+.big{font-family:'Fraunces';font-size:22px;color:var(--ink);font-weight:600;line-height:1.3;margin:24px 0}
+.big b{color:var(--gold)}
+</style></head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="wordmark">BLK GRVTY</div>
+    <div class="eyebrow">Team Brief · HubSpot Contact Cleanup</div>
+    <h1>We're getting our data honest.</h1>
+    <p>What's changed, what I need from you, and the new way we add and track every contact — so nobody slips through the cracks.</p>
+  </div>
+</header>
+<main>
+
+<section class="reveal">
+  <p class="lede">Our HubSpot has been telling us half-truths. Contacts with no names, no owners, no status, duplicates, dead emails — which means when we ask "where are we with this person," too often the honest answer is "we don't know."</p>
+  <p>That stops now. I've started a full cleanup and put new standards in place so that going forward, every contact has a real name, a real owner, and a real status. This brief covers what I've already done, the pieces I need your help on, and the new process for adding leads. It won't all happen at once — we'll take it in bite-size chunks — but it starts with everyone on the same page.</p>
+  <div class="callout win"><b>Why this is worth it:</b> once our data is clean, our <b>weekly pipeline review</b> finally means something. We'll see true data on where every relationship stands and who's doing what — so no lead goes cold because nobody knew it was theirs.</div>
+</section>
+
+<section class="reveal">
+  <span class="sec-num">01</span><h2>What I've already done</h2>
+  <ul class="updates">
+    <li><b>Cleaned up duplicates.</b> Merged duplicate contacts — we went from 2,546 down to 2,020 real records.</li>
+    <li><b>Recovered names.</b> Found real names for 253 contacts we only had an email for.</li>
+    <li><b>Flagged dead emails.</b> 49 records hard-bounced (invalid email) and are now marked as BG Lead Status <b>Invalid Contact Info</b>. I also built a workflow so any future invalid-email bounce is flagged automatically.</li>
+    <li><b>Built a real BG Lead Status system.</b> One clean field that tells us where every contact stands — so "blank" finally means "needs attention," not "who knows."</li>
+    <li><b>Rebuilt Relationship Type.</b> A cleaner set of values that reflects the <b>true</b> relationship we have with each person — which makes filtering for events and outreach actually reliable.</li>
+  </ul>
+  <div class="callout"><b>Heads up:</b> BG Lead Status and Relationship Type both need to be set correctly for <b>all</b> our contacts, which is a big lift. We'll chunk it — the tasks below are the first bites.</div>
+</section>
+
+<section class="reveal">
+  <span class="sec-num">02</span><h2>The two fields that matter most</h2>
+  <p>Learn these two and you understand the whole system. <strong>BG Lead Status</strong> = where they stand with us. <strong>Relationship Type</strong> = who they are to us. Every contact gets both.</p>
+
+  <h3>BG Lead Status — where they stand (pick one)</h3>
+  <table>
+    <tr><th>Status</th><th>Use when…</th></tr>
+    <tr><td><span class="pill p-new">New – Unworked</span></td><td>Just added, nobody's triaged them yet</td></tr>
+    <tr><td><span class="pill p-nurt">Active – Nurturing</span></td><td>They're in an automated email sequence, no response yet <em>(automated sequence draft coming this week for review)</em></td></tr>
+    <tr><td><span class="pill p-eng">Engaged</span></td><td>We're actively talking with them; they haven't decided anything yet</td></tr>
+    <tr><td><span class="pill p-eng">Active Relationship</span></td><td>They said yes — an ongoing partner, investor, capital, vendor, or board relationship</td></tr>
+    <tr><td><span class="pill p-done">Nurture Complete – No Response</span></td><td>Went through a full sequence and never responded</td></tr>
+    <tr><td><span class="pill p-dnc">Dormant / Inactive</span></td><td>Was a real relationship, now gone quiet</td></tr>
+    <tr><td><span class="pill p-inv">Declined</span></td><td>They considered it and said no — an actual decision (e.g. an Investor or Partner who passed)</td></tr>
+    <tr><td><span class="pill p-inv">Invalid Contact Info</span></td><td>Email bounced — we can't reach them</td></tr>
+    <tr><td><span class="pill p-dnc">Do Not Contact</span></td><td>Unsubscribed or asked to be left alone</td></tr>
+    <tr><td><span class="pill p-intl">Not a Lead – Internal</span></td><td>A BLK GRVTY teammate</td></tr>
+    <tr><td><span class="pill p-intl">Not a Lead – Role/Org Inbox</span></td><td>A generic inbox (info@, hello@) — not a person</td></tr>
+  </table>
+
+  <h3>Relationship Type — who they are (pick all that apply)</h3>
+  <p>This one's multi-select — someone can be more than one.</p>
+  <table>
+    <tr><th>Type</th><th>Means</th></tr>
+    <tr><td>Board Member</td><td>Sits on the board</td></tr>
+    <tr><td>Candidate / Entrepreneur</td><td>A program participant. <b>If this is a Franchise Nova candidate, also set FN Contact Type to Zee or Zor</b> — this lets us filter what type they are.</td></tr>
+    <tr><td>Capital Partner</td><td>Provides capital funding <em>for our entrepreneurs</em></td></tr>
+    <tr><td>Donor / Grantor (non-profit)</td><td>Grants or donates to BLK GRVTY</td></tr>
+    <tr><td>Internal Team</td><td>BLK GRVTY staff</td></tr>
+    <tr><td>Investor (for-profit)</td><td>Invests in <em>BLK GRVTY</em></td></tr>
+    <tr><td>Partner</td><td>Sends us people, speaks at or helps host our events</td></tr>
+    <tr><td>Political / Policy</td><td>We engage them for policy updates or political positioning</td></tr>
+    <tr><td>Vendor / Service Provider</td><td>A vendor or professional-services relationship</td></tr>
+  </table>
+  <div class="callout"><b>Why we're retiring some older values:</b> a few old options described <em>what someone does in the world</em> rather than <em>their relationship to us</em> — which made them impossible to filter reliably. Retiring them (and replacing with the real relationship) is what several tasks below are about:
+  <ul style="margin:10px 0 0 0;padding-left:20px;font-size:14px">
+    <li><b>Founder</b> — describes their job, not their tie to us. A founder is really our Investor, Partner, Vendor, etc. — that's the tag we actually need. <b>A founder could also be a Franchise Nova candidate looking to add another location or system — in that case tag them Candidate/Entrepreneur and set FN Contact Type to Zor.</b></li>
+    <li><b>BG Community</b> — so broad it was true of almost everyone, so it told us nothing. It became the "I wasn't sure" tag.</li>
+    <li><b>Ecosystem builder</b> — a field/sector label, not a relationship. Most are really Partners, Investors, or Service Providers.</li>
+    <li><b>GP / LP</b> — fund roles, not a tie to BLK GRVTY. They're really Capital Partners or Investors.</li>
+    <li><b>Speaking Engagement</b> — that's an <em>activity</em> (they spoke for us), not who they are. They're a Partner; speaking is tracked separately.</li>
+  </ul>
+  <span style="display:block;margin-top:10px">The impact: once these are replaced with true relationship types, filtering for an event or outreach actually returns the right people — instead of a mixed bag we can't trust. "Researcher" and "Investment Committee" are still under review.</span></div>
+</section>
+
+<section class="reveal">
+  <span class="sec-num">03</span><h2>What I need from you</h2>
+  <p>Each of these is a HubSpot list. Open it, work through the contacts, and make the call described.</p>
+  <div class="callout win"><b>While you're in each record, set the core fields too.</b> You're already in there — so let's get these contacts in the right place in the same pass:
+  <ul style="margin:10px 0 0 0;padding-left:20px;font-size:14px">
+    <li><b>Relationship Type</b> — who they are</li>
+    <li><b>BG Lead Status</b> — where they stand</li>
+    <li><b>BG Initiative</b> — which program(s) they belong to</li>
+    <li><b>FN Contact Type (Zee / Zor)</b> — only if they're a Franchise Nova candidate</li>
+    <li><b>Contact Owner</b> — if it's blank and you know who it should be</li>
+  </ul>
+  <span style="display:block;margin-top:10px"><b>The rule: set what you know, don't go researching.</b> If you'd have to dig to figure something out, leave BG Lead Status as <b>New – Unworked</b> and move on — that flags it for triage later so nothing gets silently skipped.</span></div>
+
+  <div class="task"><h4>1 · Contacts with no email</h4><p>Decide: call them to get an email, or remove them from HubSpot. If calling them, leave them as-is. If removing, just select and click delete.</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69457624/list">Open list →</a></div>
+
+  <div class="task"><h4>2 · Relationship Type: Founder</h4><p>"Founder" is retiring — add each person's <em>real</em> relationship type instead.</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69511206/list">Open list →</a></div>
+
+  <div class="task"><h4>3 · Relationship Type: BG Community</h4><p>Also retiring — replace with the real relationship type.</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69570467/list">Open list →</a></div>
+
+  <div class="task"><h4>4 · Relationship Type: Ecosystem Builder</h4><p>Retiring — add the correct relationship type.</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69570567/list">Open list →</a></div>
+
+  <div class="task"><h4>5 · Relationship Type: GP or LP</h4><p>Replace with <b>Capital Partner</b> (if they fund our entrepreneurs) or <b>Investor</b> (if they invest in BLK GRVTY).</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69570651/list">Open list →</a></div>
+
+  <div class="task"><h4>6 · No first name / no last name</h4><p>Add the missing name where you can identify the person. If there's no real name because it's a <b>generic inbox</b> (info@, hello@, etc.), decide: do we need to keep it in HubSpot? If yes, set its Relationship Type and change BG Lead Status to <b>Not a Lead – Role/Org Inbox</b>. If not, just select it and click delete.</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69569726/list">Open list →</a></div>
+
+  <div class="task"><h4>7 · No Contact Owner or Needs Reassigned</h4><p><b>Save this one for last — it's the longest.</b> Assign the right owner (see Section 04). This list also includes contacts owned by former teammates that need reassigning.</p><span class="reminder"><b>Before you leave this record:</b> also set Relationship Type · BG Lead Status · BG Initiative · FN Contact Type (if Franchise Nova) · Contact Owner (if known). Set what you know; if unsure, leave BG Lead Status = New – Unworked.</span><a href="https://app.hubspot.com/contacts/40856666/objects/0-1/views/69464493/list">Open list →</a></div>
+</section>
+
+<section class="reveal">
+  <span class="sec-num">04</span><h2>Who can be a Contact Owner</h2>
+  <p>When you assign an owner (Task 7) or add a lead, use one of these team members:</p>
+  <p>
+    <span class="owner-chip">Chipo Sachirarwe</span>
+    <span class="owner-chip">JaNay Nazaire</span>
+    <span class="owner-chip">Chandra Fogg</span>
+    <span class="owner-chip" style="opacity:.6">Qiana <em>(once her HubSpot account is set up)</em></span>
+  </p>
+  <div class="callout warn"><b>Do not</b> assign anyone to a deactivated user, and some active users shouldn't be owners either. Contacts owned by anyone not on the list above need reassigning to one of these owners. If you see an owner who isn't on this list, that's a "Needs Reassigned" (Task 7).</div>
+</section>
+
+<section class="reveal">
+  <span class="sec-num">05</span><h2>What's coming</h2>
+  <p>This brief is the start. I'm also building:</p>
+  <div class="grid2">
+    <div class="mini"><h4>📋 Lead Management SOP</h4><p>The full playbook for how leads enter, get worked, and get tracked.</p></div>
+    <div class="mini"><h4>📥 Better add &amp; import</h4><p>A cleaner way to add contacts by hand and import event contacts, so bad data can't get in.</p></div>
+    <div class="mini"><h4>🔁 Recurring cleanup</h4><p>A regular check so we never drift back to a messy database.</p></div>
+    <div class="mini"><h4>📊 True pipeline review</h4><p>The payoff: weekly reviews built on data we can actually trust.</p></div>
+  </div>
+  <p class="big">When this is done, we'll know — at a glance — <b>where we stand with everyone</b>, and <b>no one will slip through the cracks.</b> That's worth the cleanup.</p>
+  <p style="color:var(--muted);font-size:14.5px">Questions on any of this? Ping me. Thank you for helping get our house in order. — Brenda</p>
+</section>
+
+<div class="footer"><b>BLK GRVTY</b><br>Team Brief · HubSpot Contact Cleanup</div>
+</main>
+<script>document.addEventListener('DOMContentLoaded',function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)})});</script>
+</body></html>
