@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wrinkle Free — Partnership Fit Brief</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap');
+
+  :root{
+    --bg:#ffffff;
+    --panel:#f7f7fa;
+    --hair:#e3e3ec;
+    --navy:#1b2140;
+    --gold:#b8860b;
+    --grey:#6b6b7d;
+    --text:#20202c;
+
+    --green:#15803d;
+    --green-bg:#eaf6ef;
+    --amber:#b45309;
+    --amber-bg:#fdf5e6;
+    --red:#b1456b;
+    --red-bg:#fcf0f4;
+    --unscored:#6b6b7d;
+    --unscored-bg:#eceef3;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:'Lato',sans-serif; line-height:1.65; font-size:16px;}
+  h1,h2,h3,h4,.eyebrow,.wordmark{font-family:'Poppins',sans-serif;}
+  a{color:var(--navy);}
+
+  .hero{position:relative; padding:70px 8vw 50px; text-align:center; background:linear-gradient(180deg,#fbfaf5 0%, #ffffff 100%); border-bottom:3px solid var(--gold);}
+  .wordmark{font-size:13px; letter-spacing:0.35em; color:var(--gold); font-weight:700; text-transform:uppercase;}
+  .eyebrow{font-size:13px; letter-spacing:0.12em; color:var(--grey); font-weight:600; text-transform:uppercase; margin-top:14px;}
+  .hero h1{font-size:40px; color:var(--navy); font-weight:800; margin:10px 0 14px; letter-spacing:-0.01em;}
+  .hero p.sub{max-width:640px; margin:0 auto; color:var(--grey); font-size:17px;}
+  .hero .pillrow{display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap;}
+  .pill{display:inline-block; padding:6px 14px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;}
+  .pill.amber{background:var(--amber-bg); color:var(--amber);}
+  .pill.red{background:var(--red-bg); color:var(--red);}
+  .pill.navy{background:var(--navy); color:#fff;}
+
+  main{max-width:960px; margin:0 auto; padding:10px 8vw 100px;}
+
+  .metabox{background:var(--panel); border:1px solid var(--hair); border-radius:10px; padding:22px 26px; margin:40px 0 10px;}
+  .metabox table{width:100%; border-collapse:collapse;}
+  .metabox td{padding:8px 10px; font-size:15px; vertical-align:top; border-bottom:1px solid var(--hair);}
+  .metabox tr:last-child td{border-bottom:none;}
+  .metabox td.k{width:190px; font-weight:700; color:var(--navy); font-family:'Poppins',sans-serif; font-size:13px; letter-spacing:0.02em;}
+
+  .toc{background:var(--panel); border:1px solid var(--hair); border-radius:10px; padding:22px 26px; margin:26px 0 10px;}
+  .toc h4{margin:0 0 10px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); font-weight:700;}
+  .toc ol{margin:0; padding-left:20px; columns:2; column-gap:30px;}
+  .toc li{font-size:14px; margin-bottom:6px;}
+  .toc a{text-decoration:none; color:var(--text);}
+  .toc a:hover{color:var(--gold);}
+
+  section{padding:46px 0 8px; border-top:1px solid var(--hair);}
+  section:first-of-type{border-top:none;}
+  .sec-num{display:inline-block; font-family:'Poppins',sans-serif; font-weight:800; font-size:13px; color:#fff; background:var(--navy); border-radius:6px; padding:3px 9px; margin-right:10px; letter-spacing:0.03em;}
+  h2{font-size:24px; color:var(--navy); font-weight:700; display:flex; align-items:center; margin:0 0 16px;}
+  h3{font-size:18px; color:var(--gold); font-weight:700; margin:28px 0 10px; border-bottom:2px solid var(--gold); padding-bottom:6px; display:inline-block;}
+  p.lede{font-size:17px; color:var(--text); font-weight:400;}
+  p{margin:0 0 14px;}
+
+  ul.list{padding-left:22px; margin:10px 0 18px;}
+  ul.list li{margin-bottom:9px;}
+
+  .note{background:#fff8e1; border-left:4px solid var(--amber); padding:12px 18px; font-size:14px; color:var(--grey); font-style:italic; border-radius:0 6px 6px 0; margin:16px 0 20px;}
+  .flag{background:var(--red-bg); border-left:4px solid var(--red); padding:12px 18px; font-size:14px; color:#7a2f47; border-radius:0 6px 6px 0; margin:16px 0 20px;}
+
+  .cardgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0 10px;}
+  .cardgrid .card{background:var(--panel); border:1px solid var(--hair); border-radius:8px; padding:16px 18px;}
+  .cardgrid .card .lbl{font-family:'Poppins',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--navy); margin-bottom:6px;}
+  .cardgrid .card .val{font-size:14.5px; color:var(--text);}
+  @media(max-width:640px){.cardgrid{grid-template-columns:1fr;}}
+
+  table.data{width:100%; border-collapse:collapse; margin:12px 0 22px; font-size:14.5px;}
+  table.data th{background:var(--navy); color:#fff; text-align:left; padding:11px 14px; font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.02em;}
+  table.data td{padding:10px 14px; border-bottom:1px solid var(--hair); vertical-align:top;}
+  table.data tr:nth-child(even) td{background:var(--panel);}
+  table.data td.strong{font-weight:700; color:var(--navy);}
+  table.data td.dim{color:var(--grey); font-size:13.5px;}
+  table.data td.center{text-align:center;}
+
+  .sig{display:inline-block; padding:4px 12px; border-radius:999px; font-weight:700; font-size:12.5px; letter-spacing:0.02em; white-space:nowrap;}
+  .sig.green{background:var(--green-bg); color:var(--green);}
+  .sig.amber{background:var(--amber-bg); color:var(--amber);}
+  .sig.red{background:var(--red-bg); color:var(--red);}
+  .sig.unscored{background:var(--unscored-bg); color:var(--unscored);}
+
+  .badge-block{display:inline-block; padding:10px 22px; border-radius:8px; font-weight:700; font-size:15px; letter-spacing:0.03em;}
+
+  footer{text-align:center; padding:36px 8vw 60px; color:var(--grey); font-size:12.5px; border-top:1px solid var(--hair);}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wordmark">BLK GRVTY &nbsp;·&nbsp; FRANCHISE NOVA</div>
+  <div class="eyebrow">Internal Reference — Prepared for Team Meeting</div>
+  <h1>Wrinkle Free — Partnership Fit Brief</h1>
+  <p class="sub">A working reference for the team ahead of the Wrinkle Free partnership meeting — financials, FDD terms, a read against BLK GRVTY's own System Nova Score criteria, and a document checklist for the meeting.</p>
+  <div class="pillrow">
+    <span class="pill red">Financial Trend — Declining</span>
+    <span class="pill navy">Zor Candidate — FDD On File</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="metabox reveal">
+    <table>
+      <tr><td class="k">PREPARED FOR</td><td>BLK GRVTY / Franchise Nova team — ahead of the Wrinkle Free partnership meeting</td></tr>
+      <tr><td class="k">SUBJECT ENTITY</td><td>The Wrinkle Free Company, LLC d/b/a Wrinkle Free Delivery — Atlanta, GA (operating unit since 2015); franchising entity Wrinkle Free Franchising, Inc. formed October 2024</td></tr>
+      <tr><td class="k">LIKELY FN STATUS</td><td>Zor candidate (franchise-system side), Brand Partner track — already has a drafted FDD and signed (not-yet-opened) franchise agreements</td></tr>
+      <tr><td class="k">BASIS</td><td>Franchise Disclosure Document, 3-year P&amp;L (2023–Jan 2026), balance sheet (12/2024), cash flow statements (2023–2025), trademark filings, KPI framework, customer segment data, and 3-year growth projections — all on file</td></tr>
+      <tr><td class="k">PURPOSE</td><td>Give the team a shared financial and legal picture, a read against BLK GRVTY's System Nova Score criteria, and a clear list of what to request before or during the meeting</td></tr>
+    </table>
+  </div>
+
+  <div class="toc reveal">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#snapshot">Company snapshot</a></li>
+      <li><a href="#financials">Financial performance</a></li>
+      <li><a href="#fddterms">Franchise system terms (FDD)</a></li>
+      <li><a href="#systemscore">Partnership fit — System Nova Score</a></li>
+      <li><a href="#checklist">Document checklist — have / need</a></li>
+      <li><a href="#risks">Risk register</a></li>
+      <li><a href="#questions">Open questions</a></li>
+      <li><a href="#recommendation">Discussion framing</a></li>
+    </ol>
+  </div>
+
+  <!-- 01 SNAPSHOT -->
+  <section id="snapshot" class="reveal">
+    <h2><span class="sec-num">01</span>Company Snapshot</h2>
+    <div class="cardgrid">
+      <div class="card"><div class="lbl">Entity</div><div class="val">The Wrinkle Free Company, LLC d/b/a Wrinkle Free Delivery; franchising entity Wrinkle Free Franchising, Inc.</div></div>
+      <div class="card"><div class="lbl">Location / Footprint</div><div class="val">Atlanta, GA — 1 company-owned outlet, operating since 2015; no franchised units opened as of the FDD's issuance</div></div>
+      <div class="card"><div class="lbl">Concept</div><div class="val">Laundry, linen, and dry-cleaning pickup-and-delivery service for residential, commercial, and institutional clients</div></div>
+      <div class="card"><div class="lbl">Leadership</div><div class="val">James W. Barnett Jr., Founder/CEO (founded 2015); Josephine Barnett, COO since 2020, previously Managing Director of Technology Strategy at Slalom Consulting (2014–2020). Advisory board includes a KPMG managing director, a real estate/angel investor, and a finance strategist.</div></div>
+      <div class="card"><div class="lbl">Investment Range (FDD Item 7)</div><div class="val">$361,500–$673,000 total estimated initial investment</div></div>
+      <div class="card"><div class="lbl">Franchise Pipeline (FDD Table 5)</div><div class="val">3 franchise agreements signed but not yet opened, Georgia — 0 franchised outlets opened as of issuance</div></div>
+      <div class="card" style="grid-column:1 / -1;"><div class="lbl">Notable Client Relationships (per customer segment doc)</div><div class="val">Cited enterprise/institutional accounts include Mercedes-Benz Stadium, The Coca-Cola Company, Delta Air Lines, Microsoft, IKEA, Salesforce, WNBA, Cox Enterprises, FanDuel, Pfizer, Fiserv, BlackRock, Live Nation, Hilton, and CVS Health — worth verifying which are current, active accounts (see Document Checklist).</div></div>
+    </div>
+  </section>
+
+  <!-- 02 FINANCIALS -->
+  <section id="financials" class="reveal">
+    <h2><span class="sec-num">02</span>Financial Performance</h2>
+    <p class="lede">Three fiscal years of the flagship company-owned unit's P&amp;L are on file (Jan 2023–Jan 28, 2026), plus a balance sheet as of 12/31/2024 and cash flow statements for 2023, 2024, and 2025. All figures below come from those documents.</p>
+
+    <h3>Three-Year P&amp;L Trend</h3>
+    <table class="data">
+      <tr><th>Metric</th><th>2023</th><th>2024</th><th>2025</th><th>3-Yr Trend</th></tr>
+      <tr><td class="strong">Revenue</td><td>$982,720</td><td>$885,582</td><td>$848,149</td><td style="color:var(--red); font-weight:700;">(13.7%)</td></tr>
+      <tr><td class="strong">Cost of Goods Sold</td><td>$575,963</td><td>$536,292</td><td>$545,556</td><td class="dim">—</td></tr>
+      <tr><td class="strong">COGS % of Revenue</td><td>58.6%</td><td>60.6%</td><td>64.3%</td><td style="color:var(--red); font-weight:700;">+5.7 pts</td></tr>
+      <tr><td class="strong">Gross Profit</td><td>$406,757</td><td>$349,290</td><td>$302,593</td><td style="color:var(--red); font-weight:700;">(25.6%)</td></tr>
+      <tr><td class="strong">Gross Margin</td><td>41.4%</td><td>39.4%</td><td>35.7%</td><td style="color:var(--red); font-weight:700;">(5.7 pts)</td></tr>
+      <tr><td class="strong">Total Operating Expenses</td><td>$267,096</td><td>$309,964</td><td>$239,416</td><td class="dim">—</td></tr>
+      <tr><td class="strong">Net Operating Income</td><td>$139,661</td><td>$39,327</td><td>$63,177</td><td style="color:var(--red); font-weight:700;">(54.8%)</td></tr>
+      <tr><td class="strong">NOI Margin</td><td>14.2%</td><td>4.4%</td><td>7.4%</td><td style="color:var(--red); font-weight:700;">(6.8 pts)</td></tr>
+      <tr><td class="strong">Net Income</td><td>$141,215</td><td>$51,033</td><td>$62,699</td><td style="color:var(--red); font-weight:700;">(55.6%)</td></tr>
+    </table>
+    <div class="flag">Revenue has declined every year for three straight years (-9.9% in 2024, -4.2% in 2025), gross margin has compressed 5.7 points as COGS climbs, and net income is down 56% from 2023 to 2025 even after a partial 2025 recovery. This is the single most important number to reconcile with the growth-projections document's 45–55% gross margin and 20–30% owner-operator EBITDA margin assumptions — the flagship unit is currently running well below both (35.7% gross margin, ~7.4% NOI margin in 2025).</div>
+
+    <h3>Owner Distributions vs. Net Income</h3>
+    <table class="data">
+      <tr><th>Year</th><th>Net Income</th><th>Owner's Distribution</th><th>Retained / (Over-Distributed)</th></tr>
+      <tr><td class="strong">2023</td><td>$141,215</td><td>($121,210)</td><td style="color:var(--green); font-weight:700;">$20,005 retained</td></tr>
+      <tr><td class="strong">2024</td><td>$51,033</td><td>($73,844)</td><td style="color:var(--red); font-weight:700;">($22,811) over-distributed</td></tr>
+      <tr><td class="strong">2025</td><td>$62,699</td><td>($83,453)</td><td style="color:var(--red); font-weight:700;">($20,754) over-distributed</td></tr>
+    </table>
+    <p>Distributions exceeded net income in both 2024 and 2025 — about $23,560 more was distributed than earned over the three-year period combined. Cash on hand fell from a peak of $79,915 (end of 2023) to $38,536 (end of 2024) to $20,173 (end of 2025), roughly a 75% decline from the 2023 peak.</p>
+
+    <h3>Balance Sheet Snapshot (As of 12/31/2024 — Most Recent on File)</h3>
+    <table class="data">
+      <tr><th>Item</th><th>Amount</th><th>Note</th></tr>
+      <tr><td class="strong">Total Assets</td><td>$68,137</td><td class="dim">Mostly cash ($38,536) and depreciated equipment/vehicles ($29,601 net)</td></tr>
+      <tr><td class="strong">Total Liabilities</td><td>$75,506</td><td class="dim">SBA Loan $53,405 (long-term) + credit card balance $22,100 (current)</td></tr>
+      <tr><td class="strong">Total Equity</td><td style="color:var(--red); font-weight:700;">($7,369)</td><td class="dim">Negative — liabilities exceed assets</td></tr>
+    </table>
+    <div class="note">No balance sheet for year-end 2025 is on file yet — given cash fell another $18,363 in 2025, equity is worth re-checking as of the most current date available before the meeting (see Document Checklist).</div>
+  </section>
+
+  <!-- 03 FDD TERMS -->
+  <section id="fddterms" class="reveal">
+    <h2><span class="sec-num">03</span>Franchise System Terms (From the FDD)</h2>
+    <p class="lede">Wrinkle Free has a drafted Franchise Disclosure Document on file, though the issuance date field is blank and it does not appear to have been filed/registered in any state yet. Key terms below are drawn directly from that document.</p>
+
+    <table class="data">
+      <tr><th>Item</th><th>Term</th></tr>
+      <tr><td class="strong">Initial Franchise Fee</td><td>$49,000, non-refundable</td></tr>
+      <tr><td class="strong">Royalty</td><td>8% of Gross Sales, or $250/week minimum, whichever is greater</td></tr>
+      <tr><td class="strong">National Marketing Fund</td><td>2% of Gross Sales</td></tr>
+      <tr><td class="strong">Local Marketing Requirement</td><td>Additional 1% of Gross Sales — total off-the-top of 11%</td></tr>
+      <tr><td class="strong">Total Initial Investment</td><td>$361,500–$673,000</td></tr>
+      <tr><td class="strong">Franchisor Financing</td><td>None — franchisee must self-secure financing; no franchisor guarantee or assistance</td></tr>
+      <tr><td class="strong">Territory</td><td>No exclusive territory granted; franchisor may place other units nearby and sell through other channels</td></tr>
+      <tr><td class="strong">Training</td><td>7 business days at Atlanta HQ, included in franchise fee for owner + 1 manager; travel/lodging at franchisee's expense</td></tr>
+      <tr><td class="strong">Term / Renewal</td><td>10-year initial term, 1 renewal term of 10 years available for a $25,000 renewal fee and a then-current (possibly materially different) agreement</td></tr>
+      <tr><td class="strong">Transfer Fee</td><td>$25,000 per FDD Item 6 fee table — but $1,500 per the Franchise Agreement body (Section XV.C). Inconsistency worth resolving.</td></tr>
+      <tr><td class="strong">Right of First Refusal</td><td>Franchisor can match any third-party offer for the franchisee's business</td></tr>
+      <tr><td class="strong">Franchisor Option to Purchase at Termination</td><td>Franchisor may buy the business at "fair market value" that explicitly excludes any value from the franchise rights, Marks, or system participation</td></tr>
+      <tr><td class="strong">Non-Compete</td><td>2 years post-termination, within 10 miles of the former unit or 5 miles of any other Wrinkle Free location</td></tr>
+      <tr><td class="strong">Item 19 (Financial Performance Representations)</td><td>None provided — the FDD states no financial performance representations of any kind are made</td></tr>
+      <tr><td class="strong">Item 21 (Franchisor Financial Statements)</td><td>Exhibit A shows the franchising entity (Wrinkle Free Franchising, Inc.) with $1,000 in total assets and no liabilities — a newly formed shell with no operating history, distinct from the operating flagship's financials above</td></tr>
+    </table>
+    <div class="flag">The FDD itself highlights as a required "Special Risk": the franchisor's financial condition, as reflected in its own Item 21 statements, calls into question its ability to provide services and support to franchisees. That's the franchisor's own disclosure, not our read — worth having them speak to directly, especially since it's the newly formed franchising entity (not the operating flagship) that shows just $1,000 in assets.</div>
+  </section>
+
+  <!-- 04 SYSTEM NOVA SCORE -->
+  <section id="systemscore" class="reveal">
+    <h2><span class="sec-num">04</span>Partnership Fit — System Nova Score</h2>
+    <p>Unlike a pre-FDD candidate, Wrinkle Free has a drafted FDD, so BLK GRVTY's System Nova Score can be read more concretely against real Item-level disclosures rather than mostly coming back Unscored. The read below is not a certified 0–100 calculation — it's each of the five standard dimensions applied to what the FDD and financials actually show, with sourcing so the team can verify.</p>
+
+    <table class="data">
+      <tr><th style="width:22%;">Dimension</th><th style="width:32%;">What BG's Framework Looks For</th><th style="width:32%;">What the FDD &amp; Financials Show</th><th style="width:14%;">Signal</th></tr>
+      <tr>
+        <td class="strong">Financial Performance &amp; Transparency<br><span class="dim">25 pts in standard framework</span></td>
+        <td class="dim">Item 19 disclosed, growing AUV, strong bottom-quartile performance, large data set.</td>
+        <td class="dim">No Item 19 provided at all. The one reference unit that exists shows revenue declining three straight years and gross margin compressing 5.7 points.</td>
+        <td class="center"><span class="sig red">Red</span></td>
+      </tr>
+      <tr>
+        <td class="strong">System Health &amp; Growth<br><span class="dim">20 pts in standard framework</span></td>
+        <td class="dim">Growing outlet count, annual churn under 5%, low terminations relative to closures.</td>
+        <td class="dim">Zero franchised outlets have ever opened. The single company unit has been flat since 2015. Three agreements are signed but not yet opened — real pipeline, but no execution track record yet.</td>
+        <td class="center"><span class="sig red">Red</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Capital Accessibility for Non-Traditional Operators<br><span class="dim">20 pts in standard framework</span></td>
+        <td class="dim">Franchisor financing available, SBA-friendly, flexible equity requirements, CDFI-compatible.</td>
+        <td class="dim">FDD Item 10 states plainly the franchisor offers no direct or indirect financing and provides no assistance securing it. No SBA-specific or CDFI accommodation is mentioned anywhere in the document.</td>
+        <td class="center"><span class="sig red">Red</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Operational Model &amp; Ownership Flexibility<br><span class="dim">20 pts in standard framework</span></td>
+        <td class="dim">Semi-absentee ownership permitted, reasonable training requirements.</td>
+        <td class="dim">Owner (or managing owner) must personally participate in direct operation, but a trained manager is explicitly permitted to run day-to-day — a middle ground, not strict owner-operator, not fully semi-absentee either.</td>
+        <td class="center"><span class="sig amber">Amber</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Exit &amp; Wealth-Building Structure<br><span class="dim">15 pts in standard framework</span></td>
+        <td class="dim">Reasonable transfer fee, automatic renewal, healthy resale market, limited ROFR.</td>
+        <td class="dim">Franchisor holds a right of first refusal on any sale, plus an option to buy the business at termination for a "fair market value" that explicitly excludes franchise-related goodwill. Renewal is not automatic — a new, potentially materially different agreement is required.</td>
+        <td class="center"><span class="sig red">Red</span></td>
+      </tr>
+    </table>
+
+    <h3>What This Actually Tells Us</h3>
+    <p>This reads differently than a pre-FDD candidate. Wrinkle Free has done real groundwork — a drafted FDD, an operations manual (the Brand Standards Manual), a decade of operating history, and three signed franchise agreements already in the pipeline. That's meaningfully further along than a system with nothing on paper yet.</p>
+    <p>But where the framework can actually be scored against real disclosures, four of five dimensions come back Red, and they're not soft judgment calls — they're grounded in the FDD's own language: no financial performance representations, zero franchised outlets ever opened, no franchisor financing of any kind, and exit terms structured to limit what a franchisee's business is worth at sale. Layered on top of a three-year revenue decline and negative equity at the operating level, this is a different kind of conversation than Jollof Bowl's "not yet assessable" — this is assessable, and several of what it shows are real flags rather than open questions.</p>
+  </section>
+
+  <!-- 05 CHECKLIST -->
+  <section id="checklist" class="reveal">
+    <h2><span class="sec-num">05</span>Document Checklist — What We Have / What We Need</h2>
+    <p class="lede">Organized by category so the team can see at a glance what's already on file versus what to request before or during the meeting.</p>
+
+    <table class="data">
+      <tr><th style="width:16%;">Category</th><th style="width:32%;">What We Have</th><th style="width:32%;">What We Need / Should Ask</th><th style="width:20%;">Priority</th></tr>
+      <tr>
+        <td class="strong">Legal / FDD</td>
+        <td class="dim">Drafted Franchise Disclosure Document; drafted Franchise Agreement and Guaranty (Exhibits B &amp; C)</td>
+        <td class="dim">Issuance date and state-registration status; completed answers to FDD Items 3 &amp; 4 (litigation and bankruptcy questions are blank in the draft); resolution of the $25,000 vs. $1,500 transfer-fee discrepancy between Item 6 and the Agreement body</td>
+        <td class="center"><span class="sig red">High</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Trademark</td>
+        <td class="dim">Two USPTO filings: standard-character word mark (Serial 98664026) and design/logo mark (Serial 98664044)</td>
+        <td class="dim">Current status of both — the word mark had a final refusal in Jul 2025 with a request for reconsideration filed Aug 2025; the design mark's Notice of Allowance (Sep 2025) required a Statement of Use within 6 months (~Mar 2026), which has since passed — confirm it was filed and the mark is still live</td>
+        <td class="center"><span class="sig red">High</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Financials</td>
+        <td class="dim">3-year P&amp;L (Jan 2023–Jan 2026), balance sheet as of 12/31/2024, cash flow statements for 2023, 2024, and 2025 — all unaudited, cash-basis QuickBooks exports</td>
+        <td class="dim">Balance sheet as of the most recent close (2025 year-end or later); tax returns; SBA loan terms and payoff schedule; an explanation for three straight years of revenue decline and margin compression; whether any audited or reviewed financials exist</td>
+        <td class="center"><span class="sig red">High</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Franchisor Entity Financials</td>
+        <td class="dim">FDD Exhibit A — a shell balance sheet for Wrinkle Free Franchising, Inc. showing $1,000 in assets</td>
+        <td class="dim">Confirm this is current and accurate, and how the franchisor entity plans to fund system-wide support obligations given it has no capital or income of its own on paper</td>
+        <td class="center"><span class="sig amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Franchise Sales Pipeline</td>
+        <td class="dim">Growth-projections document citing 3 signed agreements not yet opened, all in Georgia</td>
+        <td class="dim">Current status of those 3 — timelines to open, any that have lapsed or been added since; whether Year 1's 3–5 unit target (per the 3-year growth plan) is still realistic</td>
+        <td class="center"><span class="sig amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Operations</td>
+        <td class="dim">A defined KPI framework document (folding, delivery, and support metrics)</td>
+        <td class="dim">Actual current performance against these KPIs — this document defines what's measured but contains no real numbers</td>
+        <td class="center"><span class="sig amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Customer Base</td>
+        <td class="dim">A customer-segment document listing marquee enterprise accounts (Coca-Cola, Delta, Microsoft, IKEA, Salesforce, and others)</td>
+        <td class="dim">Which of these are current and active vs. historical, approximate contract sizes, and what share of revenue any single account represents (concentration risk)</td>
+        <td class="center"><span class="sig amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Growth Plan</td>
+        <td class="dim">3-Year Franchise Growth Projections document with per-unit revenue, margin, and unit-count assumptions</td>
+        <td class="dim">How the plan's 45–55% gross margin and 20–30% EBITDA margin assumptions reconcile with the flagship unit's actual 35.7% gross margin and ~7.4% NOI margin in 2025</td>
+        <td class="center"><span class="sig red">High</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- 06 RISKS -->
+  <section id="risks" class="reveal">
+    <h2><span class="sec-num">06</span>Risk Register</h2>
+    <table class="data">
+      <tr><th style="width:6%;">#</th><th>Risk Item</th><th style="width:16%;">Severity</th></tr>
+      <tr><td class="center">1</td><td>Revenue has declined three consecutive years (2023–2025), down 13.7% cumulatively</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">2</td><td>Gross margin compressed 5.7 points over the same period as COGS rose</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">3</td><td>Owner distributions exceeded net income in both 2024 and 2025, draining cash ~75% from its 2023 peak</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">4</td><td>Negative equity (-$7,369) as of the most recent balance sheet on file (12/31/2024)</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">5</td><td>No Item 19 financial performance representations provided in the FDD</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">6</td><td>Zero franchised outlets have ever opened despite a drafted FDD and signed agreements</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">7</td><td>No franchisor financing, SBA accommodation, or CDFI compatibility disclosed</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">8</td><td>FDD's own highlighted risk: franchisor's financial condition calls into question its ability to support franchisees</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">9</td><td>Exit terms limit franchisee proceeds — franchise-related goodwill excluded from buyout valuation, plus ROFR</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">10</td><td>Word-mark trademark application received a final refusal; design mark's Statement of Use deadline has passed with status unconfirmed</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">11</td><td>FDD Items 3 &amp; 4 (litigation, bankruptcy) left unanswered in the draft on file</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">12</td><td>Transfer fee inconsistency between FDD Item 6 ($25,000) and the Franchise Agreement body ($1,500)</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">13</td><td>No exclusive territory — franchisor can place other units nearby or sell through other channels</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">14</td><td>Growth-plan margin assumptions (45–55% gross, 20–30% EBITDA) don't match flagship actuals</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">15</td><td>Marquee enterprise client list unverified for current/active status and revenue concentration</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+    </table>
+
+    <h3>What's Working in Wrinkle Free's Favor</h3>
+    <ul class="list">
+      <li>Ten years of real operating history (since 2015) — far longer than a typical pre-franchise concept.</li>
+      <li>A drafted FDD, Franchise Agreement, and Brand Standards Manual already exist — real infrastructure most pre-FDD candidates lack.</li>
+      <li>Three franchise agreements already signed — genuine market interest, not just projections.</li>
+      <li>Leadership includes real relevant experience — a decade running the business, plus a COO with an enterprise consulting background.</li>
+      <li>A defined, capital-efficient unit model (pickup-and-delivery, lower real estate cost than a traditional laundromat).</li>
+    </ul>
+  </section>
+
+  <!-- 07 QUESTIONS -->
+  <section id="questions" class="reveal">
+    <h2><span class="sec-num">07</span>Open Questions for the Meeting</h2>
+
+    <h3>Ask Wrinkle Free Directly</h3>
+    <ul class="list">
+      <li>What's driving three consecutive years of revenue decline and the 5.7-point gross margin compression — is this a temporary or structural trend?</li>
+      <li>Why have distributions exceeded net income in two of the last three years, and what's the plan for the negative equity position?</li>
+      <li>What's the current status of the word-mark trademark reconsideration, and was the Statement of Use filed on the design mark before its deadline?</li>
+      <li>What is the current status of the 3 signed-but-unopened franchise agreements — timelines, any that have lapsed?</li>
+      <li>How does the 45–55% gross margin / 20–30% EBITDA margin in the growth projections reconcile with the flagship unit's actual 2025 performance?</li>
+      <li>Why does the FDD provide no Item 19 financial performance representations — is that a deliberate choice, or is one in development?</li>
+      <li>Can they resolve the $25,000 vs. $1,500 transfer-fee discrepancy between the FDD and the Franchise Agreement?</li>
+      <li>Which of the marquee enterprise accounts listed are currently active, and what share of revenue do they represent?</li>
+    </ul>
+
+    <h3>Decide Internally as a Team</h3>
+    <ul class="list">
+      <li>Given four of five System Nova Score dimensions read Red on real FDD disclosures rather than "unscored" data gaps, does this change the bar for what BLK GRVTY needs to see resolved before any partnership discussion moves forward?</li>
+      <li>How much weight to give the ten-year operating history and existing FDD infrastructure against the financial trend and franchisor-support risks?</li>
+      <li>What would BLK GRVTY need from Wrinkle Free — audited financials, a rebuilt Item 19, or franchisor capitalization — before a partnership could be recommended?</li>
+    </ul>
+  </section>
+
+  <!-- 08 RECOMMENDATION -->
+  <section id="recommendation" class="reveal">
+    <h2><span class="sec-num">08</span>Discussion Framing</h2>
+    <p>Wrinkle Free is further along on paper than a pre-FDD candidate — a decade of operating history, a drafted FDD and operations manual, and three signed franchise agreements already in the pipeline. That's real groundwork most early-stage Zor candidates don't have.</p>
+    <p>But where BLK GRVTY's own System Nova Score framework can be applied against actual disclosures rather than gaps, the read is largely unfavorable: three straight years of revenue decline, margin compression, negative equity, no Item 19 disclosure, no franchisor financing, and exit terms that limit what a franchisee's business is worth at sale — several of these sourced directly from the FDD's own language, including its own highlighted risk about the franchisor's financial condition.</p>
+    <p style="font-weight:700;">Recommended framing for the meeting: treat this less as an open evaluation and more as a request for specific answers on a specific, sourced set of concerns. The Document Checklist above is the agenda — what Wrinkle Free can resolve in the room (trademark status, the margin discrepancy, the pipeline status) versus what would need real follow-up (audited financials, franchisor capitalization) before this moves further.</p>
+  </section>
+
+</main>
+
+<footer>
+  Sourced from: Wrinkle Free Franchise Disclosure Document, 3-year Profit &amp; Loss (2023–Jan 2026), Balance Sheet (12/2024), Statements of Cash Flows (2023–2025), Trademark filings (USPTO TSDR), Flagship Operations KPI framework, Customer Types &amp; Revenue Segment document, and 3-Year Franchise Growth Projections — all on file.<br>
+  This brief does not constitute legal, financial, or franchise advisory counsel. &nbsp;·&nbsp; BLK GRVTY — Internal Use Only
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+});
+</script>
+
+</body>
+</html>
