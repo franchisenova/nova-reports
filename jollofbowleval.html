@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jollof Bowl — Partnership Fit Brief</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap');
+
+  :root{
+    --bg:#ffffff;
+    --panel:#f7f7fa;
+    --hair:#e3e3ec;
+    --navy:#1b2140;
+    --gold:#b8860b;
+    --grey:#6b6b7d;
+    --text:#20202c;
+
+    --green:#15803d;
+    --green-bg:#eaf6ef;
+    --amber:#b45309;
+    --amber-bg:#fdf5e6;
+    --red:#b1456b;
+    --red-bg:#fcf0f4;
+    --unscored:#6b6b7d;
+    --unscored-bg:#eceef3;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:'Lato',sans-serif; line-height:1.65; font-size:16px;}
+  h1,h2,h3,h4,.eyebrow,.wordmark{font-family:'Poppins',sans-serif;}
+  a{color:var(--navy);}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative; padding:70px 8vw 50px; text-align:center; background:linear-gradient(180deg,#fbfaf5 0%, #ffffff 100%); border-bottom:3px solid var(--gold);}
+  .wordmark{font-size:13px; letter-spacing:0.35em; color:var(--gold); font-weight:700; text-transform:uppercase;}
+  .eyebrow{font-size:13px; letter-spacing:0.12em; color:var(--grey); font-weight:600; text-transform:uppercase; margin-top:14px;}
+  .hero h1{font-size:40px; color:var(--navy); font-weight:800; margin:10px 0 14px; letter-spacing:-0.01em;}
+  .hero p.sub{max-width:640px; margin:0 auto; color:var(--grey); font-size:17px;}
+  .hero .pillrow{display:flex; justify-content:center; gap:10px; margin-top:22px; flex-wrap:wrap;}
+  .pill{display:inline-block; padding:6px 14px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;}
+  .pill.amber{background:var(--amber-bg); color:var(--amber);}
+  .pill.navy{background:var(--navy); color:#fff;}
+
+  main{max-width:920px; margin:0 auto; padding:10px 8vw 100px;}
+
+  /* ---------- META / TOC ---------- */
+  .metabox{background:var(--panel); border:1px solid var(--hair); border-radius:10px; padding:22px 26px; margin:40px 0 10px;}
+  .metabox table{width:100%; border-collapse:collapse;}
+  .metabox td{padding:8px 10px; font-size:15px; vertical-align:top; border-bottom:1px solid var(--hair);}
+  .metabox tr:last-child td{border-bottom:none;}
+  .metabox td.k{width:190px; font-weight:700; color:var(--navy); font-family:'Poppins',sans-serif; font-size:13px; letter-spacing:0.02em;}
+
+  .toc{background:var(--panel); border:1px solid var(--hair); border-radius:10px; padding:22px 26px; margin:26px 0 10px;}
+  .toc h4{margin:0 0 10px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); font-weight:700;}
+  .toc ol{margin:0; padding-left:20px; columns:2; column-gap:30px;}
+  .toc li{font-size:14px; margin-bottom:6px;}
+  .toc a{text-decoration:none; color:var(--text);}
+  .toc a:hover{color:var(--gold);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:46px 0 8px; border-top:1px solid var(--hair);}
+  section:first-of-type{border-top:none;}
+  .sec-num{display:inline-block; font-family:'Poppins',sans-serif; font-weight:800; font-size:13px; color:#fff; background:var(--navy); border-radius:6px; padding:3px 9px; margin-right:10px; letter-spacing:0.03em;}
+  h2{font-size:24px; color:var(--navy); font-weight:700; display:flex; align-items:center; margin:0 0 16px;}
+  h3{font-size:18px; color:var(--gold); font-weight:700; margin:28px 0 10px; border-bottom:2px solid var(--gold); padding-bottom:6px; display:inline-block;}
+  p.lede{font-size:17px; color:var(--text); font-weight:400;}
+  p{margin:0 0 14px;}
+
+  ul.list{padding-left:22px; margin:10px 0 18px;}
+  ul.list li{margin-bottom:9px;}
+
+  .note{background:#fff8e1; border-left:4px solid var(--amber); padding:12px 18px; font-size:14px; color:var(--grey); font-style:italic; border-radius:0 6px 6px 0; margin:16px 0 20px;}
+
+  /* ---------- CARD GRID (snapshot) ---------- */
+  .cardgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0 10px;}
+  .cardgrid .card{background:var(--panel); border:1px solid var(--hair); border-radius:8px; padding:16px 18px;}
+  .cardgrid .card .lbl{font-family:'Poppins',sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--navy); margin-bottom:6px;}
+  .cardgrid .card .val{font-size:14.5px; color:var(--text);}
+  @media(max-width:640px){.cardgrid{grid-template-columns:1fr;}}
+
+  /* ---------- TABLES ---------- */
+  table.data{width:100%; border-collapse:collapse; margin:12px 0 22px; font-size:14.5px;}
+  table.data th{background:var(--navy); color:#fff; text-align:left; padding:11px 14px; font-family:'Poppins',sans-serif; font-weight:600; font-size:13px; letter-spacing:0.02em;}
+  table.data td{padding:10px 14px; border-bottom:1px solid var(--hair); vertical-align:top;}
+  table.data tr:nth-child(even) td{background:var(--panel);}
+  table.data td.strong{font-weight:700; color:var(--navy);}
+  table.data td.dim{color:var(--grey); font-size:13.5px;}
+  table.data td.center{text-align:center;}
+
+  /* ---------- SIGNAL BADGES ---------- */
+  .sig{display:inline-block; padding:4px 12px; border-radius:999px; font-weight:700; font-size:12.5px; letter-spacing:0.02em; white-space:nowrap;}
+  .sig.green{background:var(--green-bg); color:var(--green);}
+  .sig.amber{background:var(--amber-bg); color:var(--amber);}
+  .sig.red{background:var(--red-bg); color:var(--red);}
+  .sig.unscored{background:var(--unscored-bg); color:var(--unscored);}
+
+  .badge-block{display:inline-block; padding:10px 22px; border-radius:8px; font-weight:700; font-size:15px; letter-spacing:0.03em;}
+
+  /* ---------- PATH CARDS ---------- */
+  .pathcard{border:1px solid var(--hair); border-radius:10px; padding:22px 24px; margin:16px 0 22px; background:#fff;}
+  .pathcard h4{margin:0 0 8px; font-family:'Poppins',sans-serif; color:var(--navy); font-size:17px;}
+  .pathcard .tag{display:inline-block; background:var(--gold); color:#fff; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:3px 10px; border-radius:5px; margin-bottom:10px;}
+  .procon{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;}
+  .procon .pc{border-radius:8px; padding:12px 16px; font-size:14px;}
+  .procon .pro{background:var(--green-bg); color:#1c5c3a;}
+  .procon .con{background:var(--red-bg); color:#7a2f47;}
+  @media(max-width:640px){.procon{grid-template-columns:1fr;}}
+
+  footer{text-align:center; padding:36px 8vw 60px; color:var(--grey); font-size:12.5px; border-top:1px solid var(--hair);}
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wordmark">BLK GRVTY &nbsp;·&nbsp; FRANCHISE NOVA</div>
+  <div class="eyebrow">Internal Reference — Prepared for Team Meeting</div>
+  <h1>Jollof Bowl — Partnership Fit Brief</h1>
+  <p class="sub">A working reference for the team ahead of the Jollof Bowl partnership meeting — financials, franchisor-readiness status, and a read against BLK GRVTY's own System Nova Score criteria.</p>
+  <div class="pillrow">
+    <span class="pill amber">Priority B — Conditional</span>
+    <span class="pill navy">Zor Candidate — Evaluating Fit</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="metabox reveal">
+    <table>
+      <tr><td class="k">PREPARED FOR</td><td>BLK GRVTY / Franchise Nova team — ahead of the Jollof Bowl partnership meeting</td></tr>
+      <tr><td class="k">SUBJECT ENTITY</td><td>Jollof Bowl LLC — Cross Street Market, Baltimore, MD</td></tr>
+      <tr><td class="k">LIKELY FN STATUS</td><td>Zor candidate (franchise-system side) — evaluating for Brand Partner fit; not yet an active brand</td></tr>
+      <tr><td class="k">PRIOR CLASSIFICATION</td><td>Priority B — Conditional (iFranchise Acid Test &amp; Nova Score, April 2026)</td></tr>
+      <tr><td class="k">BASIS</td><td>QuickBooks P&amp;L (Mar 2025–Feb 2026), KPI dashboard, franchise viability assessments on file</td></tr>
+      <tr><td class="k">PURPOSE</td><td>Equip the team to assess partnership fit against BLK GRVTY's own System Nova Score criteria and drive the meeting agenda</td></tr>
+    </table>
+  </div>
+
+  <div class="toc reveal">
+    <h4>Contents</h4>
+    <ol>
+      <li><a href="#snapshot">Company snapshot</a></li>
+      <li><a href="#financials">Financial performance</a></li>
+      <li><a href="#classification">Franchisor-readiness classification</a></li>
+      <li><a href="#systemscore">Partnership fit — System Nova Score</a></li>
+      <li><a href="#paths">Two partnership structures</a></li>
+      <li><a href="#risks">Risk register</a></li>
+      <li><a href="#questions">Open questions</a></li>
+      <li><a href="#recommendation">Discussion framing</a></li>
+    </ol>
+  </div>
+
+  <!-- 01 SNAPSHOT -->
+  <section id="snapshot" class="reveal">
+    <h2><span class="sec-num">01</span>Company Snapshot</h2>
+    <div class="cardgrid">
+      <div class="card"><div class="lbl">Entity</div><div class="val">Jollof Bowl LLC</div></div>
+      <div class="card"><div class="lbl">Location / Footprint</div><div class="val">Cross Street Market, Baltimore, MD — 1 brick-and-mortar unit; food truck in development</div></div>
+      <div class="card"><div class="lbl">Operating Since</div><div class="val">July 2025 (~9 months of trading history as of the last assessment)</div></div>
+      <div class="card"><div class="lbl">Concept</div><div class="val">Pan-West African (Liberia, Nigeria, Cameroon, Senegal, Ghana) fast-casual, Chipotle-style customizable format</div></div>
+      <div class="card"><div class="lbl">Leadership</div><div class="val">Andrea Kamara (prior restaurant exits; Hyatt/Marriott systems experience; health-tech exit) and Lekan Oketunji (8 yrs restaurant co-ownership; 15+ yrs real estate/construction). John DeSouza hired Oct 2025 for franchise development.</div></div>
+      <div class="card"><div class="lbl">Investment on File</div><div class="val">$500,000 investor raise referenced in KPI materials; franchise unit investment modeled at $400K–$800K (pro-forma estimate, not FDD-verified)</div></div>
+      <div class="card" style="grid-column:1 / -1;"><div class="lbl">Brand Momentum</div><div class="val">10M+ organic video views, ~20x follower growth, $125K+/month revenue run-rate cited, zero paid marketing spend</div></div>
+    </div>
+  </section>
+
+  <!-- 02 FINANCIALS -->
+  <section id="financials" class="reveal">
+    <h2><span class="sec-num">02</span>Financial Performance</h2>
+    <p class="lede">Trailing period: March 1, 2025 – February 5, 2026. Figures are drawn from the QuickBooks-sourced KPI dashboard on file, labeled Verified in that document unless otherwise noted.</p>
+
+    <table class="data">
+      <tr><th>Metric</th><th>Amount</th><th>% Rev</th><th>Notes</th></tr>
+      <tr><td class="strong">Revenue</td><td>$828,866</td><td>100.0%</td><td class="dim">Verified</td></tr>
+      <tr><td class="strong">Cost of Goods Sold</td><td>$334,201</td><td>40.3%</td><td class="dim">~9 pts above the 31–32% franchise-model assumption</td></tr>
+      <tr><td class="strong">Gross Profit</td><td>$494,666</td><td>59.7%</td><td class="dim">—</td></tr>
+      <tr><td class="strong">Payroll &amp; Labor</td><td>$152,896</td><td>18.4%</td><td class="dim">Efficient — $5.42 revenue per labor $</td></tr>
+      <tr><td class="strong">Total Operating Expenses</td><td>$302,601</td><td>36.5%</td><td class="dim">—</td></tr>
+      <tr><td class="strong">Operator EBITDA (NOI)</td><td>$192,065</td><td>23.2%</td><td class="dim">Strong for QSR / fast-casual</td></tr>
+      <tr><td class="strong">Net Income</td><td>$189,656</td><td>22.9%</td><td class="dim">Minimal non-operating drag</td></tr>
+    </table>
+
+    <h3>Actual Unit vs. Franchise Pro Forma (Base Case)</h3>
+    <p>The single actual operating unit runs at less than half the AUV assumed in Jollof Bowl's own franchise model, largely because it operates inside a food hall rather than a freestanding footprint. Labor and rent both run favorably lean relative to the model, partially offsetting the COGS gap.</p>
+
+    <table class="data">
+      <tr><th>Line Item</th><th>Actual (This Unit)</th><th>Franchise Model (Base)</th><th>Variance</th></tr>
+      <tr><td class="strong">Revenue / AUV</td><td>$828,866</td><td>$1,900,800</td><td>(56.4%)</td></tr>
+      <tr><td class="strong">COGS (% of revenue)</td><td>40.3%</td><td>31.0%</td><td>+9 pts</td></tr>
+      <tr><td class="strong">Gross Margin</td><td>59.7%</td><td>69.0%</td><td>(9.3 pts)</td></tr>
+      <tr><td class="strong">Labor (% of revenue)</td><td>18.4%</td><td>24.0%</td><td>(5.6 pts, favorable)</td></tr>
+      <tr><td class="strong">Rent (% of revenue)</td><td>3.7%</td><td>8.0%</td><td>(4.3 pts, favorable)</td></tr>
+      <tr><td class="strong">Operating Margin / Franchisee EBITDA</td><td>23.2%</td><td>21.0%</td><td>+2.2 pts, favorable</td></tr>
+    </table>
+    <div class="note">Actual COGS of 40.3% vs. a modeled 31–32% is the single biggest swing factor in any franchisee return projection — worth having Jollof Bowl walk through directly. Roughly $8,300 in EBITDA per point of COGS variance on a unit this size.</div>
+
+    <h3>Franchisee ROI at 6% Royalty + 2% Marketing Fund</h3>
+    <p>Normalized EBITDA: $284,368. Every investment scenario modeled clears the 20% ROI floor used for a Priority-A classification internally.</p>
+    <table class="data">
+      <tr><th>Investment Scenario</th><th>Franchisee EBITDA</th><th>ROI</th><th>Payback</th></tr>
+      <tr><td class="strong">$400,000 (low end)</td><td>$218,059</td><td style="color:var(--green); font-weight:700;">54.5%</td><td>1.8 years</td></tr>
+      <tr><td class="strong">$600,000 (mid-point)</td><td>$218,059</td><td style="color:var(--green); font-weight:700;">36.3%</td><td>2.8 years</td></tr>
+      <tr><td class="strong">$800,000 (high end)</td><td>$218,059</td><td style="color:var(--green); font-weight:700;">27.3%</td><td>3.7 years</td></tr>
+    </table>
+    <div class="note">A different, earlier note in the file models 151% ROI off a $100,000 investment and a 5% royalty — a different assumption set than the 6%/2% structure above; don't quote the two side by side without flagging that. The $400K–$800K investment range is itself a pro-forma estimate, not yet substantiated by real build-out specs.</div>
+  </section>
+
+  <!-- 03 CLASSIFICATION -->
+  <section id="classification" class="reveal">
+    <h2><span class="sec-num">03</span>Franchisor-Readiness Classification</h2>
+    <p>This is the classification from the April 2026 iFranchise Acid Test &amp; Nova Score screen already run on Jollof Bowl as a prospective franchisor. It answers <em>"is this business ready to start franchising"</em> — a different question from the System Nova Score lens applied next, which answers <em>"is this a system BLK GRVTY should route Zees into."</em></p>
+
+    <p style="text-align:center; margin:24px 0;">
+      <span class="badge-block" style="background:var(--amber-bg); color:var(--amber);">PRIORITY B — CONDITIONAL</span>
+    </p>
+    <p style="text-align:center; color:var(--grey); font-size:14.5px; max-width:600px; margin:0 auto 20px;">Strong unit economics and brand trajectory; classification reflects documentation and data gaps, not negative findings. Upgrade to Priority A estimated achievable within 90–120 days.</p>
+
+    <h3>What's Driving the "Conditional" Tag</h3>
+    <ul class="list">
+      <li>Same-store sales growth: Unknown — single unit, under 12 months, no prior-period comparable.</li>
+      <li>DSCR (debt service coverage): Unknown — no balance sheet or debt schedule provided; M&amp;T Bank loan reported "in process."</li>
+      <li>Staff turnover rate: Unknown — no Homebase export provided against the 75% QSR benchmark.</li>
+      <li>Operations manual, training curriculum, supplier agreements, build-out specs, trademark registration: each flagged missing or incomplete — several gate FDD filing outright.</li>
+    </ul>
+
+    <h3>What's Already Working in Jollof Bowl's Favor</h3>
+    <ul class="list">
+      <li>Brand &amp; demand trajectory: Strong Pass — 10M+ organic views, ~20x follower growth, $125K+/month revenue, zero paid spend.</li>
+      <li>Competitive moat: Strong Pass — first-mover pan-West-African fast-casual at food-hall throughput.</li>
+      <li>Founder &amp; management depth: Strong Pass — leadership described as "atypically strong for a sub-12-month single-unit concept."</li>
+      <li>Franchisee-level unit economics: every ROI sensitivity scenario clears the Priority-A return threshold.</li>
+    </ul>
+  </section>
+
+  <!-- 04 SYSTEM NOVA SCORE -->
+  <section id="systemscore" class="reveal">
+    <h2><span class="sec-num">04</span>Partnership Fit — System Nova Score</h2>
+    <p>Franchise Nova scores any franchise system being considered for candidate (Zee) placement across five dimensions — the System Nova Score. It's normally run against a filed FDD. Jollof Bowl has no FDD yet, so this isn't a precise 0–100 calculation; it's the same five-dimension lens applied honestly to what currently exists, with gaps marked Unscored rather than guessed at.</p>
+    <div class="note">Standing FN rule: a low or unscored System Nova Score is never a reason to decline a candidate or a partner outright — it means "not yet assessable" or "explore a different structure," which is exactly the framing used below.</div>
+
+    <table class="data">
+      <tr><th style="width:22%;">Dimension</th><th style="width:30%;">What BG's Framework Looks For</th><th style="width:34%;">What We Know About Jollof Bowl</th><th style="width:14%;">Signal</th></tr>
+      <tr>
+        <td class="strong">Financial Performance &amp; Transparency<br><span class="dim">25 pts in standard framework</span></td>
+        <td class="dim">Full disclosure of unit financial performance, growing AUV, strong bottom-quartile performance, large data set relative to system size.</td>
+        <td class="dim">Single unit's P&amp;L is disclosed and verified — real transparency for what exists. But there's no Item-19-style multi-unit performance representation, since there's no FDD and only one data point.</td>
+        <td class="center"><span class="sig amber">Amber</span></td>
+      </tr>
+      <tr>
+        <td class="strong">System Health &amp; Growth<br><span class="dim">20 pts in standard framework</span></td>
+        <td class="dim">Growing outlet count over time, annual churn under 5%, low terminations relative to closures.</td>
+        <td class="dim">One unit, ~9 months old. No outlet-count trend to measure and no churn calculation is possible yet.</td>
+        <td class="center"><span class="sig unscored">Unscored</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Capital Accessibility for Non-Traditional Operators<br><span class="dim">20 pts in standard framework</span></td>
+        <td class="dim">Franchisor financing available, SBA-friendly, flexible equity requirements, CDFI-compatible — the dimension unique to FN's mission.</td>
+        <td class="dim">No franchisor financing terms exist yet (pre-FDD). M&amp;T Bank loan referenced as "in process" with no terms disclosed. Investment range is a pro-forma estimate, not substantiated by real build-out costs.</td>
+        <td class="center"><span class="sig unscored">Unscored</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Operational Model &amp; Ownership Flexibility<br><span class="dim">20 pts in standard framework</span></td>
+        <td class="dim">Semi-absentee ownership permitted, reasonable training requirements — FN's candidates build multi-unit portfolios, not work behind the counter.</td>
+        <td class="dim">The viability assessment on file states plainly this is an owner-operator model, unsuited to a passive investor with a hired manager at launch, requiring owner-operator availability for 12–18 months.</td>
+        <td class="center"><span class="sig red">Red</span></td>
+      </tr>
+      <tr>
+        <td class="strong">Exit &amp; Wealth-Building Structure<br><span class="dim">15 pts in standard framework</span></td>
+        <td class="dim">Reasonable transfer fee, automatic renewal, multi-unit development available, healthy resale/transfer activity.</td>
+        <td class="dim">No FDD exists, so none of transfer fee, renewal terms, or right-of-first-refusal are documented. Trademark registration itself is not yet evidenced — a legal prerequisite upstream of any exit-rights question.</td>
+        <td class="center"><span class="sig unscored">Unscored</span></td>
+      </tr>
+    </table>
+
+    <h3>What This Actually Tells Us</h3>
+    <p>Run through BLK GRVTY's own lens for evaluating a franchise system, Jollof Bowl comes back Unscored on three of five dimensions and Red on one — not because the underlying business is weak, but because there is, structurally, no franchise system yet for the framework to evaluate. One unit, no FDD, no multi-unit financing terms, no exit mechanics. The one dimension with a real finding today — Operational Model &amp; Ownership Flexibility — points away from FN's multi-unit portfolio thesis as currently structured, since the business is described as needing an owner-operator on site.</p>
+    <p>This reframes the meeting question again, more specifically than the financial numbers alone suggest: the numbers say this could be a very strong opportunity eventually. BLK GRVTY's own criteria for what makes a good Zor say it isn't one yet — and won't be assessable as one until Jollof Bowl has a real FDD, a documented capital-accessibility structure, and either a path to semi-absentee ownership or an explicit acceptance that this program isn't the multi-unit-portfolio play FN typically routes candidates toward.</p>
+  </section>
+
+  <!-- 05 PATHS -->
+  <section id="paths" class="reveal">
+    <h2><span class="sec-num">05</span>Two Partnership Structures Worth Putting on the Table</h2>
+    <p>Given where Jollof Bowl actually sits against the criteria above, there are two structurally different ways BLK GRVTY could partner with them. Worth deciding as a team which one — or both, sequenced — the meeting should pursue.</p>
+
+    <div class="pathcard">
+      <span class="tag">Path 1</span>
+      <h4>Future Brand Partner <span style="color:var(--grey); font-weight:400; font-size:14px;">(Zor Type: Brand Partner)</span></h4>
+      <p>Jollof Bowl becomes a franchise system FN eventually places Zee candidates into, once it clears its own Priority-A gaps: FDD filed, trademark registered, training curriculum built, multi-unit proof of concept established. Zor Stage today would sit at Evaluating Fit, not Active Brand.</p>
+      <div class="procon">
+        <div class="pc pro"><strong>Pro —</strong> the unit economics and brand momentum are genuinely compelling. This is the upside case.</div>
+        <div class="pc con"><strong>Con —</strong> realistic timeline is longer than the 90–120 days cited in the April assessment once trademark, FDD legal work, and a second unit for proof-of-concept are factored in. Not a near-term placement option for Zees.</div>
+      </div>
+    </div>
+
+    <div class="pathcard">
+      <span class="tag">Path 2</span>
+      <h4>Treat the Founders as Expansion Operators <span style="color:var(--grey); font-weight:400; font-size:14px;">(Zor Type: Expansion Operator)</span></h4>
+      <p>Instead of (or ahead of) the Brand Partner track, Andrea Kamara and Lekan Oketunji could run through FN's own Zee pipeline as experienced operators looking to formalize and expand their own units — same intake, same Franchise Nova Stage pipeline used for any candidate, just flagged as already owning a concept.</p>
+      <div class="procon">
+        <div class="pc pro"><strong>Pro —</strong> available today. Doesn't require Jollof Bowl to have a system ready for placement — uses FN's existing tools to help them close operational and legal gaps faster.</div>
+        <div class="pc con"><strong>Con —</strong> a different value exchange than the Brand Partner model — FN would be investing in Jollof Bowl's readiness rather than gaining a placement pipeline immediately.</div>
+      </div>
+    </div>
+
+    <div class="note">These paths aren't mutually exclusive — Path 2 could be the near-term relationship while Path 1 is the long-term one, sequenced explicitly rather than left ambiguous.</div>
+  </section>
+
+  <!-- 06 RISKS -->
+  <section id="risks" class="reveal">
+    <h2><span class="sec-num">06</span>Risk Register</h2>
+    <p class="lede">High &amp; medium severity items. Full register on file also includes three low-severity items (nutrition/food-safety transparency, franchisee cultural-fit screening, sustainability programming) — omitted here as not decision-relevant for this meeting.</p>
+
+    <table class="data">
+      <tr><th style="width:6%;">#</th><th>Risk Item</th><th style="width:16%;">Severity</th></tr>
+      <tr><td class="center">1</td><td>Operations manual absent — gating item for FDD filing</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">2</td><td>Franchisee training curriculum does not exist</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">3</td><td>Food supplier agreements undocumented — replicability unproven</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">4</td><td>Build-out specifications absent — investment range unsubstantiated</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">5</td><td>Pre-opening checklist not systematized</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">6</td><td>Trademark registration not evidenced in any document</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">7</td><td>DSCR unknown — franchisee financing risk unassessed</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">8</td><td>Single unit, &lt;12 months — franchisor maturity risk</td><td class="center"><span class="sig red">High</span></td></tr>
+      <tr><td class="center">9</td><td>COGS normalized at 32% vs. 40.3% actual — key assumption risk</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">10</td><td>CEO-dependent institutional/catering revenue channel</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">11</td><td>Ingredient sourcing risk — specialty proteins and spices</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">12</td><td>POS system and loyalty platform not formally named</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">13</td><td>Royalty reporting / financial controls framework absent</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">14</td><td>Packaging cost elevated at 2.8% of revenue</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">15</td><td>Competitor (Spice Kitchen) geographic incursion into Baltimore, Nov 2025</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">16</td><td>Staff turnover rate unknown</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+      <tr><td class="center">17</td><td>Site selection criteria not formalized for franchisees</td><td class="center"><span class="sig amber">Medium</span></td></tr>
+    </table>
+  </section>
+
+  <!-- 07 OPEN QUESTIONS -->
+  <section id="questions" class="reveal">
+    <h2><span class="sec-num">07</span>Open Questions for the Meeting</h2>
+
+    <h3>Ask Jollof Bowl Directly</h3>
+    <ul class="list">
+      <li>What is the actual, current status of the operations manual, training curriculum, and trademark registration — all flagged as high-severity gaps? Timelines for each?</li>
+      <li>Can they produce a Homebase (or equivalent) turnover export and the M&amp;T Bank term sheet? Both resolve unscored metrics quickly.</li>
+      <li>What does a real build-out quote look like, and is the food-hall COGS profile (40.3%) expected to hold in a freestanding footprint, or is 31–32% realistic there?</li>
+      <li>Is there a second unit (brick-and-mortar or food truck) on a real timeline? Multi-unit proof of concept is the biggest lever for both a Priority-A upgrade and a System Health &amp; Growth score.</li>
+      <li>Is the owner-operator requirement flexible at all — could this become a semi-absentee model with a trained GM, or is founder presence structurally required for the food quality/authenticity piece?</li>
+      <li>How dependent is the institutional/catering revenue channel on Andrea Kamara personally, and is there a plan to systematize or delegate it?</li>
+      <li>How would Jollof Bowl feel about an Expansion Operator relationship (going through FN's own program to formalize and grow) as a near-term structure, versus waiting on the Brand Partner path?</li>
+    </ul>
+
+    <h3>Decide Internally as a Team</h3>
+    <ul class="list">
+      <li>Which partnership path — Brand Partner, Expansion Operator, or both sequenced — does BLK GRVTY want to propose in this meeting?</li>
+      <li>Royalty structure: the file shows at least two different royalty assumptions (5% in an earlier note vs. 6% + 2% marketing fund in the later assessment). Confirm which BLK GRVTY wants to propose.</li>
+      <li>How much weight to give brand/social momentum given it's difficult to independently verify and may not replicate identically in other markets.</li>
+      <li>What BLK GRVTY is willing to commit to help close specific gaps (e.g., connecting them to a franchise attorney for trademark work, or supporting the training curriculum build).</li>
+    </ul>
+  </section>
+
+  <!-- 08 RECOMMENDATION -->
+  <section id="recommendation" class="reveal">
+    <h2><span class="sec-num">08</span>Partnership Fit — Discussion Framing</h2>
+    <p>On the raw numbers, Jollof Bowl is a strong candidate: franchisee-level ROI clears the Priority-A threshold at every scenario tested, brand demand velocity is real and hard to manufacture, and the founding team's backgrounds are directly relevant to franchise execution.</p>
+    <p>Run through BLK GRVTY's own System Nova Score lens for evaluating franchise systems, the picture sharpens rather than changes: three of five dimensions are honestly Unscored because there's no franchise system yet to evaluate, and the one dimension with a clear finding today (Operational Model &amp; Ownership Flexibility) points away from FN's multi-unit portfolio thesis as currently structured.</p>
+    <p style="font-weight:700;">Recommended framing for the meeting: this isn't a single go/no-go on "partnership," it's a decision about which partnership. Use the two paths above to make that decision explicit, and treat today's meeting as the one that sets the timeline and structure — not the one that scores the fit as final.</p>
+  </section>
+
+</main>
+
+<footer>
+  Sourced from: Jollof Bowl Financial KPI Dashboard, Jollof Bowl Franchise Viability Assessment (Apr 2026), Franchise Evaluation Step 1 note, and BLK GRVTY's Franchise Nova Scoring Methodology (System Nova Score framework) — all on file.<br>
+  This brief does not constitute legal, financial, or franchise advisory counsel. &nbsp;·&nbsp; BLK GRVTY — Internal Use Only
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+});
+</script>
+
+</body>
+</html>
