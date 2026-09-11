@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Megan Raasveldt · Your Growth Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: #e8eaf0;
+  color: #15131f;
+  line-height: 1.6;
+  padding: 40px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; border-top: 4px solid #00aeef; }
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%); pointer-events:none; }
+.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(0,174,239,0.2) 0%,transparent 65%); pointer-events:none; }
+.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
+.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#00aeef; margin-bottom:8px; }
+.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:32px; color:#fff; margin-bottom:8px; line-height:1.1; }
+.h-meta { font-size:13px; color:#b0aed0; }
+.h-meta strong { color:#e1e3ee; }
+
+.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
+.section:last-of-type { border-bottom:none; }
+.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+
+.landscape-intro { font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; padding:12px 16px; background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; }
+.landscape-note  { font-size:11px; color:#aaa; font-style:italic; margin-bottom:16px; }
+
+.brand-card { border:1px solid #e8eaf0; border-radius:9px; overflow:hidden; background:#fafafa; margin-bottom:18px; }
+.brand-card-top { padding:16px 18px 12px; }
+.brand-card-top h3 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:15px; color:#15131f; margin-bottom:6px; }
+.brand-card-top p { font-size:13px; color:#444; line-height:1.6; }
+.brand-card-bottom { padding:12px 18px; background:#f0eefa; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.bstat-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#888; }
+.bstat-val { font-size:12.5px; color:#15131f; font-weight:700; margin-top:2px; }
+
+.terr-grid { display:flex; flex-direction:column; gap:10px; }
+.terr-card { border:1px solid #e8eaf0; border-radius:9px; padding:14px 16px; background:#fafafa; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+.terr-card h4 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; margin-bottom:4px; }
+.terr-card p { font-size:12.5px; color:#444; line-height:1.55; }
+.terr-badge { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; padding:4px 10px; border-radius:999px; background:#eaf6ef; color:#1a7a4a; white-space:nowrap; }
+.terr-badge.watch { background:#fdf5e6; color:#7a4800; }
+
+.euro-card { background:linear-gradient(90deg,rgba(184,110,0,0.08),transparent 82%); border:1px solid #e8eaf0; border-left:3px solid #b86e00; border-radius:0 9px 9px 0; padding:16px 18px; }
+.euro-card h4 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; color:#7a4800; margin-bottom:6px; text-transform:uppercase; letter-spacing:.05em; }
+.euro-card p { font-size:12.5px; color:#444; line-height:1.6; }
+
+.cap-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.cap-card { border:1px solid #e8eaf0; border-radius:9px; padding:14px 16px; background:#fafafa; text-align:center; }
+.cap-card .lbl { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:#888; margin-bottom:6px; }
+.cap-card .val { font-family:'Montserrat',sans-serif; font-weight:800; font-size:16px; color:#452e80; }
+
+.disclaimer { background:#f5f5fa; border-top:1px solid #e8eaf0; padding:18px 44px; }
+.disclaimer p { font-size:11.5px; color:#888; line-height:1.7; }
+.disclaimer strong { color:#555; }
+
+.doc-footer { background:#0d0a1c; padding:14px 44px; }
+.footer-main { font-size:11.5px; color:#9a98b4; margin-bottom:3px; line-height:1.6; }
+
+@media print {
+  body { background:#fff; padding:0; }
+  .doc { box-shadow:none; border-radius:0; }
+  .header, .brand-card-bottom, .doc-footer { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+@media (max-width:640px) {
+  .section { padding:18px 20px; }
+  .header  { padding:24px 20px; }
+  .brand-card-bottom, .cap-cards { grid-template-columns:1fr 1fr; }
+  .terr-card { flex-direction:column; }
+  .disclaimer { padding:16px 20px; }
+  .doc-footer { padding:14px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="header">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Prepared for Your Review</div>
+  <h1 class="h-name">Megan Raasveldt</h1>
+  <p class="h-meta">
+    <strong>RISE Modern Wellness &middot; Health, Wellness &amp; Fitness</strong>
+    &nbsp;·&nbsp; Target: East Coast USA
+    &nbsp;·&nbsp; 3–5 Units
+  </p>
+</header>
+
+<div class="section">
+  <div class="sec-label">About This Plan</div>
+  <p class="landscape-intro">
+    You're not starting from scratch — you're growing something that's already working. This document lays out a plan for taking RISE Modern Wellness from your one Vero Beach location to a multi-unit operation, using publicly available information about the brand's investment economics, existing footprint, and territory picture.<br><br>
+    This is a starting point for your conversation with your Nova Guide, not a finalized plan. Territory, financing structure, and any multi-unit development terms need to be confirmed directly with RISE corporate before any commitments are made.
+  </p>
+  <p class="landscape-note">⚑ Public information only — territory availability and international development options must be confirmed directly with RISE corporate.</p>
+</div>
+
+<div class="section">
+  <div class="sec-label">RISE Modern Wellness — Brand Snapshot</div>
+  <div class="brand-card">
+    <div class="brand-card-top">
+      <h3>RISE Modern Wellness</h3>
+      <p><strong>B2C · Subscription/membership.</strong> A modern wellness studio concept built around cryotherapy, IV hydration, infrared sauna, body sculpting, and related recovery services — the same model you're already running successfully in Vero Beach.</p>
+    </div>
+    <div class="brand-card-bottom">
+      <div><div class="bstat-label">Est. Investment / Unit</div><div class="bstat-val">$515K – $1.035M</div></div>
+      <div><div class="bstat-label">Franchise Fee</div><div class="bstat-val">$49,500</div></div>
+      <div><div class="bstat-label">Royalty</div><div class="bstat-val">7%</div></div>
+      <div><div class="bstat-label">Revenue Model</div><div class="bstat-val">Recurring / membership ✓</div></div>
+      <div><div class="bstat-label">Staffing per Unit</div><div class="bstat-val">~3–4 people</div></div>
+      <div><div class="bstat-label">Known System Size</div><div class="bstat-val">~10–11 units, 7 states</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Where to Grow — East Coast Territory Ideas</div>
+  <div class="terr-grid">
+    <div class="terr-card"><div><h4>Georgia (Atlanta metro &amp; suburbs)</h4><p>No confirmed RISE presence yet — a strong first-mover opportunity in a large, growing metro.</p></div><span class="terr-badge">First-mover</span></div>
+    <div class="terr-card"><div><h4>South Carolina (Charleston, Greenville)</h4><p>Coastal and growth-corridor markets with no confirmed RISE footprint today.</p></div><span class="terr-badge">First-mover</span></div>
+    <div class="terr-card"><div><h4>Virginia (Richmond, Virginia Beach)</h4><p>Worth exploring, though Virginia is one of the states where franchise sales are more closely regulated — plan for extra lead time on compliance.</p></div><span class="terr-badge watch">Verify compliance</span></div>
+    <div class="terr-card"><div><h4>Other Florida metros (Tampa, Jacksonville, Naples/Ft. Myers)</h4><p>Staying in-state can simplify operations, and these markets sit outside RISE's existing Maitland and Coconut Creek locations.</p></div><span class="terr-badge">First-mover</span></div>
+    <div class="terr-card"><div><h4>Your existing FL footprint (Maitland, Coconut Creek)</h4><p>Already served by other RISE locations — best to look beyond these areas for new territory rather than risk overlap.</p></div><span class="terr-badge watch">Already served</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">A Note on Europe</div>
+  <div class="euro-card">
+    <h4>Worth a Direct Conversation, Not Yet a Plan</h4>
+    <p>We didn't find any public information showing RISE currently has an international or master-franchise program. That doesn't mean it's off the table — it means it's a question for your Nova Guide and RISE corporate directly, rather than something to build your near-term plan around. Your East Coast expansion is the more immediate, better-supported path.</p>
+  </div>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="sec-label">Your Capital Snapshot</div>
+  <div class="cap-cards">
+    <div class="cap-card"><div class="lbl">SBA Financing</div><div class="val">Up to $250K</div></div>
+    <div class="cap-card"><div class="lbl">Outside Investor</div><div class="val">$500K</div></div>
+    <div class="cap-card"><div class="lbl">Real Estate Equity</div><div class="val">$250K</div></div>
+  </div>
+  <p style="font-size:12.5px;color:#666;margin-top:14px;line-height:1.6;">At RISE's own investment range, one additional unit runs $515K–$1.035M — your outlined ~$1M stack comfortably covers a second location. Reaching 3–5 units will likely mean sequencing: opening and stabilizing unit two, then using its performance (plus additional financing) to fund the next ones, rather than raising all the capital for 3–5 units at once.</p>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Important:</strong> This plan is based on publicly available information about RISE Modern Wellness only. Franchise Nova has not reviewed the current Franchise Disclosure Document (FDD) on your behalf. Investment figures are estimates — actual costs vary by location and market. Territory availability and any multi-unit development terms must be confirmed directly with RISE corporate before proceeding. This is a starting point for your research and conversation with your Nova Guide, not a recommendation to commit capital. All decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;·&nbsp; A BLK GRVTY Initiative &nbsp;·&nbsp; Prepared for Megan Raasveldt &nbsp;·&nbsp; 2026</p>
+</div>
+
+</div>
+</body>
+</html>
