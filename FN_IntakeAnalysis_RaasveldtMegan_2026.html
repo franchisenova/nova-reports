@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Megan Raasveldt · Internal Intake Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--ink:#15131f;--white:#fff;--indigo:#282560;--eggplant:#452e80;--purple:#664ca9;--cyan:#00aeef;--moon:#e1e3ee;--line:#d2d4e4;--accent:var(--cyan);--accent-rgb:0,174,239;--display:'Montserrat',system-ui,sans-serif;--body:'Lato',system-ui,sans-serif;}
+*{box-sizing:border-box;} html,body{margin:0;padding:0;}
+body{font-family:var(--body);color:var(--ink);background:var(--moon);line-height:1.5;-webkit-font-smoothing:antialiased;}
+.page{max-width:880px;margin:28px auto;background:var(--white);box-shadow:0 12px 50px rgba(20,19,31,0.18);overflow:hidden;}
+.cosmos{position:relative;color:var(--white);padding:34px 40px 30px;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 33% 70%,#fff,transparent),radial-gradient(1px 1px at 52% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 67% 58%,#fff,transparent),radial-gradient(1px 1px at 80% 35%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(1200px 380px at 78% 8%,rgba(var(--accent-rgb),0.42),transparent 60%),radial-gradient(900px 420px at 8% 110%,rgba(40,37,96,0.65),transparent 60%),linear-gradient(160deg,#05040a 0%,#0d0a1c 55%,#161033 100%);}
+.eyebrow{font-family:var(--display);font-weight:700;letter-spacing:.32em;font-size:11px;text-transform:uppercase;color:var(--cyan);margin:0 0 18px;}
+.mark{position:absolute;top:30px;right:40px;font-family:var(--display);font-weight:800;line-height:.86;font-size:20px;text-align:right;color:#fff;} .mark span{display:block;}
+.internal-flag{position:absolute;top:70px;right:40px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#ff9db3;font-weight:700;text-align:right;}
+.cand-name{font-family:var(--display);font-weight:900;font-size:38px;line-height:1.02;margin:0 0 6px;letter-spacing:-.01em;}
+.cand-meta{font-size:13px;color:#b9b6d6;margin:0 0 18px;font-weight:700;} .cand-meta b{color:var(--moon);}
+.snapshot{font-size:15px;color:#e7e6f4;max-width:64ch;margin:0;font-style:italic;}
+.verdict{display:flex;align-items:center;gap:26px;padding:26px 40px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(var(--accent-rgb),0.12),transparent 70%);}
+.badge{flex:0 0 auto;width:108px;height:108px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,var(--accent) 0%,var(--eggplant) 48%,var(--indigo) 80%,#0c0a1c 100%);box-shadow:0 0 0 6px rgba(var(--accent-rgb),0.16),0 0 38px 4px rgba(var(--accent-rgb),0.55);}
+.badge b{font-family:var(--display);font-weight:900;font-size:15px;color:#fff;z-index:1;}
+.verdict-text h2{font-family:var(--display);font-weight:900;font-size:26px;margin:0 0 2px;color:var(--ink);}
+.verdict-text .accentline{color:var(--accent);}
+.verdict-text p{margin:2px 0 0;font-size:14px;color:#4a4860;max-width:50ch;}
+.conf{margin-top:8px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 11px;}
+section{padding:24px 40px;border-bottom:1px solid var(--line);}
+.sec-label{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--eggplant);margin:0 0 16px;}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;}
+.axis-block{display:flex;gap:22px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct,0)*1%),var(--line) 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:var(--display);font-weight:900;font-size:26px;color:var(--ink);line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy .lift-label{font-family:var(--display);font-weight:800;font-size:13px;color:var(--ink);margin:0 0 6px;}
+.lift-pills{display:flex;gap:6px;margin:0 0 8px;}.lift-pills .pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--moon);color:#6c6a85;}
+.lift-pills .pill.on{background:var(--eggplant);color:#fff;}
+.axis-copy .note{font-size:12.5px;color:#5a5872;margin:0;}
+.matrix{display:grid;grid-template-columns:74px repeat(3,1fr);grid-template-rows:auto repeat(3,40px);gap:4px;font-size:10px;}
+.matrix .col-h{font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.matrix .row-h{font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.matrix .cell{border-radius:5px;position:relative;}
+.cell.nebula{background:rgba(69,46,128,0.16);} .cell.nova{background:rgba(102,76,169,0.22);}
+.cell.supernova{background:rgba(0,174,239,0.20);}
+.cell .tag{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;}
+.cell.here{outline:2px solid var(--accent);}
+.cell .dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.25),0 0 14px var(--accent);top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:8px;}
+.dim{margin-bottom:13px;} .dim .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+.dim .row b{color:var(--ink);} .dim .row span{color:#7a7891;font-family:var(--display);font-weight:700;font-size:12px;}
+.bar{height:7px;background:var(--moon);border-radius:999px;overflow:hidden;} .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--eggplant),var(--accent));border-radius:999px;}
+.dim small{display:block;font-size:11.5px;color:#6c6a85;margin-top:5px;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border:1px solid var(--line);border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 9px;}
+.quad.s h4{color:var(--cyan);} .quad.d h4{color:var(--purple);} .quad.o h4{color:var(--eggplant);} .quad.r h4{color:#b1456b;}
+.quad ul{margin:0;padding-left:16px;} .quad li{font-size:12.5px;margin-bottom:6px;color:#3c3a52;}
+.pathway{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway .sec-label{color:var(--cyan);} .pathway .route{font-family:var(--display);font-weight:800;font-size:17px;margin:0 0 4px;color:#fff;}
+.pathway .backup{font-size:12.5px;color:#b9b6d6;margin:0 0 12px;} .pathway p{font-size:13px;color:#d8d6ec;margin:0;}
+ol.roadmap{margin:0;padding-left:20px;} ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;} ol.roadmap li b{color:var(--ink);}
+.expect{background:linear-gradient(90deg,rgba(69,46,128,0.10),transparent 82%);border:1px solid var(--line);border-left:3px solid var(--eggplant);border-radius:0 9px 9px 0;padding:16px 18px;}
+.expect .erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:11px;}
+.expect .chip{font-family:var(--display);font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.expect .chip.exp{background:var(--moon);color:#5b5876;} .expect .chip.real{background:var(--eggplant);color:#fff;}
+.expect .arrow{font-size:16px;color:var(--eggplant);font-weight:800;}
+.expect p{margin:0 0 7px;font-size:12.5px;color:#3c3a52;} .expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:var(--eggplant);font-family:var(--display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+.action{background:rgba(var(--accent-rgb),0.12);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:16px;}
+.action b{font-family:var(--display);}
+.qs{margin:0;padding-left:18px;} .qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;} .gaps .g{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 10px;}
+footer{padding:18px 40px 26px;background:var(--ink);color:#9a98b4;font-size:11px;}
+footer .legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px;} footer .legend span{display:flex;align-items:center;gap:7px;color:#cbc9e0;font-weight:700;} footer .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+footer .leg-sn{background:var(--cyan);} footer .leg-n{background:var(--purple);} footer .leg-neb{background:var(--eggplant);} footer p{margin:0;line-height:1.55;}
+
+/* Page 2 additions */
+.p2hdr{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#fff;padding:28px 40px;border-bottom:4px solid var(--cyan);}
+.p2hdr .eyebrow{margin-bottom:6px;}
+.p2hdr h2{font-family:var(--display);font-weight:900;font-size:24px;margin:0;}
+.cards4{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.icard{border:1px solid var(--line);border-radius:9px;padding:14px 16px;background:#fafafc;}
+.icard h5{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--eggplant);margin:0 0 7px;}
+.icard p{font-size:12.5px;color:#3c3a52;margin:0;line-height:1.55;}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cap-cell{border:1px solid var(--line);border-radius:9px;padding:12px 14px;background:#fafafc;}
+.cap-cell .lbl{font-family:var(--display);font-weight:700;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#8a88a0;margin-bottom:4px;}
+.cap-cell .val{font-family:var(--display);font-weight:800;font-size:15px;color:var(--ink);}
+.callout-amber{background:#fdf5e6;border:1px dashed #b86e00;border-radius:9px;padding:14px 18px;margin-bottom:18px;}
+.callout-amber h5{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#7a4800;margin:0 0 8px;}
+.callout-amber p, .callout-amber li{font-size:12.5px;color:#5a4300;line-height:1.6;}
+.callout-amber ul{margin:6px 0 0;padding-left:18px;}
+.brand-snap{border:1px solid var(--line);border-radius:9px;padding:16px 18px;background:#fafafc;margin-bottom:16px;}
+.brand-snap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;}
+.bs-cell .lbl{font-family:var(--display);font-weight:700;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#8a88a0;}
+.bs-cell .val{font-family:var(--display);font-weight:800;font-size:13.5px;color:var(--ink);margin-top:2px;}
+.terr-list{display:flex;flex-direction:column;gap:10px;}
+.terr-item{border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:12.5px;color:#3c3a52;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+.terr-item b{font-family:var(--display);font-size:12.5px;color:var(--ink);}
+.terr-tag{font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--moon);color:#5b5876;white-space:nowrap;}
+.terr-tag.warn{background:#fdf5e6;color:#7a4800;}
+.fnnote{background:rgba(0,174,239,0.08);border-left:3px solid var(--cyan);padding:14px 18px;border-radius:0 8px 8px 0;font-size:13px;color:#2a2840;margin-top:16px;}
+.fnnote b{font-family:var(--display);color:var(--eggplant);}
+@media print{body{background:#fff;} .page{box-shadow:none;margin:0;max-width:none;} .cosmos,.p2hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media (max-width:720px){.two-col{grid-template-columns:1fr;} .swot{grid-template-columns:1fr;} .cards4{grid-template-columns:1fr;} .cap-grid{grid-template-columns:1fr 1fr;} .brand-snap-grid{grid-template-columns:1fr 1fr;} .mark{position:static;text-align:left;margin-bottom:14px;} .internal-flag{position:static;text-align:left;margin-bottom:10px;}}
+</style>
+</head>
+<body class="cls-supernova">
+<div class="page">
+
+<!-- ============ PAGE 1 — READINESS ANALYSIS ============ -->
+<header class="cosmos">
+  <div class="mark"><span>BLK</span><span>GRVTY</span></div>
+  <p class="internal-flag">Internal Only</p>
+  <p class="eyebrow">Franchise Nova &middot; Candidate Readiness — Internal Analysis</p>
+  <h1 class="cand-name">Megan Raasveldt</h1>
+  <p class="cand-meta">Vero Beach, FL &nbsp;&middot;&nbsp; <b>Owner, RISE Modern Wellness (Vero Beach)</b> &nbsp;&middot;&nbsp; Health, Wellness &amp; Fitness &nbsp;&middot;&nbsp; Timeframe: Within 6 months</p>
+  <p class="snapshot">For internal FN use only — do not share with candidate. Existing RISE Modern Wellness franchisee seeking capital and territory support to expand from 1 to 3–5 units across the East Coast and, potentially, Europe.</p>
+</header>
+
+<div class="verdict">
+  <div class="badge"><b>SUPER</b></div>
+  <div class="verdict-text">
+    <h2>Classification: <span class="accentline">Super Nova</span></h2>
+    <p>Proven, revenue-generating operator of her own franchise unit with strong financial underwriting metrics — the readiness question here is one of capital sequencing and territory planning, not operator capability.</p>
+    <span class="conf">Confidence &middot; High</span>
+  </div>
+</div>
+
+<section>
+  <p class="sec-label">The Two-Axis Read</p>
+  <div class="two-col">
+    <div><div class="axis-block">
+      <div class="score-ring" data-score="87"><div class="inner"><span class="num">87</span><span class="den">/ 100</span></div></div>
+      <div class="axis-copy">
+        <p class="lift-label">Readiness &amp; Potential</p>
+        <p class="lift-label" style="color:var(--eggplant);margin-top:14px;">FN Lift Required</p>
+        <div class="lift-pills" data-lift="Low"><span class="pill">Low</span><span class="pill">Moderate</span><span class="pill">High</span></div>
+        <p class="note">Binding constraint: <b>Capital sequencing</b> — her operator profile clears the bar easily; what needs FN's help is reconciling a ~$1M capital stack against a 3–5 unit, 6-month target that RISE's own investment range suggests requires $1.8M–$4.5M+.</p>
+      </div>
+    </div></div>
+    <div>
+      <div class="matrix" data-readiness="strong" data-lift="low">
+        <div class="corner"></div><div class="col-h">Emerging</div><div class="col-h">Developing</div><div class="col-h">Strong</div>
+        <div class="row-h">High</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Moderate</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Low</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell supernova"><span class="tag">Super</span></div>
+      </div>
+      <p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Readiness Dimensions <span style="color:#a9a7c0;font-weight:700;">(capital-free)</span></p>
+  <div class="dim"><div class="row"><b>Operator Readiness &amp; Capability</b><span>31 / 35</span></div><div class="bar"><i data-score="31" data-max="35"></i></div><small>Already operates a mid-size, multi-employee RISE unit as owner-operator, with 5–9 years across wholesale apparel, service industries, and luxury real estate development/sales. Direct P&amp;L ownership and self-rated strong executive-level sales capability. This is a scaling operator, not a first-timer.</small></div>
+  <div class="dim"><div class="row"><b>Vision, Motivation &amp; Commitment</b><span>27 / 30</span></div><div class="bar"><i data-score="27" data-max="30"></i></div><small>Timeline (6 months) is aggressive, but motivation is unusually well-articulated — specific unit count, a stated corporate-support role within the RISE ecosystem, and a clear legacy/wealth-building narrative tied to family and community.</small></div>
+  <div class="dim"><div class="row"><b>Sector &amp; Multi-Unit Fit</b><span>18 / 20</span></div><div class="bar"><i data-score="18" data-max="20"></i></div><small>Health, Wellness &amp; Fitness is a core FN vertical and she's already proven the unit economics work. Her 3–5 unit target supports multi-unit development, though her day-to-day role will need to shift toward GM/multi-unit oversight past 2–3 units.</small></div>
+  <div class="dim"><div class="row"><b>Coachability &amp; Ecosystem Fit</b><span>11 / 15</span></div><div class="bar"><i data-score="11" data-max="15"></i></div><small>Results-Driven 5/5 paired with Innovative 5/5 and Conventional 1/5. Worth a direct conversation — RISE's model depends on system replication, and a strong innovative streak paired with low conventional scoring could push toward customization rather than following the playbook as she scales.</small></div>
+</section>
+
+<section>
+  <p class="sec-label">SWOT</p>
+  <div class="swot">
+    <div class="quad s"><h4>Strengths</h4><ul>
+      <li>Already a proven, revenue-generating RISE operator — not a hypothetical candidate</li>
+      <li>$1M+ net worth and 700–750 credit clear RISE's SBA underwriting minimums ($800K net worth / 700 credit) comfortably</li>
+      <li>Multi-industry background (wholesale, real estate, services) brings transferable sales and operations skills</li>
+      <li>Capital stack already outlined in her own words (SBA + outside investor + real estate equity)</li>
+    </ul></div>
+    <div class="quad d"><h4>Development Areas</h4><ul>
+      <li>Available cash on hand ($50K–$100K) sits below RISE's stated $180K per-unit liquidity minimum — needs reconciling against the broader stack</li>
+      <li>No general manager / multi-unit management structure mentioned yet for scaling past personal bandwidth</li>
+      <li>Stated timeline (6 months for 3–5 units) runs well ahead of typical wellness-studio build-out cycles (6–9 months per unit)</li>
+    </ul></div>
+    <div class="quad o"><h4>What FN Can Unlock</h4><ul>
+      <li>Structure a formal multi-unit development agreement conversation with RISE corporate</li>
+      <li>Capital stack sequencing to close the liquidity gap and confirm what the ~$1M actually funds</li>
+      <li>Territory mapping that avoids cannibalizing RISE's existing FL/Southeast footprint</li>
+      <li>A direct, documented answer from RISE corporate on whether an international (Europe) pathway exists today</li>
+    </ul></div>
+    <div class="quad r"><h4>Risks to Watch</h4><ul>
+      <li>Europe is not a validated pathway for this brand — no public evidence of an international or master-franchise program</li>
+      <li>Innovative/low-Conventional profile could create friction with a franchisor whose model depends on replication</li>
+      <li>Aggressive timeline risks rushed site selection or under-capitalized openings if not sequenced properly</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="two-col">
+    <div class="pathway"><p class="sec-label">Recommended Capital Pathway</p>
+      <p class="route">Multi-Unit SBA + Outside Investor Blend, Anchored by RE Equity</p>
+      <p class="backup">Backup: Phased single-unit SBA financing, one location at a time</p>
+      <p>Megan's net worth and credit clear RISE's underwriting minimums easily for a single additional unit. The complication is scale: at RISE's stated $515K–$1.035M total investment range, a 3–5 unit target likely requires $1.8M–$4.5M+ in total capital — meaningfully more than the ~$1M stack she outlined (SBA $250K + outside investor $500K + RE equity $250K). Before Discovery Day, get a clear answer on whether that $1M is meant to fund the first 1–2 units (with subsequent units financed unit-by-unit as they cash-flow) or whether she's expecting a larger blended facility. Either path is workable — but it needs to be explicit, not assumed.</p>
+    </div>
+    <div><p class="sec-label">Path to Ownership</p>
+      <ol class="roadmap">
+        <li><b>Discovery call:</b> confirm whether the ~$1M capital stack is meant for units 1–2 only or the full program, and pressure-test the 6-month / 3–5 unit timeline against realistic build-out cycles.</li>
+        <li><b>Corporate alignment:</b> confirm with RISE whether a formal multi-unit/area development agreement is available, and what territory protections exist near her current FL footprint.</li>
+        <li><b>Territory mapping:</b> shortlist 3–5 target East Coast metros outside RISE's existing FL/Southeast presence to avoid intra-brand cannibalization.</li>
+        <li><b>International check:</b> get a direct answer from RISE corporate on Europe — no public evidence this pathway exists today, so it should be confirmed rather than planned around.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section><p class="sec-label">Expectations Check</p>
+  <div class="expect">
+    <div class="erow"><span class="chip exp">Expects: 3–5 new units, East Coast + Europe, in 6 months</span><span class="arrow">&rarr;</span><span class="chip real">Realistic: 1–2 East Coast units in 12–18 months</span></div>
+    <p><b>Why</b> RISE's own investment range ($515K–$1.035M/unit) times a 3–5 unit target implies $1.8M–$4.5M+ in total capital — well beyond the ~$1M stack currently outlined. Site selection, build-out, and staffing realistically run 6–9 months per unit even for an experienced operator, so 3–5 units in 6 months total isn't achievable without significantly more capital and a multi-unit management structure than is currently in place.</p>
+    <p><b>On the call</b> Nail down whether the $1M is total program capital or capital for the first 1–2 units; get a straight answer from RISE on international development options; and talk through what a GM / multi-unit management structure looks like once she's past personally operating each site.</p>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Recommended Next Action</p>
+  <div class="action"><b>Fast-track Discovery Day</b> — Megan is a proven operator and a strong FN fit. Scope the conversation around sequencing (which units, in what order, on what capital) rather than assuming the full 3–5 unit / 6-month / international plan moves forward as stated.</div>
+  <p class="sec-label" style="margin-top:4px;">Discovery-Call Questions</p>
+  <ul class="qs">
+    <li>Is the ~$1M capital stack (SBA + investor + RE equity) meant to fund your first 1–2 additional units, or the full 3–5 unit target?</li>
+    <li>Have you had any conversation with RISE corporate about a formal multi-unit or area development agreement, and if so, what territory has been discussed?</li>
+    <li>Walk us through your outside investor — is that commitment confirmed and documented, or still being sourced?</li>
+    <li>What does day-to-day involvement look like once you have 3+ locations — are you planning to hire a multi-unit GM or operations lead?</li>
+    <li>Has RISE corporate indicated any interest in or framework for international development, specifically Europe?</li>
+    <li>Which East Coast metros are you specifically targeting, and are you aware of RISE's existing Florida footprint (Maitland, Coconut Creek) you'll want to avoid overlapping?</li>
+  </ul>
+</section>
+
+<section style="border-bottom:none;">
+  <p class="sec-label">Data Gaps to Resolve</p>
+  <div class="gaps">
+    <span class="g">Total capital stack: per-unit vs. full-program amount unclear</span>
+    <span class="g">Outside investor: confirmed commitment vs. prospective</span>
+    <span class="g">Europe / international RISE framework: unconfirmed, no public evidence found</span>
+    <span class="g">Multi-unit management / GM structure: not yet defined</span>
+    <span class="g">Specific target metros within "East Coast USA": not yet named</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 — DISCOVERY DAY PREP ============ -->
+<header class="p2hdr">
+  <p class="eyebrow" style="color:#00aeef;">Franchise Nova &middot; Discovery Day Prep — Internal</p>
+  <h2>Megan Raasveldt — Page 2</h2>
+</header>
+
+<section>
+  <p class="sec-label">Professional Background</p>
+  <p style="font-size:13px;color:#3c3a52;line-height:1.65;">Multifaceted background spanning the wholesale clothing industry, the service industry, and luxury new construction real estate sales and development. Currently owner-operator of RISE Modern Wellness in Vero Beach, FL — a mid-size operation (11–50 employees) she has run for 5–9 years, giving her direct P&amp;L ownership experience layered on top of an already diverse commercial background.</p>
+</section>
+
+<section>
+  <p class="sec-label">Investment Thesis</p>
+  <div class="cards4">
+    <div class="icard"><h5>Why Franchise Ownership</h5><p>Wants to scale beyond her single storefront into a multi-unit operation, and ultimately to take on a corporate-support role helping other RISE franchisees succeed.</p></div>
+    <div class="icard"><h5>Success in 3–5 Years</h5><p>Five successful RISE locations; a seat on the corporate team supporting other owners; enough freedom to travel with her husband; her adult children launched into their own paths; continued giving back to the communities that supported her.</p></div>
+    <div class="icard"><h5>Day-to-Day Involvement</h5><p>Owner-Operator today at her Vero Beach unit, trending toward a multi-unit executive role as she scales — a GM/management layer will need to be built out to support that shift.</p></div>
+    <div class="icard"><h5>Capital Thinking</h5><p>A blended stack: SBA financing (up to $250K), an outside investor ($500K), and existing real estate equity ($250K) — roughly $1M in stated accessible capital.</p></div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Franchise Research &amp; Geography</p>
+  <p style="font-size:13px;color:#3c3a52;margin-bottom:10px;"><b>Systems already researched:</b> RISE Modern Wellness only — this is her own brand, not a new evaluation.</p>
+  <p style="font-size:13px;color:#3c3a52;margin-bottom:10px;"><b>Target geography:</b> East Coast USA and Europe &nbsp;&middot;&nbsp; <b>Units target:</b> 3–5 (Territory Scale selected: 3+)</p>
+  <p style="font-size:13px;color:#3c3a52;margin-bottom:10px;"><b>Seasonality preference:</b> Year-Round Operation — matches RISE's existing model.</p>
+  <p style="font-size:13px;color:#3c3a52;margin-bottom:10px;"><b>Existing franchise ownership:</b> RISE Modern Wellness, Vero Beach, FL. This is an <b>expansion case</b>, not a new-candidate evaluation — at the Nova Guide's direction, the standard cross-system franchise landscape research (Step 3) was intentionally skipped in favor of an expansion/capital-readiness focus on her existing brand (see below).</p>
+  <p style="font-size:13px;color:#3c3a52;"><b>Acquisition interest:</b> Yes. Given the expansion focus, this is best explored on the call as an <i>acquire-and-convert</i> strategy — buying existing independent wellness studios in target metros and converting them to RISE locations — rather than surfacing unrelated business listings, which wouldn't serve this candidate's actual goal.</p>
+</section>
+
+<section>
+  <p class="sec-label">Capital Profile</p>
+  <div class="cap-grid">
+    <div class="cap-cell"><div class="lbl">Liquid Capital</div><div class="val">$50K – $100K</div></div>
+    <div class="cap-cell"><div class="lbl">Net Worth</div><div class="val">$1M+</div></div>
+    <div class="cap-cell"><div class="lbl">Credit Range</div><div class="val">700–750</div></div>
+    <div class="cap-cell"><div class="lbl">SBA Potential</div><div class="val">Strong</div></div>
+    <div class="cap-cell"><div class="lbl">Ownership Model</div><div class="val">Owner-Operator</div></div>
+    <div class="cap-cell"><div class="lbl">Total Accessible Capital</div><div class="val">~$1M (stated)</div></div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Suggested Discovery Call Questions</p>
+  <ul class="qs">
+    <li>Confirm whether the ~$1M stack funds units 1–2 or the full 3–5 unit target.</li>
+    <li>Ask directly whether RISE corporate has discussed a multi-unit/area development agreement with her.</li>
+    <li>Confirm the outside investor commitment is documented, not just verbally agreed.</li>
+    <li>Discuss her plan for a GM/multi-unit management layer as she scales past 2 units.</li>
+    <li>Ask RISE corporate (or have her ask) whether an international/Europe development framework exists.</li>
+    <li>Get specific named metros for "East Coast USA" so territory mapping can begin.</li>
+  </ul>
+</section>
+
+<section style="border-bottom:none;">
+  <p class="sec-label">Expansion &amp; Capital Readiness Analysis <span style="color:#a9a7c0;font-weight:700;">(replaces standard Franchise Landscape — see Nova Guide note)</span></p>
+
+  <div class="callout-amber">
+    <h5>Why This Section Looks Different</h5>
+    <p>Megan is not selecting a new franchise system — she already owns and operates RISE Modern Wellness and wants to expand that same brand. The standard cross-system landscape research (sector match, saturation exclusions, competitor conflicts) doesn't apply here. Per the Nova Guide's direction, this section instead covers RISE's own unit economics, her existing footprint, and territory/capital gaps to close before Discovery Day.</p>
+  </div>
+
+  <div class="brand-snap">
+    <p class="sec-label" style="margin-bottom:2px;">RISE Modern Wellness — Brand Snapshot</p>
+    <p style="font-size:12.5px;color:#3c3a52;">Subscription/membership-based wellness studio concept (cryotherapy, IV hydration, infrared sauna, body sculpting, and related recovery services). Positioned as a low-competition "Blue Ocean" category with a lean staffing model.</p>
+    <div class="brand-snap-grid">
+      <div class="bs-cell"><div class="lbl">Total Investment / Unit</div><div class="val">$515K – $1.035M</div></div>
+      <div class="bs-cell"><div class="lbl">Franchise Fee</div><div class="val">$49,500</div></div>
+      <div class="bs-cell"><div class="lbl">Royalty</div><div class="val">7%</div></div>
+      <div class="bs-cell"><div class="lbl">Min. Liquidity / Net Worth</div><div class="val">$180K / $800K</div></div>
+      <div class="bs-cell"><div class="lbl">Staffing Model</div><div class="val">~3–4 per unit</div></div>
+      <div class="bs-cell"><div class="lbl">Known Footprint</div><div class="val">~10–11 units, 7 states</div></div>
+    </div>
+  </div>
+
+  <p class="sec-label">Existing Footprint &amp; Territory Notes</p>
+  <div class="terr-list">
+    <div class="terr-item"><span><b>Florida — already covered:</b> Maitland and Coconut Creek are active RISE units in addition to Megan's Vero Beach location. New Florida development should target metros outside these existing service areas.</span><span class="terr-tag warn">Avoid overlap</span></div>
+    <div class="terr-item"><span><b>Other live states:</b> Idaho, Oregon, Arizona, Minnesota, Texas, and North Carolina (Charlotte) all have active RISE units — none directly in her East Coast target beyond NC.</span><span class="terr-tag">Reference</span></div>
+    <div class="terr-item"><span><b>East Coast white space:</b> Georgia, South Carolina, Virginia, and untapped Florida metros (Tampa, Jacksonville, Naples/Ft. Myers) currently show no confirmed RISE presence and are reasonable first targets.</span><span class="terr-tag">First-mover</span></div>
+    <div class="terr-item"><span><b>Registered-state compliance:</b> RISE's FDD indicates franchise sales are regulated in several states including Maryland, New York, and Virginia — any target metro in those states needs a compliance check before territory commitments.</span><span class="terr-tag warn">Verify</span></div>
+    <div class="terr-item"><span><b>Europe:</b> No public evidence of an international or master-franchise program for RISE was found. This should be treated as unconfirmed and raised directly with RISE corporate — not planned around yet.</span><span class="terr-tag warn">Unconfirmed</span></div>
+  </div>
+
+  <div class="fnnote"><b>FN Note for Nova Guide:</b> Megan's underwriting profile (net worth, credit) comfortably clears RISE's minimums for one more unit today. The real work is sequencing — reconciling her ~$1M stated capital against the $1.8M–$4.5M+ that 3–5 units would actually require at RISE's own investment range, and getting a straight answer from corporate on both multi-unit development terms and whether Europe is realistically on the table. Recommend structuring Discovery Day around "unit 2 now, units 3–5 on a defined timeline" rather than treating the full plan as a single financing event.</div>
+</section>
+
+<footer>
+  <div class="legend"><span><i class="leg-sn"></i>SuperNova &mdash; ready, move fast</span><span><i class="leg-n"></i>Nova &mdash; strong potential, real FN lift</span><span><i class="leg-neb"></i>Nebula &mdash; not yet, door stays open</span></div>
+  <p>Generated by the Franchise Nova intake system &middot; A BLK GRVTY initiative. Bands reflect operational posture, not candidate worth.</p>
+</footer>
+
+</div>
+<script>
+(function(){
+document.querySelectorAll('.score-ring[data-score]').forEach(function(r){var v=parseFloat(r.getAttribute('data-score'))||0;r.style.setProperty('--pct',Math.max(0,Math.min(100,v)));});
+document.querySelectorAll('.bar i[data-score]').forEach(function(b){var s=parseFloat(b.getAttribute('data-score'))||0,m=parseFloat(b.getAttribute('data-max'))||1;b.style.width=Math.round(s/m*100)+'%';});
+document.querySelectorAll('.lift-pills[data-lift]').forEach(function(p){var w=(p.getAttribute('data-lift')||'').trim().toLowerCase();p.querySelectorAll('.pill').forEach(function(pl){if(pl.textContent.trim().toLowerCase()===w)pl.classList.add('on');});});
+var mx=document.querySelector('.matrix[data-readiness]');if(mx){var col={emerging:0,developing:1,strong:2}[(mx.getAttribute('data-readiness')||'').trim().toLowerCase()];var row={high:0,moderate:1,low:2}[(mx.getAttribute('data-lift')||'').trim().toLowerCase()];if(col!=null&&row!=null){var c=mx.querySelectorAll('.cell')[row*3+col];if(c){c.classList.add('here');var d=document.createElement('span');d.className='dot';c.appendChild(d);}}}
+})();
+</script>
+</body>
+</html>
