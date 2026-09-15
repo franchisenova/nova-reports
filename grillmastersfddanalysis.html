@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fn-systems" content="The Grill Masters ATL">
+<title>Franchise Nova — System Analysis · The Grill Masters ATL</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.page{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 48px rgba(0,0,0,0.14);}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 15% 28%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#cfd6ff,transparent),radial-gradient(1px 1px at 82% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 78%,#e9d8ff,transparent),radial-gradient(1px 1px at 8% 85%,#fff,transparent),radial-gradient(900px 380px at 80% 5%,rgba(0,174,239,0.3),transparent 60%),radial-gradient(700px 320px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,0.35);margin-bottom:12px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:#fff;margin-bottom:5px;position:relative;}
+.h-meta{font-size:12.5px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+
+/* ── SYSTEM STRIP ── */
+.cand-strip{display:flex;flex-wrap:wrap;border-bottom:1px solid #e8eaf0;background:#f9f9fc;}
+.ci{padding:12px 16px;border-right:1px solid #e8eaf0;flex:1;min-width:110px;}
+.ci:last-child{border-right:none;}
+.ci-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:3px;}
+.ci-v{font-size:12.5px;color:#15131f;font-weight:700;line-height:1.35;}
+
+/* ── THESIS / MODE BAR ── */
+.thesis-bar{background:#fff8e1;border-left:4px solid #b86e00;padding:14px 20px;margin:0 48px 0;border-radius:0 8px 8px 0;}
+.thesis-bar p{font-size:13px;color:#5a4000;line-height:1.65;}
+.thesis-bar .attr{font-size:11px;color:#aaa;margin-top:6px;font-style:italic;}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:20px 48px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* ── ACCORDION ── */
+.accordion{border:1px solid #e8eaf0;border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.accordion:last-of-type{margin-bottom:0;}
+
+.acc-hdr{display:flex;align-items:center;gap:16px;padding:0;cursor:pointer;background:#fafafa;border:none;width:100%;text-align:left;transition:background .15s;}
+.acc-hdr:hover{background:#f0eefa;}
+.acc-hdr.open{background:linear-gradient(90deg,rgba(69,46,128,0.07),transparent 70%);}
+
+.sys-band{width:5px;align-self:stretch;flex-shrink:0;}
+.sys-band.s1{background:linear-gradient(180deg,#00aeef,#282560);}
+
+.acc-main{flex:1;padding:14px 16px 14px 0;}
+.acc-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;color:#15131f;margin-bottom:4px;}
+.acc-sub{font-size:11.5px;color:#888;}
+.acc-pills{display:flex;gap:8px;align-items:center;margin-top:7px;flex-wrap:wrap;}
+
+.score-badge{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;padding:4px 12px;border-radius:999px;color:#fff;}
+.sb-cyan{background:linear-gradient(90deg,#0088c2,#00aeef);}
+
+.fit-pill{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+.fp-cond{background:rgba(184,110,0,0.1);color:#b86e00;border:1px solid rgba(184,110,0,0.3);}
+.fp-stretch{background:rgba(177,69,107,0.1);color:#b1456b;border:1px solid rgba(177,69,107,0.3);}
+
+.acc-chevron{font-size:11px;color:#aaa;margin-right:16px;transition:transform .2s;flex-shrink:0;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+
+/* ── ACCORDION BODY ── */
+.acc-body{display:none;border-top:1px solid #e8eaf0;}
+.acc-body.open{display:block;}
+
+/* Signal grid */
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #e8eaf0;}
+.sg-cell{padding:11px 16px;border-bottom:1px solid #f0eef8;border-right:1px solid #f0eef8;position:relative;}
+.sg-cell:nth-child(even){border-right:none;}
+.sg-cell:nth-last-child(-n+2){border-bottom:none;}
+.sg-item-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.sg-val{font-size:12.5px;color:#333;line-height:1.5;}
+.sg-val strong{color:#15131f;}
+.sg-val .flag{color:#b1456b;font-weight:700;}
+.sig{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.sig.G{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.sig.A{background:rgba(184,110,0,0.1);color:#b86e00;}
+.sig.R{background:rgba(177,69,107,0.1);color:#b1456b;}
+
+/* More/less toggle */
+.more-toggle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;color:#664ca9;background:none;border:none;cursor:pointer;padding:3px 0 0;display:block;}
+.more-toggle:hover{color:#452e80;}
+.more-detail{display:none;font-size:12px;color:#555;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #e8eaf0;}
+.more-detail.open{display:block;}
+
+/* Source tags */
+.src{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:5px;margin-left:6px;}
+.src.primary{background:rgba(0,174,239,0.12);color:#0088c2;}
+.src.secondary{background:rgba(184,110,0,0.12);color:#b86e00;}
+.src.notdisc{background:rgba(150,150,150,0.15);color:#777;}
+
+/* Score breakdown table */
+.score-wrap{padding:16px;}
+.score-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid #f0eef8;}
+.score-row:last-child{border-bottom:none;}
+.score-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:11.5px;color:#15131f;flex:0 0 220px;}
+.score-bar-wrap{flex:1;background:#f0eef8;border-radius:6px;height:10px;overflow:hidden;}
+.score-bar{height:100%;border-radius:6px;background:linear-gradient(90deg,#452e80,#664ca9);}
+.score-bar.low{background:linear-gradient(90deg,#8a2f4f,#b1456b);}
+.score-bar.mid{background:linear-gradient(90deg,#8a5f00,#b86e00);}
+.score-pts{font-family:'Montserrat',sans-serif;font-weight:900;font-size:12px;color:#452e80;flex:0 0 62px;text-align:right;}
+
+/* Diligence questions */
+.qs-wrap{padding:0 16px 16px;border-top:1px solid #f0eef8;}
+.qs-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;padding:12px 0 8px;}
+.qs-list{padding-left:0;list-style:none;}
+.qs-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:8px;line-height:1.6;}
+.q-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;background:#452e80;border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;height:fit-content;}
+
+/* ── FINANCIALS TABLE ── */
+.comp-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left;}
+.th-dark{background:#0d0a1c;color:#fff;}
+.th-s1{background:#0a1a30;color:#00aeef;}
+td{padding:9px 14px;border-bottom:1px solid #e8eaf0;vertical-align:top;line-height:1.5;color:#333;}
+tr:nth-child(even) td{background:#f9f9fc;}
+td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;color:#452e80;}
+.td-good{color:#1a7a4a;font-weight:700;}
+.td-warn{color:#b86e00;font-weight:700;}
+.td-bad{color:#b1456b;font-weight:700;}
+
+/* ── RECOMMENDATION ── */
+.rec-card{background:linear-gradient(135deg,#0d0a1c,#1a1340);border-radius:10px;padding:26px 28px;color:#eceaf8;}
+.rec-card .sec-lbl{color:#00aeef;}
+.rec-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:19px;color:#fff;margin-bottom:10px;}
+.rec-body{font-size:13px;color:#d8d6ec;line-height:1.75;margin-bottom:12px;}
+.unlock-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc8;margin-bottom:9px;}
+.unlock-list{padding-left:18px;}
+.unlock-list li{font-size:13px;color:#d8d6ec;margin-bottom:6px;line-height:1.55;}
+
+/* ── RISKS ── */
+.risks-list{padding-left:18px;}
+.risks-list li{font-size:13px;color:#333;margin-bottom:9px;line-height:1.6;}
+.risks-list li strong{color:#b1456b;}
+
+/* ── FOOTER ── */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10px;color:#555;margin-top:3px;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .page{box-shadow:none;border-radius:0;}
+  .hdr,.rec-card,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .acc-body{display:block!important;}
+  .more-detail{display:block!important;}
+}
+@media(max-width:720px){
+  .signal-grid{grid-template-columns:1fr;}
+  .sg-cell:nth-child(even){border-right:none;}
+  .cand-strip{flex-direction:column;}
+  .ci{border-right:none;border-bottom:1px solid #e8eaf0;}
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .thesis-bar{margin:0 20px;}
+  .doc-footer{padding:14px 20px;}
+  .score-name{flex:0 0 140px;font-size:10.5px;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">FDD Analysis &middot; System-Only &middot; Internal Use Only</div>
+  <h1 class="h-name">The Grill Masters ATL — System Analysis</h1>
+  <p class="h-meta">1 system analyzed &nbsp;&middot;&nbsp; September 2026 &nbsp;&middot;&nbsp; <strong>Nova Guide: Brenda</strong></p>
+</header>
+
+<!-- SYSTEM STRIP -->
+<div class="cand-strip">
+  <div class="ci"><div class="ci-k">Franchisor</div><div class="ci-v">Concept Franchises, LLC</div></div>
+  <div class="ci"><div class="ci-k">FDD Issued</div><div class="ci-v">June 2026</div></div>
+  <div class="ci"><div class="ci-k">Concept</div><div class="ci-v">B2C retail — custom gold/diamond grillz</div></div>
+  <div class="ci"><div class="ci-k">Total Investment</div><div class="ci-v">$46,200–$131,400</div></div>
+  <div class="ci"><div class="ci-k">Franchised Units</div><div class="ci-v">0 (never sold)</div></div>
+  <div class="ci"><div class="ci-k">Company Units</div><div class="ci-v">1 (since 2021)</div></div>
+  <div class="ci"><div class="ci-k">HQ</div><div class="ci-v">Atlanta, GA</div></div>
+</div>
+
+<!-- MODE BAR -->
+<div class="section" style="padding-top:18px;padding-bottom:18px;">
+  <div class="thesis-bar">
+    <p>System-only analysis — no candidate profile attached. This card scores The Grill Masters ATL as a franchise system for FN's internal reference. Capital gap math, candidate-to-system match, and personalized discovery questions are intentionally omitted; they'll populate once this system is paired with a specific candidate intake.</p>
+    <p class="attr">Sourcing key: <span class="src primary">PRIMARY</span> = confirmed 2026 FDD text &nbsp;·&nbsp; <span class="src secondary">SECONDARY</span> = supplementary sheet, not found in FDD text &nbsp;·&nbsp; <span class="src notdisc">NOT DISCLOSED</span> = absent from both</p>
+  </div>
+</div>
+
+<!-- SYSTEM ANALYZED -->
+<div class="section">
+  <div class="sec-lbl">System Scorecard — Click to Expand</div>
+
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s1"></div>
+      <div class="acc-main">
+        <div class="acc-title">The Grill Masters ATL &mdash; 2026 FDD</div>
+        <div class="acc-sub">Custom removable gold &amp; diamond grillz retail studio &middot; 1 unit total (company-owned) &middot; Founded 2021 &middot; First-time franchisor</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-cyan">32 / 100</span>
+          <span class="fit-pill fp-stretch">Caution</span>
+          <span style="font-size:11px;color:#888;">Pre-Franchise-Stage System</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+
+      <!-- Signal Grid -->
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fee <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$25,000</strong> single unit <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Fully non-refundable once paid, "deemed fully earned upon payment." No stated multi-unit fee discount — franchisor retains sole discretion to reduce, defer, or waive the fee case-by-case, which is not a guaranteed structure a candidate can rely on. Under the $45K threshold, so Green on fee size alone, but the waiver language is soft — nothing is contractually locked in.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Fee Burden <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>~10.5% minimum</strong> — Royalty 7.5% (or $1,000/mo floor) + Ad Fund 2% + Local 1% <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The $1,000/month royalty floor means the effective rate is higher than 7.5% at low Gross Sales — e.g., at $10K/month in sales, the floor pushes the royalty to 10% instead of 7.5%. The Advertising Fund has no operating history (new franchisor, no prior contributions or spend to evaluate). Local marketing spend (1% of Gross Sales) is a separate, uncapped obligation.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Investment Range <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>$46,200–$131,400</strong> · Planning amt: $144,540 <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Wide range (nearly 3x low-to-high) driven mainly by build-out ($2K–$35K) and working capital ($10K–$30K) variability. Low end is genuinely accessible for a retail concept. All figures are franchisor estimates with no operating precedent — the franchisor has only ever built out its own single company location, so these ranges haven't been stress-tested by an actual franchisee.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig R">Red</span></div>
+          <div class="sg-val">No franchisor financing · No guarantee assistance · SBA status <strong>not disclosed</strong> <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">FDD states plainly: "We do not offer direct or indirect financing... nor do we provide assistance in securing financing from third parties." No preferred lender relationships, no SBA registration status confirmed anywhere in the document. As a first-time franchisor with zero franchised units, it's unlikely this system is yet listed on the SBA Franchise Directory — that needs direct confirmation before any candidate builds a capital stack assuming SBA eligibility.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig A">Amber</span></div>
+          <div class="sg-val">Owner (or managing owner) <strong>must personally operate</strong> · manager permitted for day-to-day <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Item 15: "You (or your managing owner) are obligated to participate personally in the direct operation of the Business," though a trained manager may handle day-to-day tasks. This is not semi-absentee by design — it's owner-operator with a staffing allowance, not the passive-ownership structure some FN candidates specifically seek.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig R">Red</span></div>
+          <div class="sg-val"><strong>No exclusive territory</strong> — franchisor reserves right to place units nearby <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">"You will not receive an exclusive territory... we do not grant exclusive rights to any geographic area." Franchisor explicitly reserves the right to license other locations "regardless of proximity," operate company units nearby, and sell through other channels (e-commerce, pop-ups, other brands). This is one of the weakest territory protections in FN's system library — a real risk to any single-unit candidate's long-term market position.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig R">Red</span></div>
+          <div class="sg-val">1 company outlet only · Gross Sales <strong>$218,839 → $403,666</strong> (+84.5% YoY) <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Disclosed figures represent 100% of "the system" — but the system is a single company-owned outlet. Zero franchised outlets have ever operated, so there is no franchisee-side data of any kind. The 84.5% YoY growth is real but drawn from one location's books, unaudited, over a two-year window — not statistically meaningful for underwriting a franchisee's expected performance. Supplementary figures — COGS $87,535 → $161,466 and Gross Profit $131,303 → $242,199 (a consistent ~60% gross margin both years) — come from a separate internal analysis sheet <span class="src secondary">SECONDARY</span>, not from the FDD text itself, and should be treated as unverified until confirmed against franchisor books directly.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig R">Red</span></div>
+          <div class="sg-val"><strong>0 franchised outlets</strong> ever sold or opened · 1 company outlet, flat <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Tables 1–4 show zero franchise agreements signed, zero openings, zero terminations, zero transfers across 2023–2025 — because the system has never franchised. This is a pre-launch franchise offering in practical terms. Table 5 projects 3 new franchised outlets in GA next fiscal year, but this is a stated goal, not a track record. Churn rate is not calculable; there's simply no franchisee history to evaluate.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Health <span class="sig R">Red</span></div>
+          <div class="sg-val">Unaudited balance sheet — <strong>every line item shows $0</strong> <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Exhibit A's balance sheet as of 12/21/2025 lists $0 across cash, receivables, inventory, PP&E, total assets, total liabilities, and total equity. This provides no verifiable information about the franchisor's financial capacity to support a franchise system — whether this reflects a genuine shell entity, an incomplete filing, or a template that wasn't populated, it needs direct clarification from the franchisor before this item can be scored as anything but a transparency gap.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 23 — Exit Rights <span class="sig A">Amber</span></div>
+          <div class="sg-val">Transfer fee <strong>$7,500</strong> (30% of initial fee) · ROFR + franchisor buyback option <span class="src primary">PRIMARY</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">10-year term with one 10-year renewal, but renewal requires signing the "then-current franchise agreement," which may contain materially different terms. Franchisor holds a right of first refusal on any sale and a separate option to purchase the business at fair market value after termination or expiration. Combined with no exclusive territory (Item 12), the resale value of a single unit here is harder to establish than in a mature, territory-protected system.</div>
+        </div>
+      </div>
+
+      <!-- Diligence Questions (system-level, not candidate-personalized) -->
+      <div class="qs-wrap">
+        <div class="qs-lbl">Open Diligence Questions — Before Attaching Any Candidate</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>Is The Grill Masters ATL currently registered with the SBA Franchise Directory? If not, what is the timeline, and what financing pathway exists for candidates in the meantime?</li>
+          <li><span class="q-num">Q</span>Can the franchisor provide an updated Exhibit A with actual balance sheet figures, or an explanation for why all line items show $0?</li>
+          <li><span class="q-num">Q</span>What specifically drives confidence in the Item 7 investment ranges given they've only ever been tested at the franchisor's own single location?</li>
+          <li><span class="q-num">Q</span>Given the franchisor reserves broad rights under Item 12, what is the actual internal policy on unit spacing — is there an informal protection standard even without a contractual exclusive territory?</li>
+          <li><span class="q-num">Q</span>Can the COGS/gross margin figures in the supplementary sheet be substantiated directly against franchisor books (per the Item 19 written-substantiation offer), given they don't appear in the FDD text itself?</li>
+          <li><span class="q-num">Q</span>What is the realistic timeline to the first franchised opening, and how will the franchisor support a first cohort of franchisees with zero prior peer network to learn from?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOVA SCORE BREAKDOWN -->
+<div class="section">
+  <div class="sec-lbl">Nova Score Breakdown</div>
+  <div class="score-wrap" style="padding:0;">
+    <div class="score-row">
+      <div class="score-name">Financial Performance &amp; Transparency</div>
+      <div class="score-bar-wrap"><div class="score-bar low" style="width:48%;"></div></div>
+      <div class="score-pts">12 / 25</div>
+    </div>
+    <div class="score-row">
+      <div class="score-name">System Health &amp; Growth</div>
+      <div class="score-bar-wrap"><div class="score-bar low" style="width:32%;"></div></div>
+      <div class="score-pts">8 / 25</div>
+    </div>
+    <div class="score-row">
+      <div class="score-name">Capital Accessibility</div>
+      <div class="score-bar-wrap"><div class="score-bar low" style="width:0%;"></div></div>
+      <div class="score-pts">0 / 20</div>
+    </div>
+    <div class="score-row">
+      <div class="score-name">Ownership Flexibility</div>
+      <div class="score-bar-wrap"><div class="score-bar mid" style="width:71%;"></div></div>
+      <div class="score-pts">12 / 17</div>
+    </div>
+    <div class="score-row">
+      <div class="score-name">Exit &amp; Wealth-Building</div>
+      <div class="score-bar-wrap"><div class="score-bar low" style="width:0%;"></div></div>
+      <div class="score-pts">0 / 13</div>
+    </div>
+  </div>
+  <div class="comp-wrap" style="margin-top:14px;">
+    <table>
+      <tr><th class="th-dark" style="width:60%">Total Nova Score</th><th class="th-s1" style="width:40%">Classification</th></tr>
+      <tr><td class="metric">32 / 100</td><td class="td-bad">Caution</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- FN ASSESSMENT -->
+<div class="section">
+  <div class="rec-card">
+    <div class="sec-lbl">FN System Assessment</div>
+    <div class="rec-sys">The Grill Masters ATL — Caution / Not Yet Ready for Candidate Placement</div>
+    <p class="rec-body">This is, in practical terms, a pre-franchise-stage offering. The franchisor operates one company-owned outlet and has never sold or opened a franchised unit — every figure in Item 19 and Item 20 traces back to that single location. The revenue growth is genuinely strong (Gross Sales nearly doubled year-over-year, and the supplementary margin data suggests a healthy ~60% gross margin), but strong single-location economics at a founder-operated store don't tell FN anything about how a first-time franchisee, with a $1,000/mo royalty floor and no exclusive territory, would actually perform.</p>
+    <p class="rec-body">Two items stand out as structural, not cosmetic: Item 21's all-zero balance sheet leaves the franchisor's financial capacity to support a system completely unverified, and Item 12's lack of any exclusive territory is a real long-term risk to unit economics and resale value. Neither is disqualifying on its own — new franchisors often start exactly here — but both need direct answers from the franchisor before FN attaches a real candidate's capital to this system.</p>
+    <p class="rec-body">Recommend holding this system in the FN library as "Emerging / Monitor" rather than actively presenting it to candidates today. Revisit once the franchisor has (a) sold and opened its first 2–3 franchised units, (b) clarified Item 21's balance sheet, and (c) clarified SBA/financing pathway status.</p>
+    <div class="unlock-lbl">What FN Can Unlock Here</div>
+    <ul class="unlock-list">
+      <li>Direct franchisor outreach to substantiate the Item 19 supplementary margin figures and request a corrected Exhibit A balance sheet</li>
+      <li>A structured re-review once the first franchised units open, to convert this from a single-outlet data point into an actual system-level Nova Score</li>
+      <li>If FN still wants to place a candidate here pre-launch, a bespoke risk disclosure and capital structure that assumes no SBA/franchisor financing support at all</li>
+    </ul>
+  </div>
+</div>
+
+<!-- RISKS -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">Risks to Watch</div>
+  <ul class="risks-list">
+    <li><strong>Zero franchisee track record.</strong> Every disclosed figure comes from one company-owned outlet. There is no independent evidence this concept performs the same way under franchisee ownership, with franchisee-level royalty and ad-fund burden applied.</li>
+    <li><strong>Franchisor financial health is unverified, not just weak.</strong> An all-zero balance sheet in Item 21 isn't a red flag about franchisor solvency — it's a red flag that the document provides no usable information either way. Get this clarified before any capital conversation.</li>
+    <li><strong>No exclusive territory.</strong> The franchisor retains the right to place additional units nearby and sell through other channels. This affects both ongoing unit economics and long-term resale value.</li>
+    <li><strong>No financing support and unconfirmed SBA status.</strong> Combined with a first-time franchisor's limited lending track record, a candidate should assume they need full capital coverage without franchisor-assisted financing.</li>
+    <li><strong>Supplementary financial data is secondary-sourced.</strong> The COGS/gross-margin breakdown does not appear anywhere in the FDD text — it should be confirmed directly with the franchisor before it's presented to any candidate as verified.</li>
+  </ul>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova System Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; September 2026 &nbsp;&middot;&nbsp; System: The Grill Masters ATL &nbsp;&middot;&nbsp; Mode: System-Only</p>
+  <p class="footer-note">For internal FN use only — not financial, legal, or investment advice. Nova Guide must review before sharing any portion externally. Figures sourced from the June 2026 FDD; supplementary margin figures sourced from a separate internal sheet and flagged as secondary/unverified. No candidate profile is attached to this analysis.</p>
+</div>
+
+</div>
+
+<script>
+function toggleAcc(btn){
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+function toggleMore(btn){
+  const detail = btn.nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+ More' : '− Less';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.more-detail').forEach(d => d.classList.add('open'));
+  document.querySelectorAll('.more-toggle').forEach(t => t.style.display = 'none');
+});
+</script>
+</body>
+</html>
