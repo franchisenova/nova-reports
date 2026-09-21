@@ -3,260 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Franchise Nova — KC Copeland · Systems Worth Exploring</title>
+<title>Franchise Nova — KC Copeland · Franchise Landscape</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
-.doc{max-width:880px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.12);}
-.hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#161033);padding:34px 44px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
-.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(0,174,239,0.4),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.13);}
+
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(1px 1px at 18% 30%,#fff,transparent),
+  radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),
+  radial-gradient(1px 1px at 80% 40%,#fff,transparent),
+  radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),
+  radial-gradient(1px 1px at 12% 82%,#fff,transparent),
+  radial-gradient(900px 400px at 75% 5%,rgba(0,174,239,0.38),transparent 60%),
+  radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);
+  pointer-events:none;}
 .h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
 .h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
 .h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;color:#fff;margin-bottom:8px;line-height:1.1;position:relative;}
 .h-meta{font-size:13px;color:#b0aed0;position:relative;}
 .h-meta strong{color:#e1e3ee;}
+
 .section{padding:24px 44px;border-bottom:1px solid #e8eaf0;}
 .section:last-of-type{border-bottom:none;}
 .sec-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
 .landscape-intro{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px;padding:12px 16px;background:#f5f5fa;border-left:3px solid #00aeef;border-radius:0 7px 7px 0;}
 .landscape-note{font-size:11px;color:#aaa;font-style:italic;margin-top:8px;}
+
 .ls-grid{display:flex;flex-direction:column;gap:12px;}
 .ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+
+.rank-bar-r1{background:#452e80;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.rank-bar-r7,.rank-bar-r8{background:#282560;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;white-space:nowrap;}
+.rank-note{font-size:10.5px;color:rgba(255,255,255,0.65);text-align:right;}
+
 .ls-card-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
 .ls-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
 .ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;}
 .ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
 .cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
 .cat-senior{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.cat-restore{background:rgba(180,64,42,0.1);color:#b4402a;}
+.cat-laundry{background:rgba(0,150,170,0.12);color:#00707c;}
+.cat-junk{background:rgba(74,74,104,0.1);color:#4a4a68;}
+.cat-organize{background:rgba(107,76,158,0.1);color:#6b4c9e;}
+.cat-moving{background:rgba(31,122,92,0.1);color:#1f7a5c;}
 .ls-why{font-size:12.5px;color:#444;line-height:1.55;}
-.ls-card-bottom{padding:10px 16px;background:#e8f7fd;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+
+.ls-card-bottom{padding:10px 16px;background:#f0eefa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
 .ls-stat{display:flex;flex-direction:column;gap:2px;}
 .ls-stat-label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
 .ls-stat-val{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
 .ls-stat-val.good{color:#1a7a4a;}
 .ls-stat-val.warn{color:#b86e00;}
-.ls-stat-val.note{color:#00709a;}
+.ls-stat-val.note{color:#452e80;}
+
 .ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
 .ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
 .ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
 .ls-tag.geo{color:#00709a;background:#e8f7fd;}
 .ls-tag.recur{color:#452e80;background:#ede9fa;}
 .ls-tag.warn{color:#b86e00;background:#fdf5e6;}
-.rank-bar{padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
-.rank-bar.r1{background:#0d4a6b;}
-.rank-bar.r2,.rank-bar.r3,.rank-bar.r4,.rank-bar.r5,.rank-bar.r6{background:#1a1340;}
-.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;}
-.rank-note{font-size:10px;color:rgba(255,255,255,0.65);}
+.ls-tag.terr{color:#4a4a68;background:#eeedf5;}
+.ls-link{display:block;padding:10px 16px;font-size:12.5px;font-family:'Montserrat',sans-serif;font-weight:700;color:#00709a;text-decoration:none;border-top:1px solid #e8eaf0;background:#fafafa;}
+.ls-link:hover{text-decoration:underline;}
+
+.sat-banner{padding:9px 16px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.02em;border-bottom:1px solid #e8eaf0;display:flex;align-items:center;gap:8px;}
+.sat-banner .sat-label{white-space:nowrap;}
+.sat-banner .sat-detail{font-family:'Lato',sans-serif;font-weight:400;font-size:11.5px;opacity:.9;}
+.sat-banner.low{background:rgba(26,122,74,0.09);color:#1a7a4a;}
+.sat-banner.moderate{background:rgba(184,134,11,0.11);color:#8a6d1f;}
+.sat-banner.high{background:rgba(180,64,42,0.1);color:#b4402a;}
+
 .acq-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;margin-bottom:12px;}
-.acq-bar{background:#0d4a6b;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;}
-.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;}
-.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);}
+.acq-bar{background:#1a1340;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;white-space:nowrap;}
+.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);text-align:right;}
 .acq-body{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
 .acq-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;margin-bottom:6px;}
 .acq-desc{font-size:12.5px;color:#444;line-height:1.55;}
 .acq-stats{padding:10px 16px;background:#f5f5fa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+
 .where-search{background:#e8f7fd;border-radius:8px;padding:14px 18px;margin-top:14px;}
 .where-search .sec-label{color:#00709a;}
 .where-search p{font-size:12.5px;color:#444;line-height:1.7;}
+
 .disclaimer{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:18px 44px;}
 .disclaimer p{font-size:11.5px;color:#888;line-height:1.7;}
 .disclaimer strong{color:#555;}
+
 .doc-footer{background:#0d0a1c;padding:14px 44px;}
 .footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
-@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.rank-bar,.ls-card-bottom,.acq-bar,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
-@media(max-width:640px){.section{padding:18px 20px;}.hdr{padding:24px 20px;}.ls-card-bottom{grid-template-columns:1fr;}.disclaimer{padding:16px 20px;}.doc-footer{padding:14px 20px;}}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .doc{box-shadow:none;border-radius:0;}
+  .hdr,.rank-bar-r1,.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.rank-bar-r7,.rank-bar-r8,.ls-card-bottom,.acq-bar,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+@media(max-width:640px){
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .ls-card-bottom{grid-template-columns:1fr;}
+  .acq-stats{grid-template-columns:1fr;}
+  .disclaimer{padding:16px 20px;}
+  .doc-footer{padding:14px 20px;}
+  .rank-bar-r1,.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.rank-bar-r7,.rank-bar-r8{flex-direction:column;align-items:flex-start;gap:2px;}
+  .rank-note{text-align:left;}
+}
 </style>
 </head>
 <body>
 <div class="doc">
+
 <header class="hdr">
   <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
   <div class="h-eye">Prepared for Your Review</div>
   <h1 class="h-name">KC Copeland</h1>
-  <p class="h-meta"><strong>Home Services &middot; Senior Care</strong> &nbsp;&middot;&nbsp; Target: Atlanta, greater Georgia, within 2 hours &nbsp;&middot;&nbsp; Established Brands</p>
+  <p class="h-meta"><strong>Restoration &middot; Laundry &middot; Junk Removal &middot; Home Organization &middot; Moving &amp; Storage</strong> &nbsp;&middot;&nbsp; Target: Atlanta, greater Georgia, within 2 hours &nbsp;&middot;&nbsp; Established Brands</p>
 </header>
 
 <div class="section">
   <div class="sec-label">About This List</div>
-  <p class="landscape-intro">A curated set of franchise systems built around your two sectors — Home Services and Senior Care — with a focus on established brands operating in the Atlanta/Georgia market. Given your interest in businesses that serve seniors and veterans, we've leaned into the Senior Care vertical alongside Home Services concepts that complement your real estate background.<br><br>We've also included acquisition opportunities in Georgia matching your sectors. With your SBA pre-approval at $2M already in place, resales and existing operations are a real option worth considering alongside new franchise units.<br><br><strong>Est. Investment</strong> = total estimated cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn. <strong>B2C</strong> = customers are individuals. <strong>B2B</strong> = customers are other businesses.</p>
-  <p class="landscape-note">⚑ Public information only — no FDDs reviewed. Territory availability must be confirmed directly with each franchisor before proceeding. Listings change daily. Note: DryMedic Georgia territory status is flagged — see note in your system listing below.</p>
+  <p class="landscape-intro">This list ranks franchise systems that fit your interests — laundry and restoration, plus a few adjacent categories that pair well with your real estate background. It leaves out chemical-based pest and lawn treatment, licensed trades (plumbing, electrical, HVAC), housekeeping/maid services, and senior care, per your direction.</p>
+  <p class="landscape-intro" style="margin-top:10px;"><strong>A few terms used throughout:</strong><br><br>
+  <strong>Est. Investment</strong> — total cost to open one location: franchise fee, build-out, equipment, working capital. Not your expected income.<br><br>
+  <strong>B2C / B2B</strong> — whether your customers are individual consumers (B2C) or other businesses (B2B).<br><br>
+  <strong>Territory Protection</strong> — most franchise agreements grant a "protected" or "exclusive" territory. In plain terms: this stops the franchisor from opening another location of the <em>same brand</em> near you. It does not stop a different brand, or an independent business, from opening nearby — no franchise agreement can do that. Some agreements also carve out exceptions even within your territory (online sales, national accounts, other brands under the same parent company). We've noted what's publicly known for each system below; always confirm the exact terms with the franchisor.<br><br>
+  <strong>Market Saturation</strong> — a measure of how crowded a market already is, and how much of the local customer base a new location would need to capture just to break even. It matters most for businesses people visit out of habit or convenience (like a laundromat) — too many similar options nearby make it hard for any one location to stand out. It matters far less for businesses where customers are referred through an event, like an insurance claim after storm damage. Each system below is marked:</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+    <span class="ls-tag sba">● Low — demand isn't driven by nearby competition</span>
+    <span class="ls-tag warn" style="color:#8a6d1f;background:#fdf6e3;">● Moderate — some competitive pressure, but manageable</span>
+    <span class="ls-tag" style="color:#b4402a;background:#fbeae7;">● High — a crowded, competitive category; go in with eyes open</span>
+  </div>
+  <p class="landscape-note" style="margin-top:14px;">⚑ Based on publicly available information only — we have not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Confirm territory availability and exact terms directly with each franchisor before proceeding.</p>
 </div>
 
 <div class="section">
-  <div class="sec-label">Franchise Systems Worth Exploring — Ranked by Fit</div>
+  <div class="sec-label">Systems Worth Exploring — Ranked by Fit</div>
   <div class="ls-grid">
 
+    <!-- RANK 1 -->
     <div class="ls-card">
-      <div class="rank-bar r1"><span class="rank-num">RANK 1</span><span class="rank-note">Atlanta Metro confirmed available · Seniors &amp; veterans · Recurring care contracts</span></div>
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Authority Brands · One of your original picks</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— demand comes from insurance referrals, not foot traffic</span></div>
       <div class="ls-card-top">
-        <div class="ls-card-header"><div class="ls-name">Amada Senior Care</div><span class="ls-cat cat-senior">Senior Care</span></div>
-        <p class="ls-why"><strong>B2C · Recurring non-medical senior home care.</strong> Amada Senior Care has confirmed Atlanta Metro territory available — their website lists it as open for new franchise partners. They provide personalized home care, senior living placement assistance, and caregiver support to seniors and veterans — directly aligned with what you described. Recurring care schedules create predictable monthly revenue from long-term client relationships. With your $2M SBA pre-approval and 750+ credit, you are among their most qualified prospective partners.</p>
+        <div class="ls-card-header"><div class="ls-name">DRYmedic Restoration Services</div><span class="ls-cat cat-restore">Restoration</span></div>
+        <p class="ls-why">Water, fire, mold, and storm damage restoration, backed by Authority Brands' shared marketing and dispatch network. Demand is driven by insurance referrals rather than walk-in customers, which keeps saturation risk low. Your royalty rate decreases as revenue grows.</p>
       </div>
       <div class="ls-card-bottom">
-        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$75K–$155K (cost to open — not earnings)</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring home care contracts ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Territory Status</div><div class="ls-stat-val good">Atlanta Metro confirmed available ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Serves</div><div class="ls-stat-val">Seniors + veterans — your stated focus</div></div>
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$196K–$319K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Insurance-driven demand ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val note">5%–7%, decreasing with volume</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">89+ locations</span></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">Atlanta Metro territory confirmed ✓</span>
-        <span class="ls-tag recur">Recurring care contracts</span>
+        <span class="ls-tag terr">Territory: protected — confirm exact scope with Authority Brands</span>
+        <span class="ls-tag recur">Recurring insurance referrals</span>
         <span class="ls-tag sba">SBA-friendly ✓</span>
-        <span class="ls-tag">Owner-operator ✓</span>
+        <span class="ls-tag">Veteran &amp; diversity discounts available</span>
       </div>
+      <a class="ls-link" href="https://1851franchise.com/drymedic-restoration" target="_blank" rel="noopener">→ DRYmedic franchise information</a>
     </div>
 
+    <!-- RANK 2 -->
     <div class="ls-card">
-      <div class="rank-bar r2"><span class="rank-num">RANK 2</span><span class="rank-note">700+ locations · Georgia expanding · Recurring senior care · National established brand</span></div>
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">Real estate &amp; staging synergy · Lowest cost on this list</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— referral-driven, not walk-in-driven</span></div>
       <div class="ls-card-top">
-        <div class="ls-card-header"><div class="ls-name">Comfort Keepers</div><span class="ls-cat cat-senior">Senior Care</span></div>
-        <p class="ls-why"><strong>B2C · Recurring in-home senior care.</strong> One of the most established senior care brands nationally with 700+ locations. Comfort Keepers is actively expanding across Georgia with territory availability confirmed. Their model — personal care, companionship, light housekeeping, transportation — creates long-term recurring client relationships with the same seniors over months and years. Your capital profile (750+ credit, $2M SBA) makes you a highly qualified candidate in their pipeline. Georgia is listed as an active growth market.</p>
+        <div class="ls-card-header"><div class="ls-name">The Tailored Closet</div><span class="ls-cat cat-organize">Home Organization</span></div>
+        <p class="ls-why">Custom closet, pantry, and garage storage systems — a design-and-install service, not a licensed trade. Pairs naturally with real estate work: staging, move-in prep, and rental upgrades. Lowest franchise fee and royalty rate of any system on this list.</p>
       </div>
       <div class="ls-card-bottom">
-        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$89K–$155K (cost to open — not earnings)</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring care contracts ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Georgia Status</div><div class="ls-stat-val good">Actively expanding — territories available ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">700+ locations · Established</div></div>
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val good">$155K–$269K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Referral &amp; project-based ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val good">4%–7% + 1% marketing</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">160+ locations</span></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">Georgia territory available ✓</span>
-        <span class="ls-tag recur">Recurring senior care contracts</span>
+        <span class="ls-tag terr">Territory: protected — confirm exact scope directly</span>
+        <span class="ls-tag recur">Repeat referral business</span>
         <span class="ls-tag sba">SBA-friendly ✓</span>
-        <span class="ls-tag">Owner-operator ✓</span>
+        <span class="ls-tag">Lowest overall fee burden</span>
       </div>
+      <a class="ls-link" href="https://franchise.org/franchise-opportunities/the-tailored-closet" target="_blank" rel="noopener">→ The Tailored Closet franchise information</a>
     </div>
 
+    <!-- RANK 3 -->
     <div class="ls-card">
-      <div class="rank-bar r3"><span class="rank-num">RANK 3</span><span class="rank-note">Authority Brands network · Seniors &amp; veterans · Same parent as DryMedic · Georgia active</span></div>
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Backup option to DRYmedic · Neighborly network</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— demand comes from insurance referrals, not foot traffic</span></div>
       <div class="ls-card-top">
-        <div class="ls-card-header"><div class="ls-name">Homewatch CareGivers</div><span class="ls-cat cat-senior">Senior Care</span></div>
-        <p class="ls-why"><strong>B2C · Recurring total care home services for seniors and veterans.</strong> Homewatch CareGivers is part of the Authority Brands network — the same parent company as DryMedic. If DryMedic isn't available in your territory, Homewatch gives you access to the same infrastructure, support systems, and brand-building resources you researched, while focusing directly on the senior and veteran care mission you described. Georgia is an active growth market. Recurring care hour contracts build steady monthly revenue from long-term client relationships.</p>
+        <div class="ls-card-header"><div class="ls-name">Rainbow International Restoration</div><span class="ls-cat cat-restore">Restoration</span></div>
+        <p class="ls-why">Water, fire, and mold restoration under the Neighborly franchise network, with referral access to sibling brands like Mr. Rooter. Same low-saturation, insurance-driven model as DRYmedic. Worth comparing the two directly — Rainbow's royalty can run higher at scale.</p>
       </div>
       <div class="ls-card-bottom">
-        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$89K–$155K (cost to open — not earnings)</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring care hours ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Parent</div><div class="ls-stat-val">Authority Brands — same as DryMedic</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Focus</div><div class="ls-stat-val good">Seniors + veterans ✓</div></div>
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$159K–$351K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Insurance-driven demand ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val warn">3%–8% tiered + 2% marketing</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">300+ locations</span></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">Georgia active growth market</span>
-        <span class="ls-tag recur">Recurring care contracts</span>
-        <span class="ls-tag sba">SBA-friendly ✓</span>
-        <span class="ls-tag">Authority Brands infrastructure ✓</span>
+        <span class="ls-tag terr">Territory: protected — confirm sibling-brand carve-outs with Neighborly</span>
+        <span class="ls-tag recur">Recurring insurance referrals</span>
+        <span class="ls-tag">Neighborly cross-brand network</span>
+        <span class="ls-tag warn">Royalty can exceed DRYmedic's at scale</span>
       </div>
+      <a class="ls-link" href="https://www.rainbowintlfranchise.com" target="_blank" rel="noopener">→ Rainbow International franchise information</a>
     </div>
 
+    <!-- RANK 4 -->
     <div class="ls-card">
-      <div class="rank-bar r4"><span class="rank-num">RANK 4</span><span class="rank-note">DryMedic alternative · Authority Brands · Recurring plumbing contracts · Verify GA</span></div>
+      <div class="rank-bar-r4"><span class="rank-num">RANK 4</span><span class="rank-note">Strong fit with your real estate business</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— a crowded category, but demand is event-driven and territories are large</span></div>
       <div class="ls-card-top">
-        <div class="ls-card-header"><div class="ls-name">Benjamin Franklin Plumbing</div><span class="ls-cat cat-home">Home Services</span></div>
-        <p class="ls-why"><strong>B2C · Recurring residential plumbing maintenance and service contracts.</strong> Part of the same Authority Brands network as DryMedic. Non-discretionary plumbing is one of the most essential home services — no homeowner can defer a broken pipe or failed water heater. Recurring maintenance agreement clients generate predictable repeat revenue. Your real estate background (you understand the homeowner as a customer intimately) is a real operational advantage here. Georgia territory availability to be confirmed directly with Authority Brands.</p>
+        <div class="ls-card-header"><div class="ls-name">College Hunks Hauling Junk &amp; Moving</div><span class="ls-cat cat-junk">Junk Removal</span></div>
+        <p class="ls-why">Junk removal and local moving under one brand. Property investors are a natural source of this kind of work — cleanouts, evictions, estate clearances — which lines up well with your existing business. The category has many small competitors, but College Hunks grants large exclusive territories, and demand comes from specific events rather than daily habit.</p>
       </div>
       <div class="ls-card-bottom">
-        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$125K–$272K (cost to open — not earnings)</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring maintenance contracts ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Parent</div><div class="ls-stat-val">Authority Brands — same as DryMedic</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">200+ locations · Established</div></div>
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$158K–$356K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Junk removal + moving ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val note">7% + 2% marketing</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">210+ locations</span></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">Verify Georgia territory with Authority Brands</span>
-        <span class="ls-tag recur">Recurring maintenance contracts</span>
+        <span class="ls-tag terr">Territory: exclusive, typically 200K–500K residents — confirm for the Atlanta market</span>
+        <span class="ls-tag recur">Cleanout &amp; moving demand</span>
         <span class="ls-tag sba">SBA-friendly ✓</span>
-        <span class="ls-tag warn">Confirm availability before proceeding</span>
+        <span class="ls-tag">Direct referral fit with real estate work</span>
       </div>
+      <a class="ls-link" href="https://www.collegehunkshaulingjunk.com/franchising/" target="_blank" rel="noopener">→ College Hunks franchise information</a>
     </div>
 
+    <!-- RANK 5 -->
     <div class="ls-card">
-      <div class="rank-bar r5"><span class="rank-num">RANK 5</span><span class="rank-note">Your researched system · Restoration · Authority Brands · Verify Georgia territory</span></div>
+      <div class="rank-bar-r5"><span class="rank-num">RANK 5</span><span class="rank-note">One of your original picks</span></div>
+      <div class="sat-banner high"><span class="sat-label">● SATURATION: HIGH</span><span class="sat-detail">— a large but mature, crowded industry</span></div>
       <div class="ls-card-top">
-        <div class="ls-card-header"><div class="ls-name">DRYmedic Restoration Services</div><span class="ls-cat cat-home">Home Services</span></div>
-        <p class="ls-why"><strong>B2C · Emergency property damage restoration — water, fire, smoke, mold remediation.</strong> The system you already researched. DRYmedic handles emergency restoration — non-discretionary, insurance-backed, with strong recurring relationships with adjusters and property managers. Georgia territory availability is showing as ambiguous on their public site — we're flagging this for your Nova Guide to verify directly with Authority Brands before proceeding. If territory is available in your Atlanta/2-hour travel zone, this should be your first conversation.</p>
+        <div class="ls-card-header"><div class="ls-name">WaveMAX Laundry</div><span class="ls-cat cat-laundry">Laundry</span></div>
+        <p class="ls-why">A retail-style laundromat built around high-efficiency equipment and a wash-dry-fold service. This is one of the two systems you'd already been looking at. The laundromat industry overall is large but mature and crowded — roughly 30,000 U.S. locations with no dominant chain — so we'd recommend asking WaveMAX to walk through the local market math (how much market share a location needs to break even) before moving forward on a specific site.</p>
       </div>
       <div class="ls-card-bottom">
-        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$168K–$396K (cost to open — not earnings)</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Insurance-backed restoration ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Georgia Territory</div><div class="ls-stat-val warn">⚠️ Verify with Authority Brands before proceeding</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">System Size</div><div class="ls-stat-val">200+ locations · Established</div></div>
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$351K–$1.5M+</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Retail + wash-dry-fold ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val note">6% of gross revenue</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~50 locations</span></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">Georgia territory status: MUST VERIFY</span>
-        <span class="ls-tag recur">Insurance-backed recurring revenue</span>
-        <span class="ls-tag sba">SBA-friendly ✓</span>
-        <span class="ls-tag warn">Contact Authority Brands: 888-718-7513</span>
+        <span class="ls-tag terr">Territory: ~2-mile radius — protects against other WaveMAX locations only</span>
+        <span class="ls-tag recur">Repeat visits + subscriptions</span>
+        <span class="ls-tag sba">SBA-eligible financing available</span>
+        <span class="ls-tag warn">Ask for break-even market-share numbers first</span>
       </div>
+      <a class="ls-link" href="https://www.wavemaxlaundry.com/franchise/" target="_blank" rel="noopener">→ WaveMAX Laundry franchise information</a>
     </div>
 
+    <!-- RANK 6 -->
     <div class="ls-card">
-      <div class="rank-bar r6"><span class="rank-num">RANK 6</span><span class="rank-note">Real estate complement · Recurring cleaning subscriptions · Authority Brands · Georgia active</span></div>
+      <div class="rank-bar-r6"><span class="rank-num">RANK 6</span><span class="rank-note">Large, established restoration brand · Higher fees</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— demand comes from insurance referrals, not foot traffic</span></div>
       <div class="ls-card-top">
-        <div class="ls-card-header"><div class="ls-name">The Cleaning Authority</div><span class="ls-cat cat-home">Home Services</span></div>
-        <p class="ls-why"><strong>B2C · Recurring residential cleaning subscriptions.</strong> The Cleaning Authority is part of the Authority Brands network — the same infrastructure and support you researched with DryMedic. Weekly and biweekly cleaning subscriptions create predictable recurring revenue. Georgia has active territory availability. As a real estate professional, your existing homeowner relationships through KC Horizons could be a natural referral source. Lower capital entry than restoration concepts and a straightforward recurring business model.</p>
+        <div class="ls-card-header"><div class="ls-name">PuroClean</div><span class="ls-cat cat-restore">Restoration</span></div>
+        <p class="ls-why">One of the largest restoration franchise networks in the country, with the same low-saturation, insurance-driven demand as DRYmedic and Rainbow International. What holds it lower on this list is cost — royalty runs higher at lower revenue levels, and the combined fee load is the heaviest of any system here.</p>
       </div>
       <div class="ls-card-bottom">
-        <div class="ls-stat"><div class="ls-stat-label">Est. Total Investment / Unit</div><div class="ls-stat-val note">$55K–$130K (cost to open — not earnings)</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Revenue Model</div><div class="ls-stat-val good">Recurring cleaning subscriptions ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Georgia Status</div><div class="ls-stat-val good">Active territory available ✓</div></div>
-        <div class="ls-stat"><div class="ls-stat-label">Parent</div><div class="ls-stat-val">Authority Brands — same as DryMedic</div></div>
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$101K–$277K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Insurance-driven demand ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val warn">3%–10% tiered + 2% marketing</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">400+ locations</span></div>
       </div>
       <div class="ls-tags">
-        <span class="ls-tag geo">Georgia territory available ✓</span>
-        <span class="ls-tag recur">Recurring subscriptions</span>
-        <span class="ls-tag sba">SBA-friendly ✓</span>
-        <span class="ls-tag">Real estate complement ✓</span>
+        <span class="ls-tag terr">Territory: protected — confirm exact scope directly</span>
+        <span class="ls-tag recur">Recurring insurance referrals</span>
+        <span class="ls-tag">Largest brand recognition of the restoration options</span>
+        <span class="ls-tag warn">Heaviest fee load on this list</span>
       </div>
+      <a class="ls-link" href="https://purocleanfranchise.com/" target="_blank" rel="noopener">→ PuroClean franchise information</a>
     </div>
+
+    <!-- RANK 7 -->
+    <div class="ls-card">
+      <div class="rank-bar-r7"><span class="rank-num">RANK 7</span><span class="rank-note">Smaller, newer system</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— a few much larger national competitors dominate this category</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Go Mini's Moving &amp; Portable Storage</div><span class="ls-cat cat-moving">Moving &amp; Storage</span></div>
+        <p class="ls-why">Portable storage containers plus local moving — the same real estate synergy as junk removal, in a different service. It's a smaller, younger system competing against a few much larger national players (PODS especially), so worth confirming real unit economics from the FDD before going further.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">~$226K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Storage rental + moving fees ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val note">8% of gross revenue</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">83 locations</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag terr">Territory: protected — confirm exact scope directly</span>
+        <span class="ls-tag recur">Rental turnover &amp; staging demand</span>
+        <span class="ls-tag warn">Smaller system — verify earnings data in the FDD</span>
+      </div>
+      <a class="ls-link" href="https://www.gominisfranchise.com" target="_blank" rel="noopener">→ Go Mini's franchise information</a>
+    </div>
+
+    <!-- RANK 8 -->
+    <div class="ls-card">
+      <div class="rank-bar-r8"><span class="rank-num">RANK 8</span><span class="rank-note">Semi-absentee model · Highest cost on this list</span></div>
+      <div class="sat-banner high"><span class="sat-label">● SATURATION: HIGH</span><span class="sat-detail">— same crowded industry as WaveMAX</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Speed Queen Laundry</div><span class="ls-cat cat-laundry">Laundry</span></div>
+        <p class="ls-why">An unattended, app-based laundromat with lower on-site labor needs than WaveMAX. Same crowded industry, same saturation concerns — but with the highest total investment of any system on this list.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val warn">$1.16M–$1.98M</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Self-service, ~$605K avg. revenue ✓</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val note">4% + 1% marketing</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">44 locations</span></div>
+      </div>
+      <div class="ls-tags">
+        <span class="ls-tag terr">Territory: protected — confirm exact scope directly</span>
+        <span class="ls-tag sba">SBA financing common in this category</span>
+        <span class="ls-tag">Semi-absentee ✓</span>
+        <span class="ls-tag warn">Highest capital requirement on this list</span>
+      </div>
+      <a class="ls-link" href="https://franchise.speedqueen.com/" target="_blank" rel="noopener">→ Speed Queen Laundry franchise information</a>
+    </div>
+
   </div>
 </div>
 
 <div class="section">
-  <div class="sec-label">Acquisition Opportunities — Atlanta / Home Services &amp; Senior Care</div>
-  <p style="font-size:13px;color:#555;margin-bottom:16px;line-height:1.6;">Since you indicated interest in acquisitions as part of building Shiloh Horizons, here are active sources for established businesses in your sectors in the Georgia market. With your $2M SBA pre-approval, you qualify for a wide range of resale opportunities.</p>
+  <div class="sec-label">Acquisition Opportunities — Georgia</div>
 
   <div class="acq-card">
-    <div class="acq-bar"><span>Opportunity 1</span><small>DealStream · Greater Georgia · Senior Care Franchise Resales</small></div>
+    <div class="acq-bar"><span>Opportunity 1</span><small>Restoration Resale &middot; Savannah, GA</small></div>
     <div class="acq-body">
-      <div class="acq-name">Senior Care Franchise Resales — Georgia</div>
-      <div class="acq-desc">DealStream lists active senior care franchise resales in Georgia — in-home care, adult day services, non-medical home care. Buying a resale gives you an existing client base, trained caregivers, and cash flow from day one. Your capital profile qualifies you for a wide range of options at this level.</div>
+      <div class="acq-name">Franchised Property Restoration Business — Savannah, GA</div>
+      <div class="acq-desc">A currently listed restoration franchise serving the Savannah market, reporting roughly $2.5M in annual revenue and $800K in earnings. Buying an existing operation gets you a trained crew and established insurance-carrier relationships from day one — worth weighing alongside opening a new location.</div>
     </div>
     <div class="acq-stats">
-      <div class="ls-stat"><div class="ls-stat-label">Location</div><div class="ls-stat-val">Greater Georgia</div></div>
-      <div class="ls-stat"><div class="ls-stat-label">Advantage</div><div class="ls-stat-val good">Day-1 revenue from existing clients</div></div>
-      <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Franchise resale</div></div>
-      <div class="ls-stat"><div class="ls-stat-label">Source</div><div class="ls-stat-val">DealStream.com</div></div>
+      <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Savannah, GA</span></div>
+      <div class="ls-stat"><span class="ls-stat-label">Reported Financials</span><span class="ls-stat-val good">~$2.5M revenue / $800K earnings</span></div>
     </div>
   </div>
 
   <div class="acq-card">
-    <div class="acq-bar"><span>Opportunity 2</span><small>LoopNet · Georgia · 32 Active Health &amp; Senior Care Listings</small></div>
+    <div class="acq-bar"><span>Opportunity 2</span><small>Coin Laundry Resale &middot; Norcross, GA</small></div>
     <div class="acq-body">
-      <div class="acq-name">Health &amp; Senior Care Franchise Opportunities — Georgia (32 Active)</div>
-      <div class="acq-desc">LoopNet currently lists 32 health and senior care franchise opportunities in Georgia — a mix of new units and resales. Ask your Nova Guide to filter to Atlanta metro and within 2 hours to match your geography. Your $2M SBA pre-approval qualifies you for the vast majority of listings in this pool.</div>
+      <div class="acq-name">Well-Established Coin Laundry — Norcross, GA</div>
+      <div class="acq-desc">An independent laundry (not a branded franchise) in a high-traffic corridor, listed at $885,000 with roughly $228K in annual earnings. Useful as a real-world comparison for what an established Georgia laundry actually earns, alongside WaveMAX's projected numbers.</div>
     </div>
     <div class="acq-stats">
-      <div class="ls-stat"><div class="ls-stat-label">Location</div><div class="ls-stat-val">Georgia — 32 active listings</div></div>
-      <div class="ls-stat"><div class="ls-stat-label">Your Capital</div><div class="ls-stat-val good">$2M SBA qualifies for wide range ✓</div></div>
-      <div class="ls-stat"><div class="ls-stat-label">Type</div><div class="ls-stat-val">Mix of new units and resales</div></div>
-      <div class="ls-stat"><div class="ls-stat-label">Source</div><div class="ls-stat-val">LoopNet.com</div></div>
+      <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Norcross, GA</span></div>
+      <div class="ls-stat"><span class="ls-stat-label">Reported Financials</span><span class="ls-stat-val good">~$228K annual earnings</span></div>
     </div>
   </div>
 
   <div class="where-search">
-    <div class="sec-label" style="color:#00709a;">Where to Search for More</div>
-    <p><strong>DealStream.com</strong> — Senior care and home services franchise resales in Georgia.<br>
-    <strong>LoopNet.com</strong> — 32 health and senior care franchises currently active in Georgia.<br>
-    <strong>Authority Brands resale network</strong> — If a DryMedic or Homewatch owner is looking to exit in the Atlanta area, Authority Brands can surface those before they hit public platforms.<br>
-    <strong>BizBuySell.com</strong> — Search "Atlanta home care" or "Georgia senior care" for additional listings.</p>
+    <div class="sec-label">Where to Search for More</div>
+    <p><strong>BizBuySell.com</strong> — Georgia listings across laundry and restoration.<br>
+    <strong>Sunbelt Network</strong> — Fulton County and statewide Georgia listings.<br>
+    <strong>LoopNet.com / DealStream.com</strong> — franchise resales in these categories.</p>
   </div>
 </div>
 
 <div class="disclaimer">
-  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates — actual costs vary. Territory availability must be confirmed directly with each franchisor. DryMedic Georgia territory status is currently unclear and must be verified with Authority Brands (888-718-7513) before any commitment. Acquisition listings change daily — verify with the listing broker before proceeding. All investment decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+  <p><strong>Important:</strong> This list is based on publicly available information only. We have not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment and royalty figures are estimates and should be confirmed against the current FDD. Territory availability must be confirmed directly with each franchisor. Acquisition listings reflect asking prices and seller-reported financials at the time of this analysis and are subject to change. All investment decisions should be made after full FDD review, legal counsel, and independent financial due diligence.</p>
 </div>
 
 <div class="doc-footer">
-  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for KC Copeland &nbsp;&middot;&nbsp; 2026</p>
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for KC Copeland &nbsp;&middot;&nbsp; September 2026</p>
 </div>
+
 </div>
 </body>
 </html>
