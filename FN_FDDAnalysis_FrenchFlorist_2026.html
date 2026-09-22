@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fn-systems" content="French Florist">
+<title>Franchise Nova — FDD Analysis · French Florist 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.page{max-width:900px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 48px rgba(0,0,0,0.14);}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#161033);padding:34px 48px 28px;position:relative;overflow:hidden;border-top:4px solid #664ca9;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 15% 28%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#cfd6ff,transparent),radial-gradient(1px 1px at 82% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 78%,#e9d8ff,transparent),radial-gradient(900px 380px at 80% 5%,rgba(102,76,169,0.35),transparent 60%),radial-gradient(700px 320px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,0.35);margin-bottom:12px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#9b8fc8;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:30px;color:#fff;margin-bottom:5px;position:relative;}
+.h-meta{font-size:12.5px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+.h-note{font-size:10.5px;color:rgba(255,255,255,0.32);font-style:italic;position:relative;margin-top:4px;}
+
+/* SCORE ROW */
+.score-row{display:flex;align-items:center;gap:28px;padding:20px 48px;border-bottom:1px solid #e8eaf0;background:#f9f9fc;flex-wrap:wrap;}
+.score-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:52px;color:#664ca9;line-height:1;}
+.score-meta{display:flex;flex-direction:column;gap:4px;}
+.score-lbl{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.score-tag{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#664ca9;}
+.score-dims{display:flex;gap:18px;flex-wrap:wrap;margin-left:8px;}
+.sdim{text-align:center;}
+.sdim-val{font-family:'Montserrat',sans-serif;font-weight:800;font-size:17px;line-height:1.1;}
+.sdim-lbl{font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#aaa;margin-top:2px;}
+.caution-pill{margin-left:auto;font-family:'Montserrat',sans-serif;font-weight:800;font-size:11px;padding:6px 14px;border-radius:999px;background:rgba(184,110,0,0.1);color:#b86e00;border:1px solid rgba(184,110,0,0.35);white-space:nowrap;}
+
+/* SECTIONS */
+.section{padding:22px 48px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* SIGNAL GRID */
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.sg-cell{padding:13px 16px;border-bottom:1px solid #f0eef8;border-right:1px solid #f0eef8;position:relative;}
+.sg-cell:nth-child(even){border-right:none;}
+.sg-cell:nth-last-child(-n+2){border-bottom:none;}
+.sg-item-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+.sg-val{font-size:12.5px;color:#333;line-height:1.55;}
+.sg-val strong{color:#15131f;}
+.sg-val .flag{color:#b1456b;font-weight:700;}
+.sig{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.sig.G{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.sig.A{background:rgba(184,110,0,0.1);color:#b86e00;}
+.sig.R{background:rgba(177,69,107,0.1);color:#b1456b;}
+.more-toggle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;color:#664ca9;background:none;border:none;cursor:pointer;padding:3px 0 0;display:block;}
+.more-toggle:hover{color:#452e80;}
+.more-detail{display:none;font-size:12px;color:#555;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #e8eaf0;}
+.more-detail.open{display:block;}
+
+/* HIGHLIGHT CARDS */
+.hi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:0;}
+.hi-card{border-radius:9px;padding:14px 16px;}
+.hi-card.g{background:#eaf6ef;border-left:3px solid #1a7a4a;}
+.hi-card.a{background:#fff8e1;border-left:3px solid #b86e00;}
+.hi-card.r{background:#fff0f4;border-left:3px solid #b1456b;}
+.hi-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+.hi-card.g .hi-k{color:#1a7a4a;}
+.hi-card.a .hi-k{color:#b86e00;}
+.hi-card.r .hi-k{color:#b1456b;}
+.hi-v{font-size:12.5px;color:#333;line-height:1.55;}
+
+/* FRANCHISOR HEALTH BOX */
+.health-box{background:linear-gradient(135deg,#200a0a,#2a0d12);border-radius:10px;padding:20px 22px;color:#f8e8ec;}
+.health-box .sec-lbl{color:#f08;margin-bottom:12px;}
+.health-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.h-cell{background:rgba(255,255,255,0.06);border-radius:7px;padding:11px 14px;}
+.h-cell-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px;}
+.h-cell-v{font-size:13px;color:#fff;font-weight:700;line-height:1.35;}
+.h-cell-v.warn{color:#ffb347;}
+.h-cell-v.bad{color:#ff6b8a;}
+.health-note{font-size:12.5px;color:#f8d0da;line-height:1.7;}
+
+/* OPPORTUNITY BOX */
+.opp-box{background:linear-gradient(135deg,#0d0a1c,#1a1340);border-radius:10px;padding:20px 22px;color:#eceaf8;}
+.opp-box .sec-lbl{color:#9b8fc8;}
+.opp-list{padding-left:18px;}
+.opp-list li{font-size:13px;color:#d8d6ec;margin-bottom:7px;line-height:1.6;}
+.opp-list li strong{color:#fff;}
+
+/* WATCH LIST */
+.watch-list{padding-left:0;list-style:none;}
+.watch-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:10px;line-height:1.6;padding-bottom:10px;border-bottom:1px solid #f0eef8;}
+.watch-list li:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+.w-icon{font-size:14px;flex-shrink:0;margin-top:2px;}
+
+/* ZOR CANDIDATE NOTE */
+.zor-note{background:rgba(102,76,169,0.08);border:1px solid rgba(102,76,169,0.2);border-left:3px solid #664ca9;border-radius:0 9px 9px 0;padding:14px 18px;}
+.zor-note p{font-size:13px;color:#333;line-height:1.7;}
+.zor-note strong{color:#452e80;}
+
+/* DQ QUESTIONS */
+.qs-list{padding-left:0;list-style:none;}
+.qs-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:9px;line-height:1.6;}
+.q-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;background:#664ca9;border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;height:fit-content;}
+
+/* FOOTER */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10px;color:#555;margin-top:3px;}
+
+@media print{body{background:#fff;padding:0;}.page{box-shadow:none;border-radius:0;}.hdr,.health-box,.opp-box,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}.more-detail{display:block!important;}}
+@media(max-width:720px){.signal-grid,.hi-grid,.health-row{grid-template-columns:1fr;}.score-dims{display:none;}.section{padding:18px 20px;}.hdr{padding:24px 20px;}.score-row{padding:16px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">System FDD Analysis &middot; No Candidate Attached &middot; Internal Use Only</div>
+  <h1 class="h-name">French Florist — 2026 FDD</h1>
+  <p class="h-meta"><strong>Floral Franchising, Inc.</strong> &nbsp;&middot;&nbsp; Los Angeles, CA &nbsp;&middot;&nbsp; Franchise since 2023 &nbsp;&middot;&nbsp; 17 open locations · 45 territories awarded &nbsp;&middot;&nbsp; July 2026</p>
+  <p class="h-note">All data sourced from publicly available FDD aggregators (PeerSense, FreeFDDLibrary, VetMyFranchise, Franzy) and press coverage. Not based on a direct FDD review. Request the current 2026 FDD from the franchisor before any candidate referral.</p>
+</header>
+
+<!-- SYSTEM NOVA SCORE -->
+<div class="score-row">
+  <div>
+    <div class="score-num">54</div>
+  </div>
+  <div class="score-meta">
+    <div class="score-lbl">System Nova Score / 100</div>
+    <div class="score-tag">Developing System — Proceed with Caution</div>
+  </div>
+  <div class="score-dims">
+    <div class="sdim"><div class="sdim-val" style="color:#b86e00;">12<span style="font-size:10px;color:#aaa">/25</span></div><div class="sdim-lbl">Performance</div></div>
+    <div class="sdim"><div class="sdim-val" style="color:#b1456b;">8<span style="font-size:10px;color:#aaa">/25</span></div><div class="sdim-lbl">System Health</div></div>
+    <div class="sdim"><div class="sdim-val" style="color:#b86e00;">12<span style="font-size:10px;color:#aaa">/20</span></div><div class="sdim-lbl">Cap Access</div></div>
+    <div class="sdim"><div class="sdim-val" style="color:#1a7a4a;">14<span style="font-size:10px;color:#aaa">/17</span></div><div class="sdim-lbl">Op Flexibility</div></div>
+    <div class="sdim"><div class="sdim-val" style="color:#b86e00;">8<span style="font-size:10px;color:#aaa">/13</span></div><div class="sdim-lbl">Exit / Wealth</div></div>
+  </div>
+  <span class="caution-pill">⚠ Franchisor Net Loss $1.18M · Item 19 Not Disclosed</span>
+</div>
+
+<!-- KEY FDD ITEMS -->
+<div class="section">
+  <div class="sec-lbl">Key FDD Items — 2026 Filing</div>
+  <div class="signal-grid">
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 5 — Initial Franchise Fee <span class="sig A">Amber</span></div>
+      <div class="sg-val"><strong>$53,000–$128,000</strong> depending on territory type and size. Standard franchise fee on the high end for an emerging brand.</div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">The range is wide — $53K at the low end (conversion franchise) to $128K for a premium territory. Conversion franchises (existing independent florists converting to the French Florist brand) carry a lower entry fee, which is how the brand is building its "Conversion Division." For a brand with only 17 open locations, the upper fee range sits above the retail franchise industry average of ~$37K. Multi-territory discounts not publicly confirmed.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 6 — Ongoing Fee Burden <span class="sig G">Green</span></div>
+      <div class="sg-val">Royalty: <strong>6%</strong> · Brand fund: <strong>2%</strong> · Total burden: <strong>~8%</strong></div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">8% total fee burden is competitive and below the retail franchise average. The 2% brand fund supports the "marketing as a service" model where French Florist executes digital marketing centrally on behalf of franchisees — covering SEO, paid ads, and demand generation. Franchisees can dial marketing spend up or down with additional ad contributions beyond the 2% floor, per founder interviews.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 7 — Total Investment Range <span class="sig A">Amber</span></div>
+      <div class="sg-val">Standard: <strong>$242,675–$398,675</strong> &nbsp;·&nbsp; Conversion: <strong>$200,675–$379,675</strong></div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">Planning amount (high end + 10% buffer): ~$438K standard, ~$418K conversion. The investment range reflects a physical retail boutique with build-out, inventory, proprietary software setup, and working capital. The conversion path is the more accessible entry — an independent florist who already has a shop, existing customer base, and equipment can convert at a materially lower cost and with day-one revenue. No franchisor financing offered directly.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig A">Amber</span></div>
+      <div class="sg-val">No direct financing · Refers to third-party lenders · <strong>SBA status: verify</strong></div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">French Florist does not offer in-house financing. They refer candidates to financing sources but don't name preferred SBA lenders publicly. PeerSense lists First Bank of the Lake and iTHINK Financial CU as top SBA lenders for this brand, suggesting SBA eligibility — but the brand's franchisor net loss and shareholder's deficit (see Item 21) may complicate lender due diligence. Verify SBA eligibility directly with lenders before promising this pathway to candidates.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig G">Green</span></div>
+      <div class="sg-val">E-commerce driven · <strong>95% orders placed online</strong> · Semi-absentee friendly</div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">The 95% online order model is a structural differentiator — the franchisor drives inbound demand through centralized digital marketing, orders route to the nearest boutique through proprietary software, and franchisees manage fulfillment. This reduces the reliance on walk-in foot traffic and makes it more compatible with semi-absentee or manager-led ownership. Training program details not fully publicly disclosed — request Item 11 specifics from franchisor.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 12 — Territory Rights <span class="sig G">Green</span></div>
+      <div class="sg-val">Protected territory · <strong>16 states available</strong> including GA, TX, FL, NY, CA</div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">Available states per franchisor site: AZ, CA, CO, CT, DE, FL, GA, LA, NV, NJ, NY, OH, OR, PA, TX, WA. Priority development in Texas, NYC metro, and Florida. Territory protection is listed as geographic but exact definition (zip, population-based, or radius) should be confirmed from the FDD. With 45 territories awarded and only 17 open, a significant gap exists between territory sales and actual openings — a flag worth monitoring.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig R">Red</span></div>
+      <div class="sg-val"><span class="flag">Not disclosed</span> in FDD · Corporate location revenue cited in press only</div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">French Florist does not include a financial performance representation (Item 19) in its FDD. All revenue figures circulating publicly — the "$800K–$900K" and "3x the industry average" claims — come from franchisor press releases and founder interviews, not from the FDD. The industry average for independent florists is ~$350K at ~10% margin. Franchisor claims corporate locations operate at 18%+ operating income after all fees. None of this is independently verified through FDD disclosure. This is the single most important data gap for any candidate evaluating this brand.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 20 — System Health <span class="sig R">Red</span></div>
+      <div class="sg-val">17 open locations · 45 territories awarded · <strong>28 awarded but not yet open</strong></div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">The gap between territories awarded (45) and locations open (17) is worth watching. In a healthy franchise system, award-to-open lag is typically 6–12 months for retail concepts. If territories were awarded throughout 2025 and into 2026, some lag is expected. But if locations are stalling post-award — due to financing, site selection, build-out, or franchisor support capacity — that lag becomes a system health signal. PeerSense FPI score: 52/100, below average. Churn data not available due to limited system history.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 21 — Franchisor Financial Health <span class="sig R">Red</span></div>
+      <div class="sg-val"><span class="flag">Net loss: $1.18M</span> · <span class="flag">Shareholder deficit: $1.15M</span> · Related-party loan: $3.1M</div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">This is the most significant flag in the entire FDD. The 2024 audited financials show the franchisor itself is operating at a loss and has a negative shareholder equity position, sustained primarily by a $3.1 million related-party loan. The $3 million strategic investment secured in September 2024 partially offsets this, and the rapid territory sales in 2025 generate franchise fee revenue. But franchise fee revenue is one-time — it cannot sustain the business long-term. Franchisor continuity risk is elevated relative to mature systems. Not a disqualifier but a serious due diligence flag that every candidate and their attorney should review.</div>
+    </div>
+
+    <div class="sg-cell">
+      <div class="sg-item-lbl">Item 23 — Exit Rights <span class="sig A">Amber</span></div>
+      <div class="sg-val">Transfer and renewal terms · <strong>Not publicly itemized</strong> · Request from franchisor</div>
+      <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+      <div class="more-detail">Transfer fee and renewal terms are not itemized in publicly available FDD summaries — aggregators flag this as "not separately disclosed." The brand is too young to have an active resale market. Exit value is highly speculative at this stage given limited operating history, no publicly available franchisee revenue data, and franchisor financial instability. A candidate buying into French Florist should plan to hold 5+ years minimum before exit becomes meaningful.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HEADLINE SIGNALS -->
+<div class="section">
+  <div class="sec-lbl">At a Glance — Headline Signals</div>
+  <div class="hi-grid">
+    <div class="hi-card g">
+      <div class="hi-k">What's Compelling</div>
+      <div class="hi-v">E-commerce driven demand model (95% online orders), centralized marketing as a service, 70%+ gross margin claims, 16 available states, conversion path for independent florists, 8% total fee burden is competitive, proprietary software handles fulfillment routing.</div>
+    </div>
+    <div class="hi-card a">
+      <div class="hi-k">What Needs Scrutiny</div>
+      <div class="hi-v">No Item 19 disclosure — all revenue claims are franchisor-sourced only. 28 territories awarded but not yet open. $53K–$128K franchise fee is above emerging brand norms. SBA lender appetite with a loss-making franchisor on the audit is uncertain.</div>
+    </div>
+    <div class="hi-card r">
+      <div class="hi-k">What's a Red Flag</div>
+      <div class="hi-v">Franchisor net loss of $1.18M in 2024. Shareholder deficit of $1.15M. Sustained by a $3.1M related-party loan. System is only 3 years into franchising with limited franchisee track record. PeerSense FPI: 52/100 — below average.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FRANCHISOR FINANCIAL HEALTH -->
+<div class="section">
+  <div class="health-box">
+    <div class="sec-lbl">Item 21 — Franchisor Financial Health Deep Dive</div>
+    <div class="health-row">
+      <div class="h-cell"><div class="h-cell-k">2024 Net Loss</div><div class="h-cell-v bad">$(1,180,000)+</div></div>
+      <div class="h-cell"><div class="h-cell-k">Shareholder Deficit</div><div class="h-cell-v bad">$(1,150,000)+</div></div>
+      <div class="h-cell"><div class="h-cell-k">Related-Party Loan</div><div class="h-cell-v warn">$3,100,000</div></div>
+      <div class="h-cell"><div class="h-cell-k">Strategic Investment (Sep 2024)</div><div class="h-cell-v" style="color:#aad4ff;">$3,000,000</div></div>
+    </div>
+    <p class="health-note">The franchisor is operating at a loss and has negative equity, sustained primarily by a related-party loan from an insider (likely the founder or affiliated entity). This is not uncommon for early-stage franchise systems — growth costs money and franchise fee revenue takes time to stabilize. The $3M strategic investment and the rapid territory sales in 2025 both suggest investor confidence in the unit-level model. However, the franchisor's ability to continue supporting franchisees long-term depends on whether territory sales and royalty revenue can cover operating costs before the loan or investor patience runs out. Every candidate's franchise attorney should review Item 21 and ask the franchisor directly: what does the path to franchisor profitability look like and what is the current runway?</p>
+  </div>
+</div>
+
+<!-- WHERE FRENCH FLORIST FITS FOR FN -->
+<div class="section">
+  <div class="sec-lbl">Where French Florist Fits in the FN Pipeline</div>
+  <div class="zor-note">
+    <p>French Florist is a <strong>Zor (franchisor) candidate</strong> — a brand FN may want to build a referral relationship with rather than a system to immediately route candidates into. The conversion path is particularly relevant: independent florist owners who are struggling against the national floral networks (Teleflora, 1-800-Flowers) but have an existing customer base and physical shop could convert to French Florist and gain access to their e-commerce infrastructure, centralized marketing, and supply chain. <strong>That is a fundamentally different FN use case</strong> than sourcing a new franchise investor.<br><br>For a candidate with capital to invest in a new franchise unit, French Florist carries too many open questions at this stage — no Item 19, limited franchisee track record, franchisor financial instability — to recommend with confidence. Recommend putting French Florist on a <strong>watch list</strong> and revisiting when 30+ units are open and franchisee-level revenue data is publicly available.</p>
+  </div>
+</div>
+
+<!-- OPPORTUNITY LENS -->
+<div class="section">
+  <div class="opp-box">
+    <div class="sec-lbl">The Opportunity Lens — What Would Make This a Stronger System</div>
+    <ul class="opp-list">
+      <li><strong>Item 19 disclosure:</strong> If French Florist adds financial performance representations to the FDD — even a simple median revenue disclosure from their 17 open units — the transparency picture changes dramatically. Ask the franchisor whether Item 19 is planned for a future FDD amendment.</li>
+      <li><strong>Franchisor profitability:</strong> If the 2025 audited financials (which would appear in the 2026 FDD update) show the company moving toward breakeven on the strength of territory fees + royalties, that's a materially different risk picture than the 2024 loss.</li>
+      <li><strong>Award-to-open ratio:</strong> If the 28 awarded-but-not-yet-open territories begin opening at a normal pace through late 2026, system health improves. If they continue stalling, that's a signal of structural development issues.</li>
+      <li><strong>Conversion path as FN-specific play:</strong> If FN has relationships with independent florist owners in Georgia, Texas, or Florida who are looking for an exit or a brand upgrade — the conversion franchise path is a lower-cost, lower-risk entry than a standard franchise and leverages an existing business. This is worth exploring separately from the new-unit investor path.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- DUE DILIGENCE QUESTIONS -->
+<div class="section">
+  <div class="sec-lbl">Due Diligence Questions — Ask French Florist Directly</div>
+  <ul class="qs-list">
+    <li><span class="q-num">Q</span>You don't include Item 19 in your FDD. Can you share actual revenue and operating income figures from your 17 open franchise locations — not corporate locations? How many of those are in their first year vs. second year of operation?</li>
+    <li><span class="q-num">Q</span>Your 2024 audited financials show a net loss of over $1.18M and a shareholder deficit. Walk me through the path to franchisor profitability — what does the revenue model look like at 50 open units, and what's your current cash runway?</li>
+    <li><span class="q-num">Q</span>45 territories have been awarded but only 17 locations are open. What's happening with the other 28 — are they in build-out, financing, or site selection? What's the typical timeline from territory signing to grand opening?</li>
+    <li><span class="q-num">Q</span>The corporate flagship locations are cited as generating 3x the industry average revenue. Are those locations in markets that are representative of where most franchisees will operate, or are they in premium urban markets that skew the comparison?</li>
+    <li><span class="q-num">Q</span>On the conversion path — what does the typical conversion franchisee look like? How much of their existing customer base and revenue typically carries over, and what's the average ramp period before they reach the system revenue averages you're citing?</li>
+    <li><span class="q-num">Q</span>The $3.1M related-party loan on your balance sheet — what are the terms, and what happens to franchisee support infrastructure if that loan is called or the lender changes terms?</li>
+  </ul>
+</div>
+
+<!-- WATCH LIST -->
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">FN Watch List — Monitor These Before Referring Candidates</div>
+  <ul class="watch-list">
+    <li><span class="w-icon">⚠️</span><div><strong>Item 19 addition:</strong> Watch for any FDD amendment that adds financial performance data from open franchisee locations. That's the single change that would most improve confidence in this system.</div></li>
+    <li><span class="w-icon">⚠️</span><div><strong>2025 audited financials:</strong> The 2025 audit results (included in the next FDD update) will show whether the $3M investment and franchise fee revenue moved the franchisor toward profitability. Request these directly when available.</div></li>
+    <li><span class="w-icon">⚠️</span><div><strong>Award-to-open ratio:</strong> Track whether the 28 unopen territories begin opening through the end of 2026. A ratio below 50% open by early 2027 would be a system health concern.</div></li>
+    <li><span class="w-icon">✅</span><div><strong>Conversion Division:</strong> Proactively worth exploring for FN — if BLK GRVTY has relationships with independent florist owners in available states, the conversion path is a real near-term opportunity that doesn't require waiting for the system to mature.</div></li>
+  </ul>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova System FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; July 2026 &nbsp;&middot;&nbsp; French Florist — 2026 FDD &nbsp;&middot;&nbsp; No candidate attached</p>
+  <p class="footer-note">For internal FN use only — not financial, legal, or investment advice. All data sourced from third-party FDD aggregators (PeerSense, FreeFDDLibrary, VetMyFranchise, Franzy) and public press coverage — not a direct FDD review. Request the current 2026 FDD from French Florist before any candidate referral or partnership discussion.</p>
+</div>
+
+</div>
+
+<script>
+function toggleMore(btn){
+  const detail=btn.nextElementSibling;
+  const isOpen=detail.classList.contains('open');
+  detail.classList.toggle('open',!isOpen);
+  btn.textContent=isOpen?'+ More':'− Less';
+}
+window.addEventListener('beforeprint',()=>{
+  document.querySelectorAll('.more-detail').forEach(d=>d.classList.add('open'));
+  document.querySelectorAll('.more-toggle').forEach(t=>t.style.display='none');
+});
+</script>
+</body>
+</html>
