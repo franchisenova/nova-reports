@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Terry Young · Internal Intake Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--ink:#15131f;--white:#fff;--indigo:#282560;--eggplant:#452e80;--purple:#664ca9;--cyan:#00aeef;--moon:#e1e3ee;--line:#d2d4e4;--accent:var(--purple);--accent-rgb:102,76,169;--display:'Montserrat','Neutraface Display Titling',system-ui,sans-serif;--body:'Lato',system-ui,sans-serif;}
+body.cls-supernova{--accent:var(--cyan);--accent-rgb:0,174,239;}
+body.cls-nova{--accent:var(--purple);--accent-rgb:102,76,169;}
+body.cls-nebula{--accent:var(--eggplant);--accent-rgb:69,46,128;}
+*{box-sizing:border-box;} html,body{margin:0;padding:0;}
+body{font-family:var(--body);color:var(--ink);background:var(--moon);line-height:1.5;-webkit-font-smoothing:antialiased;}
+.page{max-width:880px;margin:28px auto;background:var(--white);box-shadow:0 12px 50px rgba(20,19,31,0.18);overflow:hidden;}
+.cosmos{position:relative;color:var(--white);padding:34px 40px 30px;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 33% 70%,#fff,transparent),radial-gradient(1px 1px at 52% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 67% 58%,#fff,transparent),radial-gradient(1px 1px at 80% 35%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(1200px 380px at 78% 8%,rgba(var(--accent-rgb),0.42),transparent 60%),radial-gradient(900px 420px at 8% 110%,rgba(40,37,96,0.65),transparent 60%),linear-gradient(160deg,#05040a 0%,#0d0a1c 55%,#161033 100%);}
+.cosmos.p2{border-top:4px solid var(--cyan);background:radial-gradient(1px 1px at 22% 40%,#fff,transparent),radial-gradient(1px 1px at 71% 30%,#fff,transparent),radial-gradient(900px 360px at 85% 0%,rgba(0,174,239,0.28),transparent 60%),linear-gradient(135deg,#05040a,#0d0a1c,#1a1340);}
+.logo{font-family:var(--display);font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.4);margin:0 0 14px;}
+.eyebrow{font-family:var(--display);font-weight:700;letter-spacing:.32em;font-size:11px;text-transform:uppercase;color:var(--cyan);margin:0 0 18px;}
+.mark{position:absolute;top:30px;right:40px;font-family:var(--display);font-weight:800;line-height:.86;font-size:20px;text-align:right;color:#fff;} .mark span{display:block;}
+.cand-name{font-family:var(--display);font-weight:900;font-size:40px;line-height:1.02;margin:0 0 6px;letter-spacing:-.01em;}
+.cand-meta{font-size:13px;color:#b9b6d6;margin:0 0 12px;font-weight:700;} .cand-meta b{color:var(--moon);}
+.internal-flag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffd7e2;border:1px solid rgba(255,160,190,.5);border-radius:999px;padding:3px 11px;margin:0 0 14px;}
+.snapshot{font-size:15.5px;color:#e7e6f4;max-width:62ch;margin:0;font-style:italic;}
+.verdict{display:flex;align-items:center;gap:26px;padding:26px 40px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(var(--accent-rgb),0.12),transparent 70%);}
+.badge{flex:0 0 auto;width:108px;height:108px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,var(--accent) 0%,var(--eggplant) 48%,var(--indigo) 80%,#0c0a1c 100%);box-shadow:0 0 0 6px rgba(var(--accent-rgb),0.16),0 0 38px 4px rgba(var(--accent-rgb),0.55);}
+.badge::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.8;background:radial-gradient(1px 1px at 30% 35%,#fff,transparent),radial-gradient(1px 1px at 68% 60%,#fff,transparent);}
+.badge b{font-family:var(--display);font-weight:900;font-size:15px;color:#fff;z-index:1;}
+.verdict-text h2{font-family:var(--display);font-weight:900;font-size:27px;margin:0 0 2px;color:var(--ink);}
+.verdict-text .accentline{color:var(--accent);}
+.verdict-text p{margin:2px 0 0;font-size:14px;color:#4a4860;max-width:52ch;}
+.conf{margin-top:8px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 11px;}
+section{padding:24px 40px;border-bottom:1px solid var(--line);}
+.sec-label{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--eggplant);margin:0 0 16px;}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;}
+.axis-block{display:flex;gap:22px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct,0)*1%),var(--line) 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:var(--display);font-weight:900;font-size:26px;color:var(--ink);line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy .lift-label{font-family:var(--display);font-weight:800;font-size:13px;color:var(--ink);margin:0 0 6px;}
+.lift-pills{display:flex;gap:6px;margin:0 0 8px;}
+.lift-pills .pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--moon);color:#6c6a85;}
+.lift-pills .pill.on{background:var(--eggplant);color:#fff;}
+.axis-copy .note{font-size:12.5px;color:#5a5872;margin:0;}
+.matrix{display:grid;grid-template-columns:74px repeat(3,1fr);grid-template-rows:auto repeat(3,40px);gap:4px;font-size:10px;}
+.matrix .col-h{font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.matrix .row-h{font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.matrix .cell{border-radius:5px;position:relative;}
+.cell.nebula{background:rgba(69,46,128,0.16);} .cell.nova{background:rgba(102,76,169,0.22);} .cell.supernova{background:rgba(0,174,239,0.20);}
+.cell .tag{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;}
+.cell.here{outline:2px solid var(--accent);}
+.cell .dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.25),0 0 14px var(--accent);top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:8px;}
+.dim{margin-bottom:13px;} .dim .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+.dim .row b{color:var(--ink);} .dim .row span{color:#7a7891;font-family:var(--display);font-weight:700;font-size:12px;}
+.bar{height:7px;background:var(--moon);border-radius:999px;overflow:hidden;} .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--eggplant),var(--accent));border-radius:999px;}
+.dim small{display:block;font-size:11.5px;color:#6c6a85;margin-top:5px;}
+.rubric-note{font-size:11px;color:#8a88a0;margin:4px 0 0;font-style:italic;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border:1px solid var(--line);border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 9px;}
+.quad.s{border-left:3px solid #1a7a4a;} .quad.s h4{color:#1a7a4a;} .quad.d{border-left:3px solid var(--purple);} .quad.d h4{color:var(--purple);} .quad.o{border-left:3px solid var(--eggplant);} .quad.o h4{color:var(--eggplant);} .quad.r{border-left:3px solid #b1456b;} .quad.r h4{color:#b1456b;}
+.quad ul{margin:0;padding-left:16px;} .quad li{font-size:12.5px;margin-bottom:6px;color:#3c3a52;}
+.pathway{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway .sec-label{color:var(--cyan);} .pathway .route{font-family:var(--display);font-weight:800;font-size:17px;margin:0 0 4px;color:#fff;}
+.pathway .backup{font-size:12.5px;color:#b9b6d6;margin:0 0 12px;} .pathway p{font-size:13px;color:#d8d6ec;margin:0;}
+ol.roadmap{margin:0;padding-left:20px;} ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;} ol.roadmap li b{color:var(--ink);}
+.expect{background:linear-gradient(90deg,rgba(69,46,128,0.10),transparent 82%);border:1px solid var(--line);border-left:3px solid var(--eggplant);border-radius:0 9px 9px 0;padding:16px 18px;}
+.expect .erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:11px;}
+.expect .chip{font-family:var(--display);font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.expect .chip.exp{background:var(--moon);color:#5b5876;} .expect .chip.real{background:var(--eggplant);color:#fff;}
+.expect .arrow{font-size:16px;color:var(--eggplant);font-weight:800;}
+.expect p{margin:0 0 7px;font-size:12.5px;color:#3c3a52;} .expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:var(--eggplant);font-family:var(--display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+.action{background:rgba(var(--accent-rgb),0.12);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:16px;}
+.action b{font-family:var(--display);}
+.qs{margin:0;padding-left:18px;} .qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;} .gaps .g{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 10px;}
+.gaps .g.req{border-style:solid;background:#fff0f4;font-weight:700;}
+.p2-text{font-size:13px;color:#3c3a52;line-height:1.65;margin:0;}
+.thesis{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.th{border:1px solid var(--line);border-radius:9px;padding:14px 16px;background:#fafafe;}
+.th h4{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--eggplant);margin:0 0 7px;}
+.th p{font-size:12.5px;color:#3c3a52;margin:0;line-height:1.6;}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;}
+.kv div{border:1px solid var(--line);border-radius:8px;padding:10px 13px;font-size:12.5px;color:#3c3a52;}
+.kv b{display:block;font-family:var(--display);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7a7891;margin-bottom:3px;}
+.capgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.cap{border-radius:9px;padding:13px 15px;background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;}
+.cap b{display:block;font-family:var(--display);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:5px;}
+.cap span{font-family:var(--display);font-weight:800;font-size:16px;color:#fff;display:block;}
+.cap small{display:block;font-size:11px;color:#b9b6d6;margin-top:4px;line-height:1.45;}
+.callout{background:#fdf5e6;border:1px solid #f0d49a;border-left:4px solid #b86e00;border-radius:0 9px 9px 0;padding:14px 18px;margin-bottom:14px;}
+.callout h4{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7a4800;margin:0 0 8px;}
+.callout ul{margin:0;padding-left:17px;} .callout li{font-size:12px;color:#5a4300;margin-bottom:5px;line-height:1.5;}
+.adapt{background:#e8f7fd;border-left:4px solid var(--cyan);border-radius:0 9px 9px 0;padding:13px 17px;font-size:12.5px;color:#00506f;margin-bottom:14px;}
+.adapt b{font-family:var(--display);}
+footer{padding:18px 40px 26px;background:var(--ink);color:#9a98b4;font-size:11px;}
+footer .legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px;} footer .legend span{display:flex;align-items:center;gap:7px;color:#cbc9e0;font-weight:700;} footer .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+footer .leg-sn{background:var(--cyan);} footer .leg-n{background:var(--purple);} footer .leg-neb{background:var(--eggplant);} footer p{margin:0;line-height:1.55;}
+@media print{body{background:#fff;} .page{box-shadow:none;margin:0;max-width:none;} .cosmos,.pathway,.cap{-webkit-print-color-adjust:exact;print-color-adjust:exact;} .page+.page{page-break-before:always;}}
+@media (max-width:720px){.two-col,.thesis,.capgrid{grid-template-columns:1fr;} .swot{grid-template-columns:1fr;} .mark{position:static;text-align:left;margin-bottom:14px;} section{padding:20px;} .verdict{flex-direction:column;align-items:flex-start;padding:22px 20px;} .cosmos{padding:26px 20px;}}
+
+/* ── INTRO ── */
+.landscape-intro { font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; padding:12px 16px; background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; }
+.landscape-note  { font-size:11px; color:#aaa; font-style:italic; margin-bottom:16px; }
+
+/* ── LANDSCAPE CARDS ── */
+.ls-grid { display:flex; flex-direction:column; gap:12px; }
+.ls-card { border:1px solid #e8eaf0; border-radius:9px; overflow:hidden; background:#fafafa; }
+.ls-card-top { padding:13px 16px 10px; border-bottom:1px solid #e8eaf0; }
+.ls-card-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px; }
+.ls-name { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; }
+.ls-cat  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
+
+/* Vertical category badge colors — use exact FN vertical label */
+.ls-health   { background:rgba(69,46,128,0.1);  color:#452e80; }
+.ls-edu      { background:rgba(184,110,0,0.12); color:#7a4800; }
+.ls-home     { background:rgba(0,174,239,0.1);  color:#00709a; }
+.ls-senior   { background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+.ls-auto     { background:rgba(21,19,31,0.08);  color:#333; }
+.ls-pet      { background:rgba(102,76,169,0.1); color:#664ca9; }
+.ls-staffing { background:rgba(0,174,239,0.1);  color:#00709a; }
+.ls-tax      { background:rgba(184,110,0,0.12); color:#7a4800; }
+.ls-tech     { background:rgba(69,46,128,0.1);  color:#452e80; }
+.ls-hosp     { background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+
+.ls-why  { font-size:12.5px; color:#444; line-height:1.55; }
+.ls-card-bottom { padding:10px 16px; background:#f0eefa; display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.ls-stat { display:flex; flex-direction:column; gap:2px; }
+.ls-stat-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#888; }
+.ls-stat-val { font-size:12px; color:#15131f; font-weight:700; line-height:1.3; }
+.ls-stat-val.good { color:#1a7a4a; }
+.ls-stat-val.warn { color:#b86e00; }
+.ls-stat-val.note { color:#452e80; }
+.ls-tags { padding:8px 16px 12px; display:flex; flex-wrap:wrap; gap:6px; }
+.ls-tag  { font-size:10.5px; color:#555; background:#eeedf8; border-radius:5px; padding:3px 9px; font-family:'Montserrat',sans-serif; font-weight:700; }
+.ls-tag.sba   { color:#1a7a4a; background:#eaf6ef; }
+.ls-tag.geo   { color:#00709a; background:#e8f7fd; }
+.ls-tag.recur { color:#452e80; background:#ede9fa; }
+.ls-tag.warn  { color:#b86e00; background:#fdf5e6; }
+
+/* ── RANK BAR ── */
+.rank-bar-r1 { background:#452e80; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.rank-bar-r2,
+.rank-bar-r3,
+.rank-bar-r4,
+.rank-bar-r5,
+.rank-bar-r6 { background:#282560; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.rank-num  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; color:#fff; }
+.rank-note { font-size:10px; color:rgba(255,255,255,0.65); }
+
+
+
+/* ── ADDED: glossary, saturation banner, 5-field stats, link ── */
+.gloss{font-size:12.5px;color:#555;line-height:1.65;background:#f5f5fa;border-left:3px solid #452e80;border-radius:0 7px 7px 0;padding:14px 18px;margin-bottom:12px;}
+.gloss p{margin-bottom:8px;} .gloss p:last-child{margin-bottom:0;} .gloss strong{color:#15131f;}
+.gloss .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;font-weight:700;}
+.lg.low{color:#1a7a4a;} .lg.mod{color:#b86e00;} .lg.high{color:#b1456b;}
+.sat{display:flex;align-items:center;gap:8px;padding:6px 16px;font-size:11px;line-height:1.35;border-bottom:1px solid #e8eaf0;}
+.sat b{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+.sat i{width:9px;height:9px;border-radius:50%;flex:0 0 auto;background:currentColor;}
+.sat-low{background:#eaf6ef;color:#1a7a4a;} .sat-mod{background:#fdf5e6;color:#b86e00;} .sat-high{background:#fff0f4;color:#b1456b;}
+.sat span{color:#444;}
+.ls-card-bottom.five{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.ls-link{display:block;padding:10px 16px;border-top:1px solid #e8eaf0;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;color:#452e80;text-decoration:none;background:#fff;}
+.ls-link:hover,.ls-link:focus{color:#00709a;text-decoration:underline;}
+.ls-tag.terr{color:#15131f;background:#e1e3ee;}
+.rank-bar-own{background:linear-gradient(90deg,#00aeef,#452e80);padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.rank-bar-acq{background:#1a1340;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;}
+.fn-note{margin:0 16px 12px;padding:9px 12px;border:1px dashed #b86e00;border-radius:6px;background:#fffaf0;font-size:11.5px;color:#6b4a00;line-height:1.5;}
+.fn-note b{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-right:4px;}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px;}
+.plan-cell{border:1px solid #e8eaf0;border-radius:9px;padding:13px 15px;background:#fafafa;}
+.plan-cell h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;margin-bottom:7px;}
+.plan-cell p,.plan-cell li{font-size:12.5px;color:#444;line-height:1.55;}
+.plan-cell ul{padding-left:16px;} .plan-cell li{margin-bottom:4px;}
+.math{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;}
+.math td{padding:7px 10px;border-bottom:1px solid #e8eaf0;color:#333;}
+.math td:last-child{text-align:right;font-weight:700;color:#15131f;white-space:nowrap;}
+.math tr.hl td{background:#fdf5e6;color:#7a4800;}
+.tbl-wrap{overflow-x:auto;}
+.where{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
+.where div{border:1px solid #e8eaf0;border-radius:8px;padding:10px 12px;font-size:12px;color:#444;background:#fafafa;}
+.where b{display:block;font-family:'Montserrat',sans-serif;font-size:11px;color:#15131f;margin-bottom:3px;}
+
+.ls-card{background:#fafafa;}
+</style>
+</head>
+<body class="cls-supernova">
+
+<div class="page">
+<header class="cosmos">
+  <div class="mark"><span>BLK</span><span>GRVTY</span></div>
+  <p class="logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</p>
+  <p class="eyebrow">Candidate Readiness &middot; Internal Analysis</p>
+  <h1 class="cand-name">Terry Young</h1>
+  <p class="cand-meta">Chicago, IL &nbsp;&middot;&nbsp; <b>Founder & President, Essential Community Resources, LLC</b> &nbsp;&middot;&nbsp; Timeframe: Within 6 months &nbsp;&middot;&nbsp; Automotive</p>
+  <p class="internal-flag">For internal FN use only — do not share with candidate</p>
+  <p class="snapshot">A multi-unit builder with a real company behind him and three AutoLab sites already in motion. Readiness isn't the question — sequencing capital and confirming exactly what's been signed is.</p>
+</header>
+<div class="verdict">
+  <div class="badge"><b>NOVA</b></div>
+  <div class="verdict-text">
+    <h2>Classification: <span class="accentline">Super Nova</span></h2>
+    <p>Strong operator, highly specific plan and lender-ready credit — FN's job is capital sequencing and agreement verification, not building readiness.</p>
+    <span class="conf">Confidence &middot; Medium</span>
+  </div>
+</div>
+<section>
+  <p class="sec-label">The Two-Axis Read</p>
+  <div class="two-col">
+    <div><div class="axis-block">
+      <div class="score-ring" data-score="85"><div class="inner"><span class="num">85</span><span class="den">/ 100</span></div></div>
+      <div class="axis-copy">
+        <p class="lift-label">Readiness &amp; Potential</p>
+        <p class="lift-label" style="color:var(--eggplant);margin-top:14px;">FN Lift Required</p>
+        <div class="lift-pills" data-lift="Low"><span class="pill">Low</span><span class="pill">Moderate</span><span class="pill">High</span></div>
+        <p class="note"><b>Binding constraint: Capital.</b> Low lift on readiness, but $100–250K liquid vs. $638K–$1.58M in Item 7 costs for three new units. Staging the units closes the gap; parallel opening does not. Confidence held at Medium until agreement status is verified.</p>
+      </div>
+    </div></div>
+    <div>
+      <div class="matrix" data-readiness="Strong" data-lift="Low">
+        <div class="corner"></div><div class="col-h">Emerging</div><div class="col-h">Developing</div><div class="col-h">Strong</div>
+        <div class="row-h">High</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Moderate</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Low</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell supernova"><span class="tag">Super</span></div>
+      </div>
+      <p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+    </div>
+  </div>
+</section>
+<section>
+  <p class="sec-label">Readiness Dimensions <span style="color:#a9a7c0;font-weight:700;">(capital-free)</span></p>
+  <div class="dim"><div class="row"><b>Operator Readiness &amp; Capability</b><span>26 / 35</span></div><div class="bar"><i data-score="26" data-max="35"></i></div><small>5–9 years as founder of a mid-size contractor (11–50 employees) gives real P&amp;L, payroll and project-management depth, and he self-rates sales as Strong. The deduction is sector-specific: no hands-on experience running an automotive shop, where technician productivity and parts margin drive results.</small></div>
+  <div class="dim"><div class="row"><b>Vision, Motivation &amp; Commitment</b><span>29 / 30</span></div><div class="bar"><i data-score="29" data-max="30"></i></div><small>Among the most specific intakes we see: one brand, three named sites, a 6-month timeline and an explicit wealth- and jobs-building thesis. Minor deduction only because the "why franchise" answer leans on mission more than on system economics.</small></div>
+  <div class="dim"><div class="row"><b>Sector &amp; Multi-Unit Fit</b><span>19 / 20</span></div><div class="bar"><i data-score="19" data-max="20"></i></div><small>Automotive is a core FN vertical, 3+ units, and a manager-led model that scales. Small deduction: semi-absentee auto repair with no automotive background puts heavy weight on hiring the right GM.</small></div>
+  <div class="dim"><div class="row"><b>Coachability &amp; Ecosystem Fit</b><span>11 / 15</span></div><div class="bar"><i data-score="11" data-max="15"></i></div><small>Excellent response quality and a results-driven profile (5/5). The watch item: a strong personal vision (Vision vs. Autonomy 5/5) plus a plan to layer a workforce program onto every unit — that needs to work within AutoLab's system rather than reshape it.</small></div>
+  <p class="rubric-note">Scored on the 90-point sub-criteria rubric (24/32 · 26/27 · 17/18 · 10/13 = 77/90) and scaled per dimension to the 100-point display.</p>
+</section>
+<section>
+  <p class="sec-label">SWOT</p>
+  <div class="swot">
+    <div class="quad s"><h4>Strengths</h4><ul><li>Founder/operator of a mid-size company (11–50 employees) since 2020 — real P&amp;L, payroll and team accountability</li><li>Unusually specific plan: one brand, three named sites (Lisle, Chicago, Maywood), clear 3–5 year vision</li><li>Lender-ready profile: 750+ credit, no bankruptcy/litigation, under $2K monthly obligations</li><li>Construction &amp; rehab background de-risks site development and build-out</li><li>Workforce/community mission aligns with AutoLab's Illinois area-developer focus on economic empowerment</li></ul></div>
+    <div class="quad d"><h4>Development Areas</h4><ul><li>No direct automotive operating experience — shop management, technician productivity and parts margins are new territory</li><li>Liquid capital ($100–250K) is thin against three units in parallel</li><li>No GM / service-manager bench identified yet for a semi-absentee model</li><li>Workforce-development overlay must be designed to fit franchisor standards, not around them</li></ul></div>
+    <div class="quad o"><h4>What FN Can Unlock</h4><ul><li>Unit-by-unit capital stack: SBA 7(a) per unit, SBA 504 if real estate is involved, CDFI and municipal incentives</li><li>Acquisition-to-conversion pipeline (AutoLab conversion Item 7: $61K–$515.5K) for faster cash flow</li><li>GM recruitment and operator-readiness playbook before Unit 1 opens</li><li>Workforce funding (e.g., WIOA on-the-job-training reimbursement via local workforce boards) to offset technician wages</li><li>Independent review of AutoLab agreements, deadlines and non-compete</li></ul></div>
+    <div class="quad r"><h4>Risks to Watch</h4><ul><li><b>Unverified agreement status</b> — "acquired three franchise opportunities" could mean signed agreements, a development agreement, or reserved territories</li><li>Small, flat system: ~17 units, 0% growth over 3 years (2023 data); Illinois support runs through the area developer</li><li>Public payback estimate 5.6–7.6 yrs per unit — slower than the strongest auto-repair peers</li><li>Bandwidth: running ECR plus three openings in parallel</li><li>Referral came via AutoLab — FN guidance must stay independent of the franchisor relationship</li></ul></div>
+  </div>
+</section>
+<section>
+  <div class="two-col">
+    <div class="pathway"><p class="sec-label">Recommended Capital Pathway</p>
+      <p class="route">SBA 7(a), Staged Unit by Unit</p>
+      <p class="backup">Backup: Acquisition-conversion + CDFI / municipal incentives (SBA 504 if real estate is involved)</p>
+      <p>750+ credit, clean history and low obligations make him an easy SBA borrower for one unit. At a 10–20%+ injection, $100–250K liquid supports roughly $0.5M–$1.6M of total project cost before reserves — enough for Unit 1 and possibly Unit 2, not three new builds at once. Leading with a converted shop cuts Item 7 cost and brings cash flow on day one, which strengthens the case for Units 2–3.</p></div>
+    <div><p class="sec-label">Path to Ownership</p><ol class="roadmap"><li><b>Verify the AutoLab paper (weeks 1–2):</b> agreements, fees paid, development deadlines, territory maps, non-compete and conversion rights.</li><li><b>Pick the lead unit:</b> rank Lisle, Chicago and Maywood on site control, conversion vs. build, and demographics; screen acquisition-conversion targets.</li><li><b>Build the Unit 1 capital stack:</b> SBA 7(a) pre-qualification, equity injection, CDFI/municipal incentives; protect post-closing reserves.</li><li><b>Install the operator, then stage Units 2–3:</b> hire a GM/service manager pre-opening, launch the workforce pipeline, open subsequent units once Unit 1 is at break-even (~9–12 month spacing).</li></ol></div>
+  </div>
+</section>
+<section><p class="sec-label">Expectations Check</p>
+  <div class="expect">
+    <div class="erow"><span class="chip exp">Expects: 3 AutoLabs within 6 months</span><span class="arrow">&rarr;</span><span class="chip real">Realistic: Unit 1 in 6–12 months · all three in ~24–36 months</span></div>
+    <p><b>Why</b> A conversion can open in months; a build-out or rehab with permitting and equipment typically takes longer, and lenders will want Unit 1 performing before financing Units 2–3. His liquid capital supports staging, not a simultaneous launch.</p>
+    <p><b>On the call</b> Frame staging as the fastest way to three open units, not a delay — and anchor on whichever site can open first.</p>
+  </div>
+</section>
+<section>
+  <p class="sec-label">Recommended Next Action</p>
+  <div class="action"><b>Priority discovery call this week: verify what ECR has signed with AutoLab (agreements, fees, deadlines, non-compete), then build the Unit 1 capital stack. Treat agreement verification as a required pre-Discovery-Day item.</b></div>
+  <p class="sec-label" style="margin-top:4px;">Discovery-Call Questions</p>
+  <ul class="qs"><li>What exactly has ECR signed with AutoLab — three franchise agreements, a development agreement, or reserved territories — and what are the opening deadlines?</li><li>For each site, do you have site control, and is it a conversion of an existing shop or a build/rehab?</li><li>Who will run day-to-day operations? Have you identified a GM or lead technician with shop-management experience?</li><li>How much of the $100–250K liquid is personal vs. ECR, and has a lender pre-qualified you for any unit yet?</li></ul>
+</section>
+<section style="border-bottom:none;">
+  <p class="sec-label">Data Gaps to Resolve</p>
+  <div class="gaps"><span class="g req">⚑ Status of AutoLab agreements (signed / ADA / reserved)</span><span class="g req">⚑ Opening deadlines under development schedule</span><span class="g req">⚑ Site control at Lisle, Chicago, Maywood</span><span class="g">Build vs. conversion per site</span><span class="g">Personal vs. ECR capital split</span><span class="g">Lender pre-qualification status</span><span class="g">GM / operator identified</span><span class="g">AutoLab non-compete scope</span><span class="g">ECR ownership structure / franchisee entity</span><span class="g">Only one sector selected</span></div>
+  <p class="rubric-note" style="margin-top:10px;">⚑ = required pre-Discovery-Day verification</p>
+</section>
+<footer>
+  <div class="legend"><span><i class="leg-sn"></i>SuperNova &mdash; ready, move fast</span><span><i class="leg-n"></i>Nova &mdash; strong potential, real FN lift</span><span><i class="leg-neb"></i>Nebula &mdash; not yet, door stays open</span></div>
+  <p>Generated by the Franchise Nova intake system &middot; A BLK GRVTY initiative. Bands reflect operational posture, not candidate worth.</p>
+</footer>
+</div>
+
+<div class="page">
+<header class="cosmos p2">
+  <div class="mark"><span>BLK</span><span>GRVTY</span></div>
+  <p class="logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</p>
+  <p class="eyebrow">Discovery Day Prep &middot; Internal</p>
+  <h1 class="cand-name" style="font-size:32px;">Terry Young</h1>
+  <p class="cand-meta">essentialcommunityresourcesllc@gmail.com &nbsp;&middot;&nbsp; <b>Chicago, IL 60612</b> &nbsp;&middot;&nbsp; Source: referred via AutoLab</p>
+</header>
+<section>
+  <p class="sec-label">Professional Background</p>
+  <p class="p2-text">Chicago-born entrepreneur and community leader. Founder and owner of Essential Community Resources, LLC (est. 2020), a Chicago-area general contracting and community-services company (mid-size, 11–50 employees). Experience spans construction and rehabilitation, property services, project management, business development, strategic partnerships, and workforce development connecting underserved residents to training and employment. Leadership philosophy: turn ideas into sustainable businesses and use entrepreneurship as a vehicle for economic mobility.</p>
+</section>
+<section>
+  <p class="sec-label">Investment Thesis</p>
+  <div class="thesis">
+    <div class="th"><h4>Why franchise ownership</h4><p>AutoLab combines a proven automotive service model with ECR's strengths in construction, business development and workforce development. Sees repair as essential, consistent-demand work, with the technician shortage as a career-pathway opportunity. Each location to include a workforce component.</p></div>
+    <div class="th"><h4>Success in 3–5 years</h4><p>Three financially strong, operationally mature AutoLabs (Lisle, Chicago, Maywood); a replicable training-to-employment model; strong management infrastructure, financial systems and commercial/fleet relationships; capacity to add locations or complementary automotive businesses.</p></div>
+    <div class="th"><h4>Day-to-day involvement</h4><p>Semi-absentee with a manager. No GM or service manager identified in intake — the single most important hire for this model.</p></div>
+    <div class="th"><h4>Capital thinking</h4><p>SBA loan. Wants FN help with site development, construction financing, working capital and staffing — implying at least some sites need build-out or rehab beyond AutoLab's leased-site Item 7 assumptions.</p></div>
+  </div>
+</section>
+<section>
+  <p class="sec-label">Franchise Research &amp; Geography</p>
+  <div class="kv">
+    <div><b>Systems researched</b>AutoLab only (selected); open to complementary automotive concepts with sound unit economics</div>
+    <div><b>Target geography · Units</b>ChicagoLand area · 3+ (Lisle, Chicago, Maywood)</div>
+    <div><b>Brand stage · Seasonality</b>Open to Both · Year-Round Operation</div>
+    <div><b>Existing franchise ownership</b>States ECR "has acquired three AutoLab franchise opportunities" — status unverified (see ⚑ gaps)</div>
+    <div><b>Acquisition interest</b>Yes — acquisition sections included below and in the candidate landscape</div>
+    <div><b>Referral source</b>AutoLab (Illinois area developer WLF Holdings recruits minority investors) — keep FN guidance independent</div>
+  </div>
+</section>
+<section>
+  <p class="sec-label">Capital Profile</p>
+  <div class="capgrid">
+    <div class="cap"><b>Liquid Capital</b><span>$100K–$250K</span><small>Personal vs. ECR split unknown</small></div>
+    <div class="cap"><b>Net Worth</b><span>$500K–$1M</span><small>Meets typical auto-repair NW thresholds</small></div>
+    <div class="cap"><b>Credit Range</b><span>750+</span><small>No bankruptcy/litigation; &lt;$2K/mo obligations</small></div>
+    <div class="cap"><b>SBA Potential</b><span>Strong</span><small>Clean profile; no auto operating history is the lender question</small></div>
+    <div class="cap"><b>Ownership Model</b><span>Semi-Absentee</span><small>With a manager — GM not yet identified</small></div>
+    <div class="cap"><b>Total Accessible Capital</b><span>~$0.5M–$1.6M</span><small>Project capacity at 10–20%+ injection, before reserves — vs. $638K–$1.58M for 3 new units</small></div>
+  </div>
+</section>
+<section>
+  <p class="sec-label">Suggested Discovery Call Questions</p>
+  <ol class="roadmap"><li>What exactly has ECR signed with AutoLab — three franchise agreements, a development agreement, or reserved territories — and what are the opening deadlines?</li><li>For each site, do you have site control, and is it a conversion of an existing shop or a build/rehab?</li><li>Who will run day-to-day operations? Have you identified a GM or lead technician with shop-management experience?</li><li>How much of the $100–250K liquid is personal vs. ECR, and has a lender pre-qualified you for any unit yet?</li><li>How will the workforce-development component run inside AutoLab's operating standards — partners, funding, and franchisor approval?</li><li>Who leads ECR's construction business while you open three shops, and how much of your week goes to AutoLab?</li></ol>
+</section>
+<section>
+  <p class="sec-label">Franchise Landscape — Internal Version</p>
+  <div class="adapt"><b>Pipeline adaptation:</b> Candidate is an existing AutoLab franchisee-in-development seeking multi-unit build-out, not evaluating new systems. Per precedent, the landscape leads with brand-specific AutoLab territory, footprint and capital-readiness content, then lists complementary (non-competing) Automotive systems. Only six systems survive the existing-ownership, sector and B2C filters combined — Maaco is included with explicit cautions to reach the six-system minimum.</div>
+  <div class="callout"><h4>Saturation &amp; exclusion list</h4><ul><li><b>Auto-Lab Complete Car Care</b> — candidate already holds three AutoLab opportunities (existing ownership; treated as the committed system, not ranked).</li><li><b>Direct competitors of existing ownership</b> (same vertical, same repair/maintenance service model, same retail car-owner customer): Meineke, Midas, Christian Brothers Automotive, Car-X, Precision Tune Auto Care, All Tune Total Car Care, Tuffy, Honest-1, Tire Pros, Big O Tires, AAMCO, Mr. Transmission/Milex, Speedy Auto Service.</li><li><b>Quick-lube brands</b> (Take 5, Valvoline Instant Oil Change, Jiffy Lube, Grease Monkey) — compete with AutoLab's maintenance work and with AutoLab's own Express format; only Auto-Lab Express kept (same franchisor, no brand conflict).</li><li><b>Outside the Automotive vertical definition</b> (appearance/styling, discretionary): Tint World, Ziebart, Black Optix Tint.</li><li><b>B2B-primary</b> (Automotive is a consumer-facing vertical → B2C only): SuperGlass Windshield Repair (fleet/dealer focus, ~$67K AUV), DuraFleet.</li><li><b>Saturated at one site:</b> CARSTAR already covers Chicago's West Side (Babbsco near 60607; UCar on S. Kedzie) — kept for Lisle/Maywood only.</li><li><b>Dropped during research:</b> Abra Auto Body &amp; Glass — conflicting public data on ownership and unit counts could not be reconciled. Corporate consolidators (Caliber, Gerber, Crash Champions) — not franchised.</li><li><b>Kept with caution:</b> Maaco — network contraction (398 → 363 units, 2022–2024), 3-unit minimum, and a reported owner-operator requirement.</li></ul>
+  <p style="font-size:11.5px;color:#5a4300;margin:8px 0 0;"><b>Non-compete note:</b> Any second brand must clear AutoLab's in-term non-compete. Driven Brands (CARSTAR, Maaco, Fix Auto USA) also owns Meineke and Take 5; Fix Network (NOVUS, ProColor) also franchises Speedy Auto Service — sibling-brand carve-outs apply.</p></div>
+  
+<div class="gloss">
+  <p><strong>Est. Investment</strong> = total cost to open one location (franchise fee + build-out + equipment + working capital) — not what you earn.</p>
+  <p><strong>B2C</strong> = your customers are individual consumers. <strong>B2B</strong> = your customers are other businesses.</p>
+  <p><strong>Territory Protection</strong> — Most franchise agreements grant a 'protected' or 'exclusive' territory. In plain terms: this stops the franchisor from opening another location of the same brand near you. It does not stop a different brand, or an independent business, from opening nearby — no franchise agreement can do that. Some agreements also carve out exceptions even within your territory (online sales, national accounts, other brands under the same parent company). We've noted what's publicly known for each system below; always confirm the exact terms with the franchisor.</p>
+  <p><strong>Market Saturation</strong> — A measure of how crowded a market already is, and how much of the local customer base a new location would need to capture just to break even. It matters most for businesses people visit out of habit or convenience — too many similar options nearby make it hard for any one location to stand out. It matters far less for businesses where customers are referred through an event, like an insurance claim after storm damage.</p>
+  <p class="legend"><span class="lg low">&#9679; Low — demand isn't driven by nearby competition</span> <span class="lg mod">&#9679; Moderate — some competitive pressure, but manageable</span> <span class="lg high">&#9679; High — a crowded, competitive category; go in with eyes open</span></p>
+  <p><strong>Revenue Type</strong> — Whether a location earns from the same customers coming back (recurring) or from a steady stream of new, one-time jobs (one-time/project). Recurring sounds better on paper, but it isn't automatically the safer bet — it often comes with more upfront equipment and real estate, which takes longer to earn back.</p>
+  <p><strong>Payback Period</strong> — How long it typically takes an owner to earn back their total investment, based on public estimates from each system's own disclosed costs and earnings. This is different from break-even, which is when a location starts turning a monthly profit — a location can be profitable month-to-month within a year and still take five more years to pay back what it cost to open. We've included public payback estimates below because they're one of the clearest ways to compare systems apples-to-apples.</p>
+</div>
+  <p class="sec-label" style="margin-top:18px;">Committed System — AutoLab</p>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-own"><span class="rank-num">YOUR COMMITTED SYSTEM</span><span class="rank-note">Three locations planned: Lisle · Chicago · Maywood</span></div>
+      <div class="sat sat-mod"><i></i><b>Saturation risk · Moderate</b><span>Need-driven repair demand, but general repair is a crowded, fragmented category</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Auto-Lab Complete Car Care Centers</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Full-service diagnostic repair &amp; maintenance.</strong> AutoLab is a full-service diagnostic repair and maintenance brand, and your three planned locations in Lisle, Chicago and Maywood would be the brand's first presence on the west side of the metro. Its costs to open are lower than most repair franchises, but it's a small network that hasn't grown in recent years, so much of your support will come through the Illinois area developer.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val note">$212,750–$526,500 (new) · $61,000–$515,500 (conversion)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring (repeat maintenance visits)</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val">5.6–7.6 yrs (VettedBiz; based on an earlier, higher cost range)</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty / Brand Fund</span><span class="ls-stat-val">6% + 3% · reported avg. revenue ~$916K</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~17–19 units; flat over 3 yrs (2023 data)</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Territory: protected — confirm exact scope directly with the franchisor</span><span class="ls-tag ">Illinois area developer: WLF Holdings</span><span class="ls-tag ">SBA-eligible category</span><span class="ls-tag warn">Manager-led: confirm with franchisor</span></div>
+      
+      <a class="ls-link" href="https://www.autolabusa.com/franchising/steps-to-open/" target="_blank" rel="noopener">→ Auto-Lab Complete Car Care Centers franchise information</a>
+    </div></div>
+  <div class="fn-note" style="margin:12px 0 0;"><b>FN Note for Nova Guide</b>AutoLab's own data raises two cautions to discuss openly: system size is flat (~17 units, 0% over 3 years), and the public payback estimate (5.6–7.6 yrs) is materially longer than top auto-repair peers (e.g., Christian Brothers at 2.5–4.5 yrs — a competitor, cited for context only). Item 7 leasehold improvements are only $8K–$64K, so any ground-up or major-rehab site will exceed published ranges. Existing IL units: Kankakee, New Lenox, Auto-Lab Express Park Forest — all south; his sites would be the brand's first west-side/DuPage presence, meaning low local brand awareness.</div>
+  <p class="sec-label" style="margin-top:22px;">Complementary Systems — Ranked</p>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Lowest capital · strongest fit alongside your AutoLab bays</span></div>
+      <div class="sat sat-mod"><i></i><b>Saturation risk · Moderate</b><span>Demand is chip-, crack- and insurance-claim-driven, but one national brand dominates insurer referrals</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">NOVUS Glass</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Auto glass repair, replacement &amp; ADAS calibration.</strong> You'd add windshield repair, replacement and camera recalibration — work your AutoLab customers already need and that you'd otherwise send elsewhere. It's the lowest-cost option here and can run from a fixed site or mobile vans working out of your shops. Revenue per location is modest, so it works best as a bolt-on to your platform rather than a standalone bet.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val note">$90,000–$284,690 (fixed) · $69,500–$169,490 (mobile)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div><div class="ls-stat"><span class="ls-stat-label">Avg. Revenue / Royalty</span><span class="ls-stat-val">~$422K (2024 FDD) · 6% + 2%</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~123 US units</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Exclusive territory rights offered across Fix Network brands — confirm exact scope directly with the franchisor</span><span class="ls-tag geo">Chicagoland availability: verify</span><span class="ls-tag recur">Referral &amp; insurance demand</span><span class="ls-tag ">Mobile option</span><span class="ls-tag ">Low-capital bolt-on</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Lowest capital entry on the list and the tightest operational fit: glass + ADAS calibration is a natural referral loop with AutoLab mechanical bays, and a mobile unit can be dispatched from ECR's AutoLab sites. Fix Network parent also franchises Speedy Auto Service (a mechanical competitor) — confirm no conflict with AutoLab's non-compete.</div>
+      <a class="ls-link" href="https://www.novusfranchising.com/autoglass-repair-franchise/" target="_blank" rel="noopener">→ NOVUS Glass franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">Only recurring model · keeps you inside one brand</span></div>
+      <div class="sat sat-high"><i></i><b>Saturation risk · High</b><span>Quick lube is a mature, convenience-driven category with dense national-brand competition</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Auto-Lab Express</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Express oil change &amp; quick maintenance.</strong> This is AutoLab's own quick-lube format — fast oil changes and light maintenance that bring the same customers back every few months and can feed repair work to your full-service shops. It's the only recurring-revenue option here and stays inside the brand you've already chosen. The honest caveat: there's essentially one open location today, so there's no operating track record or public payback data to lean on yet.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val note">$145,750–$344,500 (2023 FDD)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">6% of gross sales</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">1 location (Park Forest, IL)</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Territory: protected — confirm exact scope directly with the franchisor</span><span class="ls-tag geo">First-mover: west Chicagoland</span><span class="ls-tag recur">Recurring customer visits</span><span class="ls-tag ">Same franchisor as AutoLab</span><span class="ls-tag warn">Unproven format</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Only recurring-revenue option; no brand conflict because it's the same franchisor. But High saturation (Jiffy Lube, Valvoline, Take 5 are dense in Chicagoland) and effectively zero franchised operating history (one Park Forest location; 0 franchised units in 2023 FDD data) — not ranked #1 despite the recurring-revenue weight. Only sensible after Units 1–3 are stable.</div>
+      <a class="ls-link" href="https://www.autolabusa.com/franchising/steps-to-open/" target="_blank" rel="noopener">→ Auto-Lab franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Light fees · first-mover in Illinois · fits an acquisition</span></div>
+      <div class="sat sat-mod"><i></i><b>Saturation risk · Moderate</b><span>Demand comes from insurance claims, not foot traffic — but national consolidators control a growing share of insurer referrals</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">ProColor Collision</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Collision repair (conversion model).</strong> ProColor converts established independent body shops, so it pairs naturally with buying an existing collision business rather than building one. Its fee structure is among the lightest in collision, and it has no Illinois presence yet. It's a younger U.S. system, so ask for current unit counts and how many shops have opened and stayed open.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val note">$38,300–$199,500 (conversion) · $316,800–$3.13M (new)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty / Brand Fund</span><span class="ls-stat-val">3% (min. $2,000/mo) + 0.75%</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~30–41 US units (2025)</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Exclusive territory rights offered across Fix Network brands — confirm exact scope directly with the franchisor</span><span class="ls-tag geo">No Illinois units — first-mover</span><span class="ls-tag recur">Insurance-referral demand</span><span class="ls-tag ">Fits acquisition path</span><span class="ls-tag warn">Newer U.S. system</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Best acquisition-conversion match: buy an independent body shop (see DuPage listing below), convert for $38K–$200K. 3% royalty (greater of $2,000/mo) is well below the 5–9% category norm. Young US system (~30–41 units) with no IL presence — first-mover, but thin local support. Conversion model generally assumes an experienced operator is already in place.</div>
+      <a class="ls-link" href="https://www.fixnetwork.com/en/franchise-opportunities/" target="_blank" rel="noopener">→ ProColor Collision (Fix Network) franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r4"><span class="rank-num">RANK 4</span><span class="rank-note">Scale &amp; insurer relationships · suburban fit</span></div>
+      <div class="sat sat-mod"><i></i><b>Saturation risk · Moderate</b><span>Insurance-claim demand, but a crowded field of consolidators and branded networks</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">CARSTAR</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Collision repair network.</strong> CARSTAR is one of the largest collision networks in North America, with strong insurer relationships and high average revenue per shop. It already has locations on Chicago's West Side, so the fit is in your suburban markets rather than the city. CARSTAR says it wants hands-on operators or strong business managers, so ask directly how it views a manager-led, multi-unit owner.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val warn">$298,200–$804,300</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div><div class="ls-stat"><span class="ls-stat-label">Avg. Revenue (est.)</span><span class="ls-stat-val">~$2.27M per shop</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~416 US franchisees (+8%)</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Protected area against other CARSTAR shops; sibling Driven Brands shops not restricted — confirm</span><span class="ls-tag geo">City covered — suburbs to verify</span><span class="ls-tag recur">Insurance-referral demand</span><span class="ls-tag ">Growing network</span><span class="ls-tag warn">Owner involvement: confirm</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Chicago West Side is already covered (CARSTAR Babbsco near 60607; CARSTAR UCar on S. Kedzie) — kept for Lisle/Maywood corridors only. Mostly conversion-based. Driven Brands parent also owns Meineke and Take 5 (direct AutoLab competitors) — sibling-brand carve-outs and any AutoLab non-compete need review. Growth +8% (416 franchisees).</div>
+      <a class="ls-link" href="https://www.drivenbrands.com/franchise/" target="_blank" rel="noopener">→ CARSTAR (Driven Brands) franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r5"><span class="rank-num">RANK 5</span><span class="rank-note">Low royalty · strongest via acquisition</span></div>
+      <div class="sat sat-mod"><i></i><b>Saturation risk · Moderate</b><span>Insurance-claim demand in a consolidating collision market</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Fix Auto USA</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Collision repair network.</strong> Fix Auto brings independent body shops under one brand with shared insurer programs and purchasing power, at a low royalty. There are Fix Auto shops in the northwest and far-west suburbs, but none found near Lisle or Maywood. It typically recruits established, high-performing shops, so it's most realistic if you acquire a strong existing body shop first.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val warn">$55,100–$850,000 (conversion)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty / Avg. Revenue</span><span class="ls-stat-val">3% · ~$2.39M (est.)</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~178–212 US units</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Exclusive defined area — confirm exact scope directly with the franchisor</span><span class="ls-tag geo">No units found in Lisle or Maywood</span><span class="ls-tag recur">Insurance-referral demand</span><span class="ls-tag ">Low royalty</span><span class="ls-tag ">Best after an acquisition</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Invitation-oriented conversion model for market-leading operators — only realistic post-acquisition. IL locations: Barrington, Chicago, Crystal Lake, Elgin, Skokie, St. Charles, Countryside (Countryside is ~10 mi from Lisle). Driven Brands family — same sibling-brand and non-compete questions as CARSTAR.</div>
+      <a class="ls-link" href="https://www.drivenbrands.com/franchise/" target="_blank" rel="noopener">→ Fix Auto USA (Driven Brands) franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r6"><span class="rank-num">RANK 6</span><span class="rank-note">Clearest payback data · real cautions</span></div>
+      <div class="sat sat-mod"><i></i><b>Saturation risk · Moderate</b><span>Collision and paint demand is event-driven, but the category is consolidating</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Maaco</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Collision repair &amp; auto painting.</strong> Maaco is the best-known name in affordable paint and collision, and it has the clearest public payback estimate on this list. Two cautions to weigh plainly: the network has been shrinking in recent years, and its combined royalty and weekly marketing fees are among the highest in the category. It also currently asks new owners to commit to at least three centers.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open — not earnings)</span><span class="ls-stat-val warn">$196K–$644K (conversion) · $728.5K–$3.99M (ground-up)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div><div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val">4–6 yrs (FranchiseInvestorData)</span></div><div class="ls-stat"><span class="ls-stat-label">Median Revenue / Fees</span><span class="ls-stat-val">$1.35M (FY2024) · 8% + $1,200/wk</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">363 US units (down from 398)</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Territory: protected — confirm exact scope directly with the franchisor</span><span class="ls-tag geo">Verify west-suburb availability</span><span class="ls-tag recur">Insurance-referral demand</span><span class="ls-tag warn">Shrinking network</span><span class="ls-tag warn">3-center minimum</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Kept only because it has the best public payback data (4–6 yrs) — but: unit count fell from 398 (2022) to 363 (2024) with closures outpacing openings; 8% royalty + $1,200/wk marketing; 3-unit minimum commitment; at least one source lists owner-operator required (conflicts with semi-absentee model). SBA default rate 3.0% (FranchiseInvestorData). Treat as a benchmark more than a recommendation.</div>
+      <a class="ls-link" href="https://maacofranchise.com/" target="_blank" rel="noopener">→ Maaco franchise information</a>
+    </div></div>
+</section>
+<section style="border-bottom:none;">
+  <p class="sec-label">Acquisition Opportunities</p>
+  <p class="p2-text" style="margin-bottom:12px;">Researched from BizBuySell listing summaries (September 2026); no qualifying DealStream, BizQuest or LoopNet listings surfaced in the target corridors during research. Prices shown are as displayed in public summaries — several listings show inconsistent figures across pages. <b>Listings change daily — verify every item before discussing.</b></p>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-acq"><span class="rank-num">OPPORTUNITY 1</span><span class="rank-note">Independent · via BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Long-Standing Independent Auto Repair Business</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Existing business.</strong> An established independent repair shop in the western suburbs. A business like this could become one of your AutoLab locations through AutoLab's lower-cost conversion path — with customers and technicians already in place.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">DuPage County, IL (western suburbs)</span></div><div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">30+ years</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Mechanical repair &amp; maintenance — repeat customers</span></div><div class="ls-stat"><span class="ls-stat-label">Asking Price (public)</span><span class="ls-stat-val note">Confirm asking price on listing</span></div><div class="ls-stat"><span class="ls-stat-label">Type</span><span class="ls-stat-val">Independent</span></div><div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">None stated in listing summary</span></div><div class="ls-stat"><span class="ls-stat-label">Source Platform</span><span class="ls-stat-val">BizBuySell</span></div></div>
+      <div class="ls-tags"><span class="ls-tag warn">Listings change daily — verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Top acquisition-conversion candidate for the Lisle unit (AutoLab conversion Item 7: $61K–$515.5K). Confirm AutoLab approves conversion of an acquired shop against ECR's reserved sites.</div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-acq"><span class="rank-num">OPPORTUNITY 2</span><span class="rank-note">Independent · via BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Auto Body &amp; Collision Repair Shop</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Existing business.</strong> A fully equipped collision shop in the western suburbs. A shop like this is exactly what conversion-model collision brands look for, and it would add body work alongside your AutoLab mechanical service.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">DuPage County, IL (western suburbs)</span></div><div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">20+ years at same location</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val note">Collision repair — insurance-referral jobs</span></div><div class="ls-stat"><span class="ls-stat-label">Asking Price (public)</span><span class="ls-stat-val note">Listed ~$175K–$225K (listing shows both) · cash flow ~$118K</span></div><div class="ls-stat"><span class="ls-stat-label">Type</span><span class="ls-stat-val">Independent</span></div><div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Price change suggests seller flexibility — verify</span></div><div class="ls-stat"><span class="ls-stat-label">Source Platform</span><span class="ls-stat-val">BizBuySell</span></div></div>
+      <div class="ls-tags"><span class="ls-tag warn">Listings change daily — verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Pairs with ProColor/CARSTAR/Fix Auto conversion. Two different asking prices appear across BizBuySell pages — likely a reduction; confirm current price and whether real estate is included.</div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-acq"><span class="rank-num">OPPORTUNITY 3</span><span class="rank-note">Franchise resale · via BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Established Auto Repair Franchise (Resale)</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Existing business.</strong> A long-running repair franchise on a busy street, with the owner relocating. Because it carries another brand, you'd need to confirm whether it could be converted — and whether your AutoLab agreement permits the purchase.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Western Chicagoland suburbs</span></div><div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">~30 years</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val good">Repair &amp; maintenance — drive-by and repeat traffic</span></div><div class="ls-stat"><span class="ls-stat-label">Asking Price (public)</span><span class="ls-stat-val note">Listed ~$319K · cash flow ~$144K (confirm)</span></div><div class="ls-stat"><span class="ls-stat-label">Type</span><span class="ls-stat-val">Franchise resale</span></div><div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Owner relocating</span></div><div class="ls-stat"><span class="ls-stat-label">Source Platform</span><span class="ls-stat-val">BizBuySell</span></div></div>
+      <div class="ls-tags"><span class="ls-tag warn">Listings change daily — verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Likely a competing brand (Midas/Meineke/Car-X type) — buying it as-is would almost certainly breach AutoLab's non-compete; only viable if the existing franchise can be exited and the site converted to AutoLab. Motivated seller.</div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-acq"><span class="rank-num">OPPORTUNITY 4</span><span class="rank-note">Independent · via BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Established Auto Repair Business</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Existing business.</strong> A well-reviewed independent shop in the Chicago market. Worth comparing against building your city location from scratch — confirm the neighborhood relative to your planned Chicago site.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div><div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Established (years not stated)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val note">Repair, maintenance &amp; performance work</span></div><div class="ls-stat"><span class="ls-stat-label">Asking Price (public)</span><span class="ls-stat-val note">Listed ~$450K · cash flow ~$189K (confirm)</span></div><div class="ls-stat"><span class="ls-stat-label">Type</span><span class="ls-stat-val">Independent</span></div><div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">None stated in listing summary</span></div><div class="ls-stat"><span class="ls-stat-label">Source Platform</span><span class="ls-stat-val">BizBuySell</span></div></div>
+      <div class="ls-tags"><span class="ls-tag warn">Listings change daily — verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Possible substitute for a build-out at the Chicago site. Location within the city not disclosed in the summary.</div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-acq"><span class="rank-num">OPPORTUNITY 5</span><span class="rank-note">Independent · via BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">6-Bay Mechanic Shop with Real Estate</div><span class="ls-cat ls-auto">Automotive</span></div>
+        <p class="ls-why"><strong>B2C · Existing business.</strong> A six-bay shop sold with its building. Owning the real estate changes the financing picture — it can support a real-estate loan and removes rent — but it raises the upfront cost.</p>
+      </div>
+      <div class="ls-card-bottom five"><div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div><div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Not stated</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val note">Mechanical repair facility</span></div><div class="ls-stat"><span class="ls-stat-label">Asking Price (public)</span><span class="ls-stat-val note">Listed ~$520K incl. real estate (confirm)</span></div><div class="ls-stat"><span class="ls-stat-label">Type</span><span class="ls-stat-val">Independent</span></div><div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">None stated in listing summary</span></div><div class="ls-stat"><span class="ls-stat-label">Source Platform</span><span class="ls-stat-val">BizBuySell</span></div></div>
+      <div class="ls-tags"><span class="ls-tag warn">Listings change daily — verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b>Real-estate-included path → SBA 504 conversation. Useful comparison for ECR's construction/rehab plans.</div>
+    </div></div>
+  <p class="sec-label" style="margin-top:18px;">Where to Search</p>
+  
+<div class="where">
+  <div><b>BizBuySell</b>Largest general marketplace — filter Illinois › Auto Repair &amp; Service Shops.</div>
+  <div><b>BizQuest</b>Additional independent-shop listings, often broker-posted.</div>
+  <div><b>DealStream</b>Useful for larger or multi-location automotive deals.</div>
+  <div><b>LoopNet</b>Auto-service buildings and bays for lease or sale — for real-estate-led options.</div>
+  <div><b>Franchisor resale desks</b>Ask AutoLab and any collision brand about shops open to conversion.</div>
+</div>
+</section>
+<footer>
+  <p>Franchise Nova &middot; A BLK GRVTY Initiative &middot; Internal analysis for Terry Young &middot; 2026. Public information only — no FDDs reviewed.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+document.querySelectorAll('.score-ring[data-score]').forEach(function(r){var v=parseFloat(r.getAttribute('data-score'))||0;r.style.setProperty('--pct',Math.max(0,Math.min(100,v)));});
+document.querySelectorAll('.bar i[data-score]').forEach(function(b){var s=parseFloat(b.getAttribute('data-score'))||0,m=parseFloat(b.getAttribute('data-max'))||1;b.style.width=Math.round(s/m*100)+'%';});
+document.querySelectorAll('.lift-pills[data-lift]').forEach(function(p){var w=(p.getAttribute('data-lift')||'').trim().toLowerCase();p.querySelectorAll('.pill').forEach(function(pl){if(pl.textContent.trim().toLowerCase()===w)pl.classList.add('on');});});
+var badge=document.querySelector('.badge b');if(badge){if(document.body.classList.contains('cls-supernova'))badge.textContent='SUPER';else if(document.body.classList.contains('cls-nebula'))badge.textContent='NEBULA';else badge.textContent='NOVA';}
+var mx=document.querySelector('.matrix[data-readiness]');if(mx){var col={emerging:0,developing:1,strong:2}[(mx.getAttribute('data-readiness')||'').trim().toLowerCase()];var row={high:0,moderate:1,low:2}[(mx.getAttribute('data-lift')||'').trim().toLowerCase()];if(col!=null&&row!=null){var c=mx.querySelectorAll('.cell')[row*3+col];if(c){c.classList.add('here');var d=document.createElement('span');d.className='dot';c.appendChild(d);}}}
+})();
+</script>
+</body>
+</html>
