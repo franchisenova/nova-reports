@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="fn-system" content="RISE Modern Wellness">
+<meta name="system-name" content="RISE Modern Wellness">
+<title>RISE Modern Wellness — FDD &amp; Unit P&amp;L Analysis | Franchise Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1b2140;--navy-2:#262d55;--gold:#b8860b;--gold-soft:#f6efdc;
+  --ink:#1d2230;--muted:#5d6475;--line:#e3e1da;--paper:#fbfaf7;--card:#ffffff;
+  --green:#1a7a4a;--green-bg:#e9f5ee;--amber:#a86400;--amber-bg:#fcf3e2;--red:#a8324f;--red-bg:#fbecf0;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Lato,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.6}
+h1,h2,h3,h4{font-family:Poppins,"Helvetica Neue",Arial,sans-serif;line-height:1.25;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+/* Hero */
+.hero{background:linear-gradient(135deg,#141936 0%,var(--navy) 45%,#2e3566 100%);color:#fff;padding:48px 0 56px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(184,134,11,.35)}
+.wordmark{font-family:Poppins,sans-serif;font-weight:700;letter-spacing:.18em;font-size:13px;color:var(--gold)}
+.wordmark span{color:#fff;opacity:.7;font-weight:500;letter-spacing:.08em;margin-left:10px}
+.hero h1{font-size:clamp(28px,4.4vw,44px);font-weight:600;margin:28px 0 10px;max-width:760px}
+.hero p.sub{color:#cfd3e6;max-width:680px;margin:0}
+.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-top:36px}
+.score-ring{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--gold) 0 55%,rgba(255,255,255,.12) 55% 100%);display:grid;place-items:center}
+.score-ring>div{width:122px;height:122px;border-radius:50%;background:var(--navy);display:grid;place-items:center;text-align:center}
+.score-ring b{font-family:Poppins;font-size:40px;display:block;line-height:1}
+.score-ring small{color:#cfd3e6;font-size:12px}
+.hero-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.fact{border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 14px}
+.fact small{display:block;color:#aab0cc;font-size:12px}
+.fact b{font-family:Poppins;font-weight:600;font-size:17px}
+/* Sections */
+section{padding:44px 0 8px}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.badge-num{width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:Poppins;font-weight:600;display:grid;place-items:center;font-size:14px;flex:none}
+.sec-head h2{font-size:24px;font-weight:600;color:var(--navy)}
+.lede{color:var(--muted);max-width:760px;margin:0 0 20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.pill{display:inline-block;font-family:Poppins;font-size:12px;font-weight:600;padding:3px 11px;border-radius:999px;white-space:nowrap}
+.g{background:var(--green-bg);color:var(--green)}.a{background:var(--amber-bg);color:var(--amber)}.r{background:var(--red-bg);color:var(--red)}.n{background:#eceef4;color:var(--muted)}
+.verdict{border-left:4px solid var(--gold);background:var(--gold-soft)}
+.verdict h3{font-size:19px;color:var(--navy);margin-bottom:8px}
+.verdict p{margin:0 0 10px}.verdict p:last-child{margin:0}
+/* Score dims */
+.dim{display:grid;grid-template-columns:1fr 90px;gap:6px 16px;padding:14px 0;border-top:1px solid var(--line)}
+.dim:first-of-type{border-top:0}
+.dim h4{font-size:15px;font-weight:600}
+.dim .pts{text-align:right;font-family:Poppins;font-weight:600;color:var(--navy)}
+.bar{grid-column:1/-1;height:8px;background:#eeede8;border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);border-radius:6px}
+.dim p{grid-column:1/-1;margin:2px 0 0;color:var(--muted);font-size:14.5px}
+/* Accordion */
+details.item{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+details.item summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:92px 1fr auto 18px;gap:14px;align-items:center;padding:15px 20px}
+details.item summary::-webkit-details-marker{display:none}
+summary .ino{font-family:Poppins;font-weight:600;color:var(--gold);font-size:13px}
+summary .ititle{font-family:Poppins;font-weight:500;color:var(--navy)}
+summary .ititle small{display:block;font-family:Lato;color:var(--muted);font-weight:400;font-size:14px}
+summary .chev{transition:transform .2s;color:var(--muted)}
+details[open] summary .chev{transform:rotate(90deg)}
+.ibody{padding:0 20px 18px 126px;color:var(--ink);font-size:15px}
+.ibody ul{margin:6px 0 0;padding-left:18px}.ibody li{margin-bottom:5px}
+@media (max-width:640px){details.item summary{grid-template-columns:1fr auto 14px}summary .ino{grid-column:1/-1}.ibody{padding:0 20px 18px}}
+/* Tables */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{font-family:Poppins;font-weight:600;font-size:12.5px;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--navy)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:700;border-top:2px solid var(--navy);background:#f7f6f1}
+tr.sub td{color:var(--muted);font-size:13.5px}
+/* KPI */
+.kpi small{display:block;color:var(--muted);font-size:13px}
+.kpi b{font-family:Poppins;font-size:26px;font-weight:600;color:var(--navy);display:block;line-height:1.2;margin:4px 0}
+.kpi span{font-size:13.5px;color:var(--muted)}
+/* Cost bars */
+.cost{display:grid;grid-template-columns:170px 1fr 56px;gap:10px;align-items:center;margin:8px 0;font-size:14.5px}
+.cost .track{height:14px;background:#eeede8;border-radius:4px;overflow:hidden}
+.cost .track i{display:block;height:100%;background:var(--navy)}
+.cost .track i.zor{background:var(--gold)}
+.cost .v{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.cost{grid-template-columns:120px 1fr 48px}}
+.note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);padding-left:12px;margin-top:12px}
+.flag{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.flag:first-child{border-top:0}
+.flag p{margin:0}.flag b{color:var(--navy)}
+.check h4{font-size:15px;color:var(--navy);margin-bottom:8px}
+.check ul{margin:0;padding-left:18px}.check li{margin-bottom:6px;font-size:15px}
+footer{margin:48px 0 0;padding:28px 0 40px;background:var(--navy);color:#aab0cc;font-size:13px}
+footer .wordmark{margin-bottom:8px}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="wordmark">BLK GRVTY<span>Franchise Nova · FDD &amp; Financial Analysis</span></div>
+    <h1>RISE Modern Wellness: system score and Vero Beach unit economics</h1>
+    <p class="sub">A Health &amp; Wellness system with credible single-unit mechanics and a thin disclosure record. The franchised P&amp;L we hold shows a unit that is profitable, but running well below the only performance data the FDD offers.</p>
+    <div class="hero-grid">
+      <div class="score-ring"><div><div><b>55</b><small>of 100<br>System Nova Score</small></div></div></div>
+      <div class="hero-facts">
+        <div class="fact"><small>Band</small><b>Developing System</b></div>
+        <div class="fact"><small>FDD analyzed</small><b>Issued June 1, 2023</b></div>
+        <div class="fact"><small>Unit P&amp;L</small><b>Vero Beach, FL · Jan 1–Sep 16, 2026</b></div>
+        <div class="fact"><small>Item 7 range</small><b>$516.6K – $1.035M</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">01</div><h2>Bottom line</h2></div>
+  <div class="panel verdict">
+    <h3>Viable, but price the diligence in before the unit</h3>
+    <p>RISE lands at 55/100. Semi-absentee ownership is permitted, the franchise fee is modest with real multi-unit discounts, and single-unit territory is genuinely exclusive. Against that: no franchisor financing, an Item 19 built on one affiliate unit, an unaudited balance-sheet-only Item 21, and a disclosure document that is now more than three years old for a system that has since grown to roughly a dozen locations.</p>
+    <p>Vero Beach generated $506K in 8.5 months (about $59.5K a month) and kept $47.3K as net income, a 9.3% margin. Before interest it produces roughly $69.6K, or 13.7% of revenue. The Bend affiliate in Item 19 ran at about 27% after imputing royalty and fund fees. That gap, plus cash-basis blind spots around prepaid memberships, owner pay, insurance, and loan principal, is where the questions should concentrate.</p>
+    <p>No candidate is attached to this run, so the capital-gap and candidate-match layers are not scored.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">02</div><h2>System Nova Score</h2></div>
+  <div class="panel">
+    <div class="dim"><h4>Financial Performance &amp; Transparency</h4><div class="pts">12 / 25</div><div class="bar"><i style="width:48%"></i></div><p>Item 19 is technically present but not decision-grade: one company-owned unit (Bend, 2022) that pays no royalties, plus two months of gross revenue for one franchisee. The franchised P&amp;L we hold runs below that benchmark, which reads as a downward AUV signal until a current Item 19 says otherwise.</p></div>
+    <div class="dim"><h4>System Health &amp; Growth</h4><div class="pts">15 / 20</div><div class="bar"><i style="width:75%"></i></div><p>The 2023 FDD shows one company unit from 2019–2022 and four agreements signed but unopened, with zero churn. The brand's own locations page now lists units across ID, OR, AZ, FL, MN, TX, and NC, so growth appears real, but it is not verifiable from this FDD.</p></div>
+    <div class="dim"><h4>Capital Accessibility</h4><div class="pts">8 / 20</div><div class="bar"><i style="width:40%"></i></div><p>Item 10: no direct or indirect financing and no guarantees. SBA is not restricted. $186.6K–$328.1K of equipment is sole-sourced from the franchisor and non-refundable, which makes the collateral story heavier for a first-time borrower.</p></div>
+    <div class="dim"><h4>Operational Model &amp; Ownership Flexibility</h4><div class="pts">15 / 20</div><div class="bar"><i style="width:75%"></i></div><p>Item 15 permits semi-absentee ownership with a trained GM; the Principal Executive needs only 10% ownership. Points held back for a real compliance load: a licensed medical director, corporate practice of medicine rules, HIPAA, and health-spa contract laws.</p></div>
+    <div class="dim"><h4>Exit &amp; Wealth-Building Structure</h4><div class="pts">5 / 15</div><div class="bar"><i style="width:33%"></i></div><p>$10,000 transfer fee plus broker costs, a franchisor right of first refusal (family transfers excepted), conditional 5-year successor renewals on then-current terms, a 2-year non-compete within 5 miles of any RISE unit, and liquidated damages of up to 2 years of royalty and fund fees. No resale history exists to test the market.</p></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">03</div><h2>FDD item signals</h2></div>
+  <p class="lede">Tap any item to expand the findings.</p>
+
+  <details class="item"><summary><span class="ino">Item 5</span><span class="ititle">Initial fees<small>$39,500 single unit; $36.5K / $32.5K / $29.5K per unit under a MUDA</small></span><span class="pill g">Green</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Fee is non-refundable. MUDA requires full fees for the first development period plus 60% of the remaining units upfront.</li><li>Equipment, fixtures, and inventory must be bought directly from the franchisor. Outside architect or GC review is $1,250 each; extra site visits $600/day.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 6</span><span class="ititle">Fee burden<small>~11.9% of gross at Vero Beach volume, before the 4% local spend floor</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>7% royalty, 1% marketing fund, $1,500/month mandatory digital marketing management, $600/month software and technology.</li><li>The two flat fees ($25,200/year) are regressive: at $500K revenue the burden rises to about 13%.</li><li>Add the Item 11 requirement to spend at least 4% of gross on local marketing, and a possible co-op of up to 5%. Mandated fees plus spend run near 16% of revenue.</li><li>Liquidated damages on default termination equal up to 2 years of royalty and fund contributions.</li><li>The cover-page risk statement cites mandatory minimum royalty payments, but Item 6 shows none. Needs clarification.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 7</span><span class="ititle">Estimated initial investment<small>$516,600 – $1,035,200; planning amount (high + 10%) ≈ $1.14M</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Largest drivers: leasehold improvements $220K–$528K and equipment $186.6K–$328.1K. Tenant allowance, estimated at $0–$200K, is not netted in.</li><li>Only $28K–$50K of working capital for the first 3 months, with no owner salary. Thin for a model that takes 180–270 days to open.</li><li>MUDA for 3–5 units totals $554,100 – $1,160,200 (the cover page says $547,600, an internal mismatch).</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 10</span><span class="ititle">Financing<small>None offered, no guarantees</small></span><span class="pill r">Red</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>No in-house financing and no preferred lender program disclosed. SBA 7(a) is the likely path; CDFI and consortium capital would need to be structured externally.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Items 11 &amp; 15</span><span class="ititle">Ownership model<small>Semi-absentee permitted with trained GM</small></span><span class="pill g">Green</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Up to 4 weeks online plus under 1 week in-person training (Bend, OR or on site); one week of opening support.</li><li>Franchisor training explicitly excludes medical services. The operator carries all medical-director, CPOM, and licensing compliance alone.</li><li>Required tech stack (Vagaro, Pipedrive, RingCentral, Trainual, Homebase and more) is billed through the franchisor.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 12</span><span class="ititle">Territory<small>Exclusive for single units; none under a MUDA</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Single-unit protection is exclusive and not tied to sales quotas, which is a strength.</li><li>Area developers receive no exclusive territory, which undercuts the multi-unit thesis. The franchisor reserves internet and direct-sales channels inside any territory without compensation.</li><li>MUDA can be exited without penalty, but missing the schedule forfeits remaining development rights.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 19</span><span class="ititle">Financial performance<small>1 affiliate unit (2022) + 2 months of one franchisee's revenue</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Bend, OR (2022): revenue $792,115; COGS $14,378; operating expenses $499,320; NOI $278,417. The affiliate pays no royalties; imputing 8% brings NOI to about $215K (27%).</li><li>Eagle, ID: revenue $76,144 (April 2023) and $86,423 (May 2023). Revenue only, first months of operation.</li><li>No medians, no quartiles, no franchised cost data. The Vero Beach P&amp;L below is the only franchised cost structure in hand.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 20</span><span class="ititle">Outlets<small>1 company unit 2019–2022; 4 signed, not open</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Zero terminations, closures, or transfers, though with essentially no franchised history to measure.</li><li>Internal inconsistency: Table 1 shows franchised outlets going from 0 to 4 in 2022, while Table 3 shows 0 opened and Table 5 lists the same 4 as signed but not opened.</li><li>Exhibit H lists only two franchisee groups (Eagle, ID and Chandler, AZ).</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 21</span><span class="ititle">Franchisor financials<small>Unaudited balance sheet only, 12/31/2022</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>Total assets $175,189 (cash $168,762); liabilities $34,856; member's equity $140,334.</li><li>No income statement or cash flow statement, so profitability is unknown. Entity formed April 2022.</li></ul></div></details>
+
+  <details class="item"><summary><span class="ino">Item 17</span><span class="ititle">Exit rights<small>Transfer fee, ROFR, conditional renewal, Oregon forum</small></span><span class="pill a">Amber</span><span class="chev">›</span></summary>
+    <div class="ibody"><ul><li>10-year initial term; successor terms of 5 years require remodeling, a general release, and signing then-current terms.</li><li>Death or disability: an approved new owner must be in place within nine months.</li><li>Disputes go to arbitration in Bend, OR under Oregon law.</li></ul></div></details>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">04</div><h2>Vero Beach P&amp;L: what the unit actually does</h2></div>
+  <p class="lede">Cash basis, January 1 – September 16, 2026 (259 days). Annualized figures scale linearly by 365/259 and should be read as a ceiling: Vero Beach is a seasonal market and this window captures the full winter peak.</p>
+
+  <div class="grid3">
+    <div class="panel kpi"><small>Revenue, YTD</small><b>$506,380</b><span>≈ $59.5K / month · ≈ $714K annualized</span></div>
+    <div class="panel kpi"><small>Net income</small><b>$47,280</b><span>9.3% margin · ≈ $66.6K annualized</span></div>
+    <div class="panel kpi"><small>Operating income before interest</small><b>$69,590</b><span>13.7% margin · ≈ $98.1K annualized</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h4 style="font-size:15px;color:var(--navy);margin-bottom:6px">Cost structure, % of revenue</h4>
+      <div class="cost"><span>Payroll &amp; taxes</span><div class="track"><i style="width:100%"></i></div><span class="v">38.2%</span></div>
+      <div class="cost"><span>Rent</span><div class="track"><i style="width:27.5%"></i></div><span class="v">10.5%</span></div>
+      <div class="cost"><span>Marketing</span><div class="track"><i style="width:26.7%"></i></div><span class="v">10.2%</span></div>
+      <div class="cost"><span>Supplies &amp; purchases</span><div class="track"><i style="width:21.3%"></i></div><span class="v">8.2%</span></div>
+      <div class="cost"><span>Royalty + system fees</span><div class="track"><i class="zor" style="width:22%"></i></div><span class="v">8.4%</span></div>
+      <div class="cost"><span>Interest</span><div class="track"><i style="width:11.5%"></i></div><span class="v">4.4%</span></div>
+      <div class="cost"><span>Merchant fees</span><div class="track"><i style="width:8.1%"></i></div><span class="v">3.1%</span></div>
+      <div class="cost"><span>All other</span><div class="track"><i style="width:19.9%"></i></div><span class="v">7.6%</span></div>
+      <p class="note">Gold = paid directly to the franchisor. The 1% marketing fund and $1,500/month digital fee are not broken out and are likely inside Marketing Expense; with them, franchisor-directed fees are about 11.9%.</p>
+    </div>
+    <div class="panel">
+      <h4 style="font-size:15px;color:var(--navy);margin-bottom:6px">Line detail</h4>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Line</th><th class="num">YTD</th><th class="num">% rev</th></tr></thead>
+        <tbody>
+          <tr><td>Services</td><td class="num">$470,775</td><td class="num">93.0%</td></tr>
+          <tr><td>Cherry Finance</td><td class="num">$35,605</td><td class="num">7.0%</td></tr>
+          <tr class="total"><td>Total income</td><td class="num">$506,380</td><td class="num">100%</td></tr>
+          <tr><td>Salary &amp; wages</td><td class="num">$177,902</td><td class="num">35.1%</td></tr>
+          <tr><td>Payroll taxes</td><td class="num">$15,614</td><td class="num">3.1%</td></tr>
+          <tr><td>Rent</td><td class="num">$53,165</td><td class="num">10.5%</td></tr>
+          <tr><td>Advertising &amp; marketing</td><td class="num">$51,806</td><td class="num">10.2%</td></tr>
+          <tr><td>Franchise royalty</td><td class="num">$35,969</td><td class="num">7.1%</td></tr>
+          <tr><td>Supplies &amp; materials</td><td class="num">$31,963</td><td class="num">6.3%</td></tr>
+          <tr><td>Interest (2 loans + card)</td><td class="num">$22,319</td><td class="num">4.4%</td></tr>
+          <tr><td>Merchant fees (Stripe, Cherry)</td><td class="num">$15,881</td><td class="num">3.1%</td></tr>
+          <tr><td>Purchases</td><td class="num">$9,615</td><td class="num">1.9%</td></tr>
+          <tr><td>Professional &amp; legal</td><td class="num">$6,706</td><td class="num">1.3%</td></tr>
+          <tr><td>Rise system fees</td><td class="num">$6,407</td><td class="num">1.3%</td></tr>
+          <tr><td>Medical director</td><td class="num">$3,000</td><td class="num">0.6%</td></tr>
+          <tr><td>Insurance</td><td class="num">$1,129</td><td class="num">0.2%</td></tr>
+          <tr><td>All other</td><td class="num">$27,632</td><td class="num">5.5%</td></tr>
+          <tr class="total"><td>Total expenses</td><td class="num">$459,108</td><td class="num">90.7%</td></tr>
+          <tr class="total"><td>Net income</td><td class="num">$47,280</td><td class="num">9.3%</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">05</div><h2>Vero Beach against the Item 19 benchmark</h2></div>
+  <div class="panel tbl-wrap">
+    <table>
+      <thead><tr><th>Measure</th><th class="num">Bend affiliate (2022)</th><th class="num">Eagle franchise (Apr–May 2023)</th><th class="num">Vero Beach (2026 YTD)</th></tr></thead>
+      <tbody>
+        <tr><td>Average monthly revenue</td><td class="num">$66.0K</td><td class="num">$81.3K</td><td class="num">$59.5K</td></tr>
+        <tr><td>Annual revenue</td><td class="num">$792K</td><td class="num">n/a (2 months)</td><td class="num">≈ $714K*</td></tr>
+        <tr><td>Operating margin as reported</td><td class="num">35.1%</td><td class="num">Not disclosed</td><td class="num">13.7% pre-interest</td></tr>
+        <tr><td>Operating margin with 8% royalty + fund</td><td class="num">≈ 27.1%</td><td class="num">Not disclosed</td><td class="num">13.7% (already paid)</td></tr>
+        <tr><td>Supplies / COGS share</td><td class="num">1.8%</td><td class="num">Not disclosed</td><td class="num">≈ 9.2%</td></tr>
+      </tbody>
+    </table>
+    <p class="note">*Linear annualization; seasonality likely pulls the real full-year figure lower. The COGS gap is partly definitional (Bend may carry supplies in operating expenses), which is exactly why the Item 19 substantiation offered in Note 6 should be requested.</p>
+  </div>
+  <div class="panel">
+    <p style="margin:0">Vero Beach is doing about 10% less revenue than Bend did in 2022, but earning about half the margin. After adjusting Bend for franchise fees, the remaining gap of roughly 13 points sits mostly in payroll (38% of revenue), a marketing load well above the mandated floor, merchant fees, and debt. Some of that is fixable operator behavior; some is structural to being a franchisee rather than the founder's own unit. Validation calls should separate the two.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">06</div><h2>Debt service coverage</h2></div>
+  <p class="lede">The P&amp;L shows interest on two loans ($21,746 YTD, about $30.6K a year) but not principal, which sits on the balance sheet. The estimate below backs into loan size from interest, assuming 10-year amortizing SBA-style term loans.</p>
+  <div class="panel tbl-wrap">
+    <table>
+      <thead><tr><th>Assumed rate</th><th class="num">Implied principal</th><th class="num">Est. annual debt service</th><th class="num">DSCR as reported</th><th class="num">DSCR if $60K owner/GM pay is added</th></tr></thead>
+      <tbody>
+        <tr><td>9.5%</td><td class="num">$323K</td><td class="num">$51.4K</td><td class="num">1.88x</td><td class="num">0.72x</td></tr>
+        <tr><td>10.5%</td><td class="num">$292K</td><td class="num">$48.5K</td><td class="num">1.99x</td><td class="num">0.77x</td></tr>
+        <tr><td>11.5%</td><td class="num">$266K</td><td class="num">$46.2K</td><td class="num">2.09x</td><td class="num">0.82x</td></tr>
+      </tbody>
+    </table>
+    <p class="note">The whole debt picture turns on one question: is an owner or GM salary already inside the $177.9K of wages? If yes, coverage is comfortable against a typical 1.25x lender floor. If the owner is working unpaid, the unit does not currently cover a market-rate manager plus its debt. The actual loan schedules replace these estimates.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">07</div><h2>Flags and questions</h2></div>
+  <div class="panel">
+    <div class="flag"><span class="pill r">Stale</span><p><b>The FDD is from June 2023.</b> A franchisor must update annually, and the system has grown well past what this document describes. Every Item 19, 20, and 21 conclusion here should be re-run against the current FDD.</p></div>
+    <div class="flag"><span class="pill r">Hidden liability</span><p><b>Prepaid memberships and packages are invisible on a cash basis.</b> Cherry financing (7% of income) and membership sales bring cash in before services are delivered. Request the outstanding package and membership liability from Vagaro.</p></div>
+    <div class="flag"><span class="pill a">Under-recorded?</span><p><b>Insurance at $1,129 and medical director at $3,000 YTD look too low</b> for a unit that must carry $1M/$2M general liability, up to $2M malpractice, and workers comp, and must retain a licensed supervising provider. Either annual premiums fall outside this window or costs run through another entity.</p></div>
+    <div class="flag"><span class="pill a">No reserve</span><p><b>No depreciation or equipment reserve.</b> $187K–$328K of cryotherapy, sauna, and body-contouring equipment will need service and replacement; the cash-basis P&amp;L sets nothing aside.</p></div>
+    <div class="flag"><span class="pill a">Margin lever</span><p><b>Stripe fees run about 2.9% of services.</b> At this volume a processor renegotiation or ACH push for memberships is worth a few thousand dollars a year.</p></div>
+    <div class="flag"><span class="pill a">Inconsistency</span><p><b>The FDD contradicts itself</b> on franchised outlet counts (Item 20 Tables 1 vs 3 and 5), minimum royalties (cover risk page vs Item 6), and MUDA totals (cover vs Item 7). Ask the franchisor to reconcile in writing.</p></div>
+    <div class="flag"><span class="pill n">Minor</span><p><b>An NSF fee of $280</b> suggests at least one cash-timing miss this year. Small, but worth asking about alongside the loan schedules.</p></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="sec-head"><div class="badge-num">08</div><h2>What we have / what we need</h2></div>
+  <div class="grid2">
+    <div class="panel check"><h4>What we have</h4><ul>
+      <li>RISE Modern Wellness FDD, issued June 1, 2023 (154 pages)</li>
+      <li>Vero Beach P&amp;L, Jan 1 – Sep 16, 2026, cash basis</li>
+      <li>Public location list showing current footprint</li>
+    </ul></div>
+    <div class="panel check"><h4>What we need</h4><ul>
+      <li>Current (2026) FDD with updated Items 19, 20, and 21</li>
+      <li>Audited franchisor financials, including income statement</li>
+      <li>Item 19 substantiation (offered in Note 6)</li>
+      <li>Vero Beach monthly P&amp;L for the last 24 months, plus opening date</li>
+      <li>Vero Beach balance sheet and schedules for Loans 2870 and 3670</li>
+      <li>Owner compensation: who is on payroll and at what rate</li>
+      <li>Membership and prepaid package liability report</li>
+      <li>Medical director agreement and insurance declarations pages</li>
+      <li>Revenue by service line (IV, cryo, body contouring, memberships)</li>
+      <li>Contact list for validation calls with current franchisees</li>
+    </ul></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="wordmark">BLK GRVTY<span>Franchise Nova</span></div>
+    <p style="margin:0">Internal FN analysis prepared September 2026 from the documents listed above. Figures come from the FDD and the Vero Beach P&amp;L; annualized and debt-service figures are estimates and are labeled as such. Not financial, legal, or investment advice. Nova Guide review is required before sharing any portion externally.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
