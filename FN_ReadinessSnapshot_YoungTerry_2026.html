@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — Terry Young · Your Readiness Snapshot</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:840px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.12);}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:36px 48px 30px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(900px 400px at 75% 5%,rgba(69,46,128,0.45),transparent 60%),radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.6),transparent 60%);pointer-events:none;}
+.hdr-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.hdr-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.hdr-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:34px;color:#fff;margin-bottom:6px;line-height:1.05;position:relative;}
+.hdr-sub{font-size:13px;color:#b0aed0;position:relative;}
+.hdr-sub strong{color:#e1e3ee;}
+
+/* INTRO CARD */
+.intro-card{background:linear-gradient(90deg,rgba(0,174,239,0.08),transparent 80%);border-left:3px solid #00aeef;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 48px 0;}
+.intro-card p{font-size:13.5px;color:#444;line-height:1.7;}
+
+/* SECTIONS */
+.sec{padding:28px 48px;border-bottom:1px solid #e8eaf0;}
+.sec:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:18px;}
+
+/* READINESS DIMENSIONS — candidate-facing (no scores on right) */
+.dims{display:flex;flex-direction:column;gap:20px;}
+.dim-name{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:#15131f;margin-bottom:6px;}
+.bar-track{height:9px;background:#e8eaf0;border-radius:999px;overflow:hidden;margin-bottom:8px;}
+.bar-fill{height:100%;border-radius:999px;}
+.bar-fill.nebula{background:linear-gradient(90deg,#282560,#452e80);}
+.bar-fill.moderate{background:linear-gradient(90deg,#282560,#452e80);}
+.bar-fill.high{background:linear-gradient(90deg,#282560,#664ca9);}
+.dim-note{font-size:13px;color:#555;line-height:1.65;}
+
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border-radius:10px;padding:16px 18px;}
+.quad h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.quad ul{padding-left:15px;}
+.quad li{font-size:13px;margin-bottom:6px;line-height:1.55;color:#333;}
+.q-s{background:#eaf6ef;border-left:3px solid #1a7a4a;}.q-s h4{color:#1a7a4a;}
+.q-d{background:#ede9fa;border-left:3px solid #664ca9;}.q-d h4{color:#452e80;}
+.q-o{background:#f0eefa;border-left:3px solid #452e80;}.q-o h4{color:#452e80;}
+.q-r{background:#fff0f4;border-left:3px solid #b1456b;}.q-r h4{color:#b1456b;}
+
+/* PATHWAY */
+.pathway-dk{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:12px;padding:24px 26px;}
+.pathway-dk .sec-lbl{color:#00aeef;margin-bottom:12px;}
+.pw-route{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#fff;margin-bottom:6px;}
+.pw-backup{font-size:13px;color:#b9b6d6;margin-bottom:12px;}
+.pw-note{font-size:13.5px;color:#d8d6ec;line-height:1.7;}
+.pw-steps{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);}
+.pw-steps h5{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#9a98b4;margin-bottom:10px;}
+ol.steps{padding-left:20px;}
+ol.steps li{font-size:13px;color:#d8d6ec;margin-bottom:7px;line-height:1.5;}
+ol.steps li strong{color:#fff;}
+
+/* DISCLAIMER */
+.disc{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:16px 48px;}
+.disc p{font-size:11.5px;color:#888;line-height:1.7;}
+.disc strong{color:#555;}
+
+/* FOOTER */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr,.pathway-dk,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+@media(max-width:720px){.swot{grid-template-columns:1fr;}.sec{padding:20px;}.hdr{padding:26px 20px;}.intro-card{margin:16px 20px 0;}.disc{padding:14px 20px;}.doc-footer{padding:14px 20px;}}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="hdr">
+  <div class="hdr-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="hdr-eye">Your Readiness Snapshot</div>
+  <h1 class="hdr-name">Terry</h1>
+  <p class="hdr-sub">Chicago, IL &nbsp;&middot;&nbsp; <strong>Automotive</strong> &nbsp;&middot;&nbsp; Prepared September 2026</p>
+</header>
+
+<div class="intro-card">
+  <p>This snapshot reflects where you stand today based on your intake responses — what you're bringing to the table, where to focus next, and how we can help you build. You're in a strong position; this is about turning a clear plan into three open doors as efficiently as possible.</p>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Your Readiness Profile</div>
+  <div class="dims">
+    <div>
+      <div class="dim-name">Operator Readiness &amp; Capability</div>
+      <div class="bar-track"><div class="bar-fill high" style="width:74%"></div></div>
+      <p class="dim-note">You've built and run a real company — managing people, projects, payroll and results since 2020 — and that discipline carries straight into multi-unit ownership. Where you'll grow is the automotive side itself: shop workflow, technician productivity and parts margins are what separate good repair shops from great ones, and the right general manager will be your biggest lever.</p>
+    </div>
+    <div>
+      <div class="dim-name">Vision, Motivation &amp; Commitment</div>
+      <div class="bar-track"><div class="bar-fill high" style="width:97%"></div></div>
+      <p class="dim-note">Your plan is exceptionally clear: one brand, three named locations, and a purpose that ties profitability to jobs and community wealth. That clarity is rare, and it's exactly what lenders and franchisors want to see.</p>
+    </div>
+    <div>
+      <div class="dim-name">Sector &amp; Multi-Unit Fit</div>
+      <div class="bar-track"><div class="bar-fill high" style="width:95%"></div></div>
+      <p class="dim-note">Automotive repair is essential, year-round work, and a manager-led, multi-location structure is built for exactly how you want to own. Because you won't be in the bays day to day, the strength of your management layer will shape results more than anything else.</p>
+    </div>
+    <div>
+      <div class="dim-name">Coachability &amp; Ecosystem Fit</div>
+      <div class="bar-track"><div class="bar-fill high" style="width:73%"></div></div>
+      <p class="dim-note">You're results-driven and you came in with thoughtful, detailed answers — strong signs you'll work well within a franchise system. Your workforce-development vision is a real asset; the key is designing it to run inside AutoLab's standards so it strengthens the system rather than working around it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-lbl">Strengths, Growth Areas &amp; Opportunities</div>
+  <div class="swot">
+    <div class="quad q-s"><h4>What You Bring</h4><ul><li>Real operating experience running a mid-size company and team</li><li>A specific, credible plan: one brand, three named locations</li><li>An excellent credit and financial-history profile for lending</li><li>Construction and rehab know-how for site development</li><li>A community and workforce mission that fits your chosen brand</li></ul></div>
+    <div class="quad q-d"><h4>Where to Grow</h4><ul><li>Hands-on familiarity with how a repair shop makes money</li><li>Building your management bench — starting with a strong GM</li><li>Matching your cash on hand to a three-location plan</li></ul></div>
+    <div class="quad q-o"><h4>What FN Can Unlock</h4><ul><li>A unit-by-unit financing plan built around SBA lending and community capital</li><li>A search for existing shops that could convert and open faster</li><li>Hiring support for your general manager and key technicians</li><li>Workforce-funding options that help offset training costs</li><li>A second set of eyes on your AutoLab agreements and deadlines</li></ul></div>
+    <div class="quad q-r"><h4>Things to Stay Ahead Of</h4><ul><li>Confirm exactly what's been signed for each location — fees, territories and opening deadlines</li><li>Opening all three at once stretches cash; staging them protects each one</li><li>Your time: growing ECR and three shops in parallel needs a clear leadership plan</li></ul></div>
+  </div>
+</div>
+
+<div class="sec" style="border-bottom:none;">
+  <div class="sec-lbl">Your Recommended Capital Pathway</div>
+  <div class="pathway-dk">
+    <div class="sec-lbl">SBA Lending &middot; One Location at a Time</div>
+    <div class="pw-route">Fund Unit 1 &middot; Prove It &middot; Scale to Three</div>
+    <div class="pw-backup">Additional option: Buy and convert an existing shop, supported by community lenders and local incentives</div>
+    <p class="pw-note">Your credit and financial history put you in a strong position to finance your first location with an SBA loan. Funding three new locations at once would ask a lot of your cash on hand, so the smartest path to all three is sequencing: open the strongest site first, let it build a track record, and use that momentum to finance the next two. Converting an existing shop can lower your cost to open and put customers in the door from day one.</p>
+    <div class="pw-steps">
+      <h5>Your path forward</h5>
+      <ol class="steps">
+        <li><strong>Confirm your AutoLab details:</strong> agreements, fees paid, territory boundaries and opening deadlines for each location</li>
+        <li><strong>Choose your lead location:</strong> compare Lisle, Chicago and Maywood on site readiness, build vs. conversion, and market strength</li>
+        <li><strong>Build your Unit 1 funding plan:</strong> lender pre-qualification, your equity contribution, and community or local incentive programs</li>
+        <li><strong>Hire your operator, then scale:</strong> bring on your general manager before opening, launch your training pipeline, and add locations two and three once the first is steady</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="disc">
+  <p><strong>About this snapshot:</strong> This document reflects FN's assessment based on your intake responses. It is not a financial recommendation and does not constitute advice to invest in any specific franchise system. All investment decisions should be made after full FDD review, legal counsel, and independent financial due diligence.</p>
+</div>
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for Terry Young &nbsp;&middot;&nbsp; 2026</p>
+</div>
+</div>
+</body>
+</html>
