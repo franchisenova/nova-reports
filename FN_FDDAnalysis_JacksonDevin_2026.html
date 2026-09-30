@@ -188,7 +188,13 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
 .bd-v{width:52px;text-align:right;font-family:'Montserrat',sans-serif;font-weight:800;font-size:11px;color:#15131f;}
 .alert-bar{background:#eef8fd;border-left:4px solid #00aeef;padding:12px 18px;border-radius:0 8px 8px 0;margin-top:12px;}
 .alert-bar p{font-size:12.5px;color:#0d3a52;line-height:1.6;}
-@media(max-width:720px){.bd-k{width:140px;}}
+.bd-prov{font-size:12px;color:#452e80;background:#f3f0fb;border-radius:6px;padding:8px 12px;margin-top:8px;line-height:1.55;}
+.src-table td a{color:#0088c2;text-decoration:none;font-size:11.5px;}
+.src-table td a:hover{text-decoration:underline;}
+.scen-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.scen{background:#f5f5fa;border-radius:8px;padding:12px 14px;font-size:12.5px;color:#333;line-height:1.55;}
+.scen b{font-family:'Montserrat',sans-serif;font-size:11px;color:#452e80;display:block;margin-bottom:4px;}
+@media(max-width:720px){.bd-k{width:140px;}.scen-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -197,19 +203,19 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
 <!-- HEADER -->
 <header class="hdr">
   <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
-  <div class="h-eye">FDD Analysis &middot; Candidate–System Match &middot; Internal Use Only</div>
+  <div class="h-eye">FDD Analysis &middot; Franchise Fit Review &middot; Prepared for Devin Jackson</div>
   <h1 class="h-name">Devin Jackson — FDD Analysis</h1>
-  <p class="h-meta">2 Auto-Lab FDDs analyzed (Single Unit + Area Developer) &nbsp;&middot;&nbsp; September 2026 &nbsp;&middot;&nbsp; <strong>Nova Guide: Brenda</strong></p>
+  <p class="h-meta">2 Auto-Lab FDDs analyzed (Single Unit + Area Developer) + public-source supplement &nbsp;&middot;&nbsp; v2 · September 30, 2026 &nbsp;&middot;&nbsp; <strong>Prepared by Franchise Nova</strong></p>
 </header>
 
 <!-- CANDIDATE STRIP -->
 <div class="cand-strip">
-  <div class="ci"><div class="ci-k">Classification</div><div class="ci-v">Not yet assigned</div></div>
-  <div class="ci"><div class="ci-k">FN Lift</div><div class="ci-v">Not yet assigned</div></div>
+  <div class="ci"><div class="ci-k">Target Market</div><div class="ci-v">Tallahassee, FL</div></div>
+  <div class="ci"><div class="ci-k">Ownership</div><div class="ci-v">Owner-Operator</div></div>
   <div class="ci"><div class="ci-k">Liquid Capital</div><div class="ci-v">$250K+</div></div>
   <div class="ci"><div class="ci-k">Net Worth</div><div class="ci-v">$1M+</div></div>
   <div class="ci"><div class="ci-k">Credit</div><div class="ci-v">780+ <span style="font-weight:400;color:#888;">(updated)</span></div></div>
-  <div class="ci"><div class="ci-k">Monthly Debt</div><div class="ci-v" style="color:#b1456b;">Not provided</div></div>
+  <div class="ci"><div class="ci-k">Monthly Debt</div><div class="ci-v">To be confirmed</div></div>
   <div class="ci"><div class="ci-k">Sectors</div><div class="ci-v">Automotive — Repair &amp; Maintenance</div></div>
   <div class="ci"><div class="ci-k">Timeframe</div><div class="ci-v">Within 6 months</div></div>
 </div>
@@ -218,11 +224,42 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
 <div class="section" style="padding-top:18px;padding-bottom:18px;">
   <div class="thesis-bar">
     <p>"Regional or national expansion." &nbsp;·&nbsp; Specific franchise: "autolab" &nbsp;·&nbsp; Target location: "north florida"</p>
-    <p class="attr">Devin Jackson · Intake Form, July 9, 2026 (free-text background and 3–5 year goal fields answered "franchisee") · Capital sources: Personal liquid ($250K+), SBA loan ($50,000 per Sept. update) · Site: 200 N. Magnolia Dr., Tallahassee, FL 32301 · Ownership preference: Owner-Operator</p>
+    <p class="attr">Your goals, from your Franchise Nova profile (July 2026) · Capital sources: Personal liquid ($250K+), SBA loan ($50,000 per Sept. update) · Site: 200 N. Magnolia Dr., Tallahassee, FL 32301 · Ownership preference: Owner-Operator</p>
   </div>
   <div class="alert-bar">
-    <p><strong>Existing relationship flag:</strong> Exhibit H of the 2026 Area Representative FDD lists <strong>"Auto-Lab of Northwest Florida, LLC — Devin Johnson," Tallahassee, FL 32303</strong>, with the same phone number as Devin's intake <span class="src primary">PRIMARY</span>. This appears to be Devin (name likely misspelled in the FDD). It matches Item 20's single new Florida Area Developer in 2025. Per FN, he does not yet operate a store, and 200 N. Magnolia would serve as his required <strong>Pilot Store</strong>. Nova Guide should confirm whether the ADA is already signed and whether the $75K–$100K Area Developer fee has been paid. If it has, that fee is already spent from his liquid capital, and the ADA's development deadlines are already running.</p>
+    <p><strong>Your Area Developer status:</strong> The 2026 Area Representative FDD (Exhibit H) lists "Auto-Lab of Northwest Florida, LLC" in Tallahassee as a current Area Developer, under the name <strong>"Devin Johnson."</strong> If this is you, ask Auto-Lab to correct the spelling. This review assumes you hold the Northwest Florida territory and that 200 N. Magnolia will be your required <strong>Pilot Store</strong>. If either is wrong, let us know and we'll adjust. If your Area Development Agreement is already signed, its development deadlines are already running, so they shape the plan below.</p>
   </div>
+</div>
+
+
+<!-- PUBLIC SOURCE SUPPLEMENT -->
+<div class="section">
+  <div class="sec-lbl">Public-Source Supplement — Filling the FDD Gaps</div>
+  <p style="font-size:13px;color:#333;line-height:1.65;margin-bottom:14px;">The 2026 FDD discloses very little, so FN pulled outside sources. Everything in the right-hand column is <span class="src secondary">SECONDARY</span>. It is useful for framing the call, but none of it replaces primary disclosure and none of it changes the official Nova Score. <strong>A note on unit counts:</strong> the Area Representative FDD shows 3 Area Developers at the start of 2025 and 2 at year-end. Those are territory holders, not repair shops. The single-unit FDD shows <strong>21 shops at year-end 2025</strong> (19 franchised + 2 company-owned).</p>
+  <div class="comp-wrap">
+    <table class="src-table">
+      <tr><th class="th-dark" style="width:20%">Metric</th><th class="th-s1" style="width:27%">2026 FDD (Primary)</th><th class="th-s2" style="width:33%">Public sources (Secondary)</th><th class="th-dark" style="width:20%">Source</th></tr>
+      <tr><td class="metric">Open shops</td><td>21 at 12/31/2025 (19 franchised, 2 company-owned); 15 of 19 franchised in Michigan</td><td><strong>16 open</strong> on the brand website today (13 MI, 2 IN, 1 CT). Tallahassee and Tampa listed as "coming soon." About page claims "more than 20" locations historically.</td><td><a href="https://www.autolabusa.com/" target="_blank">autolabusa.com</a> · <a href="https://www.autolabusa.com/locations/locations-coming-soon/" target="_blank">Coming Soon</a> · <a href="https://www.autolabusa.com/about/" target="_blank">About</a></td></tr>
+      <tr><td class="metric">Historical footprint</td><td>18 → 17 → 20 → 21 (2023–2025)</td><td>2023 FDD: 18 units. Older directory profiles: 25–27 locations across MI, IN, IA, FL, TX. A broker listing claims "over 30." Larger figures you may hear likely reflect historical or cumulative counts, not today's open shops.</td><td><a href="https://franzy.com/franchises/autolab" target="_blank">Franzy</a> · <a href="https://www.franchising.com/autolab/" target="_blank">Franchising.com</a> · <a href="https://www.sunbeltnetwork.com/grand-rapids-mi/buy-a-business/listings/listing-details/central-florida-auto-lab-franchise-56674/" target="_blank">Sunbelt</a></td></tr>
+      <tr><td class="metric">Average unit sales</td><td class="td-bad">Not disclosed (no Item 19)</td><td><strong>~$916K average gross revenue</strong> reported from the <em>2023</em> FDD's Item 19, with a +14% year-over-year change. Franchimp separately reports <strong>~$806K per unit</strong> (2021 data). The 2026 FDD dropped Item 19 entirely.</td><td><a href="https://franzy.com/franchises/autolab" target="_blank">Franzy (2023 FDD)</a> · <a href="https://www.franchimp.com/franchise/auto-lab-complete-108640" target="_blank">Franchimp</a></td></tr>
+      <tr><td class="metric">FN cross-check</td><td>2025 ad fund $152,892 at 1%; royalties $644,216 at 6%</td><td>Ad fund ÷ 1% ÷ 19 franchised ≈ <strong>$805K per unit</strong>, which lines up with Franchimp's $806K. Royalties ÷ 6% implies ≈ $565K, which suggests legacy franchisees pay reduced royalties. <span class="src derived">FN ESTIMATE — NOT AN FPR</span></td><td>2026 FDD Exhibit A + FN estimate</td></tr>
+      <tr><td class="metric">Investment range trend</td><td>$365,750–$871,000 new · $111,000–$758,000 conversion</td><td>The website still advertises $130,750–$313,500. The 2023 FDD showed $212,750–$526,500; a later FDD $296,750–$746,000. The range has roughly doubled in three years, and the website figure is out of date.</td><td><a href="https://www.autolabusa.com/franchising/start-up-costs/" target="_blank">Start-Up Costs</a> · <a href="https://franzy.com/franchises/autolab" target="_blank">Franzy</a> · <a href="https://www.franchimp.com/franchise/auto-lab-complete-108640" target="_blank">Franchimp</a></td></tr>
+      <tr><td class="metric">SBA / financing</td><td>No franchisor financing; SBA not mentioned</td><td>The website FAQ calls Auto-Lab "SBA-approved" and says it facilitates third-party financing covering up to 80% of start-up costs. Auto-Lab Complete Car Care Centers appears on the April 2020 SBA Franchise Directory. Current listing still needs verification.</td><td><a href="https://www.autolabusa.com/franchising/faqs/" target="_blank">FAQs</a> · <a href="https://keycommercialcapital.com/wp-content/uploads/2020/05/SBA-Franchise-Directory-Key-Commercial-Capital-Effective-April-28-2020.pdf" target="_blank">SBA Directory (2020)</a></td></tr>
+      <tr><td class="metric">Ownership</td><td>Majority member not named; new CEO June 2026</td><td>Franchimp lists the franchisor as Wilson Holdings, L.L.C. CB Insights reports a 2019 acquisition by Stephen Wilson. Franchimp shows "1 ongoing lawsuit," while 2026 FDD Item 3 discloses none. Ask about this.</td><td><a href="https://www.cbinsights.com/company/auto-lab-complete-car-care-centers" target="_blank">CB Insights</a> · <a href="https://www.franchimp.com/franchise/auto-lab-complete-108640" target="_blank">Franchimp</a></td></tr>
+      <tr><td class="metric">Tallahassee site</td><td>Not referenced</td><td>200 N. Magnolia: 4,900 SF auto shop built 1998, 0.89 acres, zoned C-2. Listed for sale at $1.6M and for lease at $30/SF NNN. Former Minco Truck &amp; Auto; marked "formerly occupied" as of March 2026. Auto-Lab has a Tallahassee "Serving Soon" placeholder page.</td><td><a href="https://www.crexi.com/properties/2228242/florida-minco-auto-truck-accessories" target="_blank">Crexi</a> · <a href="https://www.commercialsearch.com/commercial-property/us/fl/tallahassee/minco-auto-truck-accessories/" target="_blank">CommercialSearch</a> · <a href="https://www.autolabusa.com/locations/tallahassee-fl/" target="_blank">Auto-Lab</a></td></tr>
+      <tr><td class="metric">NW Florida territory</td><td>Exhibit H: "Devin Johnson," Tallahassee</td><td>A broker listing advertised the NW Florida master franchise territory at a $75,000 asking price.</td><td><a href="https://www.sunbeltnetwork.com/grand-rapids-mi/buy-a-business/listings/listing-details/auto-lab-master-franchise-nw-florida-56718/" target="_blank">Sunbelt</a></td></tr>
+    </table>
+  </div>
+
+  <div class="sec-lbl" style="margin-top:22px;">The $50K Question — What It Could Mean</div>
+  <p style="font-size:13px;color:#333;line-height:1.65;">The 2026 FDD puts a new shop at $365,750–$871,000 (plan for about $1M including the 10% buffer). The $50K loan you mentioned doesn't cover a new-build budget on its own. It could fit several structures, and we'll confirm together which one applies:</p>
+  <div class="scen-grid">
+    <div class="scen"><b>A · Conversion-scale budget (most consistent)</b>If 200 N. Magnolia qualifies as a Conversion ($111,000–$758,000; $19,500 fee; 50% royalty discount in year 1), a budget of about $300K minus your $250K+ cash leaves a $50K gap. The building is already a 4,900 SF auto shop. <em>Confirm with Auto-Lab that a vacant former shop qualifies. The FDD defines Conversion as an existing independent operator converting.</em></div>
+    <div class="scen"><b>B · SBA equity injection</b>$50K as roughly a 10% equity injection on a ~$500K SBA 7(a) project. That is plausible, though with $250K+ liquid the injection could come from cash. Worth confirming whether your $250K+ is fully available or partly committed, for example to the AD fee or the building.</div>
+    <div class="scen"><b>C · Auto-Lab or landlord handles the buildout</b>You fund only equipment and working capital. <span class="flag">The FDD doesn't support this by default:</span> Auto-Lab offers no financing (Item 10), doesn't generally own or lease premises (Item 11), and requires the franchisee to obtain the lease. Any turnkey arrangement must be in writing, and it may trigger a financial performance or disclosure question.</div>
+    <div class="scen"><b>D · Gap on the Area Developer fee</b>$50K to help finish paying the $75K–$100K territory fee. SBA generally won't finance development rights, so this would need a different source.</div>
+  </div>
+  <div class="alert-bar"><p><strong>Who secures the site?</strong> Per the FDD, the franchisee does. You select the site, Auto-Lab approves it (about 30 days), and you sign the lease or own the property. Auto-Lab's rights come through a Conditional Assignment of Lease (Exhibit E) and a Real Estate Option to Purchase (Exhibit F). If Auto-Lab is securing or leasing 200 N. Magnolia on your behalf, that departs from the FDD and should be documented in writing. If you purchased the building (listed at $1.6M), the financing plan changes, and an SBA 504 loan for the real estate becomes relevant.</p></div>
 </div>
 
 <!-- SYSTEMS ANALYZED -->
@@ -251,55 +288,55 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <div class="sg-item-lbl">Item 5 — Initial Fee <span class="sig G">Green</span></div>
           <div class="sg-val"><strong>$27,500</strong> single unit · <strong>$13,750</strong> for Area Developers &amp; additional units · Conversion $19,500 <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">If Devin is the NW Florida Area Developer, his Pilot Store fee is $13,750 (50% of the current fee). Every additional store he opens is also at 50%. The fee is fully earned at signing and is not refundable under any circumstances. A Conversion ($19,500 fee, 50% royalty discount in year one) is designed for an existing independent operator converting their own shop. Devin is taking over a former auto-service building rather than converting a running business, so he likely doesn't qualify. Worth asking anyway.</div>
+          <div class="more-detail">As the NW Florida Area Developer, your Pilot Store fee is $13,750 (50% of the current fee). Every additional store you open is also at 50%. The fee is fully earned at signing and is not refundable under any circumstances. A Conversion ($19,500 fee, 50% royalty discount in year one; $111,000–$758,000 total) is designed for an existing independent operator converting their own shop. Confirming eligibility matters, because it can substantially lower your cost to open. Because 200 N. Magnolia is a former auto-service building rather than a running shop, eligibility isn't automatic. Worth asking.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 6 — Fee Burden <span class="sig A">Amber</span></div>
           <div class="sg-val"><strong>~13% current</strong> — Royalty 6% + National ad 1% (up to 3%) + Local ad spend 6% · Up to ~15% at max ad rate <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">Fixed add-ons: $100/mo technology fee (can rise to $500), $125/mo micro-website fee, and about $1,500/yr diagnostic tech-support subscription. $11,500 one-time FAST START computer package. At the $450K minimum-sales floor (Item 12), total fees and required spend come to about $62,700/yr, or 13.9% of gross <span class="src derived">FN MATH</span>. The 6% local ad is a required spend, not a fee paid to Auto-Lab. Any shortfall can be collected as additional royalty. Vendor rebates (1%–13% of purchases) go directly to the franchisee. Auto-Lab also keeps its own rebates ($18,684 in 2025).</div>
+          <div class="more-detail">Fixed add-ons: $100/mo technology fee (can rise to $500), $125/mo micro-website fee, and about $1,500/yr diagnostic tech-support subscription. $11,500 one-time FAST START computer package. At the $450K minimum-sales floor (Item 12), total fees and required spend come to about $62,700/yr, or 13.9% of gross <span class="src derived">FN ESTIMATE</span>. The 6% local ad is a required spend, not a fee paid to Auto-Lab. Any shortfall can be collected as additional royalty. Vendor rebates (1%–13% of purchases) go directly to the franchisee. Auto-Lab also keeps its own rebates ($18,684 in 2025).</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 7 — Investment Range <span class="sig G">Green</span></div>
           <div class="sg-val"><strong>$365,750–$871,000</strong> new · Conversion $111,000–$758,000 · Planning amt: <strong>$958,100</strong> <span class="src primary">PRIMARY</span><br><span style="font-size:11px;color:#888;">Cost to open — not earnings</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">The range is driven by equipment ($200K–$350K; the FDD says franchisees often finance all or part of it), leasehold improvements ($25K–$180K), and signage ($65K–$125K). It excludes real estate purchase and owner salary. Devin's $250K+ liquid covers 28.7% of the high end, which is Green on FN's threshold. The 200 N. Magnolia building is already built out for automotive use (Secondary: listing data), which should push leasehold costs toward the low end. The FDD assumes a lease at $3,333–$14,000/mo. The site's listed lease rate ($30/SF NNN × 4,900 SF ≈ $12,250/mo before NNN) sits at the top of that range <span class="src secondary">SECONDARY</span>.</div>
+          <div class="more-detail">The range is driven by equipment ($200K–$350K; the FDD says franchisees often finance all or part of it), leasehold improvements ($25K–$180K), and signage ($65K–$125K). It excludes real estate purchase and owner salary. Your $250K+ in liquid capital covers 28.7% of the high end, which is Green on FN's scale. The 200 N. Magnolia building is already built out for automotive use (Secondary: listing data), which should push leasehold costs toward the low end. The FDD assumes a lease at $3,333–$14,000/mo. The site's listed lease rate ($30/SF NNN × 4,900 SF ≈ $12,250/mo before NNN) sits at the top of that range <span class="src secondary">SECONDARY</span>.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig A">Amber</span></div>
           <div class="sg-val"><strong>No direct or indirect financing</strong> · SBA status not stated in FDD <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">Auto-Lab does not guarantee notes or leases. SBA Franchise Directory status could not be confirmed from the FDD or public listings. Nova Guide should verify before lender outreach. Item 7 notes that equipment is commonly financed through vendors, which is a real lever for closing the gap. Item 15 requires a security interest in all franchisee assets in Auto-Lab's favor. Lenders will want to understand how that ranks against an SBA lien.</div>
+          <div class="more-detail">Auto-Lab does not guarantee notes or leases. SBA Franchise Directory status could not be confirmed from the FDD or public listings. The website FAQ calls Auto-Lab "SBA-approved," and the brand appears on the April 2020 SBA Franchise Directory <span class="src secondary">SECONDARY</span>. Verify the current listing before lender outreach. Item 7 notes that equipment is commonly financed through vendors, which is a real lever for closing the gap. Item 15 requires a security interest in all franchisee assets in Auto-Lab's favor. Lenders will want to understand how that ranks against an SBA lien.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig G">Green</span></div>
           <div class="sg-val">Owner <strong>does not have to personally supervise</strong> · Trained on-premises manager required (Item 15) <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">About 40 hours of self-directed pre-training, then about 32 classroom hours and 72 on-the-job hours at Plymouth, MI or an Area Representative's Pilot Store, plus a follow-up visit on site. No fee beyond the initial fee; travel is on the franchisee. Must open within 30 days of completing training. Devin selected Owner-Operator on intake, and the system supports that. Because he may be the Area Rep, his own Pilot Store becomes the training site for future Florida franchisees, which raises the bar for his operating depth.</div>
+          <div class="more-detail">About 40 hours of self-directed pre-training, then about 32 classroom hours and 72 on-the-job hours at Plymouth, MI or an Area Representative's Pilot Store, plus a follow-up visit on site. No fee beyond the initial fee; travel is on the franchisee. Must open within 30 days of completing training. You plan to be an owner-operator, and the system supports that. As Area Developer, your Pilot Store also becomes the training site for future Florida franchisees, which raises the bar for operating depth there.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 12 — Territory <span class="sig A">Amber</span></div>
           <div class="sg-val"><strong>3–5 mile Designated Area</strong> · No other Complete Care store placed inside · <strong>$450K/yr minimum sales</strong> from year 2 <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">This is not an exclusive marketing territory. Other franchisees and alternative channels can sell into it. If Devin misses $450K in gross sales two years running (the second as a probation year), Auto-Lab can terminate the agreement or remove exclusivity. There are no rights of first refusal on additional units. Tallahassee availability must still be confirmed in writing with the franchisor, even if Devin holds the NW Florida ADA.</div>
+          <div class="more-detail">This is not an exclusive marketing territory. Other franchisees and alternative channels can sell into it. If the store misses $450K in gross sales two years running (the second as a probation year), Auto-Lab can terminate the agreement or remove exclusivity. There are no rights of first refusal on additional units. Tallahassee availability must still be confirmed in writing with the franchisor, even as the NW Florida Area Developer.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig R">Red</span></div>
           <div class="sg-val"><strong class="flag">NOT DISCLOSED</strong> — no earnings or sales representations <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">This is a transparency concern, not a disqualifier. Auto-Lab makes no representations for franchised or company-owned outlets. For a system operating since 1989, that is a notable gap. The only indirect signals: 2025 royalty revenue of $644,216 at 6% suggests roughly $10.7M in system sales across about 20 units, but the 1% ad fund ($152,892) suggests about $15.3M. The two don't reconcile, likely because legacy franchisees pay different rates, so neither can be used as an AUV proxy <span class="src derived">FN MATH — NOT AN FPR</span>. The $450K minimum-sales requirement is the only implied floor. Validation calls with existing operators are essential.</div>
+          <div class="more-detail">This is a transparency concern, not a disqualifier. Auto-Lab makes no representations for franchised or company-owned outlets. For a system operating since 1989, that is a notable gap. The only indirect signals: 2025 royalty revenue of $644,216 at 6% suggests roughly $10.7M in system sales across about 20 units, but the 1% ad fund ($152,892) suggests about $15.3M. The two don't reconcile, likely because legacy franchisees pay different rates, so neither can be used as an AUV proxy <span class="src derived">FN ESTIMATE — NOT AN FPR</span>. The $450K minimum-sales requirement is the only implied floor. Validation calls with existing operators are essential. <strong>Public sources:</strong> the 2023 FDD reportedly disclosed ~$916K average gross revenue (Franzy), and Franchimp shows ~$806K per unit. Both are Secondary. Ask Auto-Lab why Item 19 was removed in 2026 and request the 2023–2025 FDDs.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 20 — System Health <span class="sig A">Amber</span></div>
           <div class="sg-val">18 → 21 total outlets (2023–2025) · Churn <strong>11.1% / 0% / 10.0%</strong> · 3-yr avg <strong>7.3%</strong> <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">The franchised base is essentially flat (18 → 19). Growth came from 2 company-owned outlets opened in 2025, whose state is listed as "None," even though Item 1 says the franchisor operates no outlets. 15 of 19 franchised units are in Michigan. Florida's one unit was terminated in 2023, and Florida has zero units today. The FDD projects 3 new Florida openings in the next fiscal year. State rows don't reconcile to totals (e.g., the Texas unit disappears in 2025 with no exit recorded). The Auto-Lab Express line went from 1 to 0. Zero franchisee-to-franchisee transfers in 3 years. There is no franchisee association.</div>
+          <div class="more-detail">The franchised base is essentially flat (18 → 19). Growth came from 2 company-owned outlets opened in 2025, whose state is listed as "None," even though Item 1 says the franchisor operates no outlets. 15 of 19 franchised units are in Michigan. Florida's one unit was terminated in 2023, and Florida has zero units today. The FDD projects 3 new Florida openings in the next fiscal year. State rows don't reconcile to totals (e.g., the Texas unit disappears in 2025 with no exit recorded). The Auto-Lab Express line went from 1 to 0. Zero franchisee-to-franchisee transfers in 3 years. There is no franchisee association. <strong>Public check:</strong> the brand website lists only 16 open shops today (13 MI, 2 IN, 1 CT) versus 21 in Item 20. Worth reconciling with Auto-Lab <span class="src secondary">SECONDARY</span>.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 21 — Franchisor Health <span class="sig R">Red</span></div>
           <div class="sg-val"><strong class="flag">2025 net loss ($20,591)</strong> · Revenue flat ~$940K · Equity $54,557 <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">The audit (SMCPA, Troy MI) has no going-concern qualification. The trend is weakening: net income went from $55.5K (2023) to $25.4K (2024) to a $20.6K loss (2025). Operating cash flow was negative $67.7K in 2025. Cash fell to $72.6K. Line of credit rose to $60.4K. Members took $63.9K in distributions despite the loss. $95K sits in related-party receivables, including an unsecured, non-interest-bearing $43K advance to the majority member. Leadership also changed recently: Mark Sullivan became CEO in June 2026 and also owns the Plymouth franchise. For Devin, the concern is the franchisor's capacity to support Florida expansion, not near-term insolvency.</div>
+          <div class="more-detail">The audit (SMCPA, Troy MI) has no going-concern qualification. The trend is weakening: net income went from $55.5K (2023) to $25.4K (2024) to a $20.6K loss (2025). Operating cash flow was negative $67.7K in 2025. Cash fell to $72.6K. Line of credit rose to $60.4K. Members took $63.9K in distributions despite the loss. $95K sits in related-party receivables, including an unsecured, non-interest-bearing $43K advance to the majority member. Leadership also changed recently: Mark Sullivan became CEO in June 2026 and also owns the Plymouth franchise. For you, the concern is the franchisor's capacity to support Florida expansion, not near-term insolvency.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 23 — Exit Rights (FDD Item 17) <span class="sig A">Amber</span></div>
@@ -317,17 +354,18 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
         <div class="bd-row"><div class="bd-k">Capital Accessibility</div><div class="bd-bar"><div class="bd-fill" style="width:40%"></div></div><div class="bd-v">8 / 20</div></div>
         <div class="bd-row"><div class="bd-k">Ownership Flexibility</div><div class="bd-bar"><div class="bd-fill" style="width:100%"></div></div><div class="bd-v">17 / 17</div></div>
         <div class="bd-row"><div class="bd-k">Exit &amp; Wealth-Building</div><div class="bd-bar"><div class="bd-fill" style="width:38%"></div></div><div class="bd-v">5 / 13</div></div>
+        <div class="bd-prov"><strong>Provisional view if public data is verified: ~68 / 100 (Good System).</strong> If Auto-Lab provides its prior Item 19 (~$806K–$916K average, reportedly growing), Financial Performance would move from 5 to 20. The official score stays 53 until that data comes from primary disclosure.</div>
         <p class="stack-note">Financial = Item 19 not disclosed plus franchisor red flags. Health = flat with a 7.3% 3-yr average churn, though 2 of 3 years exceeded 10%. Capital = no franchisor financing, SBA unconfirmed. Ownership = absentee permitted with a trained manager. Exit = ROFR plus a thin resale market.</p>
       </div>
 
       <!-- Match Grid -->
       <div class="match-grid">
         <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-good">Closeable</span> — Low end $365,750 − $250K cash − $50K loan = <strong>$65,750 short</strong>. At planning amount ($958,100): ~$708K. 780+ credit and $1M+ net worth support an upsized SBA 7(a) plus equipment financing.</div></div>
-        <div class="match-card"><div class="match-k">Ownership Model</div><div class="match-v"><span class="mv-good">Strong</span> — Devin chose Owner-Operator. The system allows it and doesn't require it, so he can hire an on-premises manager later.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Model</div><div class="match-v"><span class="mv-good">Strong</span> — You chose Owner-Operator. The system allows it and doesn't require it, so you can hire an on-premises manager later.</div></div>
         <div class="match-card"><div class="match-k">Timeline</div><div class="match-v"><span class="mv-good">Realistic</span> — FDD: 4–6 months to open on an existing site, 180-day contractual deadline. Matches "within 6 months," provided site control is settled.</div></div>
         <div class="match-card"><div class="match-k">Geography</div><div class="match-v"><span class="mv-warn">Confirm</span> — 200 N. Magnolia is a 4,900 SF former auto shop zoned C-2 (Secondary). Size fits the 4,500–5,500 SF spec. Site approval and Designated Area must be confirmed with Auto-Lab.</div></div>
-        <div class="match-card"><div class="match-k">Operational Fit</div><div class="match-v"><span class="mv-bad">Limited</span> — Intake: no prior business-operating experience, no executive sales experience. An experienced service manager or lead tech is the key hire.</div></div>
-        <div class="match-card"><div class="match-k">Monthly Debt Service Est.</div><div class="match-v"><span class="mv-warn">Incomplete</span> — $50K SBA ≈ <strong>$675/mo</strong>. Upsized to $115,750 ≈ <strong>$1,560/mo</strong> (10-yr, ~10.5% illustrative). Can't check DSCR against his obligations because his monthly debt was not provided.</div></div>
+        <div class="match-card"><div class="match-k">Operational Fit</div><div class="match-v"><span class="mv-warn">Build the team</span> — Auto-Lab says no auto experience is required. Your most important early hire is an experienced service manager or lead technician.</div></div>
+        <div class="match-card"><div class="match-k">Monthly Debt Service Est.</div><div class="match-v"><span class="mv-warn">Incomplete</span> — $50K SBA ≈ <strong>$675/mo</strong>. Upsized to $115,750 ≈ <strong>$1,560/mo</strong> (10-yr, ~10.5% illustrative). We'll confirm comfort against your monthly obligations once we have your range.</div></div>
       </div>
 
       <!-- Capital Stack -->
@@ -343,7 +381,7 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <div class="sl"><div class="sl-dot" style="background:#00aeef;"></div>SBA loan $50K (stated)</div>
           <div class="sl"><div class="sl-dot" style="background:#282560;"></div>Gap $65,750 → equipment financing or upsized SBA 7(a)</div>
         </div>
-        <p class="stack-note">The stated $50K loan is undersized even at the FDD low end. Close strategy: (1) vendor equipment financing against the $200K–$350K equipment package, which the FDD says is common; (2) upsize SBA 7(a) to about $150K–$250K to keep a working-capital cushion, which his 780+ credit supports; (3) if Devin <strong>purchased</strong> the real estate (listed at $1.6M, Secondary), use an SBA 504 structure for the building, separate from the business loan. If the $75K–$100K Area Developer fee came out of the $250K, the gap grows to roughly $140K–$165K.</p>
+        <p class="stack-note">The stated $50K loan is undersized even at the FDD low end. Close strategy: (1) vendor equipment financing against the $200K–$350K equipment package, which the FDD says is common; (2) upsize SBA 7(a) to about $150K–$250K to keep a working-capital cushion, which your 780+ credit supports; (3) if you <strong>purchased</strong> the real estate (listed at $1.6M, Secondary), use an SBA 504 structure for the building, separate from the business loan. If the $75K–$100K Area Developer fee came out of the $250K, the gap grows to roughly $140K–$165K.</p>
       </div>
 
       <!-- Discovery Questions -->
@@ -357,6 +395,8 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <li><span class="q-num">Q</span>Your 2025 financials show a loss, negative operating cash flow, and a new CEO as of June. What is the support and staffing plan for Florida over the next 24 months?</li>
           <li><span class="q-num">Q</span>Item 20 shows two company-owned stores opened in 2025, but Item 1 says you don't operate any outlets. Where are those stores, and can I see the corrected tables?</li>
           <li><span class="q-num">Q</span>Is Auto-Lab on the SBA Franchise Directory? Which lenders have your franchisees used, and how does your security interest in my assets work alongside an SBA lien?</li>
+          <li><span class="q-num">Q</span>Your 2023 FDD reportedly included an Item 19 showing average sales near $900K, but the 2026 FDD has none. Why was it removed, and will you share the 2023–2025 FDDs or current store-level sales?</li>
+          <li><span class="q-num">Q</span>Does 200 N. Magnolia qualify for Conversion pricing, and who is responsible for securing and leasing or buying the building: me or Auto-Lab?</li>
           <li><span class="q-num">Q</span>What does a strong service manager or lead technician look like for a 6-bay Auto-Lab, and do you help recruit them? I'm planning to run the store myself but don't come from the auto industry.</li>
         </ul>
       </div>
@@ -384,19 +424,19 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <div class="sg-item-lbl">Item 5 — Initial Fee <span class="sig R">Red</span></div>
           <div class="sg-val"><strong>$75,000–$100,000</strong> per Territory + $13,750 Pilot Store fee <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">Due at signing and non-refundable. Priced by territory size; up to 10 territories. A public broker listing for the NW Florida master territory showed a $75,000 asking price <span class="src secondary">SECONDARY</span>, which suggests Devin's territory sits at the low end. Confirm the amount actually paid.</div>
+          <div class="more-detail">Due at signing and non-refundable. Priced by territory size; up to 10 territories. A public broker listing for the NW Florida master territory showed a $75,000 asking price <span class="src secondary">SECONDARY</span>, which suggests the territory sits at the low end.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 6 — Fees &amp; Service Fees <span class="sig A">Amber</span></div>
           <div class="sg-val">AD pays unit fees on own stores · Earns <strong>2% (own) / 3% (others)</strong> + 50% of initial fees on recruited stores <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail"><span class="flag">Material discrepancy:</span> FDD Item 1 says service fees equal 2%/3% <em>of royalties collected</em>. ADA §8.2 says 2%/3% <em>of Gross Sales</em>. On a $450K store, that's the difference between about $540/yr and $9,000/yr in rebate on Devin's own store <span class="src derived">FN MATH</span>. Get written clarification before relying on AD income. If the ADA (Gross Sales) version governs, Devin's effective royalty on his own stores drops to about 4%. Other fees: $1,000 per operating store at renewal; transfer at 50% of the AD fee per territory; <strong>$50,000 liquidated damages per undeveloped store</strong>. No service fees are paid during any default or on company-owned stores in the territory.</div>
+          <div class="more-detail"><span class="flag">Material discrepancy:</span> FDD Item 1 says service fees equal 2%/3% <em>of royalties collected</em>. ADA §8.2 says 2%/3% <em>of Gross Sales</em>. On a $450K store, that's the difference between about $540/yr and $9,000/yr in rebate on your own store <span class="src derived">FN ESTIMATE</span>. Get written clarification before relying on AD income. If the ADA (Gross Sales) version governs, your effective royalty on your own stores drops to about 4%. Other fees: $1,000 per operating store at renewal; transfer at 50% of the AD fee per territory; <strong>$50,000 liquidated damages per undeveloped store</strong>. No service fees are paid during any default or on company-owned stores in the territory.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 7 — Investment Range <span class="sig G">Green</span></div>
           <div class="sg-val"><strong>$250,750–$1,971,000</strong> (1–10 territories) · Planning amt: <strong>$2,168,100</strong> <span class="src primary">PRIMARY</span><br><span style="font-size:11px;color:#888;">Cost to open — not earnings</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">The FDD low end assumes an Auto-Lab Express pilot. For a single territory with a Complete Car Care pilot, the realistic range is <strong>$465,750–$1,057,250</strong> (planning ≈ $1,163,000) <span class="src derived">FN MATH</span>: AD fee plus the full single-unit Item 7 plus $25K–$100K in AD start-up costs (office, recruitment marketing, training travel, 3-month reserve). Devin's $250K+ covers 12.7% of the FDD high end, which is Green on FN's threshold.</div>
+          <div class="more-detail">The FDD low end assumes an Auto-Lab Express pilot. For a single territory with a Complete Car Care pilot, the realistic range is <strong>$465,750–$1,057,250</strong> (planning ≈ $1,163,000) <span class="src derived">FN ESTIMATE</span>: AD fee plus the full single-unit Item 7 plus $25K–$100K in AD start-up costs (office, recruitment marketing, training travel, 3-month reserve). Your $250K+ covers 12.7% of the FDD high end, which is Green on FN's scale.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 10 — Franchisor Financing <span class="sig A">Amber</span></div>
@@ -408,13 +448,13 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <div class="sg-item-lbl">Item 11 — Ownership Model <span class="sig A">Amber</span></div>
           <div class="sg-val">Principal owner <strong>expected to personally supervise</strong> AD business (Item 15) · ~10 days AD training <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">The Area Developer must provide <strong>all training</strong> for every store opened after the Pilot Store, plus ongoing support and inspections. Missing those duties forfeits service fees and can end the ADA. AD training covers recruitment, candidate meetings, and site assessment at the home office. Refresher training of up to 5 days per year and a 3-day annual convention may be required at Devin's expense. This aligns with his owner-operator preference, but it is a heavy operating and sales load for a first-time operator with no stated sales experience.</div>
+          <div class="more-detail">The Area Developer must provide <strong>all training</strong> for every store opened after the Pilot Store, plus ongoing support and inspections. Missing those duties forfeits service fees and can end the ADA. AD training covers recruitment, candidate meetings, and site assessment at the home office. Refresher training of up to 5 days per year and a 3-day annual convention may be required at your expense. This fits your owner-operator plan, and it is a substantial operating and sales commitment, especially before the Pilot Store has a track record.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 12 — Territory <span class="sig R">Red</span></div>
           <div class="sg-val"><strong class="flag">No exclusive rights</strong> · Franchisor may open company stores in territory with no fees to AD <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">Company-owned stores count toward Devin's development schedule but pay him nothing. The Minimum Development Obligation is "mutually agreed" in the ADA; Nova Guide should obtain Devin's actual schedule. Missing it allows termination, plus $50K liquidated damages per undeveloped store. Devin can only operate and recruit within his territory. There are no rights to additional territory.</div>
+          <div class="more-detail">Company-owned stores count toward your development schedule but pay you nothing. The Minimum Development Obligation is "mutually agreed" in the ADA; Your signed ADA will show your actual schedule. Missing it allows termination, plus $50K liquidated damages per undeveloped store. You can only operate and recruit within your territory. There are no rights to additional territory.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig R">Red</span></div>
@@ -426,19 +466,19 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <div class="sg-item-lbl">Item 20 — System Health <span class="sig R">Red</span></div>
           <div class="sg-val">AD network <strong>3 → 2</strong> · 2 terminations in 2025 (IL, WI) · 2025 churn <strong>67%</strong> <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">Both 2025 terminations were the same owner (WLF Holdings, Illinois and Milwaukee). Florida (Devin) was the only new AD. Exhibit H also lists a Central Texas AD (Alamo AutoLab Group) that doesn't appear in the Item 20 tables. Zero AD transfers in 3 years. The small base makes percentages volatile, but the AD layer is contracting.</div>
+          <div class="more-detail">Both 2025 terminations were the same owner (WLF Holdings, Illinois and Milwaukee). Florida (your territory) was the only new AD. Exhibit H also lists a Central Texas AD (Alamo AutoLab Group) that doesn't appear in the Item 20 tables. Zero AD transfers in 3 years. The small base makes percentages volatile, but the AD layer is contracting.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 21 — Franchisor Health <span class="sig R">Red</span></div>
           <div class="sg-val">Same entity as System 1 · <strong class="flag">2025 net loss</strong> · Equity $54,557 <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">This matters more for an Area Developer than for a single unit. Devin's service fees depend on Auto-Lab collecting royalties and passing them through within 30 days of month-end. A franchisor with about $73K cash and negative operating cash flow is a counterparty risk on those payments.</div>
+          <div class="more-detail">This matters more for an Area Developer than for a single unit. Your service fees depend on Auto-Lab collecting royalties and passing them through within 30 days of month-end. A franchisor with about $73K cash and negative operating cash flow is a counterparty risk on those payments.</div>
         </div>
         <div class="sg-cell">
           <div class="sg-item-lbl">Item 23 — Exit Rights (FDD Item 17) <span class="sig R">Red</span></div>
           <div class="sg-val">Transfer: <strong>50% of AD fee per territory</strong> · ROFR · Cross-default with unit agreements <span class="src primary">PRIMARY</span></div>
           <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
-          <div class="more-detail">15-year term with one 10-year extension if in good standing and a new development schedule is agreed. Devin has no right to terminate. Terminating the ADA lets Auto-Lab terminate his Pilot Store franchise, and vice versa. That cross-default is the single most important structural risk. Only 5 days to cure monetary defaults. Auto-Lab keeps 100% of royalties during any default.</div>
+          <div class="more-detail">15-year term with one 10-year extension if in good standing and a new development schedule is agreed. You have no right to terminate. Terminating the ADA lets Auto-Lab terminate your Pilot Store franchise, and vice versa. That cross-default is the single most important structural risk. Only 5 days to cure monetary defaults. Auto-Lab keeps 100% of royalties during any default.</div>
         </div>
       </div>
 
@@ -454,11 +494,11 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
 
       <div class="match-grid">
         <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-warn">Stretch</span> — Single-territory planning ≈ $1.16M vs. $250K cash + $50K loan ≈ <strong>$863K gap</strong>. The AD fee must be cash. Close through the Pilot Store SBA stack and equity; don't finance recruitment spend.</div></div>
-        <div class="match-card"><div class="match-k">Ownership Model</div><div class="match-v"><span class="mv-warn">Conditional</span> — Owner-operator matches the requirement. Training every future Florida store requires proven operations he doesn't have yet.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Model</div><div class="match-v"><span class="mv-warn">Conditional</span> — Owner-operator matches the requirement. Training future Florida stores will depend on proven Pilot Store results first.</div></div>
         <div class="match-card"><div class="match-k">Timeline</div><div class="match-v"><span class="mv-warn">Stretched</span> — Pilot Store in 6 months is realistic. Recruiting under a development schedule should wait until the pilot shows 12+ months of results.</div></div>
-        <div class="match-card"><div class="match-k">Geography</div><div class="match-v"><span class="mv-good">Aligned</span> — The NW Florida territory matches his "north florida" target. The FDD projects 3 Florida openings and 1 new Florida AD. Territory boundaries must be confirmed from the signed ADA.</div></div>
-        <div class="match-card"><div class="match-k">Operational Fit</div><div class="match-v"><span class="mv-bad">Limited</span> — The AD role is franchise sales, training, and inspection. Intake shows no executive sales or business-operating experience.</div></div>
-        <div class="match-card"><div class="match-k">Monthly Debt Service Est.</div><div class="match-v"><span class="mv-warn">Incomplete</span> — AD fee should be equity (no debt). Pilot Store debt as System 1: ~$675–$1,560/mo. Obligations not provided, so DSCR can't be tested.</div></div>
+        <div class="match-card"><div class="match-k">Geography</div><div class="match-v"><span class="mv-good">Aligned</span> — The NW Florida territory matches your "north florida" target. The FDD projects 3 Florida openings and 1 new Florida AD. Territory boundaries must be confirmed from the signed ADA.</div></div>
+        <div class="match-card"><div class="match-k">Operational Fit</div><div class="match-v"><span class="mv-warn">Plan for it</span> — The AD role is franchise sales, training, and inspection. Auto-Lab's 10-day AD training covers the basics; plan for sales support or a hire as the territory grows.</div></div>
+        <div class="match-card"><div class="match-k">Monthly Debt Service Est.</div><div class="match-v"><span class="mv-warn">Incomplete</span> — AD fee should be equity (no debt). Pilot Store debt as System 1: ~$675–$1,560/mo. Final fit confirmed once we have your monthly obligations.</div></div>
       </div>
 
       <div class="stack-wrap">
@@ -473,7 +513,7 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
           <div class="sl"><div class="sl-dot" style="background:#00aeef;"></div>SBA $50K (stated)</div>
           <div class="sl"><div class="sl-dot" style="background:#282560;"></div>Gap $165,750 → upsized SBA on Pilot Store + equipment financing</div>
         </div>
-        <p class="stack-note">If the AD fee is already paid, this stack collapses into System 1's Pilot Store stack, and the task becomes rebuilding Devin's cash cushion. Net worth of $1M+ suggests he may have other assets to draw on, but the intake doesn't itemize them. Confirm before lender packaging.</p>
+        <p class="stack-note">If the AD fee is already paid, this stack collapses into System 1's Pilot Store stack, and the task becomes rebuilding your cash cushion. Your $1M+ net worth may include other assets to draw on; we'll map those together before lender conversations.</p>
       </div>
 
       <div class="qs-wrap">
@@ -504,7 +544,7 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
         <th class="th-s2" style="width:35%">Auto-Lab Area Developer</th>
       </tr>
       <tr><td class="metric">System Nova Score</td><td><strong>53 / 100</strong> · Developing</td><td><strong>19 / 100</strong> · Caution</td></tr>
-      <tr><td class="metric">Candidate Fit</td><td class="td-warn">Conditional Fit</td><td class="td-bad">Stretch — Pilot First</td></tr>
+      <tr><td class="metric">Your Fit</td><td class="td-warn">Conditional Fit</td><td class="td-bad">Stretch — Pilot First</td></tr>
       <tr><td class="metric">Investment Range (cost to open)</td><td>$365,750–$871,000</td><td>$250,750–$1,971,000 (1–10 terr.) · ~$465,750–$1,057,250 single terr. (FN est.)</td></tr>
       <tr><td class="metric">Planning Amount</td><td>$958,100</td><td>$2,168,100 FDD · ~$1.16M single terr.</td></tr>
       <tr><td class="metric">Est. Capital Gap</td><td class="td-good">$65,750 at low end (after $50K loan) · ~$708K at planning amt</td><td class="td-warn">~$165,750 at low end · ~$863K at single-terr. planning amt</td></tr>
@@ -526,14 +566,14 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
   <div class="rec-card">
     <div class="sec-lbl">FN Recommendation</div>
     <div class="rec-sys">Build the Tallahassee Pilot Store first &nbsp;·&nbsp; Hold Area Development until it has 12 months of results</div>
-    <p class="rec-body">Devin told us his goal is "regional or national expansion" with "autolab" in "north florida." It appears he has already taken the first step by securing the Northwest Florida Area Developer rights. The FN recommendation is to sequence that ambition, not slow it down. The Pilot Store at 200 N. Magnolia is the foundation for everything else: the ADA requires it, it becomes the training site for every future Florida franchisee, and its results are the only proof of Auto-Lab's Florida economics anyone will have, since the franchisor discloses no Item 19. The existing 4,900 SF automotive building, his 780+ credit, and his $1M+ net worth make the single-unit capital stack clearly closeable. The $50K loan he mentioned just needs to be sized up to fit the real cost to open.</p>
-    <p class="rec-body">The Area Developer layer scores 19/100 on its own merits. The AD network shrank from 3 to 2 in 2025. The service-fee basis is inconsistent between the FDD and the ADA. Territory rights are non-exclusive. The ADA and store agreement cross-default, so trouble in one puts both at risk. None of this is a reason to walk away. It is a reason to use FN's leverage now: get the service fee confirmed in writing, try to start the development-schedule clock after the Pilot Store stabilizes, and hold off on franchise recruiting until the Pilot Store has a year of operating data. The franchisor's thin balance sheet (2025 loss, about $73K cash) makes this sequencing more important. Devin's regional plan should not depend on Auto-Lab's capacity to support fast Florida growth.</p>
-    <div class="unlock-lbl">What FN Can Unlock for Devin</div>
+    <p class="rec-body">You told us your goal is "regional or national expansion" with "autolab" in "north florida." It appears you've already taken the first step by securing the Northwest Florida Area Developer rights. Our recommendation is to sequence that ambition, not slow it down. The Pilot Store at 200 N. Magnolia is the foundation for everything else: your Area Development Agreement requires it, it becomes the training site for every future Florida franchisee, and its results will be the clearest proof of Auto-Lab's Florida economics, since the current FDD discloses no sales data. The existing 4,900 SF automotive building, your 780+ credit, and your $1M+ net worth make the single-store financing clearly achievable. The $50K loan you mentioned likely needs to be sized to the full cost to open, which we can help with.</p>
+    <p class="rec-body">The Area Developer layer scores 19/100 on its own. The Area Developer network shrank from 3 to 2 in 2025. The service-fee basis differs between the FDD and the agreement. Territory rights are non-exclusive. The territory and store agreements cross-default, so trouble in one puts both at risk. None of this is a reason to walk away. It is a reason to get a few commitments from Auto-Lab now: the service fee confirmed in writing, a development-schedule clock that starts after the Pilot Store stabilizes, and a plan to begin franchise recruiting once the Pilot Store has a year of results. Auto-Lab's thin balance sheet (a 2025 loss and about $73K in cash) makes this sequencing more important. Your regional plan should not depend on Auto-Lab's capacity to support fast Florida growth.</p>
+    <div class="unlock-lbl">How Franchise Nova Can Help</div>
     <ul class="unlock-list">
-      <li>SBA lender packaging built on his 780+ credit and $1M+ net worth: an upsized 7(a) for the Pilot Store, vendor equipment financing, and an SBA 504 path if he is buying the Magnolia building rather than leasing it.</li>
-      <li>A franchisor diligence request on Devin's behalf: written service-fee clarification, corrected Item 20 tables and Exhibit H name, the signed ADA development schedule, and SBA Directory status. These are asks a first-time operator rarely gets answered alone.</li>
+      <li>SBA lender packaging built on your 780+ credit and $1M+ net worth: an upsized 7(a) for the Pilot Store, vendor equipment financing, and an SBA 504 path if you are buying the Magnolia building rather than leasing it.</li>
+      <li>A franchisor diligence request on your behalf: written service-fee clarification, corrected Item 20 tables and Exhibit H name, the signed ADA development schedule, and SBA Directory status. Requests like these tend to get faster, clearer answers coming from an advisory team.</li>
       <li>Structured validation calls with Michigan operators (including a newer store) and the Indiana and Central Texas Area Developers, standing in for the missing Item 19.</li>
-      <li>An operator-talent plan: identifying an experienced service manager or lead technician for Tallahassee, which is the biggest lever given Devin's first-time-operator profile.</li>
+      <li>An operator-talent plan: identifying an experienced service manager or lead technician for Tallahassee, since that person shapes day-to-day quality from opening day.</li>
     </ul>
   </div>
 </div>
@@ -544,15 +584,16 @@ td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;c
   <ul class="risks-list">
     <li><strong>No Item 19 in either FDD.</strong> There is no disclosed sales, margin, or AD-income data for a system operating since 1989. Every financial projection for Tallahassee will rest on validation calls, not disclosure. Treat any verbal numbers from the franchisor as something to document and verify.</li>
     <li><strong>Franchisor financial capacity.</strong> 2025 net loss, negative operating cash flow, $54.6K equity, distributions exceeding income, a $43K advance to the majority member, and a new CEO as of June 2026. Florida support will come from a small Michigan team. Ask for a written support plan.</li>
-    <li><strong>Cross-default between the ADA and the Pilot Store.</strong> A default on either agreement can terminate both. Combined with $50K liquidated damages per undeveloped store, an aggressive development schedule is the biggest structural exposure. Nova Guide needs the signed ADA schedule.</li>
-    <li><strong>Capital picture is incomplete.</strong> Monthly debt obligations were not provided, whether the AD fee was paid from the $250K is unknown, and it isn't clear whether "purchased a location" means owning the building (listed at $1.6M) or leasing it (~$12,250/mo + NNN). Resolve all three before lender conversations.</li>
-    <li><strong>First-time operator in a technical trade.</strong> No prior business-operating or executive sales experience per intake, a $450K minimum-sales hurdle from year two, and a Pilot Store that must double as the Florida training site. The service-manager hire is make-or-break.</li>
+    <li><strong>Cross-default between the ADA and the Pilot Store.</strong> A default on either agreement can terminate both. Combined with $50K liquidated damages per undeveloped store, an aggressive development schedule is the biggest structural exposure. Sharing your signed ADA schedule lets us plan around it.</li>
+    <li><strong>A few capital details are still open.</strong> Your monthly obligations, whether the Area Developer fee came from your $250K+, and whether you own or lease 200 N. Magnolia (listed at $1.6M for sale, or about $12,250/mo + NNN to lease) all change the loan structure. Confirming these lets us finalize the lender plan.</li>
+    <li><strong>Public data conflicts with the FDD.</strong> The website shows 16 open shops vs. 21 in Item 20, advertises a start-up cost ($130K–$314K) far below the 2026 FDD, and a prior Item 19 (~$916K) was dropped. Treat all sales figures as unverified until Auto-Lab provides them in writing.</li>
+    <li><strong>Building the operating team.</strong> A $450K minimum-sales requirement from year two, plus a Pilot Store that doubles as the Florida training site, make the service manager or lead technician hire the most important decision before opening.</li>
   </ul>
 </div>
 
 <div class="doc-footer">
-  <p class="footer-main">Franchise Nova FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; September 2026 &nbsp;&middot;&nbsp; Candidate: Devin Jackson &nbsp;&middot;&nbsp; Systems: Auto-Lab Complete Car Care Centers · Auto-Lab Area Developer</p>
-  <p class="footer-note">For internal FN use only — not financial, legal, or investment advice. Nova Guide must review before sharing any portion with the candidate. Figures sourced from the 2026 Auto-Lab single-unit and Area Representative FDDs (issued June 19, 2026) and the candidate intake (July 9, 2026) plus September update. Site details are Secondary (public commercial listings). FN MATH figures are internal calculations, not financial performance representations. Monthly debt obligations not provided; DSCR not tested. Debt service uses an illustrative ~10.5%, 10-year SBA term. Territory and site availability require direct franchisor confirmation.</p>
+  <p class="footer-main">Franchise Nova FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; September 2026 &nbsp;&middot;&nbsp; Prepared for: Devin Jackson &nbsp;&middot;&nbsp; Systems: Auto-Lab Complete Car Care Centers · Auto-Lab Area Developer</p>
+  <p class="footer-note">Prepared by Franchise Nova for Devin Jackson. Not financial, legal, or investment advice; review the FDD and agreements with your attorney and accountant before signing. Figures come from the 2026 Auto-Lab single-unit and Area Representative FDDs (issued June 19, 2026) and information you shared with us (July and September 2026). Public-source figures are Secondary, linked in the report, and should be verified with Auto-Lab. FN estimates are calculations, not financial performance representations. Debt service uses illustrative ~10.5%, 10-year SBA terms. Territory and site approval require confirmation from Auto-Lab.</p>
 </div>
 
 </div>
