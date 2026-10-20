@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Franchise Nova — Jollof Bowl Financial Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#1a1a2e;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.12);}
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#161033);padding:28px 40px 24px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(0,174,239,0.3),transparent 65%);pointer-events:none;}
+.hlogo{font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,0.4);margin-bottom:12px;font-weight:700;font-family:'Montserrat',sans-serif;}
+.heye{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:6px;font-weight:700;font-family:'Montserrat',sans-serif;}
+.htitle{font-size:26px;font-weight:900;color:#fff;margin-bottom:4px;font-family:'Montserrat',sans-serif;}
+.hmeta{font-size:12px;color:#b0aed0;}
+/* SCORE STRIP */
+.score-strip{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #e8eaf0;background:linear-gradient(90deg,rgba(0,174,239,0.06),transparent);}
+.ss{padding:14px 16px;border-right:1px solid #e8eaf0;text-align:center;}
+.ss:last-child{border-right:none;}
+.ss-val{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;line-height:1;margin-bottom:3px;}
+.ss-lbl{font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#888;}
+/* SECTION */
+.sec{padding:20px 40px;border-bottom:1px solid #e8eaf0;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:14px;}
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:left;}
+.th-dark{background:#0d0a1c;color:#fff;}
+.th-cyan{background:#1a1040;color:#00aeef;}
+td{padding:7px 10px;border-bottom:1px solid #e8eaf0;color:#1a1a2e;vertical-align:top;line-height:1.45;}
+tr:nth-child(even) td{background:#f9f9fc;}
+tr:last-child td{border-bottom:none;font-weight:700;}
+.tdm{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;color:#452e80;}
+/* FLAGS */
+.flag-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.flag-card{border-radius:8px;padding:14px 16px;}
+.fg{background:#f0f9f0;border-left:3px solid #1a7a4a;}
+.fr{background:#fff0f4;border-left:3px solid #b1456b;}
+.flag-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;}
+.fg .flag-title{color:#1a7a4a;}
+.fr .flag-title{color:#b1456b;}
+.flag-list{padding-left:14px;margin:0;}
+.flag-list li{font-size:12px;margin-bottom:6px;line-height:1.5;}
+.fg .flag-list li{color:#1a3a12;}
+.fr .flag-list li{color:#4a1020;}
+/* SCENARIO */
+.scen-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.scen{border-radius:8px;padding:14px 16px;}
+.scen-base{background:#f5f5fa;border-top:3px solid #452e80;}
+.scen-best{background:#f0f9f0;border-top:3px solid #1a7a4a;}
+.scen-worst{background:#fff0f4;border-top:3px solid #b1456b;}
+.scen-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.scen-base .scen-title{color:#452e80;}
+.scen-best .scen-title{color:#1a7a4a;}
+.scen-worst .scen-title{color:#b1456b;}
+.scen-row{display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid rgba(0,0,0,0.06);}
+.scen-row:last-child{border-bottom:none;font-weight:700;font-size:12px;}
+.scen-row span:first-child{color:#666;}
+.scen-row span:last-child{font-family:'Montserrat',sans-serif;font-weight:700;}
+/* FEE VISUAL */
+.fee-bar-wrap{margin-bottom:12px;}
+.fee-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px;}
+.fee-label span:first-child{color:#555;}
+.fee-label span:last-child{font-family:'Montserrat',sans-serif;font-weight:700;color:#1a1a2e;}
+.fee-bar{height:10px;background:#e8eaf0;border-radius:999px;overflow:hidden;}
+.fee-fill{height:100%;border-radius:999px;}
+/* MATURITY */
+.mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.mat-card{background:#f9f9fc;border-radius:8px;padding:12px 14px;border-left:3px solid #e8eaf0;}
+.mat-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:10px;color:#1a1a2e;margin-bottom:4px;}
+.mat-stat{font-size:11.5px;color:#555;line-height:1.5;}
+/* ROI */
+.roi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.roi-card{background:#f0f7ff;border-radius:8px;padding:12px 14px;text-align:center;}
+.roi-val{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:#282560;margin-bottom:3px;}
+.roi-lbl{font-size:9px;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;}
+/* DATA GAP */
+.gap-note{background:#fff8e1;border-left:3px solid #b86e00;padding:10px 14px;border-radius:0 6px 6px 0;font-size:11.5px;color:#5a4000;margin-top:10px;line-height:1.6;}
+/* FOOTER */
+.ftr{background:#0d0a1c;padding:14px 40px;}
+.ftr p{font-size:11px;color:#666;line-height:1.5;}
+.good{color:#1a7a4a;font-weight:700;}
+.warn{color:#b86e00;font-weight:700;}
+.bad{color:#b1456b;font-weight:700;}
+@media print{body{background:#fff;padding:0;}.doc{box-shadow:none;border-radius:0;}.hdr{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+
+
+.critical-banner{background:#b1456b;padding:14px 40px;}
+.critical-banner p{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;color:#fff;letter-spacing:.03em;}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tw table{min-width:560px;}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.check-card{border-radius:8px;padding:14px 16px;background:#f5f5fa;border-left:3px solid #452e80;}
+.check-card.need{background:#fff8e1;border-left-color:#b86e00;}
+.check-card .flag-title{color:#452e80;}
+.check-card.need .flag-title{color:#b86e00;}
+.check-card .flag-list li{color:#1a1a2e;}
+.body-p{font-size:12.5px;color:#333;line-height:1.7;margin-top:12px;}
+@media (max-width:700px){
+  body{padding:0;}
+  .doc{border-radius:0;}
+  .hdr,.sec,.ftr,.critical-banner{padding-left:20px;padding-right:20px;}
+  .score-strip{grid-template-columns:repeat(2,1fr);}
+  .ss{border-bottom:1px solid #e8eaf0;}
+  .flag-grid,.scen-grid,.check-grid{grid-template-columns:1fr;}
+  .mat-grid{grid-template-columns:1fr 1fr;}
+  .roi-grid{grid-template-columns:1fr 1fr;}
+}
+
+</style>
+</head>
+<body>
+<div class="doc">
+
+<div class="hdr">
+  <div class="hlogo">BLK GRVTY / FRANCHISE NOVA</div>
+  <div class="heye">Financial Analysis · Financials-Based (No FDD Yet)</div>
+  <div class="htitle">Jollof Bowl — Financial Analysis</div>
+  <p class="hmeta">Based on QuickBooks P&amp;L (Aug 1, 2025 – Aug 27, 2026) &amp; Balance Sheet (Aug 27, 2026) &nbsp;·&nbsp; Jollof Bowl LLC &nbsp;·&nbsp; Baltimore, MD &nbsp;·&nbsp; Emerging franchisor · Uploaded Oct 5, 2026 · For Chipo’s review</p>
+</div>
+
+<div class="critical-banner">
+  <p>⚑ The flagship financials are strong, but the investor deck, one-pager and flyer quote different revenue, profit and valuation figures, and the franchisor projection model overstates corporate EBITDA. Reconcile before any lender or investor diligence.</p>
+</div>
+
+<!-- SCORE STRIP -->
+<div class="score-strip">
+  <div class="ss"><div class="ss-val" style="color:#00aeef">$1.63M</div><div class="ss-lbl">Revenue (≈13 mo)</div></div>
+  <div class="ss"><div class="ss-val" style="color:#1a7a4a">27.0%</div><div class="ss-lbl">Operating Margin</div></div>
+  <div class="ss"><div class="ss-val" style="color:#1a7a4a">20.1%</div><div class="ss-lbl">Net Margin</div></div>
+  <div class="ss"><div class="ss-val" style="color:#1a7a4a">12.9x</div><div class="ss-lbl">DSCR (Existing Debt)</div></div>
+  <div class="ss"><div class="ss-val" style="color:#b86e00">0</div><div class="ss-lbl">Franchised Units</div></div>
+</div>
+
+<!-- FOOTPRINT -->
+<div class="sec">
+  <div class="sec-lbl">Footprint &amp; Growth Status (No Item 20 Yet)</div>
+  <table>
+    <tr><th class="th-dark">Unit / Format</th><th class="th-dark">Status</th><th class="th-dark">Source</th></tr>
+    <tr><td class="tdm">Flagship — Cross Street Market (food hall)</td><td style="color:#1a7a4a;font-weight:700;">Operating since mid-2025</td><td>Prior assessment / deck</td></tr>
+    <tr><td class="tdm">Food Truck 1</td><td style="color:#1a7a4a;font-weight:700;">Operating · 2012 Freightliner · $112K M&amp;T loan shared with Truck 2</td><td>Balance sheet / ROI workbook</td></tr>
+    <tr><td class="tdm">Food Truck 2</td><td style="color:#b86e00;font-weight:700;">Built · $1,444 in POS sales May–Sep</td><td>ROI workbook / deck</td></tr>
+    <tr><td class="tdm">College Park, MD (UMD campus)</td><td style="color:#b86e00;font-weight:700;">Lease signed · opening mid-to-late November</td><td>Deck / Sept 15 call</td></tr>
+    <tr><td class="tdm">Franchised units</td><td style="color:#b86e00;font-weight:700;">0 · 8–9 prospects · FDD ≈90% done, state registration pending</td><td>Sept 15 call (not verified)</td></tr>
+  </table>
+  <div class="gap-note">⚑ <strong>Data note:</strong> No FDD, franchise agreement or prospect list was included in the upload. We received a “top 10 cities” list (DMV to LA) instead of the 8–9 prospects with locations and funding needs. Every system-level figure here is self-reported until the FDD is shared.</div>
+</div>
+
+<!-- P&L -->
+<div class="sec">
+  <div class="sec-lbl">P&amp;L Performance — Flagship (QuickBooks, Accrual, Aug 1, 2025 – Aug 27, 2026)</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Metric</th><th class="th-cyan">Amount</th><th class="th-cyan">% of Revenue</th><th class="th-dark">FN Assessment</th></tr>
+    <tr><td class="tdm">Revenue</td><td>$1,632,529</td><td>100%</td><td>≈$126K/month · ≈$1.52M annualized (period is 392 days, not 12 months)</td></tr>
+    <tr><td class="tdm">Cost of Goods Sold</td><td>$528,116</td><td style="color:#1a7a4a;font-weight:700;">32.3%</td><td>Food 30.1% + packaging 2.2%. Strong; down from 40.3% in April</td></tr>
+    <tr><td class="tdm">Gross Profit</td><td>$1,104,413</td><td style="color:#1a7a4a;font-weight:700;">67.7%</td><td>—</td></tr>
+    <tr><td class="tdm">Payroll</td><td>$433,456</td><td>26.6%</td><td>Plus $18,349 contract labor (1.1%). Unclear whether owners are on payroll</td></tr>
+    <tr><td class="tdm">Rent</td><td>$64,340</td><td style="color:#b86e00;font-weight:700;">3.9%</td><td>Food-hall rent. An inline franchised store will pay more</td></tr>
+    <tr><td class="tdm">Marketing · Legal &amp; Accounting · Interest</td><td>$58,667</td><td>3.6%</td><td>$28,970 · $21,549 · $8,148</td></tr>
+    <tr><td class="tdm">All Other Operating</td><td>$106,694</td><td>6.5%</td><td>—</td></tr>
+    <tr><td class="tdm">Net Operating Income</td><td style="color:#1a7a4a;font-weight:700;">$441,257</td><td style="color:#1a7a4a;font-weight:700;">27.0%</td><td>This is the figure the deck calls “net income”</td></tr>
+    <tr><td class="tdm">Growth Spend (College Park, Franchising, Growth) + Vehicle</td><td>($113,779)</td><td>7.0%</td><td>$107K of expansion and franchising costs expensed. College Park build-out appears expensed, not capitalized</td></tr>
+    <tr><td class="tdm">Net Income</td><td style="color:#1a7a4a;font-weight:700;">$327,478</td><td style="color:#1a7a4a;font-weight:700;">20.1%</td><td>≈$305K annualized · pre-tax (LLC). Excellent for a single unit</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>Comparability:</strong> Truck and catering revenue appear to run through the same statement, so this isn’t a clean flagship-only P&amp;L. Request a monthly P&amp;L split by flagship, trucks and catering, and confirm owner compensation. If the owners aren’t paid through payroll, margins overstate what a franchisee paying a GM would keep.</div>
+</div>
+
+<!-- TREND -->
+<div class="sec">
+  <div class="sec-lbl">P&amp;L Trend — April 2026 KPI Dashboard vs. Current Financials</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Metric</th><th class="th-cyan">Mar 2025 – Feb 2026</th><th class="th-cyan">Aug 2025 – Aug 2026</th><th class="th-dark">FN Assessment</th></tr>
+    <tr><td class="tdm">Revenue</td><td>$828,866</td><td>$1,632,529</td><td>Periods overlap and differ in length; not directly comparable</td></tr>
+    <tr><td class="tdm">COGS %</td><td style="color:#b86e00;font-weight:700;">40.3%</td><td style="color:#1a7a4a;font-weight:700;">32.3%</td><td>8-point improvement. Workbook cites new bowl portions ≈23% cheaper. Confirm it holds</td></tr>
+    <tr><td class="tdm">Operating Margin (Dashboard: Operator EBITDA)</td><td>23.2%</td><td style="color:#1a7a4a;font-weight:700;">27.0%</td><td>Improving</td></tr>
+    <tr><td class="tdm">Net Margin</td><td>22.9%</td><td>20.1%</td><td>Gap is mostly the $114K of below-the-line growth and vehicle spending</td></tr>
+  </table></div>
+</div>
+
+<!-- REVENUE TRAJECTORY -->
+<div class="sec">
+  <div class="sec-lbl">Monthly Revenue — Read from Deck Chart (Jun 2025 – May 2026, ±≈$3K per bar)</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Month</th><th class="th-cyan">Jun</th><th class="th-cyan">Jul</th><th class="th-cyan">Aug</th><th class="th-cyan">Sep</th><th class="th-cyan">Oct</th><th class="th-cyan">Nov</th><th class="th-cyan">Dec</th><th class="th-cyan">Jan</th><th class="th-cyan">Feb</th><th class="th-cyan">Mar</th><th class="th-cyan">Apr</th><th class="th-cyan">May</th></tr>
+    <tr><td class="tdm">Revenue (≈$K)</td><td>17</td><td>29</td><td>94</td><td>159</td><td>125</td><td>154</td><td>131</td><td>99</td><td>134</td><td style="color:#1a7a4a;font-weight:700;">186</td><td>124</td><td>121</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>What the chart tells us:</strong> The bars add up to ≈$1.37M, which matches the one-pager’s “$1.37M in 12 months.” So the one-pager most likely covers Jun 2025 – May 2026, not the same period as the deck. That one-pager’s $465K net income still isn’t in any statement we have. More importantly, the P&amp;L ($1.63M from Aug 1, 2025) minus the chart’s Aug–May bars (≈$1.33M) leaves ≈$306K for Jun 1 – Aug 27, 2026. That’s about $105K a month, below the ≈$133K average of the prior ten months, and it covers the July 26 Food Network premiere. If that holds up, summer 2026 was the softest stretch since launch. The chart’s y-axis labels are also misprinted (“$20 0K” for $200K). We need the actual monthly P&amp;L to confirm.</div>
+</div>
+
+<!-- BALANCE SHEET -->
+<div class="sec">
+  <div class="sec-lbl">Balance Sheet &amp; Debt Service (As of Aug 27, 2026)</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Item</th><th class="th-dark">Amount</th><th class="th-dark">FN Assessment</th></tr>
+    <tr><td class="tdm">Cash &amp; bank accounts</td><td>$236,269</td><td>Includes $72,720 “Amex Expense Account” and a −$16,895 Wells Fargo balance</td></tr>
+    <tr><td class="tdm">Fixed assets</td><td>$122,158</td><td>“Food Trucks Purchase” $112,000 · no depreciation booked</td></tr>
+    <tr><td class="tdm">Total liabilities</td><td>$115,092</td><td>M&amp;T loan $112,000, still at full original balance</td></tr>
+    <tr><td class="tdm">Owner draws</td><td>($163,974)</td><td>Period unclear; used below as a stand-in for owner pay</td></tr>
+    <tr><td class="tdm">Equity</td><td>$254,717</td><td>Current ratio ≈2.2x</td></tr>
+    <tr><td class="tdm">Existing debt service</td><td>$32,400/yr</td><td>$2,700/month for both trucks</td></tr>
+    <tr><td class="tdm">DSCR — before growth spend / after growth spend / after owner draws</td><td style="color:#1a7a4a;font-weight:700;">12.9x / 9.6x / 4.6x</td><td>Very strong coverage on any view</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>Bookkeeping items a lender will ask about:</strong> loan principal payments aren’t being recorded; the Amex account may be a credit card misclassified as cash; balance-sheet net income ($210,143) doesn’t match the P&amp;L ($327,478), likely a different period; outside investment on the books is $85,100 vs. $145,000 on the cap table. All are quick fixes for their accountant.</div>
+</div>
+
+<!-- DEBT CAPACITY -->
+<div class="sec">
+  <div class="sec-lbl">Debt Capacity — Could the Unraised $934K Be Debt? (Illustrative · 1.25x DSCR · 11% · 10-Yr Term)</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Scenario</th><th class="th-dark">Annual Cash Flow Base</th><th class="th-dark">New Payment Room</th><th class="th-dark">Supportable Principal</th><th class="th-dark">Notes</th></tr>
+    <tr><td class="tdm">Conservative (after growth spend &amp; owner draws)</td><td>≈$149K</td><td>≈$7,200/month</td><td style="color:#b86e00;font-weight:700;">≈$520K</td><td>Covers about half the gap</td></tr>
+    <tr><td class="tdm">Operating view (growth spend treated as one-time)</td><td>≈$254K</td><td>≈$14,300/month</td><td style="color:#1a7a4a;font-weight:700;">≈$1.0M</td><td>Covers the full gap, but only if College Park doesn’t drag on cash flow</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>Missing for real sizing:</strong> College Park lease terms, build budget and first-year projection. Andrea said she’s open to debt “for the balance” if it doesn’t create a cash crunch. FN is not the lender; this is a starting point for a Capital Consortium conversation, not a quote.</div>
+</div>
+
+<!-- FEES -->
+<div class="sec">
+  <div class="sec-lbl">Fee Structure &amp; Investment by Format (Franchise Investment Guide — Not FDD Item 7)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="check-grid">
+    <div>
+      <p style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#452e80;margin-bottom:10px;">Planning Total by Format</p>
+      <table>
+        <tr><th class="th-dark">Format</th><th class="th-dark">All-In Planning Total</th></tr>
+        <tr><td class="tdm">Food stall / food hall</td><td style="color:#1a7a4a;font-weight:700;">$125K – $135K</td></tr>
+        <tr><td class="tdm">Food truck</td><td style="color:#1a7a4a;font-weight:700;">$165K – $175K</td></tr>
+        <tr><td class="tdm">Second-gen restaurant</td><td>$275K – $585K</td></tr>
+        <tr><td class="tdm">Cold-shell restaurant</td><td style="color:#b1456b;font-weight:700;">$1.2M – $1.6M</td></tr>
+      </table>
+    </div>
+    <div>
+      <p style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#452e80;margin-bottom:10px;">Ongoing Fee Burden</p>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Royalty</span><span>6.0%</span></div><div class="fee-bar"><div class="fee-fill" style="width:55%;background:#452e80;"></div></div></div>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Brand Fund</span><span>2.0%</span></div><div class="fee-bar"><div class="fee-fill" style="width:18%;background:#664ca9;"></div></div></div>
+      <div class="fee-bar-wrap"><div class="fee-label"><span>Initial Franchise Fee</span><span>$25K – $35K</span></div><div class="fee-bar"><div class="fee-fill" style="width:30%;background:#9b8fc8;"></div></div></div>
+      <div class="fee-bar-wrap" style="margin-top:8px;"><div class="fee-label"><span style="font-weight:700;color:#1a1a2e;">Total Effective Burden</span><span style="font-weight:700;color:#1a7a4a;">8% of gross</span></div><div class="fee-bar"><div class="fee-fill" style="width:73%;background:#1a7a4a;"></div></div></div>
+    </div>
+  </div>
+  <div class="gap-note">⚑ <strong>Note:</strong> Each planning total = format estimate + franchise fee + at least $50K opening reserves; their math checks out. The introductory fee quoted to early candidates was $25K. The workbook’s own investment table ($246K–$502K) doesn’t match the guide’s second-gen range ($275K–$585K). The 6% + 2% structure is now consistent across documents, resolving the 5% vs. 6% discrepancy flagged in August. The stall and truck formats are a real entry point for Nova-tier candidates.</div>
+</div>
+
+<!-- SCENARIOS -->
+<div class="sec">
+  <div class="sec-lbl">Sensitivity / Scenario Analysis — Franchised Second-Gen Unit, $350K Investment, $280K Loan, 11%, 10 Yr (Illustrative — NO Franchisee Data Basis)</div>
+  <div class="scen-grid">
+    <div class="scen scen-worst">
+      <div class="scen-title">⚠ Worst Case</div>
+      <div class="scen-row"><span>Annual Revenue</span><span style="color:#b1456b;">$750K (≈half of flagship)</span></div>
+      <div class="scen-row"><span>Fee Burden (8%)</span><span>$60K</span></div>
+      <div class="scen-row"><span>EBITDA after fees</span><span style="color:#b1456b;">$60K (8%)</span></div>
+      <div class="scen-row"><span>Annual Debt Service</span><span>$46K</span></div>
+      <div class="scen-row"><span>DSCR</span><span style="color:#b86e00;">1.3x — thin</span></div>
+      <div class="scen-row"><span>Outcome</span><span style="color:#b86e00;">Survivable, no cushion</span></div>
+    </div>
+    <div class="scen scen-base">
+      <div class="scen-title">📊 Base Case</div>
+      <div class="scen-row"><span>Annual Revenue</span><span>$1.296M (model conservative)</span></div>
+      <div class="scen-row"><span>Fee Burden (8%)</span><span>$104K</span></div>
+      <div class="scen-row"><span>EBITDA after fees (rent at 8%)</span><span style="color:#452e80;font-weight:700;">$207K (16%)</span></div>
+      <div class="scen-row"><span>Annual Debt Service</span><span>$46K</span></div>
+      <div class="scen-row"><span>DSCR</span><span style="color:#1a7a4a;">4.5x</span></div>
+      <div class="scen-row"><span>Outcome</span><span style="color:#1a7a4a;">Viable</span></div>
+    </div>
+    <div class="scen scen-best">
+      <div class="scen-title">✓ Best Case (Flagship Benchmark)</div>
+      <div class="scen-row"><span>Annual Revenue</span><span style="color:#1a7a4a;">$1.52M (flagship annualized)</span></div>
+      <div class="scen-row"><span>Fee Burden (8%)</span><span>$122K</span></div>
+      <div class="scen-row"><span>EBITDA after fees (model 20%)</span><span style="color:#1a7a4a;font-weight:700;">$304K (20%)</span></div>
+      <div class="scen-row"><span>Annual Debt Service</span><span>$46K</span></div>
+      <div class="scen-row"><span>DSCR</span><span style="color:#1a7a4a;">6.6x — Excellent</span></div>
+      <div class="scen-row"><span>Outcome</span><span style="color:#1a7a4a;">Strong investment</span></div>
+    </div>
+  </div>
+  <div class="gap-note" style="margin-top:12px;">⚑ <strong>Model note:</strong> Base and best cases use Jollof’s own cost percentages (COGS 34%, labor 27%, other 7%); the base case raises rent from their 4% to an illustrative 8% for an inline store. The worst case assumes fixed costs don’t shrink with sales. The workbook computes the same $259K franchisee EBITDA and a 1.35-year payback (74% annual return); its note mislabels the payback as “1 year and 1.3 months” (it’s ≈1 year 4 months). Its gross-profit row for the moderate and aggressive cases pulls the conservative AUV, a display error that doesn’t flow through. The model’s conservative 150 customers/day × $24 sits a little below the flagship’s implied ≈165–175/day; the deck cites a $25 average ticket. Corporate overhead in the franchisor model is set at just 5% of franchisor revenue.</div>
+</div>
+
+<!-- ROI -->
+<div class="sec">
+  <div class="sec-lbl">ROI Analysis — Can This Make Sense? (Base Case, Single Second-Gen Unit)</div>
+  <div class="roi-grid">
+    <div class="roi-card"><div class="roi-val" style="color:#1a7a4a;">~1.7 yrs</div><div class="roi-lbl">Payback (Model-Derived)</div></div>
+    <div class="roi-card"><div class="roi-val" style="color:#1a7a4a;">4.5x</div><div class="roi-lbl">DSCR Base Case</div></div>
+    <div class="roi-card"><div class="roi-val" style="color:#b86e00;">8%</div><div class="roi-lbl">Total Fee Burden</div></div>
+    <div class="roi-card"><div class="roi-val" style="color:#1a7a4a;">$125K</div><div class="roi-lbl">Lowest Entry (Stall)</div></div>
+  </div>
+  <p class="body-p"><strong>FN Assessment:</strong> If a franchised unit gets anywhere near flagship performance, the unit economics are very attractive. But every figure here comes from one food-hall unit with low rent, about 16 months of history, a Food Network halo and possibly unpaid owners. Until there’s franchisee data or an FDD Item 19, treat the payback as a ceiling, not an expectation. The stall and truck formats are the most realistic entry for FN candidates.</p>
+</div>
+
+<!-- TRUCK -->
+<div class="sec">
+  <div class="sec-lbl">Food Truck — Actual (May–Sep 2026) vs. Deck Projection</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Measure</th><th class="th-cyan">Actual</th><th class="th-cyan">Deck</th><th class="th-dark">FN Assessment</th></tr>
+    <tr><td class="tdm">Operating days / month</td><td>≈8.8 (estimated)</td><td style="color:#b1456b;font-weight:700;">26</td><td>Pitch assumes ≈3x the current schedule</td></tr>
+    <tr><td class="tdm">Net revenue / day</td><td>$1,463 · $1,117 without Afro Fest</td><td>$1,463</td><td>Afro Fest = ≈29% of five months’ revenue</td></tr>
+    <tr><td class="tdm">Monthly net revenue</td><td>≈$12,900</td><td>$38,045</td><td>—</td></tr>
+    <tr><td class="tdm">Monthly profit</td><td>≈$4,900</td><td>$16,296</td><td>Actual tab re-prices sales at the new 17.3% bowl cost; the deck uses 29%</td></tr>
+    <tr><td class="tdm">Truck cost</td><td>$112,000 “Food Trucks Purchase” on the balance sheet; loan shared by 2 trucks</td><td>$90,000 (Truck A)</td><td>Clarify what each truck cost. Loan payment excluded from deck profit</td></tr>
+    <tr><td class="tdm">Tips &amp; cash</td><td>$1,692 tips kept by the business · cash estimated at 7.5%, not recorded</td><td>Included in revenue</td><td style="color:#b1456b;font-weight:700;">Federal rules generally bar employers from keeping employee tips; confirm with their accountant/attorney. Lenders will discount estimated cash</td></tr>
+    <tr><td class="tdm">Breakeven / Year-1 ROI</td><td style="color:#b86e00;font-weight:700;">≈18 months (on $90K)</td><td>5.5 months / 117%</td><td>Profitable, but far slower than pitched at today’s schedule</td></tr>
+  </table></div>
+</div>
+
+<!-- RAISE -->
+<div class="sec">
+  <div class="sec-lbl">The Raise — Headline Figures Across Materials</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Source</th><th class="th-dark">Revenue</th><th class="th-dark">Profit</th><th class="th-dark">Valuation / Terms</th></tr>
+    <tr><td class="tdm">QuickBooks P&amp;L</td><td>$1.63M (≈13 mo)</td><td>$441K operating · $327K net</td><td>—</td></tr>
+    <tr><td class="tdm">Investor deck</td><td>$1.63M “TTM”</td><td style="color:#b1456b;font-weight:700;">$441K “net income,” 27%</td><td>$1.079M for 10.95% at $9.85M post</td></tr>
+    <tr><td class="tdm">Investor one-pager</td><td style="color:#b1456b;font-weight:700;">$1.37M</td><td style="color:#b1456b;font-weight:700;">$465K net, “27%” (465 ÷ 1.37M = 34%) · period likely Jun 2025 – May 2026</td><td style="color:#b1456b;font-weight:700;">$13M post-money</td></tr>
+    <tr><td class="tdm">Franchise flyer</td><td>$1M+ in 9 mo · $1.4M AUV</td><td>29% margins</td><td>—</td></tr>
+    <tr><td class="tdm">Cap table</td><td>—</td><td>—</td><td>$9.85M reference · $145K raised</td></tr>
+    <tr><td class="tdm">Sept 15 call</td><td>$1.6M TTM</td><td>—</td><td>≈9.8–10% · ≈$150K raised · $50K minimum check</td></tr>
+    <tr><td class="tdm">ROI workbook</td><td>—</td><td>Trailing P/E on $441K labeled “net income”</td><td>Low / mid / high: $10.35M / $13.16M / $16.27M · 10.4% on $10.35M pre-money · 9.4% at $11.43M post · tiers $100K / $250K / $500K · SAFE scenarios</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>Valuation note:</strong> $9.85M is ≈32x annualized net income, ≈24x operating income and ≈6.5x revenue. The workbook’s P/E range ($4.4M–$8.8M) multiplies operating income labeled as net income; on actual net income for the same period ($327K) the same 10x–20x gives ≈$3.3M–$6.5M. The cap table issued existing investors units at $9.85 on 1M founder units (≈$9.85M <em>pre</em>-money); the deck’s 10.95% at $9.85M <em>post</em>-money would give new investors a better price than friends and family paid. Across the materials there are at least four valuation framings ($9.85M post, $10.35M pre, $11.43M post, $13M post). The one-pager’s $13M matches the workbook’s mid-range, which depends on the projection errors below. The instrument is also unclear: membership units in the cap table, SAFEs in the workbook. “3x the industry” compares a 27% operating margin to industry <em>net</em> margins. BG facilitates debt, not equity, so our feedback here is about consistency, not price.</div>
+</div>
+
+<!-- GROWTH PLAN -->
+<div class="sec">
+  <div class="sec-lbl">Growth Plan vs. the Raise (Workbook Projections, Year 3)</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Scenario</th><th class="th-cyan">Franchised Units</th><th class="th-cyan">Corporate Units</th><th class="th-cyan">Corporate Units Added</th><th class="th-dark">FN Assessment</th></tr>
+    <tr><td class="tdm">Conservative</td><td>8</td><td>7</td><td>6</td><td style="color:#b86e00;font-weight:700;">≈$2.1M of corporate build-out at the model’s $350K/unit (illustrative), ≈2x the raise</td></tr>
+    <tr><td class="tdm">Moderate</td><td>13</td><td>10</td><td>9</td><td style="color:#b1456b;font-weight:700;">≈$3.2M at $350K/unit</td></tr>
+    <tr><td class="tdm">Aggressive</td><td>22</td><td>14</td><td>13</td><td style="color:#b1456b;font-weight:700;">≈$4.6M at $350K/unit</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>Use of funds doesn’t line up:</strong> The deck says the raise funds “3 new units + franchise infrastructure” (40% locations · 20% trucks · 30% infrastructure &amp; systems · 10% brand) and targets “$3.5M by Year 2” (metric not stated). It also says each food truck “breaks even in &gt;6 months and nets ~$600K/year,” but their own truck slide shows $16,296 a month, about $196K a year. On the call, Andrea said franchisor costs are already paid and brick-and-mortar would fund about two locations after College Park. The second truck is described as complete and the College Park lease as signed. The workbook also assumes every new unit is brick-and-mortar, while the strategy leans toward stalls, trucks and institutional sites. We need one use-of-funds budget tied to one growth plan. That’s also what sizes any debt.</div>
+</div>
+
+<!-- MODEL REVIEW -->
+<div class="sec">
+  <div class="sec-lbl">Franchisor Projection Model — Formula Review (Conservative Case)</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Year</th><th class="th-cyan">Corporate Units</th><th class="th-cyan">EBITDA as Modeled</th><th class="th-cyan">EBITDA, Labor Corrected</th><th class="th-dark">FN Assessment</th></tr>
+    <tr><td class="tdm">Year 1</td><td>2</td><td>$1.07M</td><td style="color:#b86e00;font-weight:700;">$718K</td><td>Overstated by $350K</td></tr>
+    <tr><td class="tdm">Year 2</td><td>4</td><td>$2.71M</td><td style="color:#b86e00;font-weight:700;">$1.66M</td><td>Overstated by $1.05M</td></tr>
+    <tr><td class="tdm">Year 3</td><td>7</td><td>$5.07M</td><td style="color:#b1456b;font-weight:700;">$2.97M</td><td>Overstated by $2.10M</td></tr>
+  </table></div>
+  <div class="gap-note">⚑ <strong>Formula issues found in the working Excel file:</strong> (1) Corporate-store labor is fixed at one store’s $349,920 no matter how many stores are open; every other cost is multiplied by store count. (2) The moderate and aggressive cases sell at higher AUVs but use the conservative case’s per-store costs, per-store royalty and $25K fee, so they’re overstated further; some of their system-sales figures are typed in rather than calculated. (3) Brand-fund contributions are counted as franchisor revenue. (4) “Free cash flow” is half of EBITDA, with no deduction for the cost of building new corporate stores (≈$2.1M for six in the conservative case at $350K each), taxes or debt service. New stores also earn a full year in their opening year. (5) The valuation’s “6x Year 3 EBITDA” actually multiplies Year 3 free cash flow. <strong>Fixing only the labor formula</strong>, their own valuation method drops from a $10.35M low-end average to about $6.7M.</div>
+  <p class="src" style="font-size:11px;color:#888;margin-top:8px;">Note: the earlier read of this workbook through Google Drive showed #REF! errors. That was a file-conversion issue. The Excel file itself calculates; the findings above come from its actual formulas.</p>
+</div>
+
+<!-- MATURITY -->
+<div class="sec">
+  <div class="sec-lbl">System Maturity — Emerging Franchisor</div>
+  <div class="mat-grid">
+    <div class="mat-card" style="border-left-color:#b86e00;"><div class="mat-name">Operating History</div><div class="mat-stat">Revenue starts Jun 2025 · ≈16 months · single flagship · logo says “EST 2018” (clarify)</div></div>
+    <div class="mat-card" style="border-left-color:#b86e00;"><div class="mat-name">FN Classification</div><div class="mat-stat">Priority B — Conditional · unchanged from April 2026 · documentation still the gating item</div></div>
+    <div class="mat-card" style="border-left-color:#b86e00;"><div class="mat-name">Franchised Units</div><div class="mat-stat">0 · first units planned as 50/50 investor-partner stores operated by corporate</div></div>
+    <div class="mat-card" style="border-left-color:#b86e00;"><div class="mat-name">FDD Status</div><div class="mat-stat">≈90% per Andrea · registration pending in MD and other states · not shared</div></div>
+    <div class="mat-card" style="border-left-color:#b1456b;"><div class="mat-name">Growth Message</div><div class="mat-stat">Call: regional within a 4-hour drive · List: top 10 cities nationally · Model: 22 franchised units by Year 3</div></div>
+    <div class="mat-card" style="border-left-color:#452e80;"><div class="mat-name">Brand Momentum</div><div class="mat-stat">Food Network’s Great Food Truck Race · 10M+ views · second corporate unit opening Nov</div></div>
+  </div>
+</div>
+
+<!-- CREDIBILITY -->
+<div class="sec">
+  <div class="sec-lbl">Franchisor Readiness &amp; Documentation</div>
+  <table>
+    <tr><th class="th-dark">Item</th><th class="th-dark">Status</th><th class="th-dark">Source</th></tr>
+    <tr><td class="tdm">Financial statements</td><td style="color:#1a7a4a;font-weight:700;">Provided · accrual basis · current through Aug 27, 2026</td><td>Upload</td></tr>
+    <tr><td class="tdm">FDD / franchise agreement</td><td style="color:#b86e00;font-weight:700;">Not provided · registration pending</td><td>Sept 15 call</td></tr>
+    <tr><td class="tdm">Ops manual / SOPs / training curriculum</td><td style="color:#b86e00;font-weight:700;">≈90% per Andrea · not provided</td><td>Sept 15 call</td></tr>
+    <tr><td class="tdm">Trademark registration</td><td style="color:#b86e00;font-weight:700;">Unknown · flagged High in April</td><td>Prior assessment</td></tr>
+    <tr><td class="tdm">Financial model integrity</td><td style="color:#b1456b;font-weight:700;">Calculates, but corporate labor formula and scenario links overstate EBITDA and valuation</td><td>ROI workbook</td></tr>
+    <tr><td class="tdm">Investor materials consistency</td><td style="color:#b1456b;font-weight:700;">Conflicting headline numbers and four valuation framings</td><td>Deck · one-pager · flyer</td></tr>
+    <tr><td class="tdm">Franchise marketing</td><td style="color:#b86e00;font-weight:700;">Flyer invites applications and claims turnkey ops, training and purchasing power; Andrea said MD registration is pending. Confirm with their franchise attorney</td><td>Flyer / Sept 15 call</td></tr>
+    <tr><td class="tdm">Participation agreement</td><td style="color:#b86e00;font-weight:700;">Not yet signed</td><td>Sept 29 check-in</td></tr>
+  </table>
+</div>
+
+<!-- FLAGS -->
+<div class="sec">
+  <div class="sec-lbl">Green Flags &amp; Red Flags</div>
+  <div class="flag-grid">
+    <div class="flag-card fg">
+      <div class="flag-title">✓ Green Flags</div>
+      <ul class="flag-list">
+        <li>$1.63M revenue with a 27% operating margin from a single unit, verified in accrual-basis QuickBooks</li>
+        <li>COGS improved from 40.3% to 32.3% since the April dashboard</li>
+        <li>Minimal debt: one $112K truck loan covered 12.9x</li>
+        <li>No debt beyond the truck loan despite $107K of expansion and franchising spend in the period</li>
+        <li>Low-entry stall ($125K) and truck ($165K) formats fit Nova-tier candidates</li>
+        <li>Fee structure (6% + 2%) now consistent across documents</li>
+        <li>Open to manageable debt alongside equity, which is where FN can help</li>
+      </ul>
+    </div>
+    <div class="flag-card fr">
+      <div class="flag-title">⚑ Red Flags / Watch Items</div>
+      <ul class="flag-list">
+        <li>Deck, one-pager and flyer quote conflicting revenue, profit and valuation ($9.85M vs. $13M), with no periods stated</li>
+        <li>Deck’s “$441K net income” is operating income; actual net income is $327K. The one-pager’s own “27%” doesn’t match its $465K ÷ $1.37M</li>
+        <li>Deck pricing (10.95% at $9.85M post) is cheaper than the cap table’s friends-and-family price</li>
+        <li>Workbook growth plan adds 6–13 corporate units, far beyond what $1.079M funds; use of funds conflicts with the call</li>
+        <li>Projection model holds corporate labor flat as stores are added, overstating Year 3 EBITDA by ≈$2.1M; valuation drops from $10.35M to ≈$6.7M when fixed</li>
+        <li>Implied Jun–Aug 2026 revenue (≈$105K/month) is below the prior ten-month average despite the Food Network premiere</li>
+        <li>Deck says each truck nets ~$600K/year vs. ≈$196K on its own truck slide</li>
+        <li>Truck projection assumes 26 operating days/month vs. ≈8.8 actual</li>
+        <li>Franchise model uses food-hall rent (4%) and 5% corporate overhead</li>
+        <li>Loan principal unrecorded; Amex account possibly misclassified as cash; truck tips kept by the business</li>
+        <li>Franchise flyer is soliciting applications while registration is pending</li>
+        <li>Regional-growth message conflicts with national top-10 city list</li>
+        <li>50/50 investor-partner stores come first, so owner-operator franchisees likely come later</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- HAVE / NEED -->
+<div class="sec">
+  <div class="sec-lbl">What We Have / What We Need</div>
+  <div class="check-grid">
+    <div class="check-card">
+      <div class="flag-title">✓ What We Have (Uploaded Oct 5)</div>
+      <ul class="flag-list">
+        <li>P&amp;L, Aug 1, 2025 – Aug 27, 2026</li>
+        <li>Balance sheet as of Aug 27, 2026</li>
+        <li>3-year ROI &amp; valuation workbook (with truck tabs)</li>
+        <li>Current cap table</li>
+        <li>Franchise investment guide</li>
+        <li>Investor deck, investor one-pager, franchise flyer</li>
+        <li>Top 10 target cities (titled “List of Franchise Locations”)</li>
+      </ul>
+    </div>
+    <div class="check-card need">
+      <div class="flag-title">⚑ What We Need</div>
+      <ul class="flag-list">
+        <li>Signed participation agreement</li>
+        <li>FDD draft (Items 5–7, 19–21) and franchise agreement</li>
+        <li>Monthly P&amp;L split by flagship, trucks and catering</li>
+        <li>Owner compensation (payroll vs. draws)</li>
+        <li>M&amp;T loan statement and amortization schedule</li>
+        <li>Corrected projection model (labor per store, scenario-specific costs, build-out capex)</li>
+        <li>Monthly revenue for Jun–Aug 2026</li>
+        <li>College Park lease, build budget and Year-1 projection</li>
+        <li>One use-of-funds budget tied to one growth plan; offering terms and instrument (units vs. SAFE)</li>
+        <li>Truck operating days from the POS, and the cost of each truck</li>
+        <li>Corporate/franchisor support budget</li>
+        <li>Prospect list with locations and funding needs</li>
+        <li>Ops manual, training curriculum and trademark status</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTIONS / FN SUPPORT -->
+<div class="sec">
+  <div class="sec-lbl">Questions for Andrea &amp; Lekan · Where FN Can Help</div>
+  <div class="tw"><table>
+    <tr><th class="th-dark">Question</th><th class="th-dark">Why It Matters</th></tr>
+    <tr><td class="tdm">Which revenue, profit and valuation figures are current?</td><td>Needed before any lender or investor diligence</td></tr>
+    <tr><td class="tdm">Are the owners on payroll? What would a paid GM cost?</td><td>Determines true franchisee margin</td></tr>
+    <tr><td class="tdm">What drove COGS from ≈40% to 32%?</td><td>Confirms the margin is repeatable</td></tr>
+    <tr><td class="tdm">How much revenue is trucks/catering vs. flagship?</td><td>Isolates flagship unit economics</td></tr>
+    <tr><td class="tdm">What does College Park cost to open and run?</td><td>Required to size corporate debt</td></tr>
+    <tr><td class="tdm">How much of the $1.079M would you take as debt?</td><td>Andrea raised this on the call</td></tr>
+    <tr><td class="tdm">What will the raise actually fund, and on what terms (units or SAFE, at what valuation)?</td><td>Deck, call and workbook disagree</td></tr>
+    <tr><td class="tdm">How are truck tips handled, and how many days do the trucks really run?</td><td>Compliance and truck economics</td></tr>
+    <tr><td class="tdm">How did Jun–Aug 2026 perform after the Food Network premiere?</td><td>The P&amp;L and deck chart imply a softer summer</td></tr>
+    <tr><td class="tdm">What does “EST 2018” refer to?</td><td>Lenders weigh time in business</td></tr>
+    <tr><td class="tdm">How are the 50/50 partner stores structured, and when do owner-operators start?</td><td>Determines when FN candidates fit</td></tr>
+    <tr><td class="tdm">Which of the 8–9 prospects are in the DMV and need financing?</td><td>Routes them to Consortium partners</td></tr>
+  </table></div>
+  <p class="body-p"><strong>Where FN can help:</strong> (1) Sounding board to reconcile their investor materials into one consistent set of numbers. (2) Connect corporate working-capital debt for the unraised balance through Capital Consortium partners, once College Park figures are in. (3) Route DMV-area prospects who need funding to the regional financing partner JaNay mentioned. (4) JaNay to introduce IFA and network contacts for franchisor build-out support. Not offered: equity introductions; BG facilitates debt, not equity.</p>
+</div>
+
+<div class="ftr"><p>Franchise Nova Financial Analysis · BLK GRVTY · October 2026 · Based on Jollof Bowl QuickBooks P&amp;L, balance sheet, ROI workbook, cap table, investment guide and investor materials uploaded Oct 5, 2026 · Annualized, DSCR, debt-capacity and scenario figures are FN estimates · For internal FN use only · Not financial, legal, or investment advice</p></div>
+</div>
+</body>
+</html>
