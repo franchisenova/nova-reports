@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fn-systems" content="DRYmedic, PuroClean">
+<title>Franchise Nova — FDD Analysis · KC Copeland · Restoration FDD Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.page{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 48px rgba(0,0,0,0.14);}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 15% 28%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#cfd6ff,transparent),radial-gradient(1px 1px at 82% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 78%,#e9d8ff,transparent),radial-gradient(1px 1px at 8% 85%,#fff,transparent),radial-gradient(900px 380px at 80% 5%,rgba(0,174,239,0.3),transparent 60%),radial-gradient(700px 320px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,0.35);margin-bottom:12px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:30px;color:#fff;margin-bottom:5px;position:relative;}
+.h-meta{font-size:12.5px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+
+/* ── CANDIDATE STRIP ── */
+.cand-strip{display:flex;flex-wrap:wrap;border-bottom:1px solid #e8eaf0;background:#f9f9fc;}
+.ci{padding:12px 16px;border-right:1px solid #e8eaf0;flex:1;min-width:100px;}
+.ci:last-child{border-right:none;}
+.ci-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:3px;}
+.ci-v{font-size:12.5px;color:#15131f;font-weight:700;line-height:1.35;}
+
+/* ── THESIS ── */
+.thesis-bar{background:#fff8e1;border-left:4px solid #b86e00;padding:14px 20px;margin:0 48px 0;border-radius:0 8px 8px 0;}
+.thesis-bar p{font-size:13px;color:#5a4000;line-height:1.65;font-style:italic;}
+.thesis-bar .attr{font-size:11px;color:#aaa;margin-top:6px;font-style:normal;}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:20px 48px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* ── ACCORDION ── */
+.accordion{border:1px solid #e8eaf0;border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.accordion:last-of-type{margin-bottom:0;}
+
+.acc-hdr{display:flex;align-items:center;gap:16px;padding:0;cursor:pointer;background:#fafafa;border:none;width:100%;text-align:left;transition:background .15s;}
+.acc-hdr:hover{background:#f0eefa;}
+.acc-hdr.open{background:linear-gradient(90deg,rgba(69,46,128,0.07),transparent 70%);}
+
+.sys-band{width:5px;align-self:stretch;flex-shrink:0;}
+.sys-band.s1{background:linear-gradient(180deg,#00aeef,#282560);}
+.sys-band.s2{background:linear-gradient(180deg,#664ca9,#452e80);}
+.sys-band.s3{background:linear-gradient(180deg,#1a7a4a,#0d4a2e);}
+
+.acc-main{flex:1;padding:14px 16px 14px 0;}
+.acc-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;color:#15131f;margin-bottom:4px;}
+.acc-sub{font-size:11.5px;color:#888;}
+.acc-pills{display:flex;gap:8px;align-items:center;margin-top:7px;flex-wrap:wrap;}
+
+.score-badge{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;padding:4px 12px;border-radius:999px;color:#fff;}
+.sb-cyan{background:linear-gradient(90deg,#0088c2,#00aeef);}
+.sb-purple{background:linear-gradient(90deg,#452e80,#664ca9);}
+.sb-green{background:linear-gradient(90deg,#0d4a2e,#1a7a4a);}
+
+.fit-pill{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+.fp-strong{background:rgba(26,122,74,0.12);color:#1a7a4a;border:1px solid rgba(26,122,74,0.3);}
+.fp-cond{background:rgba(184,110,0,0.1);color:#b86e00;border:1px solid rgba(184,110,0,0.3);}
+.fp-stretch{background:rgba(177,69,107,0.1);color:#b1456b;border:1px solid rgba(177,69,107,0.3);}
+
+.acc-chevron{font-size:11px;color:#aaa;margin-right:16px;transition:transform .2s;flex-shrink:0;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+
+/* ── ACCORDION BODY ── */
+.acc-body{display:none;border-top:1px solid #e8eaf0;}
+.acc-body.open{display:block;}
+
+/* Signal grid */
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #e8eaf0;}
+.sg-cell{padding:11px 16px;border-bottom:1px solid #f0eef8;border-right:1px solid #f0eef8;position:relative;}
+.sg-cell:nth-child(even){border-right:none;}
+.sg-cell:nth-last-child(-n+2){border-bottom:none;}
+.sg-item-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.sg-val{font-size:12.5px;color:#333;line-height:1.5;}
+.sg-val strong{color:#15131f;}
+.sg-val .flag{color:#b1456b;font-weight:700;}
+.sig{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.sig.G{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.sig.A{background:rgba(184,110,0,0.1);color:#b86e00;}
+.sig.R{background:rgba(177,69,107,0.1);color:#b1456b;}
+
+/* More/less toggle */
+.more-toggle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;color:#664ca9;background:none;border:none;cursor:pointer;padding:3px 0 0;display:block;}
+.more-toggle:hover{color:#452e80;}
+.more-detail{display:none;font-size:12px;color:#555;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #e8eaf0;}
+.more-detail.open{display:block;}
+
+/* Match grid */
+.match-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;}
+.match-card{background:#f5f5fa;border-radius:8px;padding:11px 13px;}
+.match-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:5px;}
+.match-v{font-size:12.5px;color:#15131f;line-height:1.5;}
+.mv-good{color:#1a7a4a;font-weight:700;}
+.mv-warn{color:#b86e00;font-weight:700;}
+.mv-bad{color:#b1456b;font-weight:700;}
+
+/* Capital stack */
+.stack-wrap{padding:0 16px 16px;}
+.stack-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+.stack-bar{height:22px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:8px;}
+.seg{display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9.5px;white-space:nowrap;padding:0 6px;color:#fff;}
+.s-cash{background:#664ca9;}
+.s-sba{background:#00aeef;color:#0d0a1c;}
+.s-heloc{background:#282560;}
+.s-cdfi{background:#1a7a4a;}
+.stack-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px;}
+.sl{display:flex;align-items:center;gap:5px;font-size:11.5px;color:#555;}
+.sl-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+.stack-note{font-size:12px;color:#666;line-height:1.6;font-style:italic;}
+
+/* Discovery questions */
+.qs-wrap{padding:0 16px 16px;border-top:1px solid #f0eef8;}
+.qs-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;padding:12px 0 8px;}
+.qs-list{padding-left:0;list-style:none;}
+.qs-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:8px;line-height:1.6;}
+.q-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;background:#452e80;border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;height:fit-content;}
+
+/* ── COMPARISON TABLE ── */
+.comp-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left;}
+.th-dark{background:#0d0a1c;color:#fff;}
+.th-s1{background:#0a1a30;color:#00aeef;}
+.th-s2{background:#140d28;color:#9b8fc8;}
+.th-s3{background:#0a1a10;color:#4aad7a;}
+td{padding:9px 14px;border-bottom:1px solid #e8eaf0;vertical-align:top;line-height:1.5;color:#333;}
+tr:nth-child(even) td{background:#f9f9fc;}
+td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;color:#452e80;}
+.td-good{color:#1a7a4a;font-weight:700;}
+.td-warn{color:#b86e00;font-weight:700;}
+.td-bad{color:#b1456b;font-weight:700;}
+
+/* ── RECOMMENDATION ── */
+.rec-card{background:linear-gradient(135deg,#0d0a1c,#1a1340);border-radius:10px;padding:26px 28px;color:#eceaf8;}
+.rec-card .sec-lbl{color:#00aeef;}
+.rec-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:19px;color:#fff;margin-bottom:10px;}
+.rec-body{font-size:13px;color:#d8d6ec;line-height:1.75;margin-bottom:12px;}
+.unlock-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc8;margin-bottom:9px;}
+.unlock-list{padding-left:18px;}
+.unlock-list li{font-size:13px;color:#d8d6ec;margin-bottom:6px;line-height:1.55;}
+
+/* ── RISKS ── */
+.risks-list{padding-left:18px;}
+.risks-list li{font-size:13px;color:#333;margin-bottom:9px;line-height:1.6;}
+.risks-list li strong{color:#b1456b;}
+
+/* ── FOOTER ── */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10px;color:#555;margin-top:3px;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .page{box-shadow:none;border-radius:0;}
+  .hdr,.rec-card,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .acc-body{display:block!important;}
+  .more-detail{display:block!important;}
+}
+@media(max-width:720px){
+  .signal-grid,.match-grid{grid-template-columns:1fr;}
+  .sg-cell:nth-child(even){border-right:none;}
+  .cand-strip{flex-direction:column;}
+  .ci{border-right:none;border-bottom:1px solid #e8eaf0;}
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .thesis-bar{margin:0 20px;}
+  .doc-footer{padding:14px 20px;}
+}
+
+/* additions for system-only cross comparison */
+.src-note{font-size:10.5px;color:rgba(255,255,255,0.4);font-style:italic;position:relative;margin-top:6px;}
+.tag-p,.tag-c,.tag-s{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:1px;}
+.tag-p{background:rgba(69,46,128,0.1);color:#452e80;}
+.tag-c{background:rgba(0,174,239,0.12);color:#0077a8;}
+.tag-s{background:rgba(184,110,0,0.1);color:#b86e00;}
+.watch-list{padding-left:0;list-style:none;}
+.watch-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:10px;line-height:1.6;padding-bottom:10px;border-bottom:1px solid #f0eef8;}
+.watch-list li:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+.w-icon{font-size:14px;flex-shrink:0;margin-top:2px;}
+.sub-note{font-size:11.5px;color:#777;margin-top:10px;line-height:1.55;font-style:italic;}
+
+.sys-band.s4{background:linear-gradient(180deg,#b8860b,#5a4000);}
+.sb-green{background:linear-gradient(90deg,#0d4a2e,#1a7a4a);}
+.sb-gold{background:linear-gradient(90deg,#7a5a00,#b8860b);}
+.th-s4{background:#1f1808;color:#e0b84a;}
+.fp-strong{background:rgba(26,122,74,0.12);color:#1a7a4a;border:1px solid rgba(26,122,74,0.3);}
+.tag-sec{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:1px;background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.ir-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ir-card{border:1px solid #e8eaf0;border-radius:9px;padding:13px 15px;background:#fcfcfe;}
+.ir-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;margin-bottom:6px;}
+.ir-v{font-size:12.5px;color:#333;line-height:1.6;}
+.ir-src{font-size:10.5px;color:#999;margin-top:6px;font-style:italic;}
+.ir-wide{grid-column:1 / -1;}
+.mt-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;color:#15131f;margin:4px 0 0;padding:0 16px;}
+.mt-wrap{border:1px solid #e8eaf0;border-radius:10px;margin-bottom:12px;padding-top:12px;}
+.src-list{padding-left:18px;}
+.src-list li{font-size:11.5px;color:#555;margin-bottom:4px;line-height:1.5;}
+.src-list a{color:#452e80;}
+@media(max-width:720px){.ir-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">FDD Analysis &middot; Candidate–System Match &middot; Internal Use Only</div>
+  <h1 class="h-name">KC Copeland — Restoration FDD Analysis</h1>
+  <p class="h-meta">2 restoration systems analyzed &nbsp;&middot;&nbsp; October 2026 &nbsp;&middot;&nbsp; <strong>Nova Guide: Melissa Damiani</strong></p>
+  <p class="src-note">FDD data from the full 2026 FDDs (Primary). Public research beyond the FDD is labeled Secondary and sourced at the bottom of this report. FN math on disclosed figures is labeled Computed.</p>
+</header>
+
+<div class="cand-strip">
+  <div class="ci"><div class="ci-k">Classification</div><div class="ci-v">Super Nova · 86</div></div>
+  <div class="ci"><div class="ci-k">Liquid Capital</div><div class="ci-v">$100K–$250K</div></div>
+  <div class="ci"><div class="ci-k">Net Worth</div><div class="ci-v">$1M+</div></div>
+  <div class="ci"><div class="ci-k">Credit</div><div class="ci-v">750+</div></div>
+  <div class="ci"><div class="ci-k">SBA Pre-Approval</div><div class="ci-v">$2M (Truliance)</div></div>
+  <div class="ci"><div class="ci-k">Model</div><div class="ci-v">Owner-operator · 1 unit</div></div>
+  <div class="ci"><div class="ci-k">Market</div><div class="ci-v">Atlanta + ~2 hrs</div></div>
+  <div class="ci"><div class="ci-k">Timeline</div><div class="ci-v">Within 6 months</div></div>
+</div>
+
+<div class="section" style="padding-top:18px;padding-bottom:18px;">
+  <div class="thesis-bar">
+    <p>KC narrowed her search to restoration and laundry in metro Atlanta and greater Georgia within about two hours. She is SBA pre-approved for $2M, open to acquisition and ROBS, and plans to run one unit as an owner-operator within six months. Capital isn't her constraint in restoration — territory, sales ramp, and franchisor risk are.</p>
+    <p class="attr">KC Copeland · Intake (July 2026) and landscape follow-up (Sept 2026) · Open to acquisition and ROBS · Background: private lending to residential real estate investors, capital markets, Duke MBA</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Industry Read — Market, Economy &amp; Public Knowledge Beyond the FDD</div>
+  <div class="ir-grid">
+    <div class="ir-card"><div class="ir-k">Restoration demand</div><div class="ir-v">Market-size estimates vary widely, from about $7.1B to $80B in the U.S., with growth commonly put at 4–6% a year. Water mitigation is still the largest revenue driver, but its margins have tightened year over year. <span class="tag-sec">Secondary</span></div><div class="ir-src">Restoration &amp; Remediation magazine, 2025 Year in Review</div></div>
+    <div class="ir-card"><div class="ir-k">Cash flow reality</div><div class="ir-v">Most restoration contractors wait 3–8 weeks for insurance payments. An owner-operator needs working capital to carry jobs; the FDD working-capital lines (DRYmedic $32K–$56K; PuroClean $20K–$35K) may be thin for a busy first year. <span class="tag-sec">Secondary</span> <span class="tag-c">Computed</span></div><div class="ir-src">Cleanfax 2026 data via WebTonic</div></div>
+    <div class="ir-card"><div class="ir-k">Authority Brands is moving to Atlanta</div><div class="ir-v">Gov. Kemp announced on June 2, 2026 that Authority Brands (DRYmedic's parent) is relocating its headquarters to 200 Galleria Parkway in Cobb County: a 48,000 sq ft Franchisee Success Center, 390 jobs, and $13M of investment. CEO Jay Caiafa joined from IHG in Atlanta. For KC, corporate support and franchise development will be a short drive away. <span class="tag-sec">Secondary</span></div><div class="ir-src">Georgia Governor's Office; AJC; Bisnow</div></div>
+    <div class="ir-card"><div class="ir-k">PuroClean in the press</div><div class="ir-v">PuroClean was named a 2026 Entrepreneur Franchise 500 top-100 brand, a Franchise Business Review 2026 Top Franchise, and an Entrepreneur Top 10 Maintenance franchise. It promotes about 500 locations; the FDD counts 433 U.S. franchised outlets, so the public figure likely includes non-U.S. units. It says 20% of 2026 unit growth came from existing owners adding territories. None of the press coverage mentions the pending franchisee lawsuit. <span class="tag-sec">Secondary</span></div><div class="ir-src">Franchising.com; IFA; PR Newswire</div></div>
+    <div class="ir-card ir-wide"><div class="ir-k">Georgia licensing</div><div class="ir-v">Georgia requires a general contractor license for projects over $2,500, but no separate mold-remediation license. A 2025 overhaul created a new licensing board with exams, financial-responsibility proof, continuing education, and two years of supervised experience for residential-basic licenses. KC has no construction background, so reconstruction work would need a licensed qualifier or subcontractors. <span class="tag-sec">Secondary</span></div><div class="ir-src">Restoration Industry Association; R&amp;R state licensing roundup</div></div>
+    <div class="ir-card ir-wide"><div class="ir-k">Atlanta market fit</div><div class="ir-v">Metro Atlanta has about 6.4M residents and has been among the top U.S. metros for population growth, with roughly 54% of city households renting. Large rental and investor-owned housing stock means property managers and investors are a real referral channel — the exact network KC built through KC Horizons. <span class="tag-sec">Secondary</span></div><div class="ir-src">CoStar via Matthews; RentCafe</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Systems Analyzed — Click to Expand</div>
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s1"></div>
+      <div class="acc-main">
+        <div class="acc-title">DRYmedic Restoration Services — 2026 FDD</div>
+        <div class="acc-sub">Water, fire, mold mitigation with later contents and reconstruction · 93 franchised + 22 company-owned territories · Authority Brands / Apax</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-cyan">61 / 100</span>
+          <span class="fit-pill fp-cond">Conditional — Proceed with Diligence</span>
+          <span style="font-size:11px;color:#888;">System score · KC match below</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 1 — Franchisor &amp; Ownership <span class="sig A">Amber</span></div>
+          <div class="sg-val">STOP Franchising SPE LLC · <strong>Authority Brands / Apax Partners</strong> · STOP franchising since 1996, rebranded DRYmedic Nov 2022</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Franchisor is a securitization entity (formed 2021) whose parent chain runs AB Assetco → AB Issuer → AB SPE Guarantor → Authority Brands, Inc., majority-owned by funds advised by Apax. Authority Brands bought the Michigan DRYmedic operators in Nov 2022 and moved the STOP system onto the DRYmedic name; legacy STOP franchisees are not yet required to convert. Sister brands include One Hour, Mister Sparky, The Cleaning Authority, Monster Tree, and others. Affiliate BuyMax earned $480,539 from DRYmedic franchisee purchases in 2025, and the franchisor itself earned $1,068,550 from products and services to franchisees (24% of its revenue). <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 3 — Litigation <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>No litigation disclosed</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Item 3 states no litigation is required to be disclosed, and Item 4 reports no bankruptcy. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fees <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$45,000</strong> base + $0.18/person above 250K population · 2025 collected <strong>$30,595–$68,619</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Discounts: 30% for veterans and active duty (first territory), $5,000 for businesses at least 51% women- or minority-owned with that owner as Key Person, and 30% for existing franchisees adding territories. Most discounts can't be combined. Also due at signing: $80,000 Equipment and Vehicle Outfitting Fee, $2,000 DASH setup, and $3,570 initial Brand Fund contribution, so <strong>$130,570–$131,270</strong> goes to the franchisor up front. Item 7 references a <strong>Pioneer Incentive Program</strong> that defers the franchise fee five years with up to 100% forgiveness, pointing to Item 12 for terms — those terms do not appear in Item 12. <span class="tag-p">Primary</span> <span class="tag-s">Not Disclosed</span> (Pioneer terms)</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Ongoing Fee Burden <span class="sig A">Amber</span></div>
+          <div class="sg-val">Royalty <strong>7% / 6% / 5%</strong> · Brand fund 1.5% stepping down · <strong>$54K/yr required local marketing</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Royalty is 7% on the first $1M of mitigation/contents revenue, 6% to $5M, 5% above, resetting every January; reconstruction revenue pays 3%. Minimum royalty: none months 1–6, then $900, $1,500, and $2,625/month from month 49. Brand fund is the greater of $595 or 1.5% in months 7–24, then 1.5% stepping down to 0% above $10M. Local marketing: $13,500 in the first three months, then $54,000 per calendar year ($30K directed to designated SEO/digital/direct-mail vendors, $350/month website fee counts toward it, up to $18K can fund a commercial business-development hire). Technology: DASH $700/month plus $100/month tech fee (can rise to $500+). Core royalty plus fund is ~8.5%; with required marketing and tech it is <strong>~26% of revenue at the $363K median territory and ~21% at $500K</strong>. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Total Investment <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>$196,325–$318,860</strong> · Planning amount ~$351K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Planning amount uses the high end plus 10%. The range assumes a <strong>leased van</strong> ($12K–$17K upfront); buying one runs $45K–$65K and would push the high end toward ~$365K. The $80K equipment package is a lump sum with no franchisor financing. Additional funds of $32K–$56K cover three months; a non-owner manager adds up to $25K. Home-based start is allowed until month 12 or $15K monthly revenue, after which a 1,000–2,500 sq ft commercial site is required, so real estate cost lands in year one or two rather than at opening. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Financing <span class="sig A">Amber</span></div>
+          <div class="sg-val">Franchisor finances <strong>up to 75% of the franchise fee</strong> · 36 months at 12% · No help on equipment</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Financing is discretionary, requires a promissory note, personal guaranty, and a security interest in business assets, and cross-defaults into the Franchise Agreement. It is not available for broker or referral deals or for additional territories. SBA eligibility and preferred lenders are not addressed in the FDD — confirm the brand's SBA Directory status before routing a lender. <span class="tag-p">Primary</span> <span class="tag-s">Not Disclosed</span> (SBA)</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Items 11 &amp; 15 — Ownership Model <span class="sig A">Amber</span></div>
+          <div class="sg-val">Owner-operator on unit one · <strong>Key Person must be an owner</strong> · Sales/marketing hire required by month 6</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">First-unit Key Person must be an owner and work on premises; a non-owner Key Person is allowed only on second and later franchises. Training is 8 hours online plus about 6 business days of classroom (48 classroom + 48 hands-on hours). Typical open is 3–6 months after signing and must happen within 90 days of finishing training. A full-time employee dedicated to sales and marketing is required from month 6 for the life of the agreement. Contents and reconstruction services require approval after 12 months of operation plus extra equipment, vehicles, training and insurance. Not a semi-absentee model at entry. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>Protected, not exclusive</strong> · up to 250K population · Revenue minimums of $300K (yr 3) and $450K (yr 4+)</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Territory is zip-code defined, capped at 400 sq mi and 50 miles across. "Protected" means no other DRYmedic/STOP operator may actively market to homeowners and local businesses in it — but others may still solicit insurance adjusters, corporate HQs, and property managers there, which are the core referral channels in restoration. Miss the minimums and the franchisor can impose a revenue improvement program, then shrink the territory or terminate. Out-of-territory work triggers escalating infringement fees (25%, 50%, then 100% of the job's revenue) and termination on the fourth violation. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig G">Green</span></div>
+          <div class="sg-val">Median territory <strong>$362,657</strong> · Average $505,438 · Median per franchisee <strong>$679,571</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Covers 34 franchisees (59 territories) open all of 2025; excludes 13 franchisees that opened in 2025, 3 that ceased, and 2 that didn't report. Top-quartile territories average $1.67M; bottom-quartile territories (24 of 59) average <strong>$116,905</strong> — well under the $300K year-3 minimum in Item 12. Only 27% of territories beat the average, so the mean is pulled up by a few large operators. Gross revenue only: no cost, margin or owner-earnings data. Systemwide sales grew from roughly $20M (2021) to roughly $31.5M (2025), read from a chart without labels. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span> (chart values approximate)</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig A">Amber</span></div>
+          <div class="sg-val">Franchised territories <strong>43 → 66 → 93</strong> · 22 company-owned · Exits 3 per year</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Exits (terminations plus ceased operations) were 3, 3 and 3 — about 11%, 7% and 4.5% of starting territories, improving as the base grows. Zero transfers in 2024 or 2025, so there's no resale track record yet. 9 territories signed but not open; 16 more projected for 2026. Company-owned territories sit in CO, IN, KY, MI and OH. Georgia went 1 → 1 → 4 territories. The franchisee advisory council was formed April 2026 with franchisor-appointed members. Minor inconsistency: Item 19 cites 56 franchisees in 92 territories; Item 20 cites 58 franchisees and 93 territories. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Financial Health <span class="sig A">Amber</span></div>
+          <div class="sg-val">Guarantor AB Assetco: <strong>$19.9M net income</strong> (2025) · Parent AB Inc.: <strong>$67.9M net loss</strong>, $542.5M debt</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The franchisor's own statements are not included; AB Assetco guarantees its obligations. AB Assetco: revenue $227.8M, net income $19.9M in 2025 after a $14.4M loss in 2024, equity $535.9M (mostly goodwill and intangibles), cash $94K. Authority Brands, Inc. (included for disclosure only, not a party): revenue $417.1M, net losses of $59.5M, $104.5M and $67.9M over three years, long-term debt $542.5M, equity down from $236.6M to $169.4M. Leadership turned over heavily in 2025–26: new CEO (Aug 2025), CFO (Sep 2025), CIO (Jan 2026), interim CMO (Mar 2026), and President of Trades (Dec 2025). <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 17 — Exit Rights <span class="sig A">Amber</span></div>
+          <div class="sg-val">10-year term + one 10-year renewal · Transfer fee <strong>$10,000</strong> · Franchisor right of first refusal</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">If the franchisor sources the buyer, it also takes the greater of $15K, 3% of price, or its costs. 30-day right of first refusal. Termination for default triggers liquidated damages of the greater of two years of royalties or <strong>$100,000</strong>. Two-year post-term non-compete covering the territory plus 10 miles and any brand territory. Former franchisees have signed confidentiality clauses, so validation calls may be limited. <span class="tag-p">Primary</span></div>
+        </div>
+      </div>
+      <div class="match-grid">
+        <div class="match-card"><div class="match-k">Performance &amp; Transparency</div><div class="match-v"><span class="mv-good">17 / 25</span> — Two Item 19 views plus five-year systemwide trend; no cost data.</div></div>
+        <div class="match-card"><div class="match-k">System Health &amp; Growth</div><div class="match-v"><span class="mv-warn">16 / 25</span> — Fast growth, falling exit rate; young base, no resale history.</div></div>
+        <div class="match-card"><div class="match-k">Capital Accessibility</div><div class="match-v"><span class="mv-warn">12 / 20</span> — $80K equipment paid upfront; only the fee is financeable.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Flexibility</div><div class="match-v"><span class="mv-bad">9 / 17</span> — Owner-operator, required hire, revenue minimums, $54K marketing.</div></div>
+        <div class="match-card"><div class="match-k">Exit &amp; Wealth-Building</div><div class="match-v"><span class="mv-warn">7 / 13</span> — Lower transfer fee, but no transfers in two years.</div></div>
+        <div class="match-card"><div class="match-k">Scoring note</div><div class="match-v">Scored on the five Nova Score categories (25/25/20/17/13). Strongest on disclosure and growth momentum; held back by ownership constraints and parent leverage.</div></div>
+      </div>
+      <div class="qs-wrap">
+        <div class="qs-lbl">Due Diligence Questions — Ask the Franchisor</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>Item 7 cites a Pioneer Incentive Program with five-year fee deferral and up to 100% forgiveness, referring to Item 12 — the terms aren't there. What are the eligibility rules, forgiveness triggers, and which territories qualify today?</li>
+          <li><span class="q-num">Q</span>How many of the 24 bottom-quartile territories in Item 19 are past their third year and under the $300K minimum? How many have been put on a revenue improvement program or had territory reduced?</li>
+          <li><span class="q-num">Q</span>Can you share cost and margin data for franchised territories at the median — especially how the $54K local marketing spend and the required marketing hire land against a ~$363K territory?</li>
+          <li><span class="q-num">Q</span>Insurance adjusters and property managers can be solicited in my territory by other operators. In practice, what share of a typical territory's revenue comes from those channels?</li>
+          <li><span class="q-num">Q</span>Is DRYmedic on the SBA Franchise Directory, and which lenders have closed DRYmedic deals in the past 12 months?</li>
+          <li><span class="q-num">Q</span>Authority Brands has lost money three years running and carries $542M of debt. What happens to franchisee support if the securitization structure or parent ownership changes?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s2"></div>
+      <div class="acc-main">
+        <div class="acc-title">PuroClean — 2026 FDD</div>
+        <div class="acc-sub">Mitigation, remediation, reconstruction and purification · 433 franchised units · No company-owned units · Privately held since 1991</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-purple">62 / 100</span>
+          <span class="fit-pill fp-cond">Conditional — Proceed with Diligence</span>
+          <span style="font-size:11px;color:#888;">System score · KC match below</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 1 — Franchisor &amp; Ownership <span class="sig A">Amber</span></div>
+          <div class="sg-val">PuroSystems, LLC · Franchising since <strong>1991</strong> · PuroClean brand since 2001 · Privately held</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Parent is Puro Enterprise Holdings, LLC (Birmingham, MI). Affiliate <strong>Signal Restoration Services</strong> runs eight company offices doing similar restoration work under a different name and may operate inside a franchisee's area. New affiliates: AccuGuard (inspection/testing franchise, first deal expected Q3 2026) and International Drying Solutions (equipment rental, merged into the franchisor in 2025). Seven legacy PUROFIRST dealers remain. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 3 — Litigation <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>Pending franchisee suit</strong> alleging fraud in the inducement · $609K royalty arbitration with counterclaim</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Born Active, LLC (a PuroClean franchisee) sued in LA Superior Court, filed Feb 2026, alleging breach of contract, negligent misrepresentation, fraud in the inducement, unfair business practices, and California Franchise Investment Law violations tied to FDD disclosures and support; not yet served as of issuance. Separate arbitration against Schatz / SB Enterprises seeks $608,935 in royalties; respondents counterclaimed wrongful termination and tortious interference with client accounts (in discovery). A $62,982 royalty case settled Oct 2025. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fees <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>$59,000</strong> flat (up to 100K population) · 2025 collected $25,000–$59,000</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">25% veteran discount. Conversion franchisees get 5% off per $200K of prior-year mitigation/reconstruction receipts, up to 50% ($29,500). Additional units for existing owners: $25,000. Optional $25,000 reservation agreement is credited to the fee but non-refundable if you don't sign. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Ongoing Fee Burden <span class="sig A">Amber</span></div>
+          <div class="sg-val">Royalty <strong>10% → 3%</strong> on a sliding scale · Marketing 2% · Local ad 2% · ~11.5% core at $500K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Mitigation royalty starts at 10% on the first $250K each calendar year and drops 1 point per $250K to 3% above $1.75M, resetting every January; reconstruction pays 3%. Minimum royalty: $400, $1,000, $1,500, then $2,500/month in years 4–5, rising with CPI after (first three months waived if open within 60 days). Plus 2% marketing fee, 2% required local advertising, a 2% minimum equipment/supply purchase requirement, DASH $500/month, compliance software $25/month and a $695 convention fee. Core royalty plus marketing is <strong>~11.7% at $363K, ~11.5% at $500K</strong>; all-in about 15%. Heavier than DRYmedic at low volume on royalty alone, lighter once required local marketing is counted. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Total Investment <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$108,503–$152,618</strong> leased · <strong>$233,503–$277,118</strong> purchased · Planning ~$168K / ~$305K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The leased range assumes three months of vehicle ($7K–$14K) and equipment ($5K–$6.5K) lease payments; buying runs $70K for the vehicle and $75K for the equipment package. Only $59,000 goes to the franchisor. Additional funds are $20K–$35K for three months — thinner than DRYmedic's $32K–$56K, so the low end may understate real runway needs. Conversion franchisees: $56,298–$277,018. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Financing <span class="sig G">Green</span></div>
+          <div class="sg-val">Indirect lease financing (AGS Fleet, Bush) · <strong>As low as $0 down</strong> · Clean Start year-one exit</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Vehicle leases at 6–12% APR, typically 60 months, roughly $900–$1,500/month; a lease default does not default the Franchise Agreement. Item 1's <strong>Clean Start Program</strong> lets a qualifying new franchisee exit in year one with the franchisor assuming the vehicle and initial supplies leases if they came from designated suppliers (conditions in Schedule 2). No direct franchisor financing; SBA status not addressed in the FDD. <span class="tag-p">Primary</span> <span class="tag-s">Not Disclosed</span> (SBA)</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Items 11 &amp; 15 — Ownership Model <span class="sig A">Amber</span></div>
+          <div class="sg-val">Owner supervises <strong>40 hrs/week</strong> and leads outside sales · Manager allowed on second unit only</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">An individual owner (or one equity owner of an entity) must directly supervise the business at least 40 hours a week and either run outside sales full-time or hire an experienced outside salesperson. Training is 17 days (3 online, 14 in Tamarac, FL), about 116 hours (160 with AMRT), plus a possible 5-day mentoring program at the franchisee's travel cost. Typical open is 30–120 days after signing — faster than DRYmedic. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>Open territory</strong> · Office-only protection in ~100K population · Non-exclusive 150K "Halo"</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">No other PuroClean office can open in your Protected Office Location, but any PuroClean franchisee can market and serve customers there, and you can serve anywhere. The Halo program (no other offices in up to 150K more population) is reviewed annually and can be discontinued. Strategic-alliance referrals from insurers and property managers can be assigned to any qualified third party, including non-franchisees. Affiliate Signal Restoration may operate inside your area. No sales minimum to keep the franchise (minimums apply only to multi-unit expansion). <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig A">Amber</span></div>
+          <div class="sg-val">Median <strong>$500,496</strong> · Average $941,644 · Bottom 25% average <strong>$100,895</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">393 franchisees open a full year, averaging 5.7 years in business. Only 28% exceed the average; the top franchisee did $20.3M. The bottom quartile averages $100,895 after an average of 3.8 years; the bottom 10% has a median of $398 and multiple franchisees reported $0. Operators with a Business Development Rep (148) post a median of <strong>$870,962</strong> vs. <strong>$329,911</strong> without (245) — the BDR is effectively a required hire. Conversions (8) show a median of $861,979. Gross sales only, unaudited, no cost data. Data error: the with-BDR bottom-25% row repeats the all-franchisee row (98 franchisees) instead of the ~37 expected. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>401 → 411 → 433</strong> units · Growth slowed after 2023 · 15–23 exits per year</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Net adds were +52, +10 and +22. Exits (terminations, non-renewals and ceased operations) were 15, 23 and 19 — about 4.3%, 5.7% and 4.6% of the starting base. 17 transfers in 2025 show a working resale market. Only 3 signed-not-open, against 60 projected new units in 2026. Georgia went 15 → 11 → 12, with 4 ceasing in 2024. The 2023 starting count is 351 in one row and 349 in another. Item 19 covers 393 franchisees vs. 433 outlets in Item 20. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Financial Health <span class="sig R">Red</span></div>
+          <div class="sg-val">Profitable but <strong>net income down 75%</strong> in two years · <strong>$8.4M unsecured loans to owners</strong> · $472K cash</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Revenue flat at $33.0M, $31.5M and $31.8M; net income $5.94M, $2.78M, $1.46M. Long-term debt $16.2M plus $1.7M current. Equity rose to $9.1M in 2025, but $3.8M of that came from folding in the owners' International Drying Solutions entity, not earnings. The franchisor holds $8.4M in <strong>unsecured notes receivable from its member</strong> (due 2027 and 2029) plus an $804K advance, with $969K of interest accrued but not collected. Subsidiary Puro Aviation owns an aircraft leased to the franchisor and lost $1.6M in 2025. Year-end consolidated cash was $471,770. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 17 — Exit Rights <span class="sig A">Amber</span></div>
+          <div class="sg-val">20-year term + 20-year renewal · Transfer fee <strong>$25,000</strong> (paid by buyer) · Right of first refusal</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Renewal fee $5,000. Franchisor can match any offer. Liquidated damages on default-termination: the greater of $100,000 or 12 months of royalty and marketing fees times the lesser of five or remaining years — potentially much higher than DRYmedic's two-year formula for a strong operator. Two-year non-compete within the office area or 50 miles, plus a ban on serving prior referral sources. Active resale market (17 transfers in 2025). <span class="tag-p">Primary</span></div>
+        </div>
+      </div>
+      <div class="match-grid">
+        <div class="match-card"><div class="match-k">Performance &amp; Transparency</div><div class="match-v"><span class="mv-good">16 / 25</span> — Deep data set and useful BDR split; wide spread, a data error, no costs.</div></div>
+        <div class="match-card"><div class="match-k">System Health &amp; Growth</div><div class="match-v"><span class="mv-warn">14 / 25</span> — Mature, but slowing growth, steady exits, pending franchisee fraud claim.</div></div>
+        <div class="match-card"><div class="match-k">Capital Accessibility</div><div class="match-v"><span class="mv-good">14 / 20</span> — Lease path near $108K, $0-down options, Clean Start exit.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Flexibility</div><div class="match-v"><span class="mv-warn">10 / 17</span> — 40-hr owner rule, but no sales minimum to keep the franchise.</div></div>
+        <div class="match-card"><div class="match-k">Exit &amp; Wealth-Building</div><div class="match-v"><span class="mv-warn">8 / 13</span> — 20-year term and active resale; heavy liquidated damages.</div></div>
+        <div class="match-card"><div class="match-k">Scoring note</div><div class="match-v">Scored on the five Nova Score categories (25/25/20/17/13). Strongest on capital access; held back by franchisor financial health, litigation, and wide performance spread.</div></div>
+      </div>
+      <div class="qs-wrap">
+        <div class="qs-lbl">Due Diligence Questions — Ask the Franchisor</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>What is the status of the Born Active suit — has it been served, compelled to arbitration, or settled — and what support or disclosure issues does it allege?</li>
+          <li><span class="q-num">Q</span>Why does the franchisor hold $8.4M in unsecured loans to its owner, and how do the aircraft subsidiary and those notes fit the plan for funding franchisee support?</li>
+          <li><span class="q-num">Q</span>The bottom 10% of franchisees, averaging five years in business, posted a median of $398. Why are those operators still in the system, and what does a turnaround look like?</li>
+          <li><span class="q-num">Q</span>The with-BDR bottom-25% row repeats the all-franchisee data. Can you provide the corrected table and the typical month a new franchisee hires a BDR?</li>
+          <li><span class="q-num">Q</span>How often are strategic-alliance referrals routed to non-franchisees or to Signal Restoration, and what share of a typical franchisee's revenue comes from those accounts?</li>
+          <li><span class="q-num">Q</span>Is PuroClean on the SBA Franchise Directory, and what share of 2025 new franchisees used SBA financing versus the lease path?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Candidate–System Match — KC Copeland, Atlanta</div>
+  <div class="mt-wrap">
+    <div class="mt-sys">DRYmedic — Lead System</div>
+    <div class="match-grid">
+      <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-good">None</span> — ~$351K planning vs. $2M SBA pre-approval; a 10% injection (~$35K) fits her liquid range, and the $80K equipment package can be financed through SBA.</div></div>
+      <div class="match-card"><div class="match-k">Debt Service</div><div class="match-v"><span class="mv-good">~$50K/yr</span> — ~$4.1K a month on a ~$316K SBA loan at 9.75% over 10 years — about 14% of the $363K median territory. <span class="tag-c">Computed</span></div></div>
+      <div class="match-card"><div class="match-k">Ownership Fit</div><div class="match-v"><span class="mv-good">Strong</span> — Owner-operator Key Person matches her intake; her capital-markets and lending background fits a B2B sales model.</div></div>
+      <div class="match-card"><div class="match-k">Atlanta Territory</div><div class="match-v"><span class="mv-warn">Verify</span> — Georgia went 1 → 4 territories in 2025, so metro Atlanta zip codes may already be taken. Ask for a live map, plus the two-hour ring (Macon, Athens, Chattanooga, Columbus).</div></div>
+      <div class="match-card"><div class="match-k">Licensing</div><div class="match-v"><span class="mv-good">Favorable</span> — Mitigation only for the first 12 months means no general contractor license is needed to open; reconstruction can wait until she has a licensed partner.</div></div>
+      <div class="match-card"><div class="match-k">Network Synergy</div><div class="match-v"><span class="mv-warn">Partial</span> — Her investor and property-manager contacts are ideal referrals, but other DRYmedic owners may also solicit property managers inside her territory.</div></div>
+    </div>
+    <div class="stack-wrap">
+      <div class="stack-lbl">Illustrative Capital Stack <span class="tag-c">Computed</span></div>
+      <div class="stack-bar"><div class="seg s-sba" style="width:80%">SBA 7(a) ~$316K</div><div class="seg s-cash" style="width:20%">Cash ~$35K–$70K</div></div>
+      <p class="stack-note">Lean structure: SBA covers the build-out and equipment, cash covers the injection and extra working capital for insurance payment delays. Leaves most of the $2M pre-approval unused, which keeps a second territory or a later reconstruction expansion open.</p>
+    </div>
+    <div class="qs-wrap">
+      <div class="qs-lbl">Discovery Questions — For KC</div>
+      <ul class="qs-list">
+        <li><span class="q-num">Q</span>Which metro Atlanta and two-hour-ring territories are open right now, and which of the three 2025 Georgia openings are closest to where you'd want to operate?</li>
+        <li><span class="q-num">Q</span>How do you picture building referral flow from your investor and property-manager network, given other DRYmedic owners can also solicit property managers in your territory?</li>
+        <li><span class="q-num">Q</span>Are you prepared to run sales yourself for the first year, plus hire a marketing employee by month 6 and spend $54K a year on local marketing?</li>
+        <li><span class="q-num">Q</span>Would you want to add reconstruction after year one? If so, who would hold the Georgia contractor license?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-wrap">
+    <div class="mt-sys">PuroClean — Hold for Now</div>
+    <div class="match-grid">
+      <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-good">None</span> — $168K–$305K fits easily; the lease path would leave most of her SBA capacity untouched.</div></div>
+      <div class="match-card"><div class="match-k">Debt Service</div><div class="match-v"><span class="mv-good">~$43K/yr</span> — ~$3.6K a month if she buys the vehicle and equipment with SBA (~$275K at 9.75% over 10 years). <span class="tag-c">Computed</span></div></div>
+      <div class="match-card"><div class="match-k">Ownership Fit</div><div class="match-v"><span class="mv-good">Strong</span> — Owner-operator with 40 hours a week and outside sales matches her intake; a BDR hire is effectively required (median revenue 2.6x higher with one).</div></div>
+      <div class="match-card"><div class="match-k">Atlanta Territory</div><div class="match-v"><span class="mv-bad">Caution</span> — Georgia shrank from 15 to 12 units, with 4 closing in 2024. In an open-territory system, any existing Atlanta unit can work her area.</div></div>
+      <div class="match-card"><div class="match-k">Licensing</div><div class="match-v"><span class="mv-warn">Watch</span> — Reconstruction is part of the core model (3% royalty), which pulls her toward Georgia contractor licensing sooner.</div></div>
+      <div class="match-card"><div class="match-k">Franchisor Risk</div><div class="match-v"><span class="mv-bad">Unresolved</span> — Pending franchisee fraud claim, $8.4M in owner loans, and earnings down 75% — at odds with the polished public rankings.</div></div>
+    </div>
+    <div class="stack-wrap">
+      <div class="stack-lbl">Illustrative Capital Stack <span class="tag-c">Computed</span></div>
+      <div class="stack-bar"><div class="seg s-sba" style="width:75%">SBA 7(a) ~$275K</div><div class="seg s-cash" style="width:25%">Cash ~$30K–$60K</div></div>
+      <p class="stack-note">Easily financed, and the Clean Start program protects her in year one. Capital isn't the issue; franchisor risk and Georgia unit losses are.</p>
+    </div>
+    <div class="qs-wrap">
+      <div class="qs-lbl">Discovery Questions — For KC</div>
+      <ul class="qs-list">
+        <li><span class="q-num">Q</span>Who are the 12 Georgia PuroClean operators, and can we speak to one of the four that closed in 2024 about why?</li>
+        <li><span class="q-num">Q</span>How would you guard against other PuroClean units marketing into your area, given there's no exclusive territory?</li>
+        <li><span class="q-num">Q</span>Would a conversion or resale (like the Savannah restoration resale on your landscape) appeal more than a new unit?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="section">
+  <div class="sec-lbl">Cross-System Comparison</div>
+  <div class="comp-wrap">
+    <table>
+      <tr><th class="th-dark" style="width:26%">Metric</th><th class="th-s1" style="width:37%">DRYmedic</th><th class="th-s2" style="width:37%">PuroClean</th></tr>
+      <tr><td class="metric">System Nova Score</td><td><strong>61 / 100</strong></td><td><strong>62 / 100</strong></td></tr>
+      <tr><td class="metric">Initial Fee</td><td>$45,000 + population fee</td><td>$59,000</td></tr>
+      <tr><td class="metric">Paid to Franchisor at Signing</td><td class="td-warn">$130,570–$131,270</td><td class="td-good">$59,000</td></tr>
+      <tr><td class="metric">Investment Range</td><td>$196K–$319K (van leased)</td><td class="td-good">$109K–$153K leased · $234K–$277K bought</td></tr>
+      <tr><td class="metric">Planning Amount (+10%)</td><td>~$351K</td><td>~$168K leased · ~$305K bought</td></tr>
+      <tr><td class="metric">Franchisor Financing</td><td>Up to 75% of fee, 12%, 36 mo</td><td class="td-good">Vehicle/equipment leases, $0 down possible</td></tr>
+      <tr><td class="metric">Early-Exit Safety Net</td><td class="td-bad">None disclosed</td><td class="td-good">Clean Start (year one)</td></tr>
+      <tr><td class="metric">Royalty</td><td>7% → 5% (resets yearly)</td><td>10% → 3% (resets yearly)</td></tr>
+      <tr><td class="metric">Brand / Ad Funds</td><td>1.5% fund + $54K/yr local</td><td>2% fund + 2% local</td></tr>
+      <tr><td class="metric">Item 19 Median</td><td>$362,657 per territory · $679,571 per franchisee</td><td class="td-good">$500,496 per franchisee</td></tr>
+      <tr><td class="metric">Item 19 Bottom 25%</td><td>$116,905 average per territory</td><td>$100,895 average</td></tr>
+      <tr><td class="metric">Territory</td><td class="td-good">Protected (not exclusive), 250K</td><td class="td-warn">Open; office-only protection, 100K + Halo</td></tr>
+      <tr><td class="metric">Revenue Minimums</td><td class="td-bad">$300K yr 3 · $450K yr 4+</td><td class="td-good">None to keep franchise</td></tr>
+      <tr><td class="metric">Owner Role</td><td>Owner as Key Person on unit one</td><td>Owner 40 hrs/week + outside sales</td></tr>
+      <tr><td class="metric">Time to Open</td><td>3–6 months</td><td class="td-good">30–120 days</td></tr>
+      <tr><td class="metric">Unit Growth (3 yrs)</td><td class="td-good">+16 / +23 / +27 franchised</td><td class="td-warn">+52 / +10 / +22</td></tr>
+      <tr><td class="metric">Annual Exit Rate</td><td>11% → 7% → 4.5%</td><td>4.3% → 5.7% → 4.6%</td></tr>
+      <tr><td class="metric">Litigation</td><td class="td-good">None</td><td class="td-bad">Pending franchisee fraud claim</td></tr>
+      <tr><td class="metric">Franchisor Health</td><td class="td-warn">Guarantor profitable; parent losing money, $542M debt</td><td class="td-bad">Earnings down 75%; $8.4M owner loans; $472K cash</td></tr>
+      <tr><td class="metric">Term / Transfer Fee</td><td>10+10 yrs · $10K</td><td>20+20 yrs · $25K (buyer pays)</td></tr>
+      <tr><td class="metric">Georgia Footprint</td><td>1 → 1 → 4 territories</td><td>15 → 11 → 12 units</td></tr>
+    </table>
+  </div>
+  <div class="sec-lbl" style="margin-top:22px;">Required Fee Burden at Revenue Levels <span class="tag-c">Computed</span></div>
+  <div class="comp-wrap">
+    <table>
+      <tr><th class="th-dark" style="width:26%">Annual Gross Revenue</th><th class="th-s1" style="width:37%">DRYmedic (royalty + fund + tech + required local marketing)</th><th class="th-s2" style="width:37%">PuroClean (royalty + marketing + local ad + software)</th></tr>
+      <tr><td class="metric">$363K (DRYmedic median territory)</td><td class="td-bad">~$94K · ~26%</td><td class="td-warn">~$57K · ~16%</td></tr>
+      <tr><td class="metric">$500K (PuroClean median)</td><td class="td-bad">~$106K · ~21%</td><td class="td-warn">~$74K · ~15%</td></tr>
+      <tr><td class="metric">$1M</td><td class="td-warn">~$149K · ~15%</td><td class="td-warn">~$132K · ~13%</td></tr>
+    </table>
+  </div>
+  <p class="sub-note">Assumes all revenue is mitigation, a mature year (DRYmedic brand fund past month 24, PuroClean minimum royalty already exceeded), and excludes PuroClean's 2% minimum supply purchases (product, not a fee). DRYmedic's $54K local marketing is spent on the franchisee's own market rather than paid to the franchisor, but it is required spend.</p>
+</div>
+
+
+<div class="section">
+  <div class="rec-card">
+    <div class="sec-lbl">FN Recommendation for KC</div>
+    <div class="rec-sys">Lead: DRYmedic · Hold: PuroClean pending answers</div>
+    <p class="rec-body"><strong>DRYmedic is KC's lead restoration system.</strong> Atlanta strengthens the case: the parent company is moving its headquarters to Cobb County, Georgia is one of its newest growth markets, and the mitigation-first model lets KC open without a Georgia contractor license. Her capital is more than enough, and the debt load is light at about 14% of a median territory's revenue. The work is real: she has to sell from day one, carry heavy required marketing, and hit $300K by year three. Her lending and investor network is the right starting point for that.</p>
+    <p class="rec-body"><strong>PuroClean stays on hold.</strong> On paper it fits KC's capital and owner-operator plan just as well. But in Georgia it shrank from 15 units to 12, it has open territories in a crowded market, and the franchisor issues raised in the FDD (litigation, owner loans, falling earnings) aren't reflected in its strong public rankings. Revisit once those are answered or if a Georgia resale or conversion opportunity comes up.</p>
+    <div class="unlock-lbl">What would change this call</div>
+    <ul class="unlock-list">
+      <li>DRYmedic shows no open Atlanta-area territory → look at the two-hour ring or a DRYmedic resale through Authority Brands.</li>
+      <li>PuroClean resolves the Born Active claim and explains its Georgia closures → reopen as a lower-cost alternative.</li>
+      <li>KC decides she wants a manager-run rather than owner-operated business → laundry becomes the stronger industry for her.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Risks to Watch — For KC</div>
+  <ul class="risks-list">
+    <li><strong>Sales ramp:</strong> DRYmedic's bottom-quartile territories average about $117K, far below the $300K year-3 minimum. KC's referral network has to convert early.</li>
+    <li><strong>Insurance cash cycle:</strong> 3–8 week payment delays plus heavy required marketing can strain working capital; plan beyond the FDD's three-month estimate.</li>
+    <li><strong>Territory overlap:</strong> Insurance adjusters and property managers — KC's natural channel — can be solicited by other DRYmedic operators in her territory.</li>
+    <li><strong>Parent leverage:</strong> Authority Brands has lost money three years running and carries $542M of debt. The move to Atlanta is positive but doesn't change that.</li>
+    <li><strong>Licensing creep:</strong> Georgia's 2025 licensing overhaul raises the bar if she moves into reconstruction; budget for a licensed partner.</li>
+  </ul>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">Next Steps — Before KC Goes to Discovery Day</div>
+  <ul class="watch-list">
+    <li><span class="w-icon">📍</span><div><strong>Territory map:</strong> Request DRYmedic's live Georgia map, covering metro Atlanta and the two-hour ring, before scheduling Discovery Day.</div></li>
+    <li><span class="w-icon">📞</span><div><strong>Validation calls:</strong> Call two of the four Georgia DRYmedic owners about ramp time, referral mix, and insurance payment speed.</div></li>
+    <li><span class="w-icon">💵</span><div><strong>Lender check:</strong> Confirm with Truliance that DRYmedic is SBA-eligible and get the terms on a ~$316K loan.</div></li>
+    <li><span class="w-icon">⏸️</span><div><strong>PuroClean:</strong> Send the open litigation and Georgia-closure questions; don't route KC there until they're answered.</div></li>
+  </ul>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">Secondary Sources</div>
+  <ul class="src-list">
+    <li>Gov. Kemp: Authority Brands relocates HQ to Cobb County (June 2, 2026) — <a href="https://gov.georgia.gov/press-releases/2026-06-02/gov-kemp-authority-brands-relocates-hq-creates-390-jobs-cobb-co">gov.georgia.gov</a></li>
+    <li>AJC: Cobb snags HQ of major home services company — <a href="https://feeds.ajc.com/business/2026/06/cobb-snags-hq-of-major-home-services-company-that-promises-nearly-400-jobs/">feeds.ajc.com</a></li>
+    <li>Bisnow: Authority Brands moving HQ to Galleria — <a href="https://www.bisnow.com/atlanta/news/office/maryland-based-home-services-franchiser-moving-hq-cobb-galleria-134837">www.bisnow.com</a></li>
+    <li>Franchising.com: PuroClean 2026 growth release (Oct 7, 2026) — <a href="https://www.franchising.com/news/20261007_purocleans_franchise_development_momentum_accelerates_as_a_new_generation_o.html">www.franchising.com</a></li>
+    <li>Franchising.com: PuroClean dual recognition (July 2026) — <a href="https://www.franchising.com/news/20260706_puroclean_earns_dual_national_recognition_for_franchise_culture_and_system_.html">www.franchising.com</a></li>
+    <li>R&amp;R: 2025 Restoration Industry Year in Review — <a href="https://www.randrmagonline.com/articles/91765-2025-restoration-industry-year-in-review">www.randrmagonline.com</a></li>
+    <li>WebTonic: Disaster restoration benchmarks 2026 (Cleanfax data) — <a href="https://www.webtonic.io/blog/disaster-restoration-analytics-statistics">www.webtonic.io</a></li>
+    <li>RIA: Licensing changes for Georgia contractors — <a href="https://restorationindustry.org/restoration-blog/licensing-changes-georgia-contractors-what-you-need-know">restorationindustry.org</a></li>
+    <li>R&amp;R: State-by-state restoration licensing roundup — <a href="https://www.randrmagonline.com/articles/90408-restoration-firm-puts-together-a-round-up-of-state-requirements">www.randrmagonline.com</a></li>
+    <li>Matthews: Atlanta multifamily Q3 2025 (CoStar data) — <a href="https://www.matthews.com/market_insights/atlanta-ga-multifamily-market-report-q3-2025">www.matthews.com</a></li>
+    <li>RentCafe via WhatNow: Atlanta renter share — <a href="https://whatnow.com/?p=436331">whatnow.com</a></li>
+  </ul>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; October 2026 &nbsp;&middot;&nbsp; KC Copeland &nbsp;&middot;&nbsp; DRYmedic, PuroClean — 2026 FDDs</p>
+  <p class="footer-note">For internal FN use only · Do not share with candidate · Not financial, legal, or investment advice. Loan figures are FN illustrations at mid-2026 rates (WSJ Prime 6.75%); confirm current terms with Truliance and each lender. Territory availability must be confirmed with each franchisor.</p>
+</div>
+
+</div>
+<script>
+// ── Accordion toggle ─────────────────────────────────────────
+function toggleAcc(btn){
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── More/less toggle ─────────────────────────────────────────
+function toggleMore(btn){
+  const detail = btn.nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+ More' : '− Less';
+}
+
+// ── Print: expand all ────────────────────────────────────────
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.more-detail').forEach(d => d.classList.add('open'));
+  document.querySelectorAll('.more-toggle').forEach(t => t.style.display = 'none');
+});
+</script>
+</body>
+</html>
