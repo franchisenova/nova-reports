@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fn-systems" content="Speed Queen, WaveMAX">
+<title>Franchise Nova — FDD Analysis · KC Copeland · Laundry FDD Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.page{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 48px rgba(0,0,0,0.14);}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 15% 28%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#cfd6ff,transparent),radial-gradient(1px 1px at 82% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 78%,#e9d8ff,transparent),radial-gradient(1px 1px at 8% 85%,#fff,transparent),radial-gradient(900px 380px at 80% 5%,rgba(0,174,239,0.3),transparent 60%),radial-gradient(700px 320px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,0.35);margin-bottom:12px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:30px;color:#fff;margin-bottom:5px;position:relative;}
+.h-meta{font-size:12.5px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+
+/* ── CANDIDATE STRIP ── */
+.cand-strip{display:flex;flex-wrap:wrap;border-bottom:1px solid #e8eaf0;background:#f9f9fc;}
+.ci{padding:12px 16px;border-right:1px solid #e8eaf0;flex:1;min-width:100px;}
+.ci:last-child{border-right:none;}
+.ci-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:3px;}
+.ci-v{font-size:12.5px;color:#15131f;font-weight:700;line-height:1.35;}
+
+/* ── THESIS ── */
+.thesis-bar{background:#fff8e1;border-left:4px solid #b86e00;padding:14px 20px;margin:0 48px 0;border-radius:0 8px 8px 0;}
+.thesis-bar p{font-size:13px;color:#5a4000;line-height:1.65;font-style:italic;}
+.thesis-bar .attr{font-size:11px;color:#aaa;margin-top:6px;font-style:normal;}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:20px 48px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* ── ACCORDION ── */
+.accordion{border:1px solid #e8eaf0;border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.accordion:last-of-type{margin-bottom:0;}
+
+.acc-hdr{display:flex;align-items:center;gap:16px;padding:0;cursor:pointer;background:#fafafa;border:none;width:100%;text-align:left;transition:background .15s;}
+.acc-hdr:hover{background:#f0eefa;}
+.acc-hdr.open{background:linear-gradient(90deg,rgba(69,46,128,0.07),transparent 70%);}
+
+.sys-band{width:5px;align-self:stretch;flex-shrink:0;}
+.sys-band.s1{background:linear-gradient(180deg,#00aeef,#282560);}
+.sys-band.s2{background:linear-gradient(180deg,#664ca9,#452e80);}
+.sys-band.s3{background:linear-gradient(180deg,#1a7a4a,#0d4a2e);}
+
+.acc-main{flex:1;padding:14px 16px 14px 0;}
+.acc-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;color:#15131f;margin-bottom:4px;}
+.acc-sub{font-size:11.5px;color:#888;}
+.acc-pills{display:flex;gap:8px;align-items:center;margin-top:7px;flex-wrap:wrap;}
+
+.score-badge{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;padding:4px 12px;border-radius:999px;color:#fff;}
+.sb-cyan{background:linear-gradient(90deg,#0088c2,#00aeef);}
+.sb-purple{background:linear-gradient(90deg,#452e80,#664ca9);}
+.sb-green{background:linear-gradient(90deg,#0d4a2e,#1a7a4a);}
+
+.fit-pill{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+.fp-strong{background:rgba(26,122,74,0.12);color:#1a7a4a;border:1px solid rgba(26,122,74,0.3);}
+.fp-cond{background:rgba(184,110,0,0.1);color:#b86e00;border:1px solid rgba(184,110,0,0.3);}
+.fp-stretch{background:rgba(177,69,107,0.1);color:#b1456b;border:1px solid rgba(177,69,107,0.3);}
+
+.acc-chevron{font-size:11px;color:#aaa;margin-right:16px;transition:transform .2s;flex-shrink:0;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+
+/* ── ACCORDION BODY ── */
+.acc-body{display:none;border-top:1px solid #e8eaf0;}
+.acc-body.open{display:block;}
+
+/* Signal grid */
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #e8eaf0;}
+.sg-cell{padding:11px 16px;border-bottom:1px solid #f0eef8;border-right:1px solid #f0eef8;position:relative;}
+.sg-cell:nth-child(even){border-right:none;}
+.sg-cell:nth-last-child(-n+2){border-bottom:none;}
+.sg-item-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.sg-val{font-size:12.5px;color:#333;line-height:1.5;}
+.sg-val strong{color:#15131f;}
+.sg-val .flag{color:#b1456b;font-weight:700;}
+.sig{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.sig.G{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.sig.A{background:rgba(184,110,0,0.1);color:#b86e00;}
+.sig.R{background:rgba(177,69,107,0.1);color:#b1456b;}
+
+/* More/less toggle */
+.more-toggle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;color:#664ca9;background:none;border:none;cursor:pointer;padding:3px 0 0;display:block;}
+.more-toggle:hover{color:#452e80;}
+.more-detail{display:none;font-size:12px;color:#555;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #e8eaf0;}
+.more-detail.open{display:block;}
+
+/* Match grid */
+.match-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;}
+.match-card{background:#f5f5fa;border-radius:8px;padding:11px 13px;}
+.match-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:5px;}
+.match-v{font-size:12.5px;color:#15131f;line-height:1.5;}
+.mv-good{color:#1a7a4a;font-weight:700;}
+.mv-warn{color:#b86e00;font-weight:700;}
+.mv-bad{color:#b1456b;font-weight:700;}
+
+/* Capital stack */
+.stack-wrap{padding:0 16px 16px;}
+.stack-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+.stack-bar{height:22px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:8px;}
+.seg{display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:9.5px;white-space:nowrap;padding:0 6px;color:#fff;}
+.s-cash{background:#664ca9;}
+.s-sba{background:#00aeef;color:#0d0a1c;}
+.s-heloc{background:#282560;}
+.s-cdfi{background:#1a7a4a;}
+.stack-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:6px;}
+.sl{display:flex;align-items:center;gap:5px;font-size:11.5px;color:#555;}
+.sl-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+.stack-note{font-size:12px;color:#666;line-height:1.6;font-style:italic;}
+
+/* Discovery questions */
+.qs-wrap{padding:0 16px 16px;border-top:1px solid #f0eef8;}
+.qs-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;padding:12px 0 8px;}
+.qs-list{padding-left:0;list-style:none;}
+.qs-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:8px;line-height:1.6;}
+.q-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;background:#452e80;border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;height:fit-content;}
+
+/* ── COMPARISON TABLE ── */
+.comp-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left;}
+.th-dark{background:#0d0a1c;color:#fff;}
+.th-s1{background:#0a1a30;color:#00aeef;}
+.th-s2{background:#140d28;color:#9b8fc8;}
+.th-s3{background:#0a1a10;color:#4aad7a;}
+td{padding:9px 14px;border-bottom:1px solid #e8eaf0;vertical-align:top;line-height:1.5;color:#333;}
+tr:nth-child(even) td{background:#f9f9fc;}
+td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;color:#452e80;}
+.td-good{color:#1a7a4a;font-weight:700;}
+.td-warn{color:#b86e00;font-weight:700;}
+.td-bad{color:#b1456b;font-weight:700;}
+
+/* ── RECOMMENDATION ── */
+.rec-card{background:linear-gradient(135deg,#0d0a1c,#1a1340);border-radius:10px;padding:26px 28px;color:#eceaf8;}
+.rec-card .sec-lbl{color:#00aeef;}
+.rec-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:19px;color:#fff;margin-bottom:10px;}
+.rec-body{font-size:13px;color:#d8d6ec;line-height:1.75;margin-bottom:12px;}
+.unlock-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc8;margin-bottom:9px;}
+.unlock-list{padding-left:18px;}
+.unlock-list li{font-size:13px;color:#d8d6ec;margin-bottom:6px;line-height:1.55;}
+
+/* ── RISKS ── */
+.risks-list{padding-left:18px;}
+.risks-list li{font-size:13px;color:#333;margin-bottom:9px;line-height:1.6;}
+.risks-list li strong{color:#b1456b;}
+
+/* ── FOOTER ── */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10px;color:#555;margin-top:3px;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .page{box-shadow:none;border-radius:0;}
+  .hdr,.rec-card,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .acc-body{display:block!important;}
+  .more-detail{display:block!important;}
+}
+@media(max-width:720px){
+  .signal-grid,.match-grid{grid-template-columns:1fr;}
+  .sg-cell:nth-child(even){border-right:none;}
+  .cand-strip{flex-direction:column;}
+  .ci{border-right:none;border-bottom:1px solid #e8eaf0;}
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .thesis-bar{margin:0 20px;}
+  .doc-footer{padding:14px 20px;}
+}
+
+/* additions for system-only cross comparison */
+.src-note{font-size:10.5px;color:rgba(255,255,255,0.4);font-style:italic;position:relative;margin-top:6px;}
+.tag-p,.tag-c,.tag-s{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:1px;}
+.tag-p{background:rgba(69,46,128,0.1);color:#452e80;}
+.tag-c{background:rgba(0,174,239,0.12);color:#0077a8;}
+.tag-s{background:rgba(184,110,0,0.1);color:#b86e00;}
+.watch-list{padding-left:0;list-style:none;}
+.watch-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:10px;line-height:1.6;padding-bottom:10px;border-bottom:1px solid #f0eef8;}
+.watch-list li:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+.w-icon{font-size:14px;flex-shrink:0;margin-top:2px;}
+.sub-note{font-size:11.5px;color:#777;margin-top:10px;line-height:1.55;font-style:italic;}
+
+.sys-band.s4{background:linear-gradient(180deg,#b8860b,#5a4000);}
+.sb-green{background:linear-gradient(90deg,#0d4a2e,#1a7a4a);}
+.sb-gold{background:linear-gradient(90deg,#7a5a00,#b8860b);}
+.th-s4{background:#1f1808;color:#e0b84a;}
+.fp-strong{background:rgba(26,122,74,0.12);color:#1a7a4a;border:1px solid rgba(26,122,74,0.3);}
+.tag-sec{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:4px;vertical-align:1px;background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.ir-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ir-card{border:1px solid #e8eaf0;border-radius:9px;padding:13px 15px;background:#fcfcfe;}
+.ir-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;margin-bottom:6px;}
+.ir-v{font-size:12.5px;color:#333;line-height:1.6;}
+.ir-src{font-size:10.5px;color:#999;margin-top:6px;font-style:italic;}
+.ir-wide{grid-column:1 / -1;}
+.mt-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;color:#15131f;margin:4px 0 0;padding:0 16px;}
+.mt-wrap{border:1px solid #e8eaf0;border-radius:10px;margin-bottom:12px;padding-top:12px;}
+.src-list{padding-left:18px;}
+.src-list li{font-size:11.5px;color:#555;margin-bottom:4px;line-height:1.5;}
+.src-list a{color:#452e80;}
+@media(max-width:720px){.ir-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">FDD Analysis &middot; Candidate–System Match &middot; Internal Use Only</div>
+  <h1 class="h-name">KC Copeland — Laundry FDD Analysis</h1>
+  <p class="h-meta">2 laundry systems analyzed &nbsp;&middot;&nbsp; October 2026 &nbsp;&middot;&nbsp; <strong>Nova Guide: Melissa Damiani</strong></p>
+  <p class="src-note">FDD data from the full 2026 FDDs (Primary). Public research beyond the FDD is labeled Secondary and sourced at the bottom of this report. FN math on disclosed figures is labeled Computed.</p>
+</header>
+
+<div class="cand-strip">
+  <div class="ci"><div class="ci-k">Classification</div><div class="ci-v">Super Nova · 86</div></div>
+  <div class="ci"><div class="ci-k">Liquid Capital</div><div class="ci-v">$100K–$250K</div></div>
+  <div class="ci"><div class="ci-k">Net Worth</div><div class="ci-v">$1M+</div></div>
+  <div class="ci"><div class="ci-k">Credit</div><div class="ci-v">750+</div></div>
+  <div class="ci"><div class="ci-k">SBA Pre-Approval</div><div class="ci-v">$2M (Truliance)</div></div>
+  <div class="ci"><div class="ci-k">Model</div><div class="ci-v">Owner-operator · 1 unit</div></div>
+  <div class="ci"><div class="ci-k">Market</div><div class="ci-v">Atlanta + ~2 hrs</div></div>
+  <div class="ci"><div class="ci-k">Timeline</div><div class="ci-v">Within 6 months</div></div>
+</div>
+
+<div class="section" style="padding-top:18px;padding-bottom:18px;">
+  <div class="thesis-bar">
+    <p>KC narrowed her search to restoration and laundry in metro Atlanta and greater Georgia within about two hours. She is SBA pre-approved for $2M, open to acquisition and ROBS, and plans one unit within six months. In laundry, unlike restoration, how big a store she builds and how she finances it decide whether the deal works.</p>
+    <p class="attr">KC Copeland · Intake (July 2026) and landscape follow-up (Sept 2026) · Open to acquisition and ROBS · Background: private lending to residential real estate investors, capital markets, Duke MBA</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Industry Read — Market, Economy &amp; Public Knowledge Beyond the FDD</div>
+  <div class="ir-grid">
+    <div class="ir-card"><div class="ir-k">Laundromat demand</div><div class="ir-v">IBISWorld estimates U.S. laundromat revenue at about $7.2B in 2026, growing roughly 1.6% a year over five years. Elevated utility prices and wage pressure are squeezing profit. Growth is coming from wash-dry-fold and pickup-and-delivery, which both WaveMAX and Speed Queen offer. <span class="tag-sec">Secondary</span></div><div class="ir-src">IBISWorld; PlanetLaundry</div></div>
+    <div class="ir-card"><div class="ir-k">Atlanta renter base</div><div class="ir-v">About 54% of City of Atlanta households rent, and metro Atlanta has about 6.4M residents. Rent burden is high: 29.3% of metro renters spend more than half their income on rent — the price-sensitive, no-in-unit-laundry customer laundromats serve. Rents were roughly flat through 2025. <span class="tag-sec">Secondary</span></div><div class="ir-src">RentCafe; CoStar via Matthews; Axios Atlanta</div></div>
+    <div class="ir-card"><div class="ir-k">Georgia utility costs</div><div class="ir-v">Georgia Power bills rose more than 20% after five increases from 2023 to 2025. Base rates are now frozen through 2028, but fuel costs and Hurricane Helene recovery (about $830M+) are being handled separately and could still raise bills. Utilities run about 11–15% of revenue in Speed Queen's company stores, so this is a real line item. <span class="tag-sec">Secondary</span> <span class="tag-c">Computed</span></div><div class="ir-src">Georgia PSC / Georgia Power; Zacks; AJC</div></div>
+    <div class="ir-card"><div class="ir-k">Interest rates</div><div class="ir-v">WSJ Prime has been 6.75% since December 2025. That puts Speed Queen's parent financing at about 8.25–11.25% and SBA 7(a) loans over $350K at up to 9.75% (prime + 3%). Every laundry deal in this report is a leveraged deal. <span class="tag-sec">Secondary</span> <span class="tag-c">Computed</span></div><div class="ir-src">Bankrate; SBA 7(a) rate caps</div></div>
+    <div class="ir-card"><div class="ir-k">Speed Queen's parent went public</div><div class="ir-v">Alliance Laundry Holdings, which makes Speed Queen machines and lends to franchisees, listed on the NYSE (ALH) in October 2025 and raised $826M, largely to pay down about $2B of debt. It holds roughly 40% of the North American commercial laundry market, and BDT remains its principal holder. A public, well-capitalized parent supports the lender relationship, even though the franchise entity itself runs a deficit. <span class="tag-sec">Secondary</span></div><div class="ir-src">SEC 8-K; IPOScoop</div></div>
+    <div class="ir-card"><div class="ir-k">WaveMAX in the press</div><div class="ir-v">WaveMAX fell from #416 (2024) to #456 (2025) to #485 (2026) on Entrepreneur's Franchise 500. It has a dedicated Area Director for Georgia and Tennessee, which fits the FDD's note that about 48% of royalties go to area representatives. That area director would be KC's main support contact. <span class="tag-sec">Secondary</span></div><div class="ir-src">Franchise Chatter; 1851 Franchise</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Systems Analyzed — Click to Expand</div>
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s3"></div>
+      <div class="acc-main">
+        <div class="acc-title">Speed Queen Laundry — 2026 FDD</div>
+        <div class="acc-sub">High-end self-service laundromats · 15 franchised + 17 company-owned stores · Alliance Laundry Systems / BDT Capital</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-green">67 / 100</span>
+          <span class="fit-pill fp-strong">Conditional — Best Disclosure</span>
+          <span style="font-size:11px;color:#888;">System score · KC match below</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 1 — Franchisor &amp; Ownership <span class="sig G">Green</span></div>
+          <div class="sg-val">Speed Queen Laundry Franchise LLC · Parent <strong>Alliance Laundry Systems</strong> · Majority owner BDT Capital Partners</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Franchising since May 2019. The parent makes the Speed Queen commercial machines franchisees buy, and its affiliate Alliance Laundry Systems Distribution is an approved equipment supplier. Affiliate Speed Queen Laundry Stores LLC runs 17 company-owned stores. BDT also holds majority stakes in Culligan and Whataburger. Model: high-end laundromats of 3,000–6,000 sq ft in strip centers, or a ~1,500 sq ft Small Footprint format. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 3 — Litigation <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>No litigation disclosed</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Items 3 and 4 report no litigation and no bankruptcy. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fees <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$49,500</strong> traditional · $25,000 Small Footprint · Multi-unit steps down to $20K / $15K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Second traditional store $30,000, third and later $20,000. A 3-store area development agreement costs $99,500 traditional or $60,000 Small Footprint. The fee is refundable if no site is approved within six months. The large payments to affiliates are the technology package ($43,568–$45,000) and Speed Queen equipment ($530,000–$938,500 traditional). <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Ongoing Fee Burden <span class="sig G">Green</span></div>
+          <div class="sg-val">Royalty <strong>4%</strong> · Marketing fund 1% · Technology 1% · Local 1% minimum · <strong>~7% total</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">All fees are a flat percentage with no minimum royalty. Combined marketing (fund, co-op and local) is capped at 4% of Gross Sales; the franchisor recommends 2% local. Transfer fee $5,000, renewal $10,000. At the $605K franchised median, required fees run about $42K a year. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Total Investment <span class="sig R">Red</span></div>
+          <div class="sg-val"><strong>$1,199,663–$1,983,000</strong> traditional · $797,507–$1,319,851 Small Footprint · Planning ~$2.18M / ~$1.45M</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Equipment ($530K–$939K) and leasehold improvements ($375K–$688K) dominate. Additional funds are only $20K–$40K for three months, and the estimate <strong>excludes real estate costs and landlord allowances</strong>. Opening takes 6–18 months, so rent during build-out is likely uncounted. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Financing <span class="sig G">Green</span></div>
+          <div class="sg-val">Parent lends <strong>70–90% of project cost</strong> · Up to $2M · 5–10 years · Prime + 1.5–4.5%</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Alliance Laundry Systems finances equipment and tenant improvements with 10–30% down, a 90-day deferred first payment and 1–16 months interest-only. Example payment on a $1M loan: $8,473 interest-only, then $14,314 a month. Rate is variable. The owner and spouse must sign personal guaranties, the borrower waives defenses, and default can terminate the Franchise Agreement. Down payment on a $1.2M–$2.0M project is about $120K–$600K. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Items 11 &amp; 15 — Ownership Model <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>No personal participation required</strong> · Full-time trained GM allowed · Opens in 6–18 months</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The store must be under full-time supervision by the owner, an approved Representative or a trained general manager; with a GM in place the owner stays active in oversight. The model assumes a 24/7 store staffed about 205 hours a week. This is the most semi-absentee-ready model in the comparison. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig A">Amber</span></div>
+          <div class="sg-val">Protected area (not exclusive) · Size set by demographics · No sales minimum</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">No other Speed Queen Store will be placed inside the territory while the owner is in compliance. However, the parent sells Speed Queen equipment to anyone, including competing independent laundromats inside the territory, and can run other laundry concepts under different names. Territory size is set case by case. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig G">Green</span></div>
+          <div class="sg-val">Franchised median <strong>$605,335</strong> · Average $720,145 · <strong>Company-store EBITDA disclosed</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">13 franchised stores (open all of 2025) ranged $445K–$1.70M. 15 company-owned stores are broken into tiers with full expense detail. Average EBITDA by tier: top $365,772 (34.8%), mid $224,893 (27.5%), low $63,183 (12.6%), with one low-tier store losing $42,639. Rent and CAM run 11–20% of revenue and wages 19–28%. EBITDA excludes interest and depreciation, which matters on a loan of $1M or more. No Small Footprint stores are operating yet. Minor error: the franchised period is printed as ending December 21. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>15 franchised</strong> + 17 company-owned · Growth +3 / +2 / +1 · 7 signed not open</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Small and slow-growing franchised base: 9 → 12 → 14 → 15. Exits: 2 terminations and 1 reacquisition in 2023, none in 2024, 1 termination in 2025. One transfer in three years. Georgia: 1 franchised store plus <strong>5 company-owned stores</strong>, a useful validation base for Atlanta. Some franchisees have signed confidentiality clauses. No franchisee association. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Financial Health <span class="sig A">Amber</span></div>
+          <div class="sg-val">Franchisor entity: <strong>$2.72M member's deficit</strong> · Small annual losses · Funded by affiliates</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Audited by Ernst &amp; Young. Total assets were $62,740 against $2.79M of liabilities, mostly a $2.18M long-term payable to affiliates and $550K of deferred franchise fees. The retained deficit grew by about $83K in 2024 and $113K in 2025. No parent guarantee is disclosed, but the business depends on the parent that makes the equipment and finances the build-out. The parent's own statements are not included. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 17 — Exit Rights <span class="sig G">Green</span></div>
+          <div class="sg-val">10-year term + <strong>two 10-year renewals</strong> · Transfer fee <strong>$5,000</strong> · Right of first refusal</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The franchisor can match any offer within 30 days. Liquidated damages: average monthly fees times the lesser of 36 or the months remaining. The renewal term may need to match equipment loan terms. Hard assets (equipment, build-out, lease) support resale value, though the system has little resale history (1 transfer). <span class="tag-p">Primary</span></div>
+        </div>
+      </div>
+      <div class="match-grid">
+        <div class="match-card"><div class="match-k">Performance &amp; Transparency</div><div class="match-v"><span class="mv-good">19 / 25</span> — Only system here with expense and EBITDA data.</div></div>
+        <div class="match-card"><div class="match-k">System Health &amp; Growth</div><div class="match-v"><span class="mv-bad">12 / 25</span> — 15 franchised stores and slow growth.</div></div>
+        <div class="match-card"><div class="match-k">Capital Accessibility</div><div class="match-v"><span class="mv-warn">13 / 20</span> — Parent lends 70–90%, but projects run $1.2M–$2.0M.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Flexibility</div><div class="match-v"><span class="mv-good">14 / 17</span> — No owner participation required; GM model.</div></div>
+        <div class="match-card"><div class="match-k">Exit &amp; Wealth-Building</div><div class="match-v"><span class="mv-good">9 / 13</span> — $5K transfer, two renewals, hard-asset business.</div></div>
+        <div class="match-card"><div class="match-k">Scoring note</div><div class="match-v">Scored on the five Nova Score categories (25/25/20/17/13). Strongest disclosure and semi-absentee fit; held back by a small franchised base and a very large capital requirement.</div></div>
+      </div>
+      <div class="qs-wrap">
+        <div class="qs-lbl">Due Diligence Questions — Ask the Franchisor</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>Item 7 excludes real estate costs and landlord allowances. What do franchisees typically pay in rent and pre-opening carrying costs during the 6–18 month build-out?</li>
+          <li><span class="q-num">Q</span>Franchised stores have a median of $605K versus about $816K for mid-tier company stores. What explains the gap, and can you share franchisee EBITDA?</li>
+          <li><span class="q-num">Q</span>What is EBITDA after debt service for a typical financed store at today's prime rate, and how often has a franchisee needed loan restructuring?</li>
+          <li><span class="q-num">Q</span>Your parent sells Speed Queen equipment to independent laundromats inside a franchisee's territory. How often does that happen?</li>
+          <li><span class="q-num">Q</span>The franchisor entity carries a $2.7M deficit funded by affiliates. Will Alliance Laundry Systems provide a performance guarantee?</li>
+          <li><span class="q-num">Q</span>Can we tour the five company-owned stores in Georgia and speak with their general managers?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s4"></div>
+      <div class="acc-main">
+        <div class="acc-title">WaveMAX Laundry — 2026 FDD</div>
+        <div class="acc-sub">Laundromats with wash-dry-fold and optional Mobile · 65 franchised + 1 affiliate store · Founder-owned since 2016</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-gold">68 / 100</span>
+          <span class="fit-pill fp-cond">Conditional — Proceed with Diligence</span>
+          <span style="font-size:11px;color:#888;">System score · KC match below</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 1 — Franchisor &amp; Ownership <span class="sig A">Amber</span></div>
+          <div class="sg-val">WaveMAX Franchise LLC · Franchising since <strong>2016</strong> · No parent · Founder-owned</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">One affiliate laundromat (AU Hydro, Jacksonville, since 2012) is owned by the franchisor's majority owners. Area Representatives sold franchises from 2016–2020 (19 as of 2023), and part of the royalty still flows to them. Standard laundromat with wash-dry-fold, plus an optional Mobile pickup-and-delivery add-on. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 3 — Litigation <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>No litigation disclosed</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Items 3 and 4 report no litigation and no bankruptcy. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 5 — Initial Fees <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$54,950</strong> · Second unit $24,950 · Third $19,950 · 5% veteran discount</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Multi-unit pricing applies only if all units are bought at once. Mobile adds a $4,950 training fee. A $20,000 grand opening payment to the designated marketing firm is due before opening. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 6 — Ongoing Fee Burden <span class="sig G">Green</span></div>
+          <div class="sg-val">Royalty <strong>6%</strong> · Local marketing $500/month minimum · National fund up to 1% (not active) · <strong>~7–8% total</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Royalty covers self-service revenue too. POS and payment systems run about $85–$395 a month plus setup. Mobile adds a 4% Mobile Support Fee (with a $300/month minimum) and another $500/month in marketing. Lost-royalty damages are capped at $50,000. Transfer fee $5,000, renewal $5,000. At the $431K median, required fees run about $35K, or ~8%. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 7 — Total Investment <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>$359,105–$1,600,850</strong> · Planning ~$1.76M at the high end</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The low end assumes laundry equipment is <strong>financed through Laundrylux</strong> ($157K) and the high end assumes it is bought outright ($850K). Tenant improvements range $50K–$525K. Additional funds are $35K–$65K. With Mobile: $379,055–$1,633,800. The real cash need depends heavily on equipment financing approval. <span class="tag-p">Primary</span> <span class="tag-c">Computed</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 10 — Financing <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>No franchisor financing</strong> · Equipment financing via Laundrylux (third party)</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The franchisor offers no direct or indirect financing. Item 7 references Laundrylux equipment financing for qualified applicants, but its terms are not in the FDD. SBA status is not addressed. <span class="tag-p">Primary</span> <span class="tag-s">Not Disclosed</span> (lender terms, SBA)</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Items 11 &amp; 15 — Ownership Model <span class="sig G">Green</span></div>
+          <div class="sg-val">Approved full-time <strong>General Manager</strong> model · Owner need not be on site · Opens in 6–18 months</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">A GM must be available daily but need not be in the store; the owner can be the GM or hire one. One GM can cover up to 5 locations. Mobile service requires full-time owner effort unless a GM is approved. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 12 — Territory <span class="sig A">Amber</span></div>
+          <div class="sg-val">Protected radius of <strong>1.5–2 miles</strong> · Not exclusive · No sales minimum</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">No other WaveMAX outlet (franchised or company) will be placed inside the territory, and territory rights don't depend on sales volume. The franchisor may run a Mobile wash-dry-fold service inside the territory, and the owner can't solicit customers outside it without approval. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 19 — Financial Performance <span class="sig G">Green</span></div>
+          <div class="sg-val">Median <strong>$430,875</strong> · Average $445,598 · Every outlet listed · Median up from $218K (2019)</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Outlet-by-outlet 2025 gross revenue for 56 of 65 franchised outlets: range $195,855–$800,088, with 50% at or above the median. Medians over time: 2019 $218K, 2020 $212K, 2021 $286K, 2022 $325K, 2023 $361K, 2024 $436K, 2025 $431K. The affiliate Jacksonville store shows a net operating income of $252K on $526K of revenue in 2025, but it is a 12+ year-old owner-affiliated store and excludes equipment cost. No franchisee cost data. Data errors: the 2025 table is labeled 2024, and outlets 52 and 54 report an identical $147,553.00 self-service figure. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 20 — System Health <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>52 → 57 → 65</strong> franchised · Very low exits · <strong>52 signed but not open</strong></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Exits: 1 termination in 2023, 1 ceased in 2024, 1 ceased in 2025 — under 2.5% a year. 2–3 transfers per year. No confidentiality clauses with former franchisees, which is a good transparency sign. The backlog of 52 signed-not-open agreements is nearly as large as the open base, and only 12 openings are projected for 2026. Georgia: 0 → 1 → 1. The 2023 starting count is 44 in Table 1 and 42 in Table 3. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 21 — Franchisor Financial Health <span class="sig A">Amber</span></div>
+          <div class="sg-val">Profitable: <strong>$720,689 net income</strong> (2025) · $732K members' deficit · $288K cash</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Revenue was $2.99M in 2025, up from $2.63M. The deficit comes from deferred franchise-fee accounting ($7.0M deferred revenue), not operating losses. Royalties paid out to Area Representatives were $816K, about 48% of royalty income. $367K of revenue came from gross-sales rebates (supplier rebates). Cash fell to $288K, but $1.17M is held in investments. Only two years are audited, although Item 21 cites three. <span class="tag-p">Primary</span></div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Item 17 — Exit Rights <span class="sig G">Green</span></div>
+          <div class="sg-val">10-year term with renewals · Transfer fee <strong>$5,000</strong> · Right of first refusal · Damages capped at $50K</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Renewal fee $5,000. Transfers to a controlled entity or family member are free. Two-year post-term non-compete within the territory or 25 miles. 2–3 transfers a year show a functioning resale market. This is the lightest exit and default exposure of the four systems. <span class="tag-p">Primary</span></div>
+        </div>
+      </div>
+      <div class="match-grid">
+        <div class="match-card"><div class="match-k">Performance &amp; Transparency</div><div class="match-v"><span class="mv-good">17 / 25</span> — Every outlet listed, seven-year trend; no franchisee costs.</div></div>
+        <div class="match-card"><div class="match-k">System Health &amp; Growth</div><div class="match-v"><span class="mv-warn">16 / 25</span> — Steady growth, very low exits; large unopened backlog.</div></div>
+        <div class="match-card"><div class="match-k">Capital Accessibility</div><div class="match-v"><span class="mv-warn">12 / 20</span> — No franchisor financing; low end needs equipment loan.</div></div>
+        <div class="match-card"><div class="match-k">Ownership Flexibility</div><div class="match-v"><span class="mv-good">13 / 17</span> — GM model, no sales minimum.</div></div>
+        <div class="match-card"><div class="match-k">Exit &amp; Wealth-Building</div><div class="match-v"><span class="mv-good">10 / 13</span> — $5K transfer, active resale, damages capped.</div></div>
+        <div class="match-card"><div class="match-k">Scoring note</div><div class="match-v">Scored on the five Nova Score categories (25/25/20/17/13). Strongest system health signals in laundry; held back by no franchisor financing, the unopened backlog and Item 19 errors.</div></div>
+      </div>
+      <div class="qs-wrap">
+        <div class="qs-lbl">Due Diligence Questions — Ask the Franchisor</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>52 franchise agreements are signed but not open, against 65 open outlets. How many are older than two years, and what is holding them up?</li>
+          <li><span class="q-num">Q</span>What are Laundrylux's current financing terms (down payment, rate, term), and what share of franchisees use it?</li>
+          <li><span class="q-num">Q</span>Can you share operating costs or EBITDA for franchised outlets, not just the affiliate Jacksonville store?</li>
+          <li><span class="q-num">Q</span>About 48% of royalties go to Area Representatives. What support do they provide, and who would support a Georgia franchisee?</li>
+          <li><span class="q-num">Q</span>Please correct the 2025 Item 19 table, including the identical figures for outlets 52 and 54.</li>
+          <li><span class="q-num">Q</span>How often does the franchisor run Mobile service inside an existing franchisee's territory, and how is revenue shared?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Candidate–System Match — KC Copeland, Atlanta</div>
+  <div class="mt-wrap">
+    <div class="mt-sys">WaveMAX — Lead System (mid-size build)</div>
+    <div class="match-grid">
+      <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-good">Manageable</span> — A ~$800K mid-range build needs ~$80K–$160K cash at a 10–20% injection, within her $100K–$250K liquid range.</div></div>
+      <div class="match-card"><div class="match-k">Debt Service</div><div class="match-v"><span class="mv-warn">Size carefully</span> — Mid build: ~$113K a year (~26% of the $431K median). Full $1.76M build: ~$249K a year (58% of median revenue), which doesn't pencil. <span class="tag-c">Computed</span></div></div>
+      <div class="match-card"><div class="match-k">Ownership Fit</div><div class="match-v"><span class="mv-good">Good</span> — GM model, with the owner allowed to be the GM; her owner-operator plan works either way.</div></div>
+      <div class="match-card"><div class="match-k">Atlanta Territory</div><div class="match-v"><span class="mv-good">Open</span> — Only 1 Georgia unit; a 1.5–2 mile protected radius suits dense Atlanta corridors with high renter share.</div></div>
+      <div class="match-card"><div class="match-k">Real Estate Edge</div><div class="match-v"><span class="mv-good">Strong</span> — KC's real-estate background is a direct advantage for site selection and lease negotiation.</div></div>
+      <div class="match-card"><div class="match-k">Support Model</div><div class="match-v"><span class="mv-warn">Verify</span> — Support runs through a Georgia/Tennessee Area Director paid from her royalties; meet them before signing.</div></div>
+    </div>
+    <div class="stack-wrap">
+      <div class="stack-lbl">Illustrative Capital Stack <span class="tag-c">Computed</span></div>
+      <div class="stack-bar"><div class="seg s-sba" style="width:80%">SBA 7(a) ~$640K–$720K</div><div class="seg s-cash" style="width:20%">Cash ~$80K–$160K</div></div>
+      <p class="stack-note">Use SBA or Laundrylux for equipment and keep the build in the $600K–$900K range. A full high-end build at median revenue would leave little after debt service.</p>
+    </div>
+    <div class="qs-wrap">
+      <div class="qs-lbl">Discovery Questions — For KC</div>
+      <ul class="qs-list">
+        <li><span class="q-num">Q</span>What size build are you picturing? Would you keep it in the $600K–$900K range rather than WaveMAX's $1.6M high end?</li>
+        <li><span class="q-num">Q</span>Would you consider buying the building (SBA 504) instead of leasing, given your real estate background? That would change the rent line, which is 11–20% of revenue for comparable stores.</li>
+        <li><span class="q-num">Q</span>Which Atlanta corridors have you looked at, and how many laundromats are within 1.5–2 miles?</li>
+        <li><span class="q-num">Q</span>Are you comfortable with laundry being mostly a manager-run, site-driven business rather than the sales-driven model in restoration?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-wrap">
+    <div class="mt-sys">Speed Queen — Conditional (Small Footprint or top-tier site only)</div>
+    <div class="match-grid">
+      <div class="match-card"><div class="match-k">Capital Gap</div><div class="match-v"><span class="mv-bad">Tight</span> — Traditional ~$2.18M planning (plus excluded real estate) at 10–30% down means $220K–$650K cash, at or above her liquid range.</div></div>
+      <div class="match-card"><div class="match-k">Debt Service</div><div class="match-v"><span class="mv-bad">Fails at mid-tier</span> — ~$257K a year on an 80% Alliance loan at 8.25% vs. mid-tier EBITDA of $225K (coverage below 1.0); only top-tier stores ($366K) cover comfortably. <span class="tag-c">Computed</span></div></div>
+      <div class="match-card"><div class="match-k">Ownership Fit</div><div class="match-v"><span class="mv-good">Excellent</span> — No owner participation required — the most flexible structure here.</div></div>
+      <div class="match-card"><div class="match-k">Atlanta Validation</div><div class="match-v"><span class="mv-good">Strong</span> — 5 company stores and 1 franchised store in Georgia; KC can tour real comparables before committing.</div></div>
+      <div class="match-card"><div class="match-k">Small Footprint</div><div class="match-v"><span class="mv-warn">Unproven</span> — ~$1.45M planning and ~$171K a year in debt service at 8.25%, but no operating data yet.</div></div>
+      <div class="match-card"><div class="match-k">Parent Strength</div><div class="match-v"><span class="mv-good">Strong</span> — Newly public Alliance Laundry is the lender and equipment maker; the franchise entity itself runs a deficit.</div></div>
+    </div>
+    <div class="stack-wrap">
+      <div class="stack-lbl">Illustrative Capital Stack <span class="tag-c">Computed</span></div>
+      <div class="stack-bar"><div class="seg s-sba" style="width:80%">Alliance loan ~$1.74M</div><div class="seg s-cash" style="width:20%">Cash ~$440K+</div></div>
+      <p class="stack-note">Even at 80% financing, the traditional format needs more cash than KC has listed, and leaves thin coverage unless the store performs at top-tier levels.</p>
+    </div>
+    <div class="qs-wrap">
+      <div class="qs-lbl">Discovery Questions — For KC</div>
+      <ul class="qs-list">
+        <li><span class="q-num">Q</span>Would you tour Speed Queen's Georgia company stores and ask for their revenue tier and actual occupancy costs?</li>
+        <li><span class="q-num">Q</span>Would a Small Footprint store interest you, knowing there's no performance history yet?</li>
+        <li><span class="q-num">Q</span>How much of your $1M+ net worth could go in as cash beyond your listed liquid range, if a Speed Queen site justified it?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="section">
+  <div class="sec-lbl">Cross-System Comparison</div>
+  <div class="comp-wrap">
+    <table>
+      <tr><th class="th-dark" style="width:26%">Metric</th><th class="th-s3" style="width:37%">Speed Queen</th><th class="th-s4" style="width:37%">WaveMAX</th></tr>
+      <tr><td class="metric">System Nova Score</td><td><strong>67 / 100</strong></td><td><strong>68 / 100</strong></td></tr>
+      <tr><td class="metric">Format</td><td>3,000–6,000 sq ft high-end store, or ~1,500 sq ft Small Footprint</td><td>Laundromat + wash-dry-fold, optional Mobile</td></tr>
+      <tr><td class="metric">Initial Fee</td><td>$49,500 ($25K Small Footprint)</td><td>$54,950</td></tr>
+      <tr><td class="metric">Investment Range</td><td class="td-bad">$1.20M–$1.98M · $798K–$1.32M Small Footprint</td><td class="td-warn">$359K–$1.60M</td></tr>
+      <tr><td class="metric">Planning Amount (+10%)</td><td class="td-bad">~$2.18M / ~$1.45M</td><td class="td-warn">~$395K financed · ~$1.76M bought</td></tr>
+      <tr><td class="metric">Real Estate in Item 7</td><td class="td-bad">Excluded</td><td class="td-good">Lease deposit included</td></tr>
+      <tr><td class="metric">Franchisor Financing</td><td class="td-good">Parent lends 70–90%, up to $2M, 5–10 yrs</td><td class="td-bad">None (Laundrylux, third party)</td></tr>
+      <tr><td class="metric">Royalty</td><td class="td-good">4%</td><td class="td-warn">6%</td></tr>
+      <tr><td class="metric">Required Fees (total)</td><td class="td-good">~7% flat</td><td class="td-good">6% + $500/mo local + POS</td></tr>
+      <tr><td class="metric">Item 19 Median</td><td class="td-good">$605,335 franchised</td><td>$430,875</td></tr>
+      <tr><td class="metric">Profit Data in Item 19</td><td class="td-good">Company-store EBITDA by tier</td><td class="td-warn">Affiliate store only</td></tr>
+      <tr><td class="metric">Owner Role</td><td class="td-good">No participation required; GM allowed</td><td class="td-good">Approved GM</td></tr>
+      <tr><td class="metric">Territory</td><td>Protected, size set by demographics</td><td>Protected 1.5–2 mile radius</td></tr>
+      <tr><td class="metric">Time to Open</td><td class="td-warn">6–18 months</td><td class="td-warn">6–18 months</td></tr>
+      <tr><td class="metric">Franchised Units (3 yrs)</td><td class="td-bad">12 → 14 → 15</td><td class="td-good">52 → 57 → 65</td></tr>
+      <tr><td class="metric">Annual Exit Rate (2025)</td><td class="td-warn">7% (1 of 14)</td><td class="td-good">1.8%</td></tr>
+      <tr><td class="metric">Signed, Not Open</td><td>7</td><td class="td-bad">52</td></tr>
+      <tr><td class="metric">Confidentiality Clauses</td><td class="td-warn">Some franchisees signed</td><td class="td-good">None in 3 years</td></tr>
+      <tr><td class="metric">Franchisor Health</td><td class="td-warn">$2.7M deficit, affiliate-funded</td><td class="td-good">$721K net income; deficit is accounting</td></tr>
+      <tr><td class="metric">Transfer Fee / Renewals</td><td class="td-good">$5,000 · two 10-yr renewals</td><td class="td-good">$5,000 · renewals allowed</td></tr>
+      <tr><td class="metric">Default Exposure</td><td class="td-warn">Up to 36 months of fees</td><td class="td-good">Capped at $50K</td></tr>
+      <tr><td class="metric">Georgia Footprint</td><td class="td-good">1 franchised + 5 company</td><td>1 unit</td></tr>
+    </table>
+  </div>
+  <div class="sec-lbl" style="margin-top:22px;">Required Fees at Revenue Levels <span class="tag-c">Computed</span></div>
+  <div class="comp-wrap">
+    <table>
+      <tr><th class="th-dark" style="width:26%">Annual Gross Revenue</th><th class="th-s3" style="width:37%">Speed Queen (royalty + fund + tech + 1% local)</th><th class="th-s4" style="width:37%">WaveMAX (royalty + $500/mo local + POS)</th></tr>
+      <tr><td class="metric">$431K (WaveMAX median)</td><td class="td-good">~$30K · ~7%</td><td class="td-good">~$35K · ~8%</td></tr>
+      <tr><td class="metric">$605K (Speed Queen franchised median)</td><td class="td-good">~$42K · ~7%</td><td class="td-good">~$45K · ~7.5%</td></tr>
+      <tr><td class="metric">$1M</td><td class="td-good">~$70K · ~7%</td><td class="td-good">~$69K · ~7%</td></tr>
+    </table>
+  </div>
+  <p class="sub-note">Required fees and spend only. Excludes Speed Queen's recommended (not required) extra 1% of local marketing and WaveMAX's optional Mobile fees; WaveMAX POS costs vary by payment system. Fees are close at every revenue level, so the real cost difference between these two is the size of the build-out and how it is financed.</p>
+</div>
+
+
+<div class="section">
+  <div class="rec-card">
+    <div class="sec-lbl">FN Recommendation for KC</div>
+    <div class="rec-sys">Lead: WaveMAX (mid-size build) · Conditional: Speed Queen</div>
+    <p class="rec-body"><strong>WaveMAX is KC's lead laundry system, at the right size.</strong> Atlanta's large renter base and WaveMAX's thin Georgia footprint (1 unit) give her room to pick a strong site, and her real estate background is a real edge there. The key is keeping the build around $600K–$900K. At the $431K median, a full $1.6M build financed by debt would spend more than half of revenue on loan payments.</p>
+    <p class="rec-body"><strong>Speed Queen is the better-run brand but the wrong size for KC right now.</strong> Its disclosure, parent lender, and Georgia company stores are the best in this comparison. But a traditional store's loan payments exceed mid-tier store earnings. It only works at a top-tier site, with more cash than she listed, or if Small Footprint stores start producing results.</p>
+    <p class="rec-body"><strong>Across both industries:</strong> laundry needs about 2–5 times more capital than restoration, and its returns depend on the site and the loan rather than on KC's selling. If she wants to use her lending and investor network as an owner-operator, restoration (DRYmedic) fits her better. If she wants an asset-backed, manager-run business, laundry does.</p>
+    <div class="unlock-lbl">What would change this call</div>
+    <ul class="unlock-list">
+      <li>KC is willing to put in substantially more cash, or to buy the real estate → Speed Queen becomes viable at a strong Atlanta site.</li>
+      <li>WaveMAX can't explain its 52 unopened agreements or show franchisee cost data → step back and compare against independent laundromat acquisitions (like the Norcross resale on her landscape).</li>
+      <li>Rates fall meaningfully → debt coverage improves for both, most of all Speed Queen.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Risks to Watch — For KC</div>
+  <ul class="risks-list">
+    <li><strong>Leverage:</strong> Laundry returns depend on debt terms; at mid-2026 rates, oversized builds don't cover their loan payments at median revenue.</li>
+    <li><strong>Utility exposure:</strong> Hurricane Helene storm-cost recovery and fuel pass-throughs could raise Georgia Power bills even with base rates frozen.</li>
+    <li><strong>Site risk:</strong> Rent and utilities vary block to block; a weak Atlanta site can't be fixed with sales effort the way a restoration territory can.</li>
+    <li><strong>WaveMAX backlog:</strong> 52 signed-but-unopened agreements could mean stalled deals or financing problems — ask before signing.</li>
+    <li><strong>Speed Queen hidden costs:</strong> Item 7 excludes real estate and lists only $20K–$40K of working capital for a 6–18 month build-out.</li>
+  </ul>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">Next Steps — Before KC Goes to Discovery Day</div>
+  <ul class="watch-list">
+    <li><span class="w-icon">🏪</span><div><strong>Speed Queen tours:</strong> Arrange visits to the Georgia company stores; even if KC doesn't choose Speed Queen, they're the best local benchmarks for any laundry deal.</div></li>
+    <li><span class="w-icon">📐</span><div><strong>Size the build:</strong> Model a WaveMAX store at $600K, $800K, and $1M against the $431K median before Discovery Day.</div></li>
+    <li><span class="w-icon">🏢</span><div><strong>Real estate option:</strong> Explore whether KC would buy the building through SBA 504; it plays to her strengths and removes rent risk.</div></li>
+    <li><span class="w-icon">💵</span><div><strong>Lender check:</strong> Confirm with Truliance on WaveMAX equipment and build-out financing, and compare against Laundrylux terms.</div></li>
+  </ul>
+</div>
+
+<div class="section" style="border-bottom:none;">
+  <div class="sec-lbl">Secondary Sources</div>
+  <ul class="src-list">
+    <li>IBISWorld: Laundromats in the US — <a href="https://www.ibisworld.com/united-states/market-research-reports/laundromats-industry/">www.ibisworld.com</a></li>
+    <li>PlanetLaundry: Industry outlook, wash-dry-fold growth — <a href="https://planetlaundry.com/?p=13195">planetlaundry.com</a></li>
+    <li>RentCafe via WhatNow: Atlanta renter share — <a href="https://whatnow.com/?p=436331">whatnow.com</a></li>
+    <li>Axios Atlanta: Rent-to-income burden — <a href="https://www.axios.com/local/atlanta/2024/09/18/atlanta-rent-income-ratio">www.axios.com</a></li>
+    <li>Matthews: Atlanta multifamily Q3 2025 (CoStar data) — <a href="https://www.matthews.com/market_insights/atlanta-ga-multifamily-market-report-q3-2025">www.matthews.com</a></li>
+    <li>Georgia Power: PSC approves base-rate freeze through 2028 — <a href="https://www.georgiapower.com/news-hub/press-releases/georgia-psc-approves-plan-to-freeze-base-rates-through-2028.html">www.georgiapower.com</a></li>
+    <li>Zacks: Georgia Power rate freeze and prior increases — <a href="https://www.zacks.com/stock/news/2561458/southern-company-s-georgia-power-freezes-base-rates-through-2028">www.zacks.com</a></li>
+    <li>Bankrate: WSJ Prime Rate — <a href="https://www.bankrate.com/rates/interest-rates/wall-street-prime-rate/">www.bankrate.com</a></li>
+    <li>SEC 8-K: Alliance Laundry IPO closing — <a href="https://www.sec.gov/Archives/edgar/data/1317685/000162828025044802/exhibit991-8xk.htm">www.sec.gov</a></li>
+    <li>IPOScoop: Alliance Laundry profile — <a href="https://www.iposcoop.com/ipo/alliance-laundry-holdings-inc-2/">www.iposcoop.com</a></li>
+    <li>Franchise Chatter: WaveMAX 2026 review — <a href="https://www.franchisechatter.com/2026/09/09/wavemax-laundry-franchise-review-2026-costs-fees-news-average-revenues-and-or-profits/">www.franchisechatter.com</a></li>
+    <li>1851 Franchise: WaveMAX deep dive — <a href="https://1851franchise.com/wavemax-franchise-deep-dive-2732412">1851franchise.com</a></li>
+  </ul>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova FDD Analysis &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; October 2026 &nbsp;&middot;&nbsp; KC Copeland &nbsp;&middot;&nbsp; Speed Queen, WaveMAX — 2026 FDDs</p>
+  <p class="footer-note">For internal FN use only · Do not share with candidate · Not financial, legal, or investment advice. Loan figures are FN illustrations at mid-2026 rates (WSJ Prime 6.75%); confirm current terms with Truliance and each lender. Territory availability must be confirmed with each franchisor.</p>
+</div>
+
+</div>
+<script>
+// ── Accordion toggle ─────────────────────────────────────────
+function toggleAcc(btn){
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── More/less toggle ─────────────────────────────────────────
+function toggleMore(btn){
+  const detail = btn.nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+ More' : '− Less';
+}
+
+// ── Print: expand all ────────────────────────────────────────
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.more-detail').forEach(d => d.classList.add('open'));
+  document.querySelectorAll('.more-toggle').forEach(t => t.style.display = 'none');
+});
+</script>
+</body>
+</html>
