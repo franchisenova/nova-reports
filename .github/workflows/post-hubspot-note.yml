@@ -12,105 +12,111 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Post note to HubSpot and notify Slack
+      - name: Post note to HubSpot, update contact properties, notify Slack
         env:
           HS_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         run: |
           echo "=== STARTING FRANCHISE NOVA PIPELINE ==="
-
           NOTE_FILE="pending_notes/FN_current_note.json"
-          echo "Reading: $NOTE_FILE"
 
           CONTACT_EMAIL=$(jq -r '.contact_email' "$NOTE_FILE")
           NOTE_BODY=$(jq -r '.note_body' "$NOTE_FILE")
-          LANDSCAPE_URL=$(jq -r '.candidate_link' "$NOTE_FILE")
-          INTERNAL_URL=$(jq -r '.internal_link' "$NOTE_FILE")
+          LANDSCAPE_URL=$(jq -r '.candidate_link // empty' "$NOTE_FILE")
+          INTERNAL_URL=$(jq -r '.internal_link // empty' "$NOTE_FILE")
+          SNAPSHOT_URL=$(jq -r '.snapshot_link // empty' "$NOTE_FILE")
           CANDIDATE_NAME=$(jq -r '.candidate_name' "$NOTE_FILE")
 
-          echo "Contact: $CONTACT_EMAIL"
-          echo "Landscape URL: $LANDSCAPE_URL"
-          echo "Internal URL: $INTERNAL_URL"
+          # Property map sent by the Publisher; fall back to landscape_url only
+          if jq -e '.hubspot_properties | type == "object"' "$NOTE_FILE" > /dev/null; then
+            jq -c '.hubspot_properties | with_entries(select(.value != null and .value != ""))' "$NOTE_FILE" > props.json
+          else
+            jq -n --arg u "$LANDSCAPE_URL" '{landscape_url: $u}' > props.json
+          fi
+          echo "Properties to write:"; cat props.json
 
-          # Find contact in HubSpot
+          # ---- Find contact ----
           echo "=== SEARCHING HUBSPOT ==="
-          SEARCH_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST \
-            "https://api.hubapi.com/crm/v3/objects/contacts/search" \
-            -H "Authorization: Bearer $HS_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"filterGroups\":[{\"filters\":[{\"propertyName\":\"email\",\"operator\":\"EQ\",\"value\":\"$CONTACT_EMAIL\"}]}],\"properties\":[\"email\",\"firstname\",\"lastname\"]}")
-
-          HTTP_STATUS=$(echo "$SEARCH_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
-          BODY=$(echo "$SEARCH_RESP" | grep -v "HTTP_STATUS:")
-          echo "Search HTTP status: $HTTP_STATUS"
-
-          CONTACT_ID=$(echo "$BODY" | jq -r '.results[0].id // empty')
+          SEARCH_PAYLOAD=$(jq -n --arg e "$CONTACT_EMAIL" \
+            '{filterGroups:[{filters:[{propertyName:"email",operator:"EQ",value:$e}]}],properties:["email","firstname","lastname"]}')
+          SEARCH_BODY=$(curl -s -X POST "https://api.hubapi.com/crm/v3/objects/contacts/search" \
+            -H "Authorization: Bearer $HS_TOKEN" -H "Content-Type: application/json" -d "$SEARCH_PAYLOAD")
+          CONTACT_ID=$(echo "$SEARCH_BODY" | jq -r '.results[0].id // empty')
           echo "Contact ID: $CONTACT_ID"
 
           if [ -z "$CONTACT_ID" ]; then
             echo "ERROR: Contact not found for $CONTACT_EMAIL"
-            # Still send Slack notification with links even if HubSpot fails
-            curl -s -X POST "$SLACK_WEBHOOK" \
-              -H "Content-Type: application/json" \
-              -d "{\"text\":\"⚠️ *Franchise Nova — Intake Analysis Ready*\nHubSpot contact not found for $CONTACT_EMAIL — please post manually.\n\n📋 *Internal Analysis (Nova Guide only)*\n$INTERNAL_URL\n\n🌐 *Candidate Landscape (share with candidate)*\n$LANDSCAPE_URL\"}"
+            SLACK_FAIL=$(jq -n --arg t "⚠️ *Franchise Nova — Intake Analysis Ready*
+          HubSpot contact not found for $CONTACT_EMAIL — please post manually.
+
+          📋 *Internal Analysis (Nova Guide only)*
+          $INTERNAL_URL
+
+          🌐 *Candidate Landscape*
+          $LANDSCAPE_URL
+
+          📊 *Readiness Snapshot*
+          $SNAPSHOT_URL" '{text:$t}')
+            curl -s -X POST "$SLACK_WEBHOOK" -H "Content-Type: application/json" -d "$SLACK_FAIL"
             exit 1
           fi
 
-          # Post note to HubSpot
+          # ---- Post note ----
           echo "=== POSTING NOTE ==="
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
-          NOTE_JSON=$(echo "$NOTE_BODY" | jq -Rs .)
-
-          NOTE_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST \
-            "https://api.hubapi.com/crm/v3/objects/notes" \
-            -H "Authorization: Bearer $HS_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"properties\":{\"hs_timestamp\":\"$TIMESTAMP\",\"hs_note_body\":$NOTE_JSON},\"associations\":[{\"to\":{\"id\":\"$CONTACT_ID\"},\"types\":[{\"associationCategory\":\"HUBSPOT_DEFINED\",\"associationTypeId\":202}]}]}")
-
-          NOTE_STATUS=$(echo "$NOTE_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
-          NOTE_BODY_RESP=$(echo "$NOTE_RESP" | grep -v "HTTP_STATUS:")
-          echo "Note HTTP status: $NOTE_STATUS"
-
-          NOTE_ID=$(echo "$NOTE_BODY_RESP" | jq -r '.id // empty')
+          NOTE_PAYLOAD=$(jq -n --arg ts "$TIMESTAMP" --arg b "$NOTE_BODY" --arg id "$CONTACT_ID" \
+            '{properties:{hs_timestamp:$ts,hs_note_body:$b},associations:[{to:{id:$id},types:[{associationCategory:"HUBSPOT_DEFINED",associationTypeId:202}]}]}')
+          NOTE_RESP=$(curl -s -X POST "https://api.hubapi.com/crm/v3/objects/notes" \
+            -H "Authorization: Bearer $HS_TOKEN" -H "Content-Type: application/json" -d "$NOTE_PAYLOAD")
+          NOTE_ID=$(echo "$NOTE_RESP" | jq -r '.id // empty')
           if [ -z "$NOTE_ID" ]; then
-            echo "ERROR: Note creation failed"
-            echo "Response: $NOTE_BODY_RESP"
-            exit 1
+            echo "ERROR: Note creation failed"; echo "$NOTE_RESP"; exit 1
           fi
           echo "✓ Note posted — ID: $NOTE_ID"
 
-          # Update Landscape URL property
-          echo "=== UPDATING LANDSCAPE URL ==="
-          PROP_RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X PATCH \
-            "https://api.hubapi.com/crm/v3/objects/contacts/$CONTACT_ID" \
-            -H "Authorization: Bearer $HS_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{\"properties\":{\"landscape_url\":\"$LANDSCAPE_URL\"}}")
+          # ---- Update each contact property separately ----
+          # (one bad property name can't block the others)
+          echo "=== UPDATING CONTACT PROPERTIES ==="
+          PROP_SUMMARY=""
+          for KEY in $(jq -r 'keys[]' props.json); do
+            VAL=$(jq -r --arg k "$KEY" '.[$k]' props.json)
+            PAYLOAD=$(jq -n --arg k "$KEY" --arg v "$VAL" '{properties:{($k):$v}}')
+            RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X PATCH \
+              "https://api.hubapi.com/crm/v3/objects/contacts/$CONTACT_ID" \
+              -H "Authorization: Bearer $HS_TOKEN" -H "Content-Type: application/json" -d "$PAYLOAD")
+            STATUS=$(echo "$RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
+            if [ "$STATUS" = "200" ]; then
+              echo "✓ $KEY updated"
+              PROP_SUMMARY="$PROP_SUMMARY ✓ $KEY"
+            else
+              echo "WARNING: $KEY failed (HTTP $STATUS)"
+              echo "$RESP" | grep -v "HTTP_STATUS:"
+              PROP_SUMMARY="$PROP_SUMMARY ⚠️ $KEY failed"
+            fi
+          done
 
-          PROP_STATUS=$(echo "$PROP_RESP" | grep "HTTP_STATUS:" | cut -d: -f2)
-          echo "Property update HTTP status: $PROP_STATUS"
-
-          if [ "$PROP_STATUS" = "200" ]; then
-            echo "✓ Landscape URL property updated"
-          else
-            echo "WARNING: Property update failed"
-          fi
-
-          # Send Slack notification
+          # ---- Slack ----
           echo "=== SENDING SLACK NOTIFICATION ==="
-          SLACK_RESP=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$SLACK_WEBHOOK" \
-            -H "Content-Type: application/json" \
-            -d "{\"blocks\":[{\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"🚀 Franchise Nova — New Intake Analysis Ready\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Candidate:* $CANDIDATE_NAME · $CONTACT_EMAIL\"}},{\"type\":\"divider\"},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"📋 *Internal Intake Analysis*\n_Nova Guide only — do not share with candidate_\n$INTERNAL_URL\n\n🌐 *Candidate Franchise Landscape*\n_Ready to share — send this link to the candidate_\n$LANDSCAPE_URL\n\n✅ HubSpot note posted · Landscape URL updated\"}},{\"type\":\"context\",\"elements\":[{\"type\":\"mrkdwn\",\"text\":\"Generated by Franchise Nova · BLK GRVTY\"}]}]}")
+          SLACK_TEXT="📋 *Internal Intake Analysis*
+          _Nova Guide only — do not share with candidate_
+          $INTERNAL_URL
 
+          🌐 *Candidate Franchise Landscape*
+          _Share with candidate_
+          $LANDSCAPE_URL
+
+          📊 *Candidate Readiness Snapshot*
+          _Share with candidate_
+          $SNAPSHOT_URL
+
+          HubSpot note posted · Properties:$PROP_SUMMARY"
+          SLACK_PAYLOAD=$(jq -n --arg h "🚀 Franchise Nova — New Intake Analysis Ready" \
+            --arg c "*Candidate:* $CANDIDATE_NAME · $CONTACT_EMAIL" --arg t "$SLACK_TEXT" \
+            '{blocks:[{type:"header",text:{type:"plain_text",text:$h}},{type:"section",text:{type:"mrkdwn",text:$c}},{type:"divider"},{type:"section",text:{type:"mrkdwn",text:$t}},{type:"context",elements:[{type:"mrkdwn",text:"Generated by Franchise Nova · BLK GRVTY"}]}]}')
+          SLACK_RESP=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$SLACK_WEBHOOK" \
+            -H "Content-Type: application/json" -d "$SLACK_PAYLOAD")
           echo "Slack HTTP status: $SLACK_RESP"
-          if [ "$SLACK_RESP" = "200" ]; then
-            echo "✓ Slack notification sent"
-          else
-            echo "WARNING: Slack notification failed — status $SLACK_RESP"
-          fi
 
           echo "=== ALL DONE ==="
-          echo "  Note ID: $NOTE_ID"
-          echo "  Contact ID: $CONTACT_ID"
-          echo "  Internal: $INTERNAL_URL"
-          echo "  Landscape: $LANDSCAPE_URL"
+          echo "  Note ID: $NOTE_ID  Contact ID: $CONTACT_ID"
+          echo "  Properties:$PROP_SUMMARY"
