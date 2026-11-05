@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova &mdash; Candidate Readiness &middot; Kia Coleman (Internal)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--ink:#15131f;--white:#fff;--indigo:#282560;--eggplant:#452e80;--purple:#664ca9;--cyan:#00aeef;--moon:#e1e3ee;--line:#d2d4e4;--accent:var(--purple);--accent-rgb:102,76,169;--display:'Montserrat','Neutraface Display Titling',system-ui,sans-serif;--body:'Lato',system-ui,sans-serif;}
+body.cls-supernova{--accent:var(--cyan);--accent-rgb:0,174,239;}
+body.cls-nova{--accent:var(--purple);--accent-rgb:102,76,169;}
+body.cls-nebula{--accent:var(--eggplant);--accent-rgb:69,46,128;}
+*{box-sizing:border-box;} html,body{margin:0;padding:0;}
+body{font-family:var(--body);color:var(--ink);background:var(--moon);line-height:1.5;-webkit-font-smoothing:antialiased;}
+.page{max-width:880px;margin:28px auto;background:var(--white);box-shadow:0 12px 50px rgba(20,19,31,0.18);overflow:hidden;}
+.cosmos{position:relative;color:var(--white);padding:34px 40px 30px;background:radial-gradient(1px 1px at 18% 30%,#fff,transparent),radial-gradient(1px 1px at 33% 70%,#fff,transparent),radial-gradient(1px 1px at 52% 22%,#cfd6ff,transparent),radial-gradient(1px 1px at 67% 58%,#fff,transparent),radial-gradient(1px 1px at 80% 35%,#fff,transparent),radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),radial-gradient(1px 1px at 12% 82%,#fff,transparent),radial-gradient(1200px 380px at 78% 8%,rgba(var(--accent-rgb),0.42),transparent 60%),radial-gradient(900px 420px at 8% 110%,rgba(40,37,96,0.65),transparent 60%),linear-gradient(160deg,#05040a 0%,#0d0a1c 55%,#161033 100%);}
+.logo-line{font-family:var(--display);font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin:0 0 12px;}
+.eyebrow{font-family:var(--display);font-weight:700;letter-spacing:.32em;font-size:11px;text-transform:uppercase;color:var(--cyan);margin:0 0 18px;}
+.mark{position:absolute;top:30px;right:40px;font-family:var(--display);font-weight:800;line-height:.86;font-size:20px;text-align:right;color:#fff;} .mark span{display:block;}
+.cand-name{font-family:var(--display);font-weight:900;font-size:40px;line-height:1.02;margin:0 0 6px;letter-spacing:-.01em;}
+.cand-meta{font-size:13px;color:#b9b6d6;margin:0 0 18px;font-weight:700;} .cand-meta b{color:var(--moon);}
+.snapshot{font-size:15.5px;color:#e7e6f4;max-width:62ch;margin:0;font-style:italic;}
+.internal-flag{display:inline-block;margin-top:16px;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffb3c9;border:1px solid rgba(255,179,201,.5);border-radius:999px;padding:4px 12px;}
+.verdict{display:flex;align-items:center;gap:26px;padding:26px 40px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(var(--accent-rgb),0.12),transparent 70%);}
+.badge{flex:0 0 auto;width:108px;height:108px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,var(--accent) 0%,var(--eggplant) 48%,var(--indigo) 80%,#0c0a1c 100%);box-shadow:0 0 0 6px rgba(var(--accent-rgb),0.16),0 0 38px 4px rgba(var(--accent-rgb),0.55);}
+.badge::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.8;background:radial-gradient(1px 1px at 30% 35%,#fff,transparent),radial-gradient(1px 1px at 68% 60%,#fff,transparent);}
+.badge b{font-family:var(--display);font-weight:900;font-size:15px;color:#fff;z-index:1;}
+.verdict-text h2{font-family:var(--display);font-weight:900;font-size:27px;margin:0 0 2px;color:var(--ink);}
+.verdict-text .accentline{color:var(--accent);}
+.verdict-text p{margin:2px 0 0;font-size:14px;color:#4a4860;max-width:48ch;}
+.conf{margin-top:8px;display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 11px;}
+section{padding:24px 40px;border-bottom:1px solid var(--line);}
+.sec-label{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--eggplant);margin:0 0 16px;}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;}
+.axis-block{display:flex;gap:22px;align-items:flex-start;}
+.score-ring{flex:0 0 auto;width:96px;height:96px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct,0)*1%),var(--line) 0);display:flex;align-items:center;justify-content:center;}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-ring .num{font-family:var(--display);font-weight:900;font-size:26px;color:var(--ink);line-height:1;}
+.score-ring .den{font-size:10px;color:#8a88a0;letter-spacing:.08em;margin-top:2px;}
+.axis-copy .lift-label{font-family:var(--display);font-weight:800;font-size:13px;color:var(--ink);margin:0 0 6px;}
+.lift-pills{display:flex;gap:6px;margin:0 0 8px;}
+.lift-pills .pill{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--moon);color:#6c6a85;}
+.lift-pills .pill.on{background:var(--eggplant);color:#fff;}
+.axis-copy .note{font-size:12.5px;color:#5a5872;margin:0;}
+.matrix{display:grid;grid-template-columns:74px repeat(3,1fr);grid-template-rows:auto repeat(3,40px);gap:4px;font-size:10px;}
+.matrix .col-h{font-weight:700;text-transform:uppercase;color:#7a7891;text-align:center;align-self:end;padding-bottom:3px;}
+.matrix .row-h{font-weight:700;text-transform:uppercase;color:#7a7891;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
+.matrix .cell{border-radius:5px;position:relative;}
+.cell.nebula{background:rgba(69,46,128,0.16);} .cell.nova{background:rgba(102,76,169,0.22);} .cell.supernova{background:rgba(0,174,239,0.20);}
+.cell .tag{position:absolute;top:4px;left:6px;font-size:8px;font-weight:700;color:#5b5876;text-transform:uppercase;}
+.cell.here{outline:2px solid var(--accent);}
+.cell .dot{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),0.25),0 0 14px var(--accent);top:50%;left:50%;transform:translate(-50%,-50%);}
+.axis-foot{font-size:11px;color:#8a88a0;text-align:center;margin-top:8px;}
+.dim{margin-bottom:13px;} .dim .row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+.dim .row b{color:var(--ink);} .dim .row span{color:#7a7891;font-family:var(--display);font-weight:700;font-size:12px;}
+.bar{height:7px;background:var(--moon);border-radius:999px;overflow:hidden;} .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--eggplant),var(--accent));border-radius:999px;}
+.dim small{display:block;font-size:11.5px;color:#6c6a85;margin-top:5px;}
+.scale-note{font-size:11px;color:#8a88a0;margin:6px 0 0;}
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.quad{border:1px solid var(--line);border-radius:9px;padding:14px 16px;}
+.quad h4{font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 9px;}
+.quad.s h4{color:var(--cyan);} .quad.d h4{color:var(--purple);} .quad.o h4{color:var(--eggplant);} .quad.r h4{color:#b1456b;}
+.quad ul{margin:0;padding-left:16px;} .quad li{font-size:12.5px;margin-bottom:6px;color:#3c3a52;}
+.pathway{background:linear-gradient(135deg,#0d0a1c,#1a1340);color:#eceaf8;border-radius:10px;padding:20px 22px;}
+.pathway .sec-label{color:var(--cyan);} .pathway .route{font-family:var(--display);font-weight:800;font-size:17px;margin:0 0 4px;color:#fff;}
+.pathway .backup{font-size:12.5px;color:#b9b6d6;margin:0 0 12px;} .pathway p{font-size:13px;color:#d8d6ec;margin:0;}
+ol.roadmap{margin:0;padding-left:20px;} ol.roadmap li{font-size:13px;margin-bottom:8px;color:#3c3a52;} ol.roadmap li b{color:var(--ink);}
+.expect{background:linear-gradient(90deg,rgba(69,46,128,0.10),transparent 82%);border:1px solid var(--line);border-left:3px solid var(--eggplant);border-radius:0 9px 9px 0;padding:16px 18px;}
+.expect .erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:11px;}
+.expect .chip{font-family:var(--display);font-weight:800;font-size:12px;padding:6px 13px;border-radius:999px;}
+.expect .chip.exp{background:var(--moon);color:#5b5876;} .expect .chip.real{background:var(--eggplant);color:#fff;}
+.expect .arrow{font-size:16px;color:var(--eggplant);font-weight:800;}
+.expect p{margin:0 0 7px;font-size:12.5px;color:#3c3a52;} .expect p:last-child{margin:0;color:#5a5872;}
+.expect p b{color:var(--eggplant);font-family:var(--display);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;margin-right:4px;}
+.action{background:rgba(var(--accent-rgb),0.12);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;margin-bottom:16px;}
+.action b{font-family:var(--display);}
+.qs{margin:0;padding-left:18px;} .qs li{font-size:13px;margin-bottom:6px;color:#3c3a52;}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;} .gaps .g{font-size:11.5px;background:#fff;border:1px dashed #b1456b;color:#8a3554;border-radius:6px;padding:5px 10px;}
+footer{padding:18px 40px 26px;background:var(--ink);color:#9a98b4;font-size:11px;}
+footer .legend{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px;} footer .legend span{display:flex;align-items:center;gap:7px;color:#cbc9e0;font-weight:700;} footer .legend i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+footer .leg-sn{background:var(--cyan);} footer .leg-n{background:var(--purple);} footer .leg-neb{background:var(--eggplant);} footer p{margin:0;line-height:1.55;}
+
+/* ── PAGE 2: DISCOVERY DAY PREP ── */
+.p2{border-top:6px solid var(--moon);}
+.p2-hdr{background:linear-gradient(135deg,#05040a,#0d0a1c,#1a1340);padding:30px 40px 24px;border-top:4px solid var(--cyan);color:#fff;position:relative;overflow:hidden;}
+.p2-hdr::before{content:'';position:absolute;top:-80px;right:-80px;width:340px;height:340px;background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%);pointer-events:none;}
+.p2-hdr .logo-line{position:relative;} .p2-hdr .eyebrow{margin-bottom:8px;position:relative;}
+.p2-hdr h2{font-family:var(--display);font-weight:900;font-size:28px;margin:0 0 4px;position:relative;}
+.p2-hdr p{font-size:13px;color:#b0aed0;margin:0;position:relative;}
+.p2 section p.body{font-size:13.5px;color:#3c3a52;margin:0 0 8px;line-height:1.65;}
+.thesis{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.tcard{border:1px solid var(--line);border-top:3px solid var(--purple);border-radius:9px;padding:14px 16px;}
+.tcard h4{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--eggplant);margin:0 0 8px;}
+.tcard p{font-size:12.5px;color:#3c3a52;margin:0;line-height:1.6;}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;}
+.fact{font-size:12.5px;color:#3c3a52;padding:9px 0;border-bottom:1px solid #eeeef5;}
+.fact b{display:block;font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7a7891;margin-bottom:3px;}
+.flagbox{margin-top:14px;background:rgba(0,174,239,0.07);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:12px 16px;font-size:12.5px;color:#3c3a52;}
+.capgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.cap{background:#f5f5fa;border:1px solid var(--line);border-radius:9px;padding:12px 14px;}
+.cap b{display:block;font-family:var(--display);font-weight:800;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7a7891;margin-bottom:5px;}
+.cap span{font-family:var(--display);font-weight:800;font-size:15px;color:var(--ink);}
+.cap small{display:block;font-size:11px;color:#6c6a85;margin-top:4px;line-height:1.45;}
+.excl{background:#fdf5e6;border:1px solid #f0d9ae;border-left:4px solid #b86e00;border-radius:0 9px 9px 0;padding:14px 18px;margin-bottom:16px;}
+.excl h4{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#b86e00;margin:0 0 8px;}
+.excl ul{margin:0;padding-left:16px;} .excl li{font-size:12.5px;color:#5a4320;margin-bottom:6px;}
+.fn-note{margin:0 16px 12px;background:rgba(177,69,107,0.07);border-left:3px solid #b1456b;border-radius:0 7px 7px 0;padding:9px 12px;font-size:12px;color:#5a2a3d;line-height:1.55;}
+.fn-note b{font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#b1456b;margin-right:6px;}
+.overall-note{background:rgba(177,69,107,0.07);border:1px solid rgba(177,69,107,.25);border-radius:9px;padding:14px 18px;margin-top:16px;}
+.overall-note h4{font-family:var(--display);font-weight:800;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#b1456b;margin:0 0 8px;}
+.overall-note ul{margin:0;padding-left:16px;} .overall-note li{font-size:12.5px;color:#4a3340;margin-bottom:6px;}
+.p2 .landscape-intro{margin-bottom:12px;}
+.p2 .defs p,.p2 .ls-card p,.p2 .acq-note{margin:0;} .p2 .acq-note{margin-bottom:14px;} .p2 .defs{margin-bottom:16px;}
+
+@media print{body{background:#fff;} .page{box-shadow:none;margin:0;max-width:none;} .cosmos,.p2-hdr,.pathway{-webkit-print-color-adjust:exact;print-color-adjust:exact;} .p2{page-break-before:always;}}
+@media (max-width:720px){.two-col,.thesis,.facts{grid-template-columns:1fr;} .capgrid{grid-template-columns:1fr 1fr;} .swot{grid-template-columns:1fr;} .mark{position:static;text-align:left;margin-bottom:14px;} section{padding:20px;} .p2-hdr{padding:24px 20px;} .p2 .ls-card-bottom.five{grid-template-columns:1fr 1fr;}}
+
+/* landscape components (scoped) */
+.p2 .landscape-intro{ font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; padding:12px 16px; background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; }
+.p2 .landscape-note{ font-size:11px; color:#aaa; font-style:italic; margin-bottom:16px; }
+.p2 .ls-grid{ display:flex; flex-direction:column; gap:12px; }
+.p2 .ls-card{ border:1px solid #e8eaf0; border-radius:9px; overflow:hidden; background:#fafafa; }
+.p2 .ls-card-top{ padding:13px 16px 10px; border-bottom:1px solid #e8eaf0; }
+.p2 .ls-card-header{ display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px; }
+.p2 .ls-name{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; }
+.p2 .ls-cat{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
+.p2 .ls-health{ background:rgba(69,46,128,0.1);  color:#452e80; }
+.p2 .ls-edu{ background:rgba(184,110,0,0.12); color:#7a4800; }
+.p2 .ls-home{ background:rgba(0,174,239,0.1);  color:#00709a; }
+.p2 .ls-senior{ background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+.p2 .ls-auto{ background:rgba(21,19,31,0.08);  color:#333; }
+.p2 .ls-pet{ background:rgba(102,76,169,0.1); color:#664ca9; }
+.p2 .ls-staffing{ background:rgba(0,174,239,0.1);  color:#00709a; }
+.p2 .ls-tax{ background:rgba(184,110,0,0.12); color:#7a4800; }
+.p2 .ls-tech{ background:rgba(69,46,128,0.1);  color:#452e80; }
+.p2 .ls-hosp{ background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+.p2 .ls-why{ font-size:12.5px; color:#444; line-height:1.55; }
+.p2 .ls-card-bottom{ padding:10px 16px; background:#f0eefa; display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.p2 .ls-stat{ display:flex; flex-direction:column; gap:2px; }
+.p2 .ls-stat-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#888; }
+.p2 .ls-stat-val{ font-size:12px; color:#15131f; font-weight:700; line-height:1.3; }
+.p2 .ls-stat-val.good{ color:#1a7a4a; }
+.p2 .ls-stat-val.warn{ color:#b86e00; }
+.p2 .ls-stat-val.note{ color:#452e80; }
+.p2 .ls-tags{ padding:8px 16px 12px; display:flex; flex-wrap:wrap; gap:6px; }
+.p2 .ls-tag{ font-size:10.5px; color:#555; background:#eeedf8; border-radius:5px; padding:3px 9px; font-family:'Montserrat',sans-serif; font-weight:700; }
+.p2 .ls-tag.sba{ color:#1a7a4a; background:#eaf6ef; }
+.p2 .ls-tag.geo{ color:#00709a; background:#e8f7fd; }
+.p2 .ls-tag.recur{ color:#452e80; background:#ede9fa; }
+.p2 .ls-tag.warn{ color:#b86e00; background:#fdf5e6; }
+.p2 .rank-bar-r1{ background:#452e80; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.p2 .rank-bar-r2, .p2 .rank-bar-r3, .p2 .rank-bar-r4, .p2 .rank-bar-r5, .p2 .rank-bar-r6{ background:#282560; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.p2 .rank-num{ font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; color:#fff; }
+.p2 .rank-note{ font-size:10px; color:rgba(255,255,255,0.65); }
+.p2 .defs{ display:flex; flex-direction:column; gap:9px; margin:4px 0 14px; }
+.p2 .defs p{ font-size:12.5px; color:#444; line-height:1.6; }
+.p2 .defs strong{ color:#15131f; }
+.p2 .legend-row{ display:flex; flex-wrap:wrap; gap:8px 16px; font-size:11.5px; font-weight:700; padding:2px 0 4px; }
+.p2 .lg-low{ color:#1a7a4a; }
+.p2 .lg-mod{ color:#b86e00; }
+.p2 .lg-high{ color:#b1456b; }
+.p2 .sat{ display:flex; align-items:center; gap:10px; padding:7px 16px; font-size:11.5px; line-height:1.4; border-bottom:1px solid #e8eaf0; }
+.p2 .sat b{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.p2 .sat.low{ background:#eaf6ef; color:#1f5e3d; }
+.p2 .sat.low b{ color:#1a7a4a; }
+.p2 .sat.moderate{ background:#fdf5e6; color:#6e4a10; }
+.p2 .sat.moderate b{ color:#b86e00; }
+.p2 .sat.high{ background:#fff0f4; color:#7d2f4c; }
+.p2 .sat.high b{ color:#b1456b; }
+.p2 .ls-card-bottom.five{ grid-template-columns:repeat(3,1fr); }
+.p2 .ls-link{ padding:0 16px 13px; font-size:12px; }
+.p2 .ls-link a{ color:#452e80; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(69,46,128,.3); }
+.p2 .ls-link a:hover{ border-bottom-color:#452e80; }
+.p2 .ls-src{ font-size:10px; color:#999; font-weight:400; }
+.p2 .acq-bar{ background:#1a1340; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.p2 .acq-note{ font-size:11.5px; color:#b86e00; background:#fdf5e6; border-left:3px solid #b86e00; padding:10px 14px; border-radius:0 7px 7px 0; margin-bottom:14px; }
+.p2 .where{ margin-top:16px; border:1px dashed #c9c6e0; border-radius:9px; padding:14px 16px; background:#fafafe; }
+.p2 .where h4{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#452e80; margin-bottom:8px; }
+.p2 .where ul{ padding-left:16px; }
+.p2 .where li{ font-size:12.5px; color:#444; margin-bottom:5px; }
+.p2 .where a{ color:#452e80; font-weight:700; }
+</style>
+</head>
+<body class="cls-supernova">
+<div class="page">
+
+<header class="cosmos">
+  <div class="mark"><span>BLK</span><span>GRVTY</span></div>
+  <p class="logo-line">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</p>
+  <p class="eyebrow">Candidate Readiness &middot; Internal Analysis</p>
+  <h1 class="cand-name">Kia Coleman</h1>
+  <p class="cand-meta">Chicago, IL &nbsp;&middot;&nbsp; <b>Director of Business &amp; Society Programs, Rustandy Center (UChicago Booth)</b> &nbsp;&middot;&nbsp; Timeframe: 6&ndash;12 months &nbsp;&middot;&nbsp; Senior Care &middot; Technology</p>
+  <p class="snapshot">A seasoned institutional operator ready to own: 15+ years across government, nonprofit leadership and consulting, now running operations and budgets at Chicago Booth. Wants a semi-absentee, 3+ unit Senior Care or Technology business on Chicago&rsquo;s South Side that cash-flows after a GM, royalties and debt service. Capital is the open question &mdash; $100K&ndash;$250K liquid plus an uncle&rsquo;s backing of undefined size and structure.</p>
+  <span class="internal-flag">For internal FN use only &mdash; do not share with candidate</span>
+</header>
+
+<div class="verdict">
+  <div class="badge"><b>NOVA</b></div>
+  <div class="verdict-text">
+    <h2>Classification: <span class="accentline">Super Nova</span></h2>
+    <p>Operator-grade readiness and a disciplined, cash-flow-first thesis &mdash; move fast, but lock the family capital structure before any territory commitment.</p>
+    <span class="conf">Confidence &middot; Medium</span>
+  </div>
+</div>
+
+<section>
+  <p class="sec-label">The Two-Axis Read</p>
+  <div class="two-col">
+    <div><div class="axis-block">
+      <div class="score-ring" data-score="83"><div class="inner"><span class="num">83</span><span class="den">/ 100</span></div></div>
+      <div class="axis-copy">
+        <p class="lift-label">Readiness &amp; Potential</p>
+        <p class="lift-label" style="color:var(--eggplant);margin-top:14px;">FN Lift Required</p>
+        <div class="lift-pills" data-lift="Low"><span class="pill">Low</span><span class="pill">Moderate</span><span class="pill">High</span></div>
+        <p class="note"><b>Binding constraint: Capital.</b> The uncle&rsquo;s backing has no amount or structure yet, and 640&ndash;699 credit narrows 7(a) terms. Lift reads Low per the Super Nova tier rule; capital structuring is the main FN task.</p>
+      </div>
+    </div></div>
+    <div>
+      <div class="matrix" data-readiness="strong" data-lift="Low">
+        <div class="corner"></div><div class="col-h">Emerging</div><div class="col-h">Developing</div><div class="col-h">Strong</div>
+        <div class="row-h">High</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Moderate</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell nova"><span class="tag">Nova</span></div>
+        <div class="row-h">Low</div><div class="cell nebula"><span class="tag">Nebula</span></div><div class="cell nova"><span class="tag">Nova</span></div><div class="cell supernova"><span class="tag">Super</span></div>
+      </div>
+      <p class="axis-foot">Readiness &rarr; &nbsp;&middot;&nbsp; FN Lift &uarr;</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Readiness Dimensions <span style="color:#a9a7c0;font-weight:700;">(capital-free)</span></p>
+  <div class="dim"><div class="row"><b>Operator Readiness &amp; Capability</b><span>28 / 35</span></div><div class="bar"><i data-score="28" data-max="35"></i></div><small>15+ years across state government, city administration, nonprofit leadership and Slalom consulting; directs program operations, budgeting, staffing and strategic planning at Booth&rsquo;s Rustandy Center. Budget authority is strong, but full P&amp;L ownership is thin and her prior business (2&ndash;4 yrs, solo) is undescribed. Self-rated sales: Strong. Raw 26/32.</small></div>
+  <div class="dim"><div class="row"><b>Vision, Motivation &amp; Commitment</b><span>24 / 30</span></div><div class="bar"><i data-score="24" data-max="30"></i></div><small>Clear 6&ndash;12 month timeline and a sharp why-franchise case (proven systems + her ops/finance skills). Wealth-building for family and community jobs are explicit. 3+ unit intent is stated but not yet sequenced; success vision includes recovering the investment and expanding. Raw 22/27.</small></div>
+  <div class="dim"><div class="row"><b>Sector &amp; Multi-Unit Fit</b><span>18 / 20</span></div><div class="bar"><i data-score="18" data-max="20"></i></div><small>Senior Care and Technology are core FN verticals with recurring revenue; 3+ territory scale and semi-absentee intent fit multi-unit. Minor drift: Chick-fil-A curiosity sits outside FN verticals; Operations Involvement field marked &ldquo;Not sure yet.&rdquo; Raw 16/18.</small></div>
+  <div class="dim"><div class="row"><b>Coachability &amp; Ecosystem Fit</b><span>13 / 15</span></div><div class="bar"><i data-score="13" data-max="15"></i></div><small>Explicitly wants a proven model and asks the right diligence questions (owner earnings, staffing, owner involvement). Self-ratings: Results 5, Innovative 5, Conventional 3, Vision vs. Autonomy 4, Problem Solving 2, Creative vs. Operator 2. Excellent response quality. Raw 11/13.</small></div>
+  <p class="scale-note">Raw rubric total 75/90, scaled to the 100-point display (each dimension scaled to its display maximum).</p>
+</section>
+
+<section>
+  <p class="sec-label">SWOT</p>
+  <div class="swot">
+    <div class="quad s"><h4>Strengths</h4><ul><li>15+ yrs operations leadership: state government, city administration, nonprofit leadership, Slalom consulting; now runs program ops, budgeting, staffing and strategic planning at Booth&rsquo;s Rustandy Center</li><li>MBA (Finance, Strategy, Economics); portfolio includes the Steven Tarrson Impact Investment Fund &mdash; will read an Item 19 critically</li><li>Cash-flow-first thesis that already prices in GM salary, royalties and debt service</li><li>Deep South Side roots and community-organization ties &mdash; caregiver hiring pipeline and referral network</li></ul></div>
+    <div class="quad d"><h4>Development Areas</h4><ul><li>Full P&amp;L ownership limited; &ldquo;operated a business 2&ndash;4 yrs, solo&rdquo; is undescribed</li><li>Operations Involvement marked &ldquo;Not sure yet&rdquo; despite a semi-absentee narrative &mdash; needs a year-1 hours plan</li><li>No direct home care staffing or MSP sales experience</li><li>Credit 640&ndash;699 &mdash; workable, but 680+ widens 7(a) terms</li></ul></div>
+    <div class="quad o"><h4>What FN Can Unlock</h4><ul><li>Structure the uncle&rsquo;s backing (gift vs. equity vs. subordinated note) into an SBA-ready stack</li><li>Two franchisor-listed open South Side home care territories (Assisting Hands &ldquo;South Chicago,&rdquo; Amada &ldquo;Chicago City South&rdquo;)</li><li>Acquisition shortcut: Always Best Care two-territory Chicago resale listed at $60K; staffed Cook County agency at $299K</li><li>Capital Consortium connections for SBA 7(a) and CDFI options; GM hiring + KPI reporting design</li></ul></div>
+    <div class="quad r"><h4>Risks to Watch</h4><ul><li>Public payback figures assume owner-operators; GM-led payback runs longer than her 3&ndash;5 yr goal implies at the fast end</li><li>CMIT (involved managing owner) and CarePatrol (owner-operator) clash with semi-absentee intent</li><li>Home Instead, Visiting Angels and BrightStar already serve Hyde Park; Right at Home&rsquo;s city territory is taken &mdash; three of four named systems are constrained</li><li>Family capital undefined; an uncle owning 20%+ would need to personally guarantee an SBA loan</li><li>Referral partner (New Majority Capital &ndash; Beta Accelerator): FN guidance must stay independent of any partner pipeline</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="two-col">
+    <div class="pathway"><p class="sec-label">Recommended Capital Pathway</p><p class="route">SBA 7(a) + Documented Family Equity</p><p class="backup">Backup: Seller-financed acquisition (e.g., two-territory resale) or CDFI loan via Capital Consortium partners</p><p>$100K&ndash;$250K liquid covers a single home care unit&rsquo;s low end and the 10% minimum SBA equity injection on a multi-territory build. The uncle&rsquo;s contribution is the swing factor: a documented gift or equity strengthens the injection; a loan adds debt service the business must carry. 640&ndash;699 credit is workable with many 7(a) lenders; 680+ improves terms. FN connects her to lenders &mdash; it does not fund.</p></div>
+    <div><p class="sec-label">Path to Ownership</p><ol class="roadmap">
+      <li><b>Discovery call (this week):</b> Lock year-1 hours, sector priority (Senior Care first), and Chicago-only vs. other target states</li>
+      <li><b>Capital mapping with uncle:</b> Amount, structure, ownership %, and SBA guarantee implications &mdash; in writing</li>
+      <li><b>Territory &amp; resale validation:</b> Assisting Hands South Chicago + Amada Chicago City South boundaries; GM-led owner calls; Always Best Care resale diligence</li>
+      <li><b>Lender packaging:</b> SBA 7(a)/CDFI via Capital Consortium; sign territory 1 in 6&ndash;9 months, sequence territories 2&ndash;3</li>
+    </ol></div>
+  </div>
+</section>
+
+<section><p class="sec-label">Expectations Check</p>
+  <div class="expect">
+    <div class="erow"><span class="chip exp">Expects: own in 6&ndash;12 mo; payback in 3&ndash;5 yrs with a GM</span><span class="arrow">&rarr;</span><span class="chip real">Realistic: signed 6&ndash;9 mo; operating 9&ndash;15 mo; payback at the long end</span></div>
+    <p><b>Why</b> Home care needs state agency licensing, caregiver recruiting and a GM hire before revenue scales. Public paybacks (e.g., 1.5&ndash;3.5 yrs for Assisting Hands) assume owner-operators; a GM salary lengthens them. Her 3&ndash;5 year target is reachable, just not at the fast end, and unit 2&ndash;3 timing depends on unit 1 performance.</p>
+    <p><b>On the call</b> Ask her to model one territory with a full GM salary loaded from month one, then compare to the public payback ranges. If an acquisition (staffed agency) shortens the ramp, weigh that against a new territory.</p>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Recommended Next Action</p>
+  <div class="action"><b>Book the Discovery Call within 7 days &mdash; lead with the family capital structure (invite the uncle if possible), then reset expectations on the four systems she named and introduce the two open South Side territories.</b></div>
+  <p class="sec-label" style="margin-top:4px;">Discovery-Call Questions</p>
+  <ul class="qs"><li>What amount and structure is your uncle considering &mdash; gift, ownership stake, or loan? Would he be an owner on paper?</li><li>Tell us about the business you&rsquo;ve operated (2&ndash;4 yrs, solo): what was it, what did it gross, and is it still running?</li><li>How many hours a week can you give in year one? Are you staying at Booth, and for how long?</li><li>Senior Care or Technology first &mdash; and how do you feel about a system that requires an involved managing owner?</li><li>What draws you to Chick-fil-A, and which of those traits matter most in a home care or IT business?</li></ul>
+</section>
+
+<section style="border-bottom:none;">
+  <p class="sec-label">Data Gaps to Resolve</p>
+  <div class="gaps"><span class="g">Uncle&rsquo;s capital: amount &amp; structure</span><span class="g">Exact credit score</span><span class="g">Prior business (2&ndash;4 yrs, solo) details</span><span class="g">Year-1 involvement (&ldquo;Not sure yet&rdquo;)</span><span class="g">Exit / transition plan from Booth role</span><span class="g">Chicago vs. DC, MD, MI, NC, SC as unit-one markets</span><span class="g">Beta Accelerator terms or capital attached</span><span class="g">Ownership split if uncle invests</span></div>
+</section>
+
+<!-- ═══════════════ PAGE 2 — DISCOVERY DAY PREP ═══════════════ -->
+<div class="p2">
+<div class="p2-hdr">
+  <p class="logo-line">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</p>
+  <p class="eyebrow">Discovery Day Prep &middot; Internal</p>
+  <h2>Kia Coleman</h2>
+  <p>kiackiwi@gmail.com &nbsp;&middot;&nbsp; Intake submitted Oct 28, 2026 &nbsp;&middot;&nbsp; Referral: New Majority Capital &ndash; Beta Accelerator</p>
+</div>
+
+<section>
+  <p class="sec-label">Professional Background</p>
+  <p class="body">Director of Business &amp; Society Programs and Program Operations at the Rustandy Center for Social Sector Innovation, University of Chicago Booth School of Business (MBA, Finance, Strategy &amp; Economics). Leads a portfolio spanning impact investing, climate and sustainability, business and democracy, and faculty commercialization, including the Steven Tarrson Impact Investment Fund; oversees program operations, budgeting, staffing and strategic planning.</p>
+  <p class="body">15+ years across state government, city administration, nonprofit leadership and management consulting at Slalom &mdash; hands-on operations, financial management, team building and launching programs from the ground up. Chicago-based with deep South Side roots and strong ties to local community organizations. Intake also reports operating a business for 2&ndash;4 years as a solo/self-employed owner (not described).</p>
+</section>
+
+<section>
+  <p class="sec-label">Investment Thesis</p>
+  <div class="thesis">
+    <div class="tcard"><h4>Why franchise ownership</h4><p>Has built and run programs inside large institutions and is ready to own. Wants a proven model and systems paired with her operating and financial skills; drawn to building family wealth and equity, and to creating good jobs that serve her Chicago community.</p></div>
+    <div class="tcard"><h4>Success in 3&ndash;5 years</h4><p>A profitable, well-run business led day-to-day by a GM she hired and developed in year one, with clear systems and reporting. Hit or beat franchisor benchmarks, recover the initial investment, be positioned to add units, and be known locally for treating and hiring people well.</p></div>
+    <div class="tcard"><h4>Day-to-day involvement</h4><p>Narrative: semi-absentee &mdash; she focuses on strategy, financial oversight and hiring leadership while a strong manager runs operations. Form field &ldquo;Operations Involvement&rdquo;: <b>Not sure yet</b>. Reconcile on the call.</p></div>
+    <div class="tcard"><h4>Capital thinking</h4><p>Family financing &mdash; her uncle will back the business; amount and structure to be set by the opportunity, its cash flow and total capital needs. Priority: attractive cash flow after professional management, franchise fees and debt service.</p></div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Franchise Research &amp; Geography</p>
+  <div class="facts">
+    <div class="fact"><b>Systems already researched</b>Home Instead, Right at Home (Senior Care); TeamLogic IT, CMIT Solutions (Technology). Also curious about Chick-fil-A (outside FN verticals).</div>
+    <div class="fact"><b>Target geography &amp; units</b>Chicago (home ZIP 60637, South Side) &middot; Target states listed: DC, IL, MD, MI, NC, SC &middot; 3+ territories</div>
+    <div class="fact"><b>Brand stage &middot; Seasonality</b>Open to Both &middot; Year-Round Operation</div>
+    <div class="fact"><b>Existing franchise ownership</b>None (N/A) &mdash; no ownership exclusions applied</div>
+    <div class="fact"><b>Acquisition interest</b>Yes &mdash; Step 3B run; 5 listings below</div>
+    <div class="fact"><b>Other</b>Monthly obligations $2K&ndash;$4K &middot; No bankruptcy/litigation (7 yrs)</div>
+  </div>
+  <div class="flagbox"><b>Referral-partner framing:</b> Kia came through New Majority Capital&rsquo;s Beta Accelerator. Make clear FN&rsquo;s guidance is independent of any partner pipeline, and confirm whether the accelerator brings deal sourcing or capital to layer into her plan.</div>
+</section>
+
+<section>
+  <p class="sec-label">Capital Profile</p>
+  <div class="capgrid">
+    <div class="cap"><b>Liquid Capital</b><span>$100K&ndash;$250K</span></div>
+    <div class="cap"><b>Net Worth</b><span>$500K&ndash;$1M</span></div>
+    <div class="cap"><b>Credit Range</b><span>640&ndash;699</span><small>Workable for 7(a); 680+ improves terms</small></div>
+    <div class="cap"><b>SBA Potential</b><span>Moderate&ndash;Good</span><small>Liquidity covers the 10% minimum equity injection; credit limits terms</small></div>
+    <div class="cap"><b>Ownership Model</b><span>Semi-absentee</span><small>Stated in narrative; form says &ldquo;Not sure yet&rdquo;</small></div>
+    <div class="cap"><b>Total Accessible Capital</b><span>$100K&ndash;$250K + family</span><small>Uncle&rsquo;s backing undefined &mdash; resolve before sizing a 3-territory plan</small></div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label">Suggested Discovery Call Questions</p>
+  <ul class="qs"><li>Is Chicago the only market for unit one, or would a first territory in DC, MD, MI, NC or SC make sense?</li><li>What&rsquo;s your exact credit score, and is there anything on the report we should know about?</li><li>Would you consider buying an existing territory or staffed agency instead of starting from zero?</li><li>Who could run day-to-day &mdash; do you already know a potential GM or operations lead?</li><li>What&rsquo;s the annual cash-flow number, after GM, royalties and debt, that makes this worth it to you?</li><li>What does the Beta Accelerator provide &mdash; deal flow, capital, or obligations we should plan around?</li></ul>
+</section>
+
+<section>
+  <p class="sec-label">Franchise Landscape &mdash; Internal Version</p>
+  <div class="excl"><h4>Saturation &amp; Exclusion Callout</h4><ul><li><b>Home Instead</b> &mdash; saturated: Home Instead North &amp; South Side Chicago serves Hyde Park, Kenwood, Bridgeport, Chicago Lawn and surrounding South/Southwest Side areas. (Candidate named this system.)</li><li><b>Visiting Angels</b> &mdash; saturated: Chicago Lakeshore office serves Hyde Park, Bridgeport, South Loop and downtown.</li><li><b>BrightStar Care</b> &mdash; saturated: BrightStar Care of Chicago lists Hyde Park; additional activity in Hegewisch.</li><li><b>Right at Home &mdash; City of Chicago territory</b> &mdash; served by Right at Home Chicago Metro; system kept on the list only for the South Suburbs territory the franchisor is actively marketing.</li><li><b>Always Best Care (new unit)</b> &mdash; existing Chicago presence; not offered as a new unit. Its two-territory Chicago resale appears under Acquisitions instead.</li><li><b>Comfort Keepers, Senior Helpers, SYNERGY HomeCare, Seniors Helping Seniors</b> &mdash; existing Chicago offices cluster North/Northwest; South Side availability not confirmed this round. Not silently dropped &mdash; candidates for a second pass if the shortlist needs depth.</li><li><b>Chick-fil-A</b> &mdash; excluded by sector filter (food service is not an FN vertical) and by model (owner-operator, not semi-absentee). Address on the call; don&rsquo;t add to the landscape.</li><li><b>Existing-ownership exclusions:</b> none &mdash; candidate reports no current franchise ownership.</li></ul></div>
+  <div class="defs">
+    <p><strong>Est. Investment</strong> = total cost to open one location (franchise fee + build-out + equipment + working capital) &mdash; not what you earn.</p>
+    <p><strong>B2C</strong> = your customers are individual consumers. <strong>B2B</strong> = your customers are other businesses.</p>
+    <p><strong>Territory Protection</strong> &mdash; Most franchise agreements grant a &lsquo;protected&rsquo; or &lsquo;exclusive&rsquo; territory. In plain terms: this stops the franchisor from opening another location of the same brand near you. It does not stop a different brand, or an independent business, from opening nearby &mdash; no franchise agreement can do that. Some agreements also carve out exceptions even within your territory (online sales, national accounts, other brands under the same parent company). We&rsquo;ve noted what&rsquo;s publicly known for each system below; always confirm the exact terms with the franchisor.</p>
+    <p><strong>Market Saturation</strong> &mdash; A measure of how crowded a market already is, and how much of the local customer base a new location would need to capture just to break even. It matters most for businesses people visit out of habit or convenience &mdash; too many similar options nearby make it hard for any one location to stand out. It matters far less for businesses where customers are referred through an event, like an insurance claim after storm damage.</p>
+    <div class="legend-row"><span class="lg lg-low">&#9679; Low &mdash; demand isn&rsquo;t driven by nearby competition</span><span class="lg lg-mod">&#9679; Moderate &mdash; some competitive pressure, but manageable</span><span class="lg lg-high">&#9679; High &mdash; a crowded, competitive category; go in with eyes open</span></div>
+    <p><strong>Revenue Type</strong> &mdash; Whether a location earns from the same customers coming back (recurring) or from a steady stream of new, one-time jobs (one-time/project). Recurring sounds better on paper, but it isn&rsquo;t automatically the safer bet &mdash; it often comes with more upfront equipment and real estate, which takes longer to earn back.</p>
+    <p><strong>Payback Period</strong> &mdash; How long it typically takes an owner to earn back their total investment, based on public estimates from each system&rsquo;s own disclosed costs and earnings. This is different from break-even, which is when a location starts turning a monthly profit &mdash; a location can be profitable month-to-month within a year and still take five more years to pay back what it cost to open. We&rsquo;ve included public payback estimates below because they&rsquo;re one of the clearest ways to compare systems apples-to-apples.</p>
+  </div>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Open South Chicago territory &middot; up to 3 territories from one office</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>Chicago home care is crowded, but demand comes from care needs and referrals, not foot traffic.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Assisting Hands Home Care</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Recurring in-home care.</strong> Non-medical (and, where licensed, medical) in-home care for seniors, with South Chicago listed by the franchisor as an open territory. You can run up to three territories from one office, which lines up with your 3+ unit goal and keeps overhead lean. Ask how owners who run through a general manager perform &mdash; the payback estimate below assumes an owner working in the business daily.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$94,850&ndash;$176,500</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">1.5&ndash;3.5 yrs <span class="ls-src">(VettedBiz)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">5% of gross sales</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">200+ territories</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">South Chicago listed as open</span><span class="ls-tag recur">Recurring care hours</span><span class="ls-tag">Territory: exclusive, set by population &amp; demographics</span><span class="ls-tag">Executive-owner model &mdash; confirm GM-led</span><span class="ls-tag warn">Confirm exact South Chicago boundary</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Strongest fit. Only system where the franchisor itself lists a South Side (“South Chicago”) territory as open, plus a documented 3-territories-from-one-office model that matches her 3+ goal and semi-absentee overhead logic. Investment fits liquid range for unit 1. Verify: exact South Chicago boundary (does it reach Hyde Park/60637?), subsequent-territory fee discount, and GM-led owner validation calls. No public SBA default data pulled.</div>
+      <div class="ls-link"><a href="https://assistinghands.com/franchise-opportunity/Illinois" target="_blank" rel="noopener">&rarr; Assisting Hands Home Care franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">&ldquo;Chicago City South&rdquo; listed as an open territory</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>Many agencies compete for clients and caregivers; hospital and senior-community referrals drive demand.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Amada Senior Care</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Recurring in-home care.</strong> In-home senior care with added help navigating long-term care insurance and senior living options. The franchisor lists a &ldquo;Chicago City South&rdquo; territory as open. The startup range is wide because it can include early staff wages, and payback data is only available for the category overall &mdash; ask for unit-level results before comparing.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val warn">$118,190&ndash;$430,050</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">3&ndash;7 yrs (category estimate) <span class="ls-src">(SharpSheets)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">5% + 1% brand fund</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~177 units</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago City South open (franchisor)</span><span class="ls-tag recur">Recurring care hours</span><span class="ls-tag">Territory: protected &mdash; confirm exact scope directly with the franchisor</span><span class="ls-tag">Confirm GM-led ownership</span><span class="ls-tag warn">Only category-level payback data</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Second South Side first-mover option (franchisor page shows ~336K population for the Chicago City South territory). Caution: 2025 FDD Item 7 tops out at $430K because it includes up to ~$135K of staffing wages — stress-test against her liquid range. Payback only available at category level (3–7 yrs, SharpSheets) — materially weaker evidence than Assisting Hands. Ask for Item 19 by tenure.</div>
+      <div class="ls-link"><a href="https://www.amadaseniorcare.com/franchise/open-territories/home-care-franchise-chicago-city-south-il/" target="_blank" rel="noopener">&rarr; Amada Senior Care franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Strong lending record &middot; South Suburbs territory, not the city</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>A mature, crowded category in Cook County; demand is need- and referral-driven rather than proximity-driven.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Right at Home</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Recurring in-home care.</strong> One of the largest in-home care systems in the country, with a clean record among SBA lenders. The City of Chicago is already served by an existing office, so this option would be in the South Suburbs, where the brand is actively recruiting owners. Worth a look if you&rsquo;re open to a territory just outside the city.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$92K&ndash;$165K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">1&ndash;3 yrs <span class="ls-src">(FranchiseInvestorData)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">SBA default rate</span><span class="ls-stat-val">2.0%</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">783 locations</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">South Suburbs (adjacent to Chicago)</span><span class="ls-tag recur">Recurring care hours</span><span class="ls-tag sba">SBA-friendly &#10003;</span><span class="ls-tag">Territory: protected &mdash; confirm exact scope directly with the franchisor</span><span class="ls-tag warn">City of Chicago territory already served</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Candidate named this system. City territory is served by Right at Home Chicago Metro (101 W Grand) — excluded for Chicago proper; included only for the South Suburbs territory the franchisor is actively marketing (1851 Franchise). Best lender profile on the list (2.0% SBA default, FranchiseInvestorData). Requires her to accept a suburban territory.</div>
+      <div class="ls-link"><a href="https://rightathomefranchise.com/forc/" target="_blank" rel="noopener">&rarr; Right at Home franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r4"><span class="rank-num">RANK 4</span><span class="rank-note">Recurring B2B contracts &middot; requires an involved owner</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>IT support is fragmented with low entry barriers, but clients sign contracts based on relationships, not proximity.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">CMIT Solutions</div><span class="ls-cat ls-tech">Technology</span></div>
+        <p class="ls-why"><strong>B2B &middot; Recurring managed IT contracts.</strong> Outsourced IT support and cybersecurity for small and mid-sized businesses on monthly contracts &mdash; the largest managed IT franchise by location count. It requires an owner who is directly involved in running the business, which pulls against a hands-off model. Typical revenue runs well below the average (median about $223K vs. average about $405K), and downtown and lakeshore territories are already taken.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$106,450&ndash;$159,450</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">3.1&ndash;5.1 yrs <span class="ls-src">(VettedBiz)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty / SBA default</span><span class="ls-stat-val">6% + 2% ad &middot; 5.4% default</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~300 locations</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">South/Southwest Chicago &mdash; verify open</span><span class="ls-tag recur">Monthly service contracts</span><span class="ls-tag sba">SBA lending history</span><span class="ls-tag">Territory: exclusive per FDD summary &mdash; confirm scope</span><span class="ls-tag warn">Involved managing owner required</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Candidate named this system. Flags: (1) FDD requires a managing owner directly involved in operations — conflicts with semi-absentee intent; (2) Item 19 median revenue ~$223K vs average ~$405K (heavy skew); (3) SBA default 5.4% (3 of 56) — higher than TeamLogic (2.9%) and Right at Home (2.0%); (4) CMIT Chicago Downtown, Lakeshore, Oak Park and Western Suburbs offices exist — South Side availability unconfirmed.</div>
+      <div class="ls-link"><a href="https://www.cmitfranchise.com" target="_blank" rel="noopener">&rarr; CMIT Solutions franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r5"><span class="rank-num">RANK 5</span><span class="rank-note">Lowest cost &middot; referral-driven demand</span></div>
+      <div class="sat low"><b>Market Saturation &middot; Low</b><span>Demand comes from a family&rsquo;s care transition and professional referrals, not nearby competition.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">CarePatrol</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Senior living placement.</strong> Helps families find assisted living, memory care and other senior housing, with senior communities paying the placement fee. It&rsquo;s the lowest-cost option here and runs from home, but it&rsquo;s built for an owner who is out networking personally, and royalties (10&ndash;12%) are higher than most. It can also complement a home care business down the road.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$64,920&ndash;$135,770</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">1&ndash;2 yrs <span class="ls-src">(FranchiseInvestorData)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">10&ndash;12% of gross sales</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">215 units</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago &mdash; verify availability</span><span class="ls-tag">Referral demand</span><span class="ls-tag">Territory: protected (not exclusive), set by ZIP codes</span><span class="ls-tag warn">Owner-operator required</span><span class="ls-tag warn">Higher royalty load</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Included for revenue-type and saturation diversity (only Low-risk system). Cautions: owner-operator required (franchiseoverview, 2024 FDD) — poor semi-absentee fit; royalty 10–12% (15% under reduced-fee offer); 2024 FDD summary shows 5 pending litigation actions — review Item 3. Better as a later add-on to a home care unit than as unit 1.</div>
+      <div class="ls-link"><a href="https://www.carepatrol.com/franchising.html" target="_blank" rel="noopener">&rarr; CarePatrol franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r6"><span class="rank-num">RANK 6</span><span class="rank-note">Clean lending record &middot; confirm Chicago territories are still offered</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>Fragmented IT support market; demand is contract- and relationship-driven rather than proximity-driven.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">TeamLogic IT</div><span class="ls-cat ls-tech">Technology</span></div>
+        <p class="ls-why"><strong>B2B &middot; Recurring managed IT plus projects.</strong> Managed IT and cybersecurity for small and mid-sized businesses, mixing monthly contracts with project work, and a clean record with SBA lenders. In 2026 the company bought 30 franchise locations &mdash; including some in Illinois &mdash; to run itself, so confirm whether Chicago territories are still offered to new owners. Public payback data isn&rsquo;t available.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$107K&ndash;$160K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">SBA default rate</span><span class="ls-stat-val">2.9% (68 loans)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">350+ locations</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago &mdash; verify availability</span><span class="ls-tag recur">Monthly contracts + projects</span><span class="ls-tag sba">SBA-friendly &#10003;</span><span class="ls-tag">Territory: protected &mdash; confirm exact scope directly with the franchisor</span><span class="ls-tag warn">Company now owns 30 former franchise units</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Candidate named this system. May 4, 2026: TeamLogic acquired 30 franchise territories (FL, IL, NJ, NC, PA) into company-owned operations; Franchising.com shows TeamLogic not accepting new applicants on that portal. Chicago Near North office exists. Confirm Chicago availability and owner-role requirements before any further time is spent. Payback not publicly available.</div>
+      <div class="ls-link"><a href="https://www.teamlogicfranchising.com" target="_blank" rel="noopener">&rarr; TeamLogic IT franchise information</a></div>
+    </div>
+  </div>
+  <div class="overall-note"><h4>FN Note for Nova Guide &mdash; Landscape</h4><ul><li>Every payback figure on this list is a public owner-operator estimate. For Kia&rsquo;s GM-led model, ask franchisors for performance of manager-run units specifically.</li><li>Market Saturation ratings are category-level calls based on observed Chicago density (dozens of franchised and independent agencies on Caring.com/HomeCareAtlas) and category dynamics; no IBISWorld-grade fragmentation data was pulled this round.</li><li>Three of the four systems she named are constrained (Home Instead saturated; Right at Home city taken; CMIT involved-owner; TeamLogic shifting to company-owned). Lead the call with that so expectations reset early.</li><li>Referral came through New Majority Capital &ndash; Beta Accelerator. Frame FN guidance as independent; confirm whether the accelerator brings deal flow or capital that should be layered in.</li></ul></div>
+</section>
+
+<section style="border-bottom:none;">
+  <p class="sec-label">Acquisition Opportunities</p>
+  <p class="acq-note">Public listings only &mdash; they change daily and prices/terms in search snippets can be stale or inconsistent. Verify every listing with the broker before sharing specifics with Kia.</p>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 1</span><span class="rank-note">Franchise resale &middot; Source: BizQuest</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Always Best Care Senior Services &mdash; Two Territories</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> Two existing territories of a national home care brand, offering senior living placement, private in-home care and skilled in-home care. A low entry price for two territories at once, with possible seller financing.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$60,000 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL (Cook County)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Est. 2023 (3 years)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Placement, private in-home care and skilled in-home care</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Owner cites time constraints from other business commitments; possible seller financing</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL (Cook County)</span><span class="ls-tag">Franchise resale</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Most capital-efficient multi-territory entry found. Transfer requires Always Best Care approval and a transfer fee (confirm in FDD Item 17). Confirm which Chicago neighborhoods the two territories cover, current client census/revenue (none disclosed), and skilled-care licensing status. Pair with a new Assisting Hands/Amada unit only if the territories don’t create a brand conflict.</div>
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 2</span><span class="rank-note">Franchise resale (brand not disclosed) &middot; Source: BizQuest (Transworld Business Advisors)</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Franchise Home Care Agency with VA &amp; 10-Year History</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> An established home care franchise with about 30 active clients, 30+ caregivers and admin staff already in place; the listing also notes VA (Veterans Affairs) business. A team already running day-to-day is a head start for a manager-led model.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$299,000 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Cook County, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">10-year history</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Recurring care hours; VA noted in listing; 30+ clients, 30+ caregivers, admin support</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Not stated in public listing</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Cook County, IL</span><span class="ls-tag">Franchise resale (brand not disclosed)</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Best semi-absentee fit among listings — staff and admin already in place. Brand undisclosed: confirm it isn’t Home Instead/Visiting Angels/BrightStar (would be fine as a resale, but know the brand). Cash flow not reliably shown in search snippet — request SDE, payer mix (VA vs private pay) and client concentration.</div>
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 3</span><span class="rank-note">Not disclosed (likely independent) &middot; Source: BizQuest</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Local In-Home Care Services &mdash; Non-Medical</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> A Chicago non-medical home care agency. Few details are public, so this one is a starting point for questions rather than a ready comparison.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$299,899 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Not disclosed</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Non-medical in-home care (recurring care hours)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Not stated in public listing</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL</span><span class="ls-tag">Not disclosed (likely independent)</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Thin listing. Request years operating, revenue, SDE, license status (Illinois home services agency) and whether it is independent. Independent purchase avoids royalties but loses brand/system support.</div>
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 4</span><span class="rank-note">Not disclosed &middot; Source: BizQuest</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Senior Home Care Business with Recurring Revenue</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> A larger Chicago senior home care business marketed on recurring revenue. The price is well above a single new franchise, so it only makes sense with significant financing.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$980,900 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Not disclosed</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Recurring senior home care</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Not stated in public listing</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL</span><span class="ls-tag">Not disclosed</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Above her liquid range; only viable with SBA 7(a) + family equity (10% minimum injection = ~$98K). Useful as a benchmark for what scaled Chicago home care trades at. Request financials before any time investment.</div>
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 5</span><span class="rank-note">Independent &middot; Source: BizQuest / BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Established MSP &amp; Cybersecurity Firm</div><span class="ls-cat ls-tech">Technology</span></div>
+        <p class="ls-why"><strong>B2B &middot; Existing business.</strong> A long-running Chicago managed IT and cybersecurity company with recurring contracts and an experienced team &mdash; the Technology-side version of buying a business that already runs.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$650,000 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Long-established (years not disclosed)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Recurring managed IT and cybersecurity contracts; experienced team in place</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Seller Motivation</span><span class="ls-stat-val">Not stated in public listing</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL</span><span class="ls-tag">Independent</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      <div class="fn-note"><b>FN Note for Nova Guide</b> Independent MSP with team in place is the cleanest semi-absentee route in Technology (avoids CMIT’s involved-owner requirement). Illinois MSP M&amp;A is active (consolidators bidding), so pricing may move fast. Request MRR %, client concentration, key-tech retention and SDE.</div>
+    </div>
+  </div>
+  <div class="where"><h4>Where to Search</h4><ul><li><a href="https://www.bizbuysell.com/illinois/online-and-technology-established-businesses-for-sale/" target="_blank" rel="noopener">BizBuySell</a> &mdash; Largest marketplace; filter Illinois &rarr; Health care or IT services</li><li><a href="https://www.bizquest.com/other-health-and-medical-businesses-for-sale-in-chicago-metro-area-il" target="_blank" rel="noopener">BizQuest</a> &mdash; Same network as BizBuySell; strong Chicago home care coverage</li><li><strong>LoopNet (Business)</strong> &mdash; Broker listings, incl. Cook County home care agencies</li><li><strong>DealStream</strong> &mdash; Search &ldquo;home care Illinois&rdquo; and &ldquo;managed IT Illinois&rdquo;</li><li><strong>Franchisor resale desks</strong> &mdash; Ask Assisting Hands, Amada and Right at Home for current resale territories</li></ul></div>
+</section>
+</div>
+
+<footer>
+  <div class="legend"><span><i class="leg-sn"></i>SuperNova &mdash; ready, move fast</span><span><i class="leg-n"></i>Nova &mdash; strong potential, real FN lift</span><span><i class="leg-neb"></i>Nebula &mdash; not yet, door stays open</span></div>
+  <p>Generated by the Franchise Nova intake system &middot; A BLK GRVTY initiative. Bands reflect operational posture, not candidate worth. For internal FN use only.</p>
+</footer>
+</div>
+<script>
+(function(){
+document.querySelectorAll('.score-ring[data-score]').forEach(function(r){var v=parseFloat(r.getAttribute('data-score'))||0;r.style.setProperty('--pct',Math.max(0,Math.min(100,v)));});
+document.querySelectorAll('.bar i[data-score]').forEach(function(b){var s=parseFloat(b.getAttribute('data-score'))||0,m=parseFloat(b.getAttribute('data-max'))||1;b.style.width=Math.round(s/m*100)+'%';});
+document.querySelectorAll('.lift-pills[data-lift]').forEach(function(p){var w=(p.getAttribute('data-lift')||'').trim().toLowerCase();p.querySelectorAll('.pill').forEach(function(pl){if(pl.textContent.trim().toLowerCase()===w)pl.classList.add('on');});});
+var badge=document.querySelector('.badge b');if(badge){if(document.body.classList.contains('cls-supernova'))badge.textContent='SUPER';else if(document.body.classList.contains('cls-nebula'))badge.textContent='NEBULA';else badge.textContent='NOVA';}
+var mx=document.querySelector('.matrix[data-readiness]');if(mx){var col={emerging:0,developing:1,strong:2}[(mx.getAttribute('data-readiness')||'').trim().toLowerCase()];var row={high:0,moderate:1,low:2}[(mx.getAttribute('data-lift')||'').trim().toLowerCase()];if(col!=null&&row!=null){var c=mx.querySelectorAll('.cell')[row*3+col];if(c){c.classList.add('here');var d=document.createElement('span');d.className='dot';c.appendChild(d);}}}
+})();
+</script>
+</body>
+</html>
