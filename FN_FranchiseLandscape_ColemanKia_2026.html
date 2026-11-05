@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova &mdash; Systems Worth Exploring &middot; Kia Coleman</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: #e8eaf0;
+  color: #15131f;
+  line-height: 1.6;
+  padding: 40px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.doc { max-width: 880px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.12); }
+
+/* ── HEADER ── */
+.header { background: linear-gradient(135deg,#05040a,#0d0a1c,#161033); padding: 34px 44px 28px; position: relative; overflow: hidden; border-top: 4px solid #00aeef; }
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; background:radial-gradient(circle,rgba(102,76,169,0.38) 0%,transparent 65%); pointer-events:none; }
+.header::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(0,174,239,0.2) 0%,transparent 65%); pointer-events:none; }
+.h-logo { font-family:'Montserrat',sans-serif; font-weight:900; font-size:10px; letter-spacing:.18em; color:rgba(255,255,255,0.38); margin-bottom:14px; }
+.h-eye  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:#00aeef; margin-bottom:8px; }
+.h-name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:32px; color:#fff; margin-bottom:8px; line-height:1.1; }
+.h-meta { font-size:13px; color:#b0aed0; }
+.h-meta strong { color:#e1e3ee; }
+
+/* ── SECTIONS ── */
+.section { padding:24px 44px; border-bottom:1px solid #e8eaf0; }
+.section:last-of-type { border-bottom:none; }
+.sec-label { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:#452e80; margin-bottom:16px; }
+
+/* ── INTRO ── */
+.landscape-intro { font-size:13px; color:#555; line-height:1.6; margin-bottom:10px; padding:12px 16px; background:#f5f5fa; border-left:3px solid #00aeef; border-radius:0 7px 7px 0; }
+.landscape-note  { font-size:11px; color:#aaa; font-style:italic; margin-bottom:16px; }
+
+/* ── LANDSCAPE CARDS ── */
+.ls-grid { display:flex; flex-direction:column; gap:12px; }
+.ls-card { border:1px solid #e8eaf0; border-radius:9px; overflow:hidden; background:#fafafa; }
+.ls-card-top { padding:13px 16px 10px; border-bottom:1px solid #e8eaf0; }
+.ls-card-header { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px; }
+.ls-name { font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#15131f; }
+.ls-cat  { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
+
+/* Vertical category badge colors — use exact FN vertical label */
+.ls-health   { background:rgba(69,46,128,0.1);  color:#452e80; }
+.ls-edu      { background:rgba(184,110,0,0.12); color:#7a4800; }
+.ls-home     { background:rgba(0,174,239,0.1);  color:#00709a; }
+.ls-senior   { background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+.ls-auto     { background:rgba(21,19,31,0.08);  color:#333; }
+.ls-pet      { background:rgba(102,76,169,0.1); color:#664ca9; }
+.ls-staffing { background:rgba(0,174,239,0.1);  color:#00709a; }
+.ls-tax      { background:rgba(184,110,0,0.12); color:#7a4800; }
+.ls-tech     { background:rgba(69,46,128,0.1);  color:#452e80; }
+.ls-hosp     { background:rgba(26,122,74,0.1);  color:#1a7a4a; }
+
+.ls-why  { font-size:12.5px; color:#444; line-height:1.55; }
+.ls-card-bottom { padding:10px 16px; background:#f0eefa; display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.ls-stat { display:flex; flex-direction:column; gap:2px; }
+.ls-stat-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#888; }
+.ls-stat-val { font-size:12px; color:#15131f; font-weight:700; line-height:1.3; }
+.ls-stat-val.good { color:#1a7a4a; }
+.ls-stat-val.warn { color:#b86e00; }
+.ls-stat-val.note { color:#452e80; }
+.ls-tags { padding:8px 16px 12px; display:flex; flex-wrap:wrap; gap:6px; }
+.ls-tag  { font-size:10.5px; color:#555; background:#eeedf8; border-radius:5px; padding:3px 9px; font-family:'Montserrat',sans-serif; font-weight:700; }
+.ls-tag.sba   { color:#1a7a4a; background:#eaf6ef; }
+.ls-tag.geo   { color:#00709a; background:#e8f7fd; }
+.ls-tag.recur { color:#452e80; background:#ede9fa; }
+.ls-tag.warn  { color:#b86e00; background:#fdf5e6; }
+
+/* ── RANK BAR ── */
+.rank-bar-r1 { background:#452e80; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.rank-bar-r2,
+.rank-bar-r3,
+.rank-bar-r4,
+.rank-bar-r5,
+.rank-bar-r6 { background:#282560; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.rank-num  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; color:#fff; }
+.rank-note { font-size:10px; color:rgba(255,255,255,0.65); }
+
+/* ── DISCLAIMER ── */
+.disclaimer { background:#f5f5fa; border-top:1px solid #e8eaf0; padding:18px 44px; }
+.disclaimer p { font-size:11.5px; color:#888; line-height:1.7; }
+.disclaimer strong { color:#555; }
+
+/* ── FOOTER ── */
+.doc-footer { background:#0d0a1c; padding:14px 44px; }
+.footer-main { font-size:11.5px; color:#9a98b4; margin-bottom:3px; line-height:1.6; }
+
+@media print {
+  body { background:#fff; padding:0; }
+  .doc { box-shadow:none; border-radius:0; }
+  .header, .rank-bar-r1, .rank-bar-r2, .rank-bar-r3,
+  .rank-bar-r4, .rank-bar-r5, .rank-bar-r6,
+  .ls-card-bottom, .doc-footer { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+@media (max-width:640px) {
+  .section { padding:18px 20px; }
+  .header  { padding:24px 20px; }
+  .ls-card-bottom { grid-template-columns:1fr; }
+  .disclaimer { padding:16px 20px; }
+  .doc-footer { padding:14px 20px; }
+}
+
+/* ── DEFINITIONS ── */
+.defs { display:flex; flex-direction:column; gap:9px; margin:4px 0 14px; }
+.defs p { font-size:12.5px; color:#444; line-height:1.6; }
+.defs strong { color:#15131f; }
+.legend-row { display:flex; flex-wrap:wrap; gap:8px 16px; font-size:11.5px; font-weight:700; padding:2px 0 4px; }
+.lg-low { color:#1a7a4a; } .lg-mod { color:#b86e00; } .lg-high { color:#b1456b; }
+/* ── SATURATION BANNER ── */
+.sat { display:flex; align-items:center; gap:10px; padding:7px 16px; font-size:11.5px; line-height:1.4; border-bottom:1px solid #e8eaf0; }
+.sat b { font-family:'Montserrat',sans-serif; font-weight:800; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.sat.low { background:#eaf6ef; color:#1f5e3d; } .sat.low b { color:#1a7a4a; }
+.sat.moderate { background:#fdf5e6; color:#6e4a10; } .sat.moderate b { color:#b86e00; }
+.sat.high { background:#fff0f4; color:#7d2f4c; } .sat.high b { color:#b1456b; }
+/* five-stat panel */
+.ls-card-bottom.five { grid-template-columns:repeat(3,1fr); }
+.ls-link { padding:0 16px 13px; font-size:12px; }
+.ls-link a { color:#452e80; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(69,46,128,.3); }
+.ls-link a:hover { border-bottom-color:#452e80; }
+.ls-src { font-size:10px; color:#999; font-weight:400; }
+/* acquisitions */
+.acq-bar { background:#1a1340; padding:6px 18px; display:flex; align-items:center; justify-content:space-between; }
+.acq-note { font-size:11.5px; color:#b86e00; background:#fdf5e6; border-left:3px solid #b86e00; padding:10px 14px; border-radius:0 7px 7px 0; margin-bottom:14px; }
+.where { margin-top:16px; border:1px dashed #c9c6e0; border-radius:9px; padding:14px 16px; background:#fafafe; }
+.where h4 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#452e80; margin-bottom:8px; }
+.where ul { padding-left:16px; } .where li { font-size:12.5px; color:#444; margin-bottom:5px; }
+.where a { color:#452e80; font-weight:700; }
+@media (max-width:640px) { .ls-card-bottom.five { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="header">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Prepared for Your Review</div>
+  <h1 class="h-name">Kia Coleman</h1>
+  <p class="h-meta"><strong>Senior Care &middot; Technology</strong> &nbsp;&middot;&nbsp; Target: Chicago &nbsp;&middot;&nbsp; 3+ Units</p>
+</header>
+
+<div class="section">
+  <div class="sec-label">About This List</div>
+  <p class="landscape-intro">
+    Based on the sectors you selected and your target geography, we put together a starting list of franchise systems worth exploring as you continue your journey with Franchise Nova. These systems were identified based on publicly available information &mdash; their territory availability, revenue model, ownership structure, and fit with your goals.<br><br>
+    This is a starting point for your own research and conversation with your Nova Guide &mdash; not a formal recommendation. Any system you want to explore further will go through Franchise Nova&rsquo;s full FDD analysis process before any decisions are made.
+  </p>
+  <div class="defs">
+    <p><strong>Est. Investment</strong> = total cost to open one location (franchise fee + build-out + equipment + working capital) &mdash; not what you earn.</p>
+    <p><strong>B2C</strong> = your customers are individual consumers. <strong>B2B</strong> = your customers are other businesses.</p>
+    <p><strong>Territory Protection</strong> &mdash; Most franchise agreements grant a &lsquo;protected&rsquo; or &lsquo;exclusive&rsquo; territory. In plain terms: this stops the franchisor from opening another location of the same brand near you. It does not stop a different brand, or an independent business, from opening nearby &mdash; no franchise agreement can do that. Some agreements also carve out exceptions even within your territory (online sales, national accounts, other brands under the same parent company). We&rsquo;ve noted what&rsquo;s publicly known for each system below; always confirm the exact terms with the franchisor.</p>
+    <p><strong>Market Saturation</strong> &mdash; A measure of how crowded a market already is, and how much of the local customer base a new location would need to capture just to break even. It matters most for businesses people visit out of habit or convenience &mdash; too many similar options nearby make it hard for any one location to stand out. It matters far less for businesses where customers are referred through an event, like an insurance claim after storm damage.</p>
+    <div class="legend-row"><span class="lg lg-low">&#9679; Low &mdash; demand isn&rsquo;t driven by nearby competition</span><span class="lg lg-mod">&#9679; Moderate &mdash; some competitive pressure, but manageable</span><span class="lg lg-high">&#9679; High &mdash; a crowded, competitive category; go in with eyes open</span></div>
+    <p><strong>Revenue Type</strong> &mdash; Whether a location earns from the same customers coming back (recurring) or from a steady stream of new, one-time jobs (one-time/project). Recurring sounds better on paper, but it isn&rsquo;t automatically the safer bet &mdash; it often comes with more upfront equipment and real estate, which takes longer to earn back.</p>
+    <p><strong>Payback Period</strong> &mdash; How long it typically takes an owner to earn back their total investment, based on public estimates from each system&rsquo;s own disclosed costs and earnings. This is different from break-even, which is when a location starts turning a monthly profit &mdash; a location can be profitable month-to-month within a year and still take five more years to pay back what it cost to open. We&rsquo;ve included public payback estimates below because they&rsquo;re one of the clearest ways to compare systems apples-to-apples.</p>
+  </div>
+  <p class="landscape-note">&#9873; Public information only &mdash; no FDDs reviewed. Territory availability must be confirmed directly with each franchisor before proceeding. Public payback estimates generally assume an owner working in the business; running through a hired general manager usually lengthens them.</p>
+</div>
+
+<div class="section">
+  <div class="sec-label">Systems Worth Exploring &mdash; Ranked by Fit</div>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Open South Chicago territory &middot; up to 3 territories from one office</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>Chicago home care is crowded, but demand comes from care needs and referrals, not foot traffic.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Assisting Hands Home Care</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Recurring in-home care.</strong> Non-medical (and, where licensed, medical) in-home care for seniors, with South Chicago listed by the franchisor as an open territory. You can run up to three territories from one office, which lines up with your 3+ unit goal and keeps overhead lean. Ask how owners who run through a general manager perform &mdash; the payback estimate below assumes an owner working in the business daily.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$94,850&ndash;$176,500</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">1.5&ndash;3.5 yrs <span class="ls-src">(VettedBiz)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">5% of gross sales</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">200+ territories</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">South Chicago listed as open</span><span class="ls-tag recur">Recurring care hours</span><span class="ls-tag">Territory: exclusive, set by population &amp; demographics</span><span class="ls-tag">Executive-owner model &mdash; confirm GM-led</span><span class="ls-tag warn">Confirm exact South Chicago boundary</span></div>
+      
+      <div class="ls-link"><a href="https://assistinghands.com/franchise-opportunity/Illinois" target="_blank" rel="noopener">&rarr; Assisting Hands Home Care franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">&ldquo;Chicago City South&rdquo; listed as an open territory</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>Many agencies compete for clients and caregivers; hospital and senior-community referrals drive demand.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Amada Senior Care</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Recurring in-home care.</strong> In-home senior care with added help navigating long-term care insurance and senior living options. The franchisor lists a &ldquo;Chicago City South&rdquo; territory as open. The startup range is wide because it can include early staff wages, and payback data is only available for the category overall &mdash; ask for unit-level results before comparing.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val warn">$118,190&ndash;$430,050</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">3&ndash;7 yrs (category estimate) <span class="ls-src">(SharpSheets)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">5% + 1% brand fund</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~177 units</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago City South open (franchisor)</span><span class="ls-tag recur">Recurring care hours</span><span class="ls-tag">Territory: protected &mdash; confirm exact scope directly with the franchisor</span><span class="ls-tag">Confirm GM-led ownership</span><span class="ls-tag warn">Only category-level payback data</span></div>
+      
+      <div class="ls-link"><a href="https://www.amadaseniorcare.com/franchise/open-territories/home-care-franchise-chicago-city-south-il/" target="_blank" rel="noopener">&rarr; Amada Senior Care franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Strong lending record &middot; South Suburbs territory, not the city</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>A mature, crowded category in Cook County; demand is need- and referral-driven rather than proximity-driven.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Right at Home</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Recurring in-home care.</strong> One of the largest in-home care systems in the country, with a clean record among SBA lenders. The City of Chicago is already served by an existing office, so this option would be in the South Suburbs, where the brand is actively recruiting owners. Worth a look if you&rsquo;re open to a territory just outside the city.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$92K&ndash;$165K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">1&ndash;3 yrs <span class="ls-src">(FranchiseInvestorData)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">SBA default rate</span><span class="ls-stat-val">2.0%</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">783 locations</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">South Suburbs (adjacent to Chicago)</span><span class="ls-tag recur">Recurring care hours</span><span class="ls-tag sba">SBA-friendly &#10003;</span><span class="ls-tag">Territory: protected &mdash; confirm exact scope directly with the franchisor</span><span class="ls-tag warn">City of Chicago territory already served</span></div>
+      
+      <div class="ls-link"><a href="https://rightathomefranchise.com/forc/" target="_blank" rel="noopener">&rarr; Right at Home franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r4"><span class="rank-num">RANK 4</span><span class="rank-note">Recurring B2B contracts &middot; requires an involved owner</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>IT support is fragmented with low entry barriers, but clients sign contracts based on relationships, not proximity.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">CMIT Solutions</div><span class="ls-cat ls-tech">Technology</span></div>
+        <p class="ls-why"><strong>B2B &middot; Recurring managed IT contracts.</strong> Outsourced IT support and cybersecurity for small and mid-sized businesses on monthly contracts &mdash; the largest managed IT franchise by location count. It requires an owner who is directly involved in running the business, which pulls against a hands-off model. Typical revenue runs well below the average (median about $223K vs. average about $405K), and downtown and lakeshore territories are already taken.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$106,450&ndash;$159,450</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">3.1&ndash;5.1 yrs <span class="ls-src">(VettedBiz)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty / SBA default</span><span class="ls-stat-val">6% + 2% ad &middot; 5.4% default</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">~300 locations</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">South/Southwest Chicago &mdash; verify open</span><span class="ls-tag recur">Monthly service contracts</span><span class="ls-tag sba">SBA lending history</span><span class="ls-tag">Territory: exclusive per FDD summary &mdash; confirm scope</span><span class="ls-tag warn">Involved managing owner required</span></div>
+      
+      <div class="ls-link"><a href="https://www.cmitfranchise.com" target="_blank" rel="noopener">&rarr; CMIT Solutions franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r5"><span class="rank-num">RANK 5</span><span class="rank-note">Lowest cost &middot; referral-driven demand</span></div>
+      <div class="sat low"><b>Market Saturation &middot; Low</b><span>Demand comes from a family&rsquo;s care transition and professional referrals, not nearby competition.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">CarePatrol</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Senior living placement.</strong> Helps families find assisted living, memory care and other senior housing, with senior communities paying the placement fee. It&rsquo;s the lowest-cost option here and runs from home, but it&rsquo;s built for an owner who is out networking personally, and royalties (10&ndash;12%) are higher than most. It can also complement a home care business down the road.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$64,920&ndash;$135,770</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val note">One-time / project</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val good">1&ndash;2 yrs <span class="ls-src">(FranchiseInvestorData)</span></span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val">10&ndash;12% of gross sales</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">215 units</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago &mdash; verify availability</span><span class="ls-tag">Referral demand</span><span class="ls-tag">Territory: protected (not exclusive), set by ZIP codes</span><span class="ls-tag warn">Owner-operator required</span><span class="ls-tag warn">Higher royalty load</span></div>
+      
+      <div class="ls-link"><a href="https://www.carepatrol.com/franchising.html" target="_blank" rel="noopener">&rarr; CarePatrol franchise information</a></div>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r6"><span class="rank-num">RANK 6</span><span class="rank-note">Clean lending record &middot; confirm Chicago territories are still offered</span></div>
+      <div class="sat moderate"><b>Market Saturation &middot; Moderate</b><span>Fragmented IT support market; demand is contract- and relationship-driven rather than proximity-driven.</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">TeamLogic IT</div><span class="ls-cat ls-tech">Technology</span></div>
+        <p class="ls-why"><strong>B2B &middot; Recurring managed IT plus projects.</strong> Managed IT and cybersecurity for small and mid-sized businesses, mixing monthly contracts with project work, and a clean record with SBA lenders. In 2026 the company bought 30 franchise locations &mdash; including some in Illinois &mdash; to run itself, so confirm whether Chicago territories are still offered to new owners. Public payback data isn&rsquo;t available.</p>
+      </div>
+      <div class="ls-card-bottom five">
+        <div class="ls-stat"><span class="ls-stat-label">Est. Total Investment / Unit (cost to open &mdash; not earnings)</span><span class="ls-stat-val note">$107K&ndash;$160K</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Recurring</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Payback Period</span><span class="ls-stat-val warn">Not publicly available</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">SBA default rate</span><span class="ls-stat-val">2.9% (68 loans)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val">350+ locations</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago &mdash; verify availability</span><span class="ls-tag recur">Monthly contracts + projects</span><span class="ls-tag sba">SBA-friendly &#10003;</span><span class="ls-tag">Territory: protected &mdash; confirm exact scope directly with the franchisor</span><span class="ls-tag warn">Company now owns 30 former franchise units</span></div>
+      
+      <div class="ls-link"><a href="https://www.teamlogicfranchising.com" target="_blank" rel="noopener">&rarr; TeamLogic IT franchise information</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Existing Businesses for Sale</div>
+  <p class="acq-note">You told us you&rsquo;re open to buying an existing business. These are public listings in and around Chicago that match your sectors. Listings change daily &mdash; prices, terms and availability must be verified with the listing broker before you rely on any of them.</p>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 1</span><span class="rank-note">Franchise resale &middot; Source: BizQuest</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Always Best Care Senior Services &mdash; Two Territories</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> Two existing territories of a national home care brand, offering senior living placement, private in-home care and skilled in-home care. A low entry price for two territories at once, with possible seller financing.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$60,000 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL (Cook County)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Est. 2023 (3 years)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Placement, private in-home care and skilled in-home care</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL (Cook County)</span><span class="ls-tag">Franchise resale</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 2</span><span class="rank-note">Franchise resale (brand not disclosed) &middot; Source: BizQuest (Transworld Business Advisors)</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Franchise Home Care Agency with VA &amp; 10-Year History</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> An established home care franchise with about 30 active clients, 30+ caregivers and admin staff already in place; the listing also notes VA (Veterans Affairs) business. A team already running day-to-day is a head start for a manager-led model.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$299,000 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Cook County, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">10-year history</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Recurring care hours; VA noted in listing; 30+ clients, 30+ caregivers, admin support</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Cook County, IL</span><span class="ls-tag">Franchise resale (brand not disclosed)</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 3</span><span class="rank-note">Not disclosed (likely independent) &middot; Source: BizQuest</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Local In-Home Care Services &mdash; Non-Medical</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> A Chicago non-medical home care agency. Few details are public, so this one is a starting point for questions rather than a ready comparison.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$299,899 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Not disclosed</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Non-medical in-home care (recurring care hours)</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL</span><span class="ls-tag">Not disclosed (likely independent)</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 4</span><span class="rank-note">Not disclosed &middot; Source: BizQuest</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Senior Home Care Business with Recurring Revenue</div><span class="ls-cat ls-senior">Senior Care</span></div>
+        <p class="ls-why"><strong>B2C &middot; Existing business.</strong> A larger Chicago senior home care business marketed on recurring revenue. The price is well above a single new franchise, so it only makes sense with significant financing.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$980,900 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Not disclosed</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Recurring senior home care</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL</span><span class="ls-tag">Not disclosed</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      
+    </div>
+    <div class="ls-card">
+      <div class="acq-bar"><span class="rank-num">LISTING 5</span><span class="rank-note">Independent &middot; Source: BizQuest / BizBuySell</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Established MSP &amp; Cybersecurity Firm</div><span class="ls-cat ls-tech">Technology</span></div>
+        <p class="ls-why"><strong>B2B &middot; Existing business.</strong> A long-running Chicago managed IT and cybersecurity company with recurring contracts and an experienced team &mdash; the Technology-side version of buying a business that already runs.</p>
+      </div>
+      <div class="ls-card-bottom">
+        <div class="ls-stat"><span class="ls-stat-label">Asking Price</span><span class="ls-stat-val note">$650,000 asking</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Location</span><span class="ls-stat-val">Chicago, IL</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Years Operating</span><span class="ls-stat-val">Long-established (years not disclosed)</span></div>
+        <div class="ls-stat"><span class="ls-stat-label">Revenue Model</span><span class="ls-stat-val">Recurring managed IT and cybersecurity contracts; experienced team in place</span></div>
+      </div>
+      <div class="ls-tags"><span class="ls-tag geo">Chicago, IL</span><span class="ls-tag">Independent</span><span class="ls-tag warn">Listings change daily &mdash; verify current status</span></div>
+      
+    </div>
+  </div>
+  <div class="where"><h4>Where to Search</h4><ul><li><a href="https://www.bizbuysell.com/illinois/online-and-technology-established-businesses-for-sale/" target="_blank" rel="noopener">BizBuySell</a> &mdash; Largest marketplace; filter Illinois &rarr; Health care or IT services</li><li><a href="https://www.bizquest.com/other-health-and-medical-businesses-for-sale-in-chicago-metro-area-il" target="_blank" rel="noopener">BizQuest</a> &mdash; Same network as BizBuySell; strong Chicago home care coverage</li><li><strong>LoopNet (Business)</strong> &mdash; Broker listings, incl. Cook County home care agencies</li><li><strong>DealStream</strong> &mdash; Search &ldquo;home care Illinois&rdquo; and &ldquo;managed IT Illinois&rdquo;</li><li><strong>Franchisor resale desks</strong> &mdash; Ask Assisting Hands, Amada and Right at Home for current resale territories</li></ul></div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Important:</strong> This list is based on publicly available information only. Franchise Nova has not reviewed the Franchise Disclosure Document (FDD) for any of these systems on your behalf. Investment figures are estimates &mdash; actual costs vary by location and market. Territory availability must be confirmed directly with each franchisor before proceeding. Business-for-sale listings change daily and must be verified directly with the listing broker. This document is a starting point for your research and conversation with your Nova Guide, not a recommendation to invest in any specific franchise system or business. All investment decisions should be made after full FDD review, legal counsel, and financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for Kia Coleman &nbsp;&middot;&nbsp; 2026</p>
+</div>
+
+</div>
+</body>
+</html>
