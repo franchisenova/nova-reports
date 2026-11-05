@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fn-systems" content="The Grill Masters ATL">
+<title>Franchise Nova — Capital Readiness (Preliminary) · The Grill Masters ATL</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:32px 20px;-webkit-font-smoothing:antialiased;}
+.page{max-width:920px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 48px rgba(0,0,0,0.14);}
+
+/* ── HEADER ── */
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;border-top:4px solid #00aeef;}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(1px 1px at 15% 28%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#cfd6ff,transparent),radial-gradient(1px 1px at 82% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 88% 78%,#e9d8ff,transparent),radial-gradient(1px 1px at 8% 85%,#fff,transparent),radial-gradient(900px 380px at 80% 5%,rgba(0,174,239,0.3),transparent 60%),radial-gradient(700px 320px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,0.35);margin-bottom:12px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:#fff;margin-bottom:5px;position:relative;}
+.h-meta{font-size:12.5px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+
+/* ── SYSTEM STRIP ── */
+.cand-strip{display:flex;flex-wrap:wrap;border-bottom:1px solid #e8eaf0;background:#f9f9fc;}
+.ci{padding:12px 16px;border-right:1px solid #e8eaf0;flex:1;min-width:110px;}
+.ci:last-child{border-right:none;}
+.ci-k{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:3px;}
+.ci-v{font-size:12.5px;color:#15131f;font-weight:700;line-height:1.35;}
+
+/* ── THESIS / MODE BAR ── */
+.thesis-bar{background:#fff8e1;border-left:4px solid #b86e00;padding:14px 20px;margin:0 48px 0;border-radius:0 8px 8px 0;}
+.thesis-bar p{font-size:13px;color:#5a4000;line-height:1.65;}
+.thesis-bar .attr{font-size:11px;color:#aaa;margin-top:6px;font-style:italic;}
+
+/* ── SECTION WRAPPER ── */
+.section{padding:20px 48px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+/* ── ACCORDION ── */
+.accordion{border:1px solid #e8eaf0;border-radius:10px;overflow:hidden;margin-bottom:12px;}
+.accordion:last-of-type{margin-bottom:0;}
+
+.acc-hdr{display:flex;align-items:center;gap:16px;padding:0;cursor:pointer;background:#fafafa;border:none;width:100%;text-align:left;transition:background .15s;}
+.acc-hdr:hover{background:#f0eefa;}
+.acc-hdr.open{background:linear-gradient(90deg,rgba(69,46,128,0.07),transparent 70%);}
+
+.sys-band{width:5px;align-self:stretch;flex-shrink:0;}
+.sys-band.s1{background:linear-gradient(180deg,#00aeef,#282560);}
+
+.acc-main{flex:1;padding:14px 16px 14px 0;}
+.acc-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:14px;color:#15131f;margin-bottom:4px;}
+.acc-sub{font-size:11.5px;color:#888;}
+.acc-pills{display:flex;gap:8px;align-items:center;margin-top:7px;flex-wrap:wrap;}
+
+.score-badge{font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;padding:4px 12px;border-radius:999px;color:#fff;}
+.sb-cyan{background:linear-gradient(90deg,#0088c2,#00aeef);}
+
+.fit-pill{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;padding:3px 10px;border-radius:999px;letter-spacing:.04em;}
+.fp-cond{background:rgba(184,110,0,0.1);color:#b86e00;border:1px solid rgba(184,110,0,0.3);}
+.fp-stretch{background:rgba(177,69,107,0.1);color:#b1456b;border:1px solid rgba(177,69,107,0.3);}
+
+.acc-chevron{font-size:11px;color:#aaa;margin-right:16px;transition:transform .2s;flex-shrink:0;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+
+/* ── ACCORDION BODY ── */
+.acc-body{display:none;border-top:1px solid #e8eaf0;}
+.acc-body.open{display:block;}
+
+/* Signal grid */
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #e8eaf0;}
+.sg-cell{padding:11px 16px;border-bottom:1px solid #f0eef8;border-right:1px solid #f0eef8;position:relative;}
+.sg-cell:nth-child(even){border-right:none;}
+.sg-cell:nth-last-child(-n+2){border-bottom:none;}
+.sg-item-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#999;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.sg-val{font-size:12.5px;color:#333;line-height:1.5;}
+.sg-val strong{color:#15131f;}
+.sg-val .flag{color:#b1456b;font-weight:700;}
+.sig{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.sig.G{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.sig.A{background:rgba(184,110,0,0.1);color:#b86e00;}
+.sig.R{background:rgba(177,69,107,0.1);color:#b1456b;}
+
+/* More/less toggle */
+.more-toggle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:10px;color:#664ca9;background:none;border:none;cursor:pointer;padding:3px 0 0;display:block;}
+.more-toggle:hover{color:#452e80;}
+.more-detail{display:none;font-size:12px;color:#555;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #e8eaf0;}
+.more-detail.open{display:block;}
+
+/* Source tags */
+.src{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8px;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:5px;margin-left:6px;}
+.src.primary{background:rgba(0,174,239,0.12);color:#0088c2;}
+.src.secondary{background:rgba(184,110,0,0.12);color:#b86e00;}
+.src.notdisc{background:rgba(150,150,150,0.15);color:#777;}
+
+/* Score breakdown table */
+.score-wrap{padding:16px;}
+.score-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid #f0eef8;}
+.score-row:last-child{border-bottom:none;}
+.score-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:11.5px;color:#15131f;flex:0 0 220px;}
+.score-bar-wrap{flex:1;background:#f0eef8;border-radius:6px;height:10px;overflow:hidden;}
+.score-bar{height:100%;border-radius:6px;background:linear-gradient(90deg,#452e80,#664ca9);}
+.score-bar.low{background:linear-gradient(90deg,#8a2f4f,#b1456b);}
+.score-bar.mid{background:linear-gradient(90deg,#8a5f00,#b86e00);}
+.score-pts{font-family:'Montserrat',sans-serif;font-weight:900;font-size:12px;color:#452e80;flex:0 0 62px;text-align:right;}
+
+/* Diligence questions */
+.qs-wrap{padding:0 16px 16px;border-top:1px solid #f0eef8;}
+.qs-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#452e80;padding:12px 0 8px;}
+.qs-list{padding-left:0;list-style:none;}
+.qs-list li{display:flex;gap:10px;font-size:13px;color:#333;margin-bottom:8px;line-height:1.6;}
+.q-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;color:#fff;background:#452e80;border-radius:4px;padding:2px 6px;flex-shrink:0;margin-top:3px;height:fit-content;}
+
+/* ── FINANCIALS TABLE ── */
+.comp-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left;}
+.th-dark{background:#0d0a1c;color:#fff;}
+.th-s1{background:#0a1a30;color:#00aeef;}
+td{padding:9px 14px;border-bottom:1px solid #e8eaf0;vertical-align:top;line-height:1.5;color:#333;}
+tr:nth-child(even) td{background:#f9f9fc;}
+td.metric{font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;color:#452e80;}
+.td-good{color:#1a7a4a;font-weight:700;}
+.td-warn{color:#b86e00;font-weight:700;}
+.td-bad{color:#b1456b;font-weight:700;}
+
+/* ── RECOMMENDATION ── */
+.rec-card{background:linear-gradient(135deg,#0d0a1c,#1a1340);border-radius:10px;padding:26px 28px;color:#eceaf8;}
+.rec-card .sec-lbl{color:#00aeef;}
+.rec-sys{font-family:'Montserrat',sans-serif;font-weight:900;font-size:19px;color:#fff;margin-bottom:10px;}
+.rec-body{font-size:13px;color:#d8d6ec;line-height:1.75;margin-bottom:12px;}
+.unlock-lbl{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9b8fc8;margin-bottom:9px;}
+.unlock-list{padding-left:18px;}
+.unlock-list li{font-size:13px;color:#d8d6ec;margin-bottom:6px;line-height:1.55;}
+
+/* ── RISKS ── */
+.risks-list{padding-left:18px;}
+.risks-list li{font-size:13px;color:#333;margin-bottom:9px;line-height:1.6;}
+.risks-list li strong{color:#b1456b;}
+
+/* ── FOOTER ── */
+.doc-footer{background:#0d0a1c;padding:14px 48px;}
+.footer-main{font-size:11px;color:#9a98b4;line-height:1.6;}
+.footer-note{font-size:10px;color:#555;margin-top:3px;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .page{box-shadow:none;border-radius:0;}
+  .hdr,.rec-card,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .acc-body{display:block!important;}
+  .more-detail{display:block!important;}
+}
+@media(max-width:720px){
+  .signal-grid{grid-template-columns:1fr;}
+  .sg-cell:nth-child(even){border-right:none;}
+  .cand-strip{flex-direction:column;}
+  .ci{border-right:none;border-bottom:1px solid #e8eaf0;}
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .thesis-bar{margin:0 20px;}
+  .doc-footer{padding:14px 20px;}
+  .score-name{flex:0 0 140px;font-size:10.5px;}
+}
+
+.th-num{text-align:right;}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+tr.total td{font-weight:700;color:#15131f;border-top:2px solid #d8d6ec;}
+.note{font-size:11.5px;color:#777;margin-top:10px;line-height:1.6;}
+.pend{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:rgba(150,150,150,0.15);color:#777;white-space:nowrap;}
+.sb-amber{background:linear-gradient(90deg,#8a5f00,#b86e00);}
+.sys-band.s2{background:linear-gradient(180deg,#b86e00,#452e80);}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Capital Readiness &middot; Business-Level &middot; Preliminary &middot; Internal Use Only</div>
+  <h1 class="h-name">The Grill Masters ATL — Capital Readiness</h1>
+  <p class="h-meta">Preliminary run on documents received to date &nbsp;&middot;&nbsp; November 2026 &nbsp;&middot;&nbsp; <strong>Nova Guide: Brenda</strong></p>
+</header>
+
+<div class="cand-strip">
+  <div class="ci"><div class="ci-k">Business</div><div class="ci-v">The Grill Masters ATL</div></div>
+  <div class="ci"><div class="ci-k">Concept</div><div class="ci-v">Custom gold/diamond grillz studio</div></div>
+  <div class="ci"><div class="ci-k">Capital Ask</div><div class="ci-v">Up to $3M (was $150K in July)</div></div>
+  <div class="ci"><div class="ci-k">2026 Revenue (Jan–Sep)</div><div class="ci-v">$386,339</div></div>
+  <div class="ci"><div class="ci-k">Profit Before Owner Pay</div><div class="ci-v">$160,485 (41.5%)</div></div>
+  <div class="ci"><div class="ci-k">Location</div><div class="ci-v">Atlanta, GA &middot; 1 unit</div></div>
+</div>
+
+<div class="section" style="padding-top:18px;padding-bottom:18px;">
+  <div class="thesis-bar">
+    <p>This analysis looks at The Grill Masters ATL as a business seeking debt, not as a franchise system for candidate placement (see the separate System Analysis). It answers three questions: can the business carry debt, roughly how much, and what needs to be fixed first. It's preliminary. Loan sizing depends on owner pay, existing debt and use of funds, which we haven't received yet, so those are shown as assumptions. We'll rerun once Justin sends the pre-call items.</p>
+    <p class="attr">Sourcing key: <span class="src primary">P&amp;L</span> = Jan–Sep 2026 P&amp;L (cash basis, unaudited, owner records) &nbsp;·&nbsp; <span class="src secondary">FDD</span> = June 2026 FDD / FY2024–25 summary sheet &nbsp;·&nbsp; <span class="src notdisc">PENDING</span> = requested from Justin</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Readiness Scorecard — Click to Expand</div>
+  <div class="accordion">
+    <button class="acc-hdr open" onclick="toggleAcc(this)">
+      <div class="sys-band s2"></div>
+      <div class="acc-main">
+        <div class="acc-title">The Grill Masters ATL &mdash; Debt Readiness</div>
+        <div class="acc-sub">Strong, growing revenue and margins &middot; Books, key-person risk and ask size need work before lender introductions</div>
+        <div class="acc-pills">
+          <span class="score-badge sb-amber">Preliminary</span>
+          <span class="fit-pill fp-cond">Developing</span>
+          <span style="font-size:11px;color:#888;">Fundable at a right-sized amount; not at $3M</span>
+        </div>
+      </div>
+      <span class="acc-chevron">▼</span>
+    </button>
+    <div class="acc-body open">
+      <div class="signal-grid">
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Revenue Trend <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>$219K → $404K → ~$515K</strong> (2024 → 2025 → 2026 pace) <span class="src secondary">FDD</span><span class="src primary">P&amp;L</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Revenue grew about 84% from 2024 to 2025. 2026 is on pace for roughly 28% more, annualizing nine months of P&amp;L data. Monthly revenue is uneven (April fell 49% from March, September jumped 48%), so lenders will want to see the full year and Q4 before leaning on the run rate.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Gross Margin <span class="sig G">Green</span></div>
+          <div class="sg-val"><strong>58% YTD</strong>, in line with ~60% in 2024–25 <span class="src primary">P&amp;L</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The full-year margin is consistent and healthy. Month to month it swings from 21% to 72% because manufacturing costs are recorded when paid, not when the related sale happens. Accrual bookkeeping would smooth this and make the margin easier for a lender to trust.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Revenue You Can Verify <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>~88%</strong> backed by processor or bank records &middot; <strong>~12% ($46.8K)</strong> owner-reported cash <span class="src primary">P&amp;L</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">Shopify, Stripe, Sunbit, Cash App, Zelle and Apple Cash all leave a record. The weak spot is $46.8K of in-person cash Justin reported on Sept 28: 39 payments across the year plus one $13,060 September sale with no date. In September alone that cash is 18% of the month's revenue. A lender will likely discount it, so this analysis shows results with and without it.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Bookkeeping <span class="sig R">Red</span></div>
+          <div class="sg-val">Cash basis, owner-prepared, <strong>no bookkeeper</strong> <span class="src primary">P&amp;L</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The P&amp;L was assembled after the fact from processor exports, a cash-flow log and owner recollection, with several items flagged for confirmation. Payment processing fees (Shopify, Stripe) aren't recorded, so true costs are somewhat higher than shown. This is the first thing most lenders will ask about.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Cash Flow After Owner Pay <span class="sig A">Amber</span></div>
+          <div class="sg-val"><strong>~$214K/yr</strong> before owner pay, taxes or interest &middot; owner pay <span class="pend">Pending</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The P&amp;L shows no owner salary or draws. Lenders subtract a market salary for the owner before measuring what's left to repay a loan, so the profit figure overstates what's available for debt. What Justin pays himself is the single biggest input still missing.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Ask vs. Capacity <span class="sig R">Red</span></div>
+          <div class="sg-val"><strong>$3M</strong> needs ~$610K/yr in cash flow &middot; business shows ~$62K–$154K after owner pay</div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">At an illustrative 10% rate over 10 years, $3M costs about $488K a year in payments. Lenders typically want cash flow of at least 1.25 times that, or about $610K. That's four to ten times what the business currently produces after owner pay. The July figure of $150K (about $24K a year in payments) is well within reach.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Team Depth <span class="sig R">Red</span></div>
+          <div class="sg-val">Payroll <strong>$1,520/mo</strong>, started May 2026 &middot; team plan <span class="pend">Pending</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The business looks dependent on Justin for sales, consultations and production coordination. His Sunbit records mention other team members, so there may be more depth than the payroll line shows. Lenders will ask who runs the business if he's out for a few weeks.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Entity &amp; Documents <span class="sig A">Amber</span></div>
+          <div class="sg-val">Two LLCs &middot; FDD Exhibit A balance sheet <strong>all $0</strong> <span class="src secondary">FDD</span></div>
+          <button class="more-toggle" onclick="toggleMore(this)">+ More</button>
+          <div class="more-detail">The FDD is under Concept Franchises, LLC, while the expense records come from Justin LaBron Anderson LLC. The lender underwrites whichever entity holds the revenue, so we need to know which one would borrow. The all-zero balance sheet in Exhibit A will raise questions with any lender who reads the FDD.</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Existing Debt <span class="pend">Pending</span></div>
+          <div class="sg-val">Not shown on the P&amp;L (interest and loan payments excluded)</div>
+        </div>
+        <div class="sg-cell">
+          <div class="sg-item-lbl">Use of Funds <span class="pend">Pending</span></div>
+          <div class="sg-val">No breakdown for the $3M &middot; July plan was 3 locations for $150K</div>
+        </div>
+      </div>
+
+      <div class="qs-wrap">
+        <div class="qs-lbl">Needed From Justin Before the Final Run</div>
+        <ul class="qs-list">
+          <li><span class="q-num">Q</span>What would the $3M pay for, line by line?</li>
+          <li><span class="q-num">Q</span>Expansion plan: how many locations, where, when, and the cost of each.</li>
+          <li><span class="q-num">Q</span>Which LLC holds the operating business, and which one would borrow?</li>
+          <li><span class="q-num">Q</span>What does he pay himself now, or what would he need to?</li>
+          <li><span class="q-num">Q</span>Who works there now, and who runs things if he's out?</li>
+          <li><span class="q-num">Q</span>Monthly payments on any existing debt (amounts only, no statements).</li>
+          <li><span class="q-num">Q</span>Which lenders has he already talked to, and what did they say?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Financial Snapshot</div>
+  <div class="comp-wrap">
+    <table>
+      <thead><tr><th class="th-dark">Metric</th><th class="th-s1 th-num">FY2024</th><th class="th-s1 th-num">FY2025</th><th class="th-s1 th-num">2026 Jan–Sep</th><th class="th-s1 th-num">2026 Annualized</th></tr></thead>
+      <tbody>
+        <tr><td class="metric">Revenue</td><td class="num">$218,839</td><td class="num">$403,666</td><td class="num">$386,339</td><td class="num">~$515,000</td></tr>
+        <tr><td class="metric">Cost of Goods</td><td class="num">$87,535</td><td class="num">$161,466</td><td class="num">$162,432</td><td class="num">~$217,000</td></tr>
+        <tr><td class="metric">Gross Profit</td><td class="num">$131,303</td><td class="num">$242,199</td><td class="num">$223,907</td><td class="num">~$299,000</td></tr>
+        <tr><td class="metric">Gross Margin</td><td class="num">60%</td><td class="num">60%</td><td class="num td-good">58%</td><td class="num">58%</td></tr>
+        <tr><td class="metric">Operating Expenses</td><td class="num">—</td><td class="num">—</td><td class="num">$63,422</td><td class="num">~$85,000</td></tr>
+        <tr class="total"><td class="metric">Profit Before Owner Pay</td><td class="num">—</td><td class="num">—</td><td class="num">$160,485</td><td class="num">~$214,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">FY2024–25 come from the supplementary sheet (revenue matches FDD Item 19; costs below gross profit weren't provided). 2026 annualized = nine months × 12/9. Profit excludes owner pay, taxes, interest, depreciation and payment processing fees.</p>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Where 2026 Revenue Comes From</div>
+  <div class="comp-wrap">
+    <table>
+      <thead><tr><th class="th-dark">Channel</th><th class="th-s1 th-num">Jan–Sep 2026</th><th class="th-s1 th-num">Share</th><th class="th-s1">Record a Lender Can Check</th></tr></thead>
+      <tbody>
+        <tr><td class="metric">Shopify (net)</td><td class="num">$201,285</td><td class="num">52%</td><td class="td-good">Processor export</td></tr>
+        <tr><td class="metric">Stripe (sales + $30 consult fees)</td><td class="num">$52,242</td><td class="num">14%</td><td class="td-good">Processor export</td></tr>
+        <tr><td class="metric">Sunbit customer financing</td><td class="num">$25,529</td><td class="num">7%</td><td class="td-good">Lender export</td></tr>
+        <tr><td class="metric">Zelle</td><td class="num">$41,373</td><td class="num">11%</td><td class="td-good">Bank record</td></tr>
+        <tr><td class="metric">Cash App + Apple Cash</td><td class="num">$19,096</td><td class="num">5%</td><td class="td-warn">App record, limited descriptions</td></tr>
+        <tr><td class="metric">In-person cash, reported Sept 28</td><td class="num">$46,814</td><td class="num">12%</td><td class="td-bad">Owner-reported only</td></tr>
+        <tr class="total"><td class="metric">Total</td><td class="num">$386,339</td><td class="num">100%</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Total cash on the P&amp;L is $95K (about 25%), but more than half of it came through Zelle or Apple Cash and leaves a record. The lender concern is the 12% that's owner-reported. Revenue is spread across many customers, with no single customer above about 4% of the year.</p>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Illustrative Loan Sizing</div>
+  <div class="comp-wrap">
+    <table>
+      <thead><tr><th class="th-dark">Scenario</th><th class="th-s1 th-num">Cash Flow After Owner Pay</th><th class="th-s1 th-num">Max Annual Payment (1.25x)</th><th class="th-s1 th-num">Approx. Loan Ceiling</th></tr></thead>
+      <tbody>
+        <tr><td class="metric">All revenue &middot; $60K owner pay</td><td class="num">$154,000</td><td class="num">$123,000</td><td class="num td-good">~$750K</td></tr>
+        <tr><td class="metric">All revenue &middot; $90K owner pay</td><td class="num">$124,000</td><td class="num">$99,000</td><td class="num td-good">~$600K</td></tr>
+        <tr><td class="metric">Excl. owner-reported cash &middot; $60K owner pay</td><td class="num">$92,000</td><td class="num">$73,000</td><td class="num td-warn">~$450K</td></tr>
+        <tr><td class="metric">Excl. owner-reported cash &middot; $90K owner pay</td><td class="num">$62,000</td><td class="num">$49,000</td><td class="num td-warn">~$300K</td></tr>
+        <tr class="total"><td class="metric">The $3M ask</td><td class="num td-bad">~$610,000 needed</td><td class="num">$488,000</td><td class="num td-bad">$3,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Illustrative only, not a lender quote. Assumes a 10-year term at 10% and a 1.25x coverage minimum. These are ceilings: taxes, existing debt, unrecorded processing fees and a lender's own adjustments would bring them down. Owner pay and existing debt will be updated with Justin's answers.</p>
+</div>
+
+<div class="section">
+  <div class="rec-card">
+    <div class="sec-lbl">FN Capital Readiness Assessment</div>
+    <div class="rec-sys">Fundable at a right-sized amount — not at $3M, and not yet</div>
+    <p class="rec-body">The core business is real and improving: revenue nearly doubled in 2025, 2026 is on pace to grow again, margins hold near 60%, overhead is low, and most revenue is backed by third-party records. On today's numbers it could likely support a loan somewhere in the low-to-mid hundreds of thousands, comfortably covering the original $150K plan for three locations.</p>
+    <p class="rec-body">The $3M ask is roughly four to ten times what current cash flow can carry, and BG works on the debt side only. Before lender introductions, three things need to change: books a lender will accept, a set owner salary so cash flow is measurable, and an answer to the key-person question. A phased ask (first one or two locations, then grow from results) is the more fundable story.</p>
+    <div class="unlock-lbl">What FN Can Unlock Here</div>
+    <ul class="unlock-list">
+      <li>A clear, right-sized ask tied to a use-of-funds plan, rerun once Justin sends the pre-call items</li>
+      <li>A short fix list for him: bookkeeping software and a bookkeeper, cash recorded at time of sale, a set owner salary</li>
+      <li>Introductions to smaller-ticket lenders in the Capital Consortium once the books are cleaned up</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-lbl">Risks to Watch</div>
+  <ul class="risks-list">
+    <li><strong>Ask far exceeds capacity.</strong> If Justin anchors on $3M, lender conversations will stall. The number needs to be reset before any introduction.</li>
+    <li><strong>Books won't hold up to underwriting yet.</strong> Cash-basis, owner-prepared records with missing fees and after-the-fact cash entries will be discounted or questioned.</li>
+    <li><strong>Key-person dependence.</strong> One part-time payroll line suggests the business runs on Justin. Lenders will want a backup plan.</li>
+    <li><strong>Entity confusion.</strong> Two LLCs and an all-zero franchisor balance sheet need a clear explanation before a lender sees the FDD.</li>
+    <li><strong>Short track record of documented numbers.</strong> Nine months of detailed P&amp;L plus two summary years. Lenders will verify against tax returns and bank statements, which Justin should have ready for them directly.</li>
+  </ul>
+</div>
+
+<footer class="doc-footer">
+  <p class="footer-main">Franchise Nova Capital Readiness &nbsp;·&nbsp; A BLK GRVTY Initiative &nbsp;·&nbsp; November 2026 &nbsp;·&nbsp; Business: The Grill Masters ATL &nbsp;·&nbsp; Mode: Preliminary</p>
+  <p class="footer-note">For internal FN use only — not financial, legal, or investment advice. Nova Guide must review before sharing any portion externally. Figures from the owner-prepared Jan–Sep 2026 P&amp;L and the June 2026 FDD; loan sizing is illustrative. Customer-level detail from the P&amp;L is intentionally excluded.</p>
+</footer>
+
+</div>
+<script>
+function toggleAcc(btn){
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+function toggleMore(btn){
+  const detail = btn.nextElementSibling;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+ More' : '− Less';
+}
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.more-detail').forEach(d => d.classList.add('open'));
+  document.querySelectorAll('.more-toggle').forEach(t => t.style.display = 'none');
+});
+</script>
+</body>
+</html>
