@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franchise Nova — TREND Shopping Centers · Franchise Landscape</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:#e8eaf0;color:#15131f;line-height:1.6;padding:40px 20px;-webkit-font-smoothing:antialiased;}
+.doc{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.13);}
+
+.hdr{background:linear-gradient(135deg,#05040a 0%,#0d0a1c 55%,#161033 100%);padding:34px 48px 28px;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(1px 1px at 18% 30%,#fff,transparent),
+  radial-gradient(1px 1px at 55% 22%,#cfd6ff,transparent),
+  radial-gradient(1px 1px at 80% 40%,#fff,transparent),
+  radial-gradient(1.4px 1.4px at 88% 76%,#e9d8ff,transparent),
+  radial-gradient(1px 1px at 12% 82%,#fff,transparent),
+  radial-gradient(900px 400px at 75% 5%,rgba(0,174,239,0.38),transparent 60%),
+  radial-gradient(700px 350px at 5% 110%,rgba(40,37,96,0.5),transparent 60%);
+  pointer-events:none;}
+.h-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:10px;letter-spacing:.18em;color:rgba(255,255,255,0.38);margin-bottom:14px;position:relative;}
+.h-eye{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#00aeef;margin-bottom:8px;position:relative;}
+.h-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:32px;color:#fff;margin-bottom:8px;line-height:1.1;position:relative;}
+.h-meta{font-size:13px;color:#b0aed0;position:relative;}
+.h-meta strong{color:#e1e3ee;}
+
+.section{padding:24px 44px;border-bottom:1px solid #e8eaf0;}
+.section:last-of-type{border-bottom:none;}
+.sec-label{font-family:'Montserrat',sans-serif;font-weight:800;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#452e80;margin-bottom:16px;}
+
+.landscape-intro{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px;padding:12px 16px;background:#f5f5fa;border-left:3px solid #00aeef;border-radius:0 7px 7px 0;}
+.landscape-note{font-size:11px;color:#aaa;font-style:italic;margin-top:8px;}
+
+.ls-grid{display:flex;flex-direction:column;gap:12px;}
+.ls-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;}
+
+.rank-bar-r1{background:#452e80;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.rank-bar-r7,.rank-bar-r8{background:#282560;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.rank-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#fff;white-space:nowrap;}
+.rank-note{font-size:10.5px;color:rgba(255,255,255,0.65);text-align:right;}
+
+.ls-card-top{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.ls-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ls-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;}
+.ls-cat{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap;flex-shrink:0;}
+.cat-home{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-senior{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.cat-restore{background:rgba(180,64,42,0.1);color:#b4402a;}
+.cat-laundry{background:rgba(0,150,170,0.12);color:#00707c;}
+.cat-junk{background:rgba(74,74,104,0.1);color:#4a4a68;}
+.cat-organize{background:rgba(107,76,158,0.1);color:#6b4c9e;}
+.cat-moving{background:rgba(31,122,92,0.1);color:#1f7a5c;}
+.ls-why{font-size:12.5px;color:#444;line-height:1.55;}
+
+.ls-card-bottom{padding:10px 16px;background:#f0eefa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ls-stat{display:flex;flex-direction:column;gap:2px;}
+.ls-stat-label{font-family:'Montserrat',sans-serif;font-weight:700;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#888;}
+.ls-stat-val{font-size:12px;color:#15131f;font-weight:700;line-height:1.3;}
+.ls-stat-val.good{color:#1a7a4a;}
+.ls-stat-val.warn{color:#b86e00;}
+.ls-stat-val.note{color:#452e80;}
+
+.ls-tags{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.ls-tag{font-size:10.5px;color:#555;background:#eeedf8;border-radius:5px;padding:3px 9px;font-family:'Montserrat',sans-serif;font-weight:700;}
+.ls-tag.sba{color:#1a7a4a;background:#eaf6ef;}
+.ls-tag.geo{color:#00709a;background:#e8f7fd;}
+.ls-tag.recur{color:#452e80;background:#ede9fa;}
+.ls-tag.warn{color:#b86e00;background:#fdf5e6;}
+.ls-tag.terr{color:#4a4a68;background:#eeedf5;}
+.ls-link{display:block;padding:10px 16px;font-size:12.5px;font-family:'Montserrat',sans-serif;font-weight:700;color:#00709a;text-decoration:none;border-top:1px solid #e8eaf0;background:#fafafa;}
+.ls-link:hover{text-decoration:underline;}
+
+.sat-banner{padding:9px 16px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.02em;border-bottom:1px solid #e8eaf0;display:flex;align-items:center;gap:8px;}
+.sat-banner .sat-label{white-space:nowrap;}
+.sat-banner .sat-detail{font-family:'Lato',sans-serif;font-weight:400;font-size:11.5px;opacity:.9;}
+.sat-banner.low{background:rgba(26,122,74,0.09);color:#1a7a4a;}
+.sat-banner.moderate{background:rgba(184,134,11,0.11);color:#8a6d1f;}
+.sat-banner.high{background:rgba(180,64,42,0.1);color:#b4402a;}
+
+.acq-card{border:1px solid #e8eaf0;border-radius:9px;overflow:hidden;background:#fafafa;margin-bottom:12px;}
+.acq-bar{background:#1a1340;padding:7px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.acq-bar span{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#00aeef;white-space:nowrap;}
+.acq-bar small{font-size:10px;color:rgba(255,255,255,0.5);text-align:right;}
+.acq-body{padding:13px 16px 10px;border-bottom:1px solid #e8eaf0;}
+.acq-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#15131f;margin-bottom:6px;}
+.acq-desc{font-size:12.5px;color:#444;line-height:1.55;}
+.acq-stats{padding:10px 16px;background:#f5f5fa;display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+
+.where-search{background:#e8f7fd;border-radius:8px;padding:14px 18px;margin-top:14px;}
+.where-search .sec-label{color:#00709a;}
+.where-search p{font-size:12.5px;color:#444;line-height:1.7;}
+
+.disclaimer{background:#f5f5fa;border-top:1px solid #e8eaf0;padding:18px 44px;}
+.disclaimer p{font-size:11.5px;color:#888;line-height:1.7;}
+.disclaimer strong{color:#555;}
+
+.doc-footer{background:#0d0a1c;padding:14px 44px;}
+.footer-main{font-size:11.5px;color:#9a98b4;line-height:1.6;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .doc{box-shadow:none;border-radius:0;}
+  .hdr,.rank-bar-r1,.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.rank-bar-r7,.rank-bar-r8,.ls-card-bottom,.acq-bar,.doc-footer{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+@media(max-width:640px){
+  .section{padding:18px 20px;}
+  .hdr{padding:24px 20px;}
+  .ls-card-bottom{grid-template-columns:1fr;}
+  .acq-stats{grid-template-columns:1fr;}
+  .disclaimer{padding:16px 20px;}
+  .doc-footer{padding:14px 20px;}
+  .rank-bar-r1,.rank-bar-r2,.rank-bar-r3,.rank-bar-r4,.rank-bar-r5,.rank-bar-r6,.rank-bar-r7,.rank-bar-r8{flex-direction:column;align-items:flex-start;gap:2px;}
+  .rank-note{text-align:left;}
+}
+
+.rank-bar-r9{background:#282560;padding:6px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.cat-edu{background:rgba(69,46,128,0.1);color:#452e80;}
+.cat-stem{background:rgba(0,174,239,0.1);color:#00709a;}
+.cat-active{background:rgba(26,122,74,0.1);color:#1a7a4a;}
+.cat-pet{background:rgba(180,64,42,0.1);color:#b4402a;}
+.sub-head{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;color:#282560;margin:22px 0 10px;}
+.loc-picks{padding:10px 16px 12px;}
+.loc-picks ol{margin-left:18px;font-size:12.5px;color:#15131f;line-height:1.6;}
+.loc-picks li{margin-bottom:4px;}
+.loc-picks li strong{font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;}
+.loc-picks li span{color:#555;}
+.acq-stats.three{grid-template-columns:1fr 1fr 1fr;}
+.grant-box{background:#f5f5fa;border-left:3px solid #452e80;border-radius:0 7px 7px 0;padding:12px 16px;font-size:12.5px;color:#444;line-height:1.65;margin-bottom:10px;}
+.grant-box strong{color:#15131f;}
+@media(max-width:640px){.acq-stats.three{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<div class="hdr">
+  <div class="h-logo">BLK GRVTY &nbsp;/&nbsp; FRANCHISE NOVA</div>
+  <div class="h-eye">Prepared for Your Review</div>
+  <div class="h-name">TREND Shopping Centers</div>
+  <div class="h-meta">Education &amp; Enrichment · Pet Services &nbsp;·&nbsp; <strong>Target:</strong> Minneapolis, Chicago, Baltimore, Columbus, Wilmington, Hartford &nbsp;·&nbsp; Neighborhood centers</div>
+</div>
+
+<div class="section">
+  <div class="sec-label">About This List</div>
+  <p class="landscape-intro">This list ranks franchise systems that could lease space in TREND's neighborhood shopping centers, with a grant covering about half of what families pay. It favors brands that are affordable to open, fit a small storefront, and charge a monthly fee that's easy to split between a grant and a family. Rankings change by location, because each center's neighborhood is different.</p>
+  <p style="font-size:12.5px;color:#444;line-height:1.65;">
+  <strong>Est. Investment</strong> — total cost to open one location: franchise fee, build-out, equipment, working capital. Not expected income.<br><br>
+  <strong>Family Cost After 50% Grant</strong> — what a family would pay each month if a grant covers half of typical tuition. Tuition is set by each local owner, so these are estimates.<br><br>
+  <strong>Royalty Minimum</strong> — some brands charge a set monthly royalty even when revenue is low. That matters most in the first year, while enrollment is still building.<br><br>
+  <strong>Item 19</strong> — the section of a franchise's disclosure document where it can publish what its locations earn. Brands that skip it are harder for lenders to underwrite.<br><br>
+  <strong>Market Saturation</strong> — how crowded the category already is. For tutoring and enrichment, this means how many similar centers families can already reach nearby.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+    <span class="ls-tag sba">● Low — few similar options nearby</span>
+    <span class="ls-tag warn" style="color:#8a6d1f;background:#fdf6e3;">● Moderate — some competition; confirm territory</span>
+    <span class="ls-tag" style="color:#b4402a;background:#fbeae7;">● High — a crowded category</span>
+  </div>
+  <p class="landscape-note" style="margin-top:14px;">⚑ Based on publicly available information only — we have not reviewed the Franchise Disclosure Document (FDD) for any of these systems. Neighborhood figures are Census estimates (ACS 2023) for each center's ZIP code. Confirm territory availability and exact terms directly with each franchisor.</p>
+</div>
+
+<div class="section">
+  <div class="sec-label">Education &amp; Enrichment — Ranked by Fit Across All Sites</div>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Lowest cost to open · lowest price for families</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— a large national system; confirm no existing center within the trade area</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Kumon Math &amp; Reading</div><span class="ls-cat cat-edu">Education</span></div>
+        <p class="ls-why">Self-paced math and reading in a small storefront, with monthly tuition per subject. It has the lowest cost to open on this list, and the lowest price for families: most centers charge about $150–$200 per subject a month, so a 50% grant brings one subject to roughly $75–$100. The trade-off is the royalty: Kumon charges a flat fee per student rather than a percentage, so if a center prices lower to fit the neighborhood, the royalty takes a bigger share of each dollar. Kumon also doesn't publish revenue data, which makes lenders work harder to underwrite it.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$73K–$234K (sources vary)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Monthly tuition per subject</span></div><div class="ls-stat"><span class="ls-stat-label">Family Cost After 50% Grant</span><span class="ls-stat-val good">~$75–$100 per subject / month</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val warn">~$36–$43 per student, per subject, monthly</span></div><div class="ls-stat"><span class="ls-stat-label">Published Revenue (Item 19)</span><span class="ls-stat-val warn">None</span></div><div class="ls-stat"><span class="ls-stat-label">Franchise Fee</span><span class="ls-stat-val good">$2,000</span></div></div>
+      <div class="ls-tags"><span class="ls-tag terr">Fits small bays</span><span class="ls-tag recur">Recurring tuition</span><span class="ls-tag sba">SBA-friendly ✓</span><span class="ls-tag warn">No Item 19 — harder to underwrite</span></div>
+      <a class="ls-link" href="https://www.kumonfranchise.com/buyer-faqs" target="_blank" rel="noopener">→ Kumon franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">Strongest track record of the lower-cost options</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— a large national system; confirm territory against nearby centers</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Mathnasium</div><span class="ls-cat cat-edu">Education</span></div>
+        <p class="ls-why">After-school math tutoring with a membership-style monthly fee. Its 2026 disclosure shows 914 centers averaging about $385K in yearly revenue, and a second center costs less to open than the first, which suits placing several units across TREND's centers. Families typically pay $250–$400 a month, so even with a 50% grant this is a stretch in the lowest-income sites. The royalty has a monthly minimum, which hurts while enrollment is still building.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$127K–$166K (2nd center $105K–$143K)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Monthly membership</span></div><div class="ls-stat"><span class="ls-stat-label">Family Cost After 50% Grant</span><span class="ls-stat-val warn">~$125–$200 / month</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val warn">Greater of 10% or $1,500/mo, plus $650 base</span></div><div class="ls-stat"><span class="ls-stat-label">Avg. Revenue (Item 19)</span><span class="ls-stat-val good">~$385K (914 centers, FY2025)</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val ">1,000+ US centers</span></div></div>
+      <div class="ls-tags"><span class="ls-tag recur">Multi-unit discount</span><span class="ls-tag recur">Recurring enrollment</span><span class="ls-tag sba">SBA-friendly ✓</span><span class="ls-tag warn">Royalty minimum during ramp-up</span></div>
+      <a class="ls-link" href="https://1851franchise.com/mathnasium/franchise-disclosure-document-2026-2733479" target="_blank" rel="noopener">→ Mathnasium 2026 FDD summary</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Highest revenue · second payer through school contracts</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— fewer centers per market than Kumon or Mathnasium</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Huntington Learning Center</div><span class="ls-cat cat-edu">Education</span></div>
+        <p class="ls-why">Tutoring and test prep across all subjects. It has the highest average revenue on this list (about $590K across 248 locations in 2024), and it sells tutoring to school districts as well as to families, which could give a center a second source of income alongside the grant. It costs more to open and carries a $2,000 monthly royalty minimum, and family pricing runs at the high end.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$164K–$302K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Program-based tutoring + school contracts</span></div><div class="ls-stat"><span class="ls-stat-label">Family Cost After 50% Grant</span><span class="ls-stat-val ">Priced per program — confirm locally</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val warn">Greater of 9.5% or $2,000/mo</span></div><div class="ls-stat"><span class="ls-stat-label">Avg. Revenue (Item 19)</span><span class="ls-stat-val good">~$590K (248 locations, FY2024)</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val ">~275 US centers</span></div></div>
+      <div class="ls-tags"><span class="ls-tag recur">School-district contracts</span><span class="ls-tag sba">SBA-friendly ✓</span><span class="ls-tag warn">Higher cost to open</span></div>
+      <a class="ls-link" href="https://1851franchise.com/huntington-learning-center-franchise-costs-fees-profit-and-data-2725089" target="_blank" rel="noopener">→ Huntington franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r4"><span class="rank-num">RANK 4</span><span class="rank-note">Lowest cost enrichment option · can serve schools off-site</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— hands-on STEM classes are less common than tutoring</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Snapology</div><span class="ls-cat cat-stem">STEM Enrichment</span></div>
+        <p class="ls-why">Hands-on STEM classes using building bricks and robotics, offered as a storefront or delivered in schools and community spaces. It's the lowest-cost enrichment option here, and the off-site model lets one location reach kids beyond a small trade area. Revenue is modest (median about $107K), so it works best paired with a tutoring brand or as an add-on. Part of Unleashed Brands, which also owns Sylvan and The Little Gym.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$75K–$106K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Classes, camps &amp; school programs</span></div><div class="ls-stat"><span class="ls-stat-label">Median Revenue</span><span class="ls-stat-val warn">~$107K</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">7%</span></div><div class="ls-stat"><span class="ls-stat-label">Parent Company</span><span class="ls-stat-val ">Unleashed Brands</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Storefront or mobile</span><span class="ls-tag recur">Works in schools</span><span class="ls-tag warn">Low revenue ceiling</span></div>
+      <a class="ls-link" href="https://www.snapology.com/franchising" target="_blank" rel="noopener">→ Snapology franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r5"><span class="rank-num">RANK 5</span><span class="rank-note">Small studio format fits a smaller bay</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— coding studios cluster in higher-income suburbs</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Code Ninjas</div><span class="ls-cat cat-stem">STEM / Coding</span></div>
+        <p class="ls-why">Coding and game-building classes for kids. Besides the full learning center ($174K–$266K), there's a smaller studio format at $73.5K–$109K that fits a smaller storefront. Centers average about $237K a year, but the system hasn't added locations in about 18 months, so ask the franchisor directly about closures and resales.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">Studio $73.5K–$109K · Center $174K–$266K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Monthly membership + camps</span></div><div class="ls-stat"><span class="ls-stat-label">Avg. Revenue</span><span class="ls-stat-val warn">~$237K</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">8.25%</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val ">~238 franchised locations</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Two formats</span><span class="ls-tag recur">Recurring membership</span><span class="ls-tag warn">Flat system growth</span></div>
+      <a class="ls-link" href="https://franzy.com/franchises/code-ninjas" target="_blank" rel="noopener">→ Code Ninjas franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r6"><span class="rank-num">RANK 6</span><span class="rank-note">Same parent as Snapology and The Little Gym</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— established brand, but system sales have been falling</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Sylvan Learning</div><span class="ls-cat cat-edu">Education</span></div>
+        <p class="ls-why">Tutoring across subjects with center, in-home, and online options. The draw is the parent company: Unleashed Brands also owns Snapology, The Little Gym, Premier Martial Arts and Water Wings Swim School, so one relationship could cover several concepts across all six cities. The caution is momentum: system sales fell about 14% in 2024 and the brand is repositioning around a new AI product.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$118K–$288K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Program-based tutoring</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val warn">11%</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val ">~430 territories</span></div></div>
+      <div class="ls-tags"><span class="ls-tag recur">Multi-brand parent</span><span class="ls-tag sba">SBA-friendly ✓</span><span class="ls-tag warn">Falling system sales</span></div>
+      <a class="ls-link" href="https://franzy.com/franchises/sylvan-learning-centers" target="_blank" rel="noopener">→ Sylvan franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r7"><span class="rank-num">RANK 7</span><span class="rank-note">Very small system · limited track record</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— few locations nationally</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Code Wiz</div><span class="ls-cat cat-stem">STEM / Coding</span></div>
+        <p class="ls-why">Coding and robotics classes for ages 7–17, with a lighter build-out than Code Ninjas. The system is very small (roughly 10–15 locations), so there's little track record for a lender to rely on. Worth a conversation, not a lead option.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$120K–$237K (sources vary)</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Classes + camps</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">6% + 2% marketing</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val warn">~10–15 locations</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Light build-out</span><span class="ls-tag warn">Thin track record</span></div>
+      <a class="ls-link" href="https://codewizfranchise.com/" target="_blank" rel="noopener">→ Code Wiz franchise information</a>
+    </div></div>
+  <div class="sub-head">Anchor-size concepts (Edmondson Village only)</div>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-r8"><span class="rank-num">RANK 8</span><span class="rank-note">Anchor-size · strongest revenue, highest cost</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— few children's fitness centers in these neighborhoods</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">KidStrong</div><span class="ls-cat cat-active">Kids' Fitness &amp; Development</span></div>
+        <p class="ls-why">Brain, physical, and character development classes for ages 1–11. Revenue is strong: even the bottom quarter of centers averaged about $510K in 2025. But it costs $476K–$671K to open and needs a large space, so it only makes sense for TREND's largest center (Edmondson Village) and with heavy capital support.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val warn">$476K–$671K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Monthly membership</span></div><div class="ls-stat"><span class="ls-stat-label">Bottom-Quarter Avg. Revenue</span><span class="ls-stat-val good">~$510K (2025)</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">~8.5%</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Large-bay anchor</span><span class="ls-tag recur">Recurring membership</span><span class="ls-tag warn">High cost to open</span></div>
+      <a class="ls-link" href="https://1851franchise.com/kidstrong/franchise-deep-dive-kidstrong-franchise-costs-fees-profit-and-data-2727179" target="_blank" rel="noopener">→ KidStrong franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r9"><span class="rank-num">RANK 9</span><span class="rank-note">Anchor-size · long-established</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— few children's gyms in these neighborhoods</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">The Little Gym</div><span class="ls-cat cat-active">Kids' Fitness &amp; Development</span></div>
+        <p class="ls-why">Gymnastics, dance, and parent-child classes for ages 4 months to 12 years, with 255 locations and decades of history. Like KidStrong, it needs a large space and $420K–$723K to open, so it's an Edmondson Village conversation only. Part of Unleashed Brands.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val warn">$420K–$723K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Monthly membership</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">8%</span></div><div class="ls-stat"><span class="ls-stat-label">System Size</span><span class="ls-stat-val ">255 locations</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Large-bay anchor</span><span class="ls-tag recur">Multi-brand parent</span><span class="ls-tag warn">High cost to open</span></div>
+      <a class="ls-link" href="https://prod.franzy.com/franchises/the-little-gym" target="_blank" rel="noopener">→ The Little Gym franchise information</a>
+    </div></div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Pet Services — Ranked by Fit</div>
+  <p class="landscape-intro">Pet concepts cost more to open than tutoring and don't fit an education grant, so they work best at the sites with higher incomes or the most space: the South Loop and Edmondson Village.</p>
+  <div class="ls-grid">
+    <div class="ls-card">
+      <div class="rank-bar-r1"><span class="rank-num">RANK 1</span><span class="rank-note">Lowest cost to open of the pet options</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— pet grooming is a growing, more crowded category</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Woof Gang Bakery &amp; Grooming</div><span class="ls-cat cat-pet">Pet Services</span></div>
+        <p class="ls-why">Grooming plus a retail pet bakery and supply shop. It has the widest cost range of the three, starting at about $184K, and retail gives it walk-in traffic in a shopping center.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val note">$184K–$507K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Repeat grooming + retail</span></div><div class="ls-stat"><span class="ls-stat-label">Franchise Fee</span><span class="ls-stat-val ">$49,900</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Walk-in retail</span><span class="ls-tag recur">Repeat visits</span></div>
+      <a class="ls-link" href="https://franchise.woofgangbakery.com/dog-grooming-franchise-cost/" target="_blank" rel="noopener">→ Woof Gang franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r2"><span class="rank-num">RANK 2</span><span class="rank-note">Membership grooming · disclosed revenue</span></div>
+      <div class="sat-banner moderate"><span class="sat-label">● SATURATION: MODERATE</span><span class="sat-detail">— pet grooming is a growing, more crowded category</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Scenthound</div><span class="ls-cat cat-pet">Pet Services</span></div>
+        <p class="ls-why">Membership-based dog grooming and hygiene. Its 2026 disclosure shows 69 locations averaging about $507K in yearly revenue, and it offers lower fees on a second and third unit. The cost to open starts above $320K.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val warn">$323K–$551K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Monthly membership</span></div><div class="ls-stat"><span class="ls-stat-label">Avg. Revenue (Item 19)</span><span class="ls-stat-val good">~$507K (69 locations, FY2025)</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">6%</span></div></div>
+      <div class="ls-tags"><span class="ls-tag recur">Multi-unit discount</span><span class="ls-tag recur">Recurring membership</span><span class="ls-tag warn">Higher cost to open</span></div>
+      <a class="ls-link" href="https://1851franchise.com/scenthound-franchise-costs-fees-profit-and-data-2730438" target="_blank" rel="noopener">→ Scenthound franchise information</a>
+    </div>
+    <div class="ls-card">
+      <div class="rank-bar-r3"><span class="rank-num">RANK 3</span><span class="rank-note">Dog training and daycare</span></div>
+      <div class="sat-banner low"><span class="sat-label">● SATURATION: LOW</span><span class="sat-detail">— few training-focused concepts in these markets</span></div>
+      <div class="ls-card-top">
+        <div class="ls-card-header"><div class="ls-name">Zoom Room</div><span class="ls-cat cat-pet">Pet Services</span></div>
+        <p class="ls-why">Dog training classes, socials, and daycare in an indoor gym. It needs a larger bay than a groomer and costs about $300K or more to open.</p>
+      </div>
+      <div class="ls-card-bottom"><div class="ls-stat"><span class="ls-stat-label">Est. Investment</span><span class="ls-stat-val warn">$302K–$465K</span></div><div class="ls-stat"><span class="ls-stat-label">Revenue Type</span><span class="ls-stat-val good">Classes + memberships</span></div><div class="ls-stat"><span class="ls-stat-label">Royalty</span><span class="ls-stat-val ">9%</span></div></div>
+      <div class="ls-tags"><span class="ls-tag geo">Larger bay</span><span class="ls-tag recur">Recurring classes</span></div>
+      <a class="ls-link" href="https://franchise.zoomroom.com/economics" target="_blank" rel="noopener">→ Zoom Room franchise information</a>
+    </div></div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Rankings by Location</div>
+  
+  <div class="acq-card">
+    <div class="acq-bar"><span>Minneapolis</span><small>51,459 SF · ZIP 55411</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Hawthorn Crossings — West Broadway, North Minneapolis</div>
+      <div class="acq-desc">The youngest neighborhood of the six, with about a third of residents under 18. GroundBreak Coalition lends in the Twin Cities metro, which could pair local capital with this site.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val ">$53,368</span></div><div class="ls-stat"><span class="ls-stat-label">Under 18</span><span class="ls-stat-val good">~35% of residents</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val ">29,719</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Mathnasium</strong> <span>— the most kid-heavy site on the list can support a full-price membership model</span></li><li><strong>Kumon</strong> <span>— lower price point for families the grant can't fully reach</span></li><li><strong>Snapology</strong> <span>— add-on enrichment; can also run classes in nearby schools</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Chicago</span><small>27,000 SF · ZIP 60628</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Roseland Medical Center — across from Roseland Community Hospital</div>
+      <div class="acq-desc">A small center with healthcare tenants and an older population, so a small-format tutoring brand fits best.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val ">$49,719</span></div><div class="ls-stat"><span class="ls-stat-label">Median Age</span><span class="ls-stat-val warn">40.7 (older)</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val good">59,212</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Kumon</strong> <span>— smallest footprint for a small, medical-focused center</span></li><li><strong>Mathnasium</strong> <span>— large population base to draw from</span></li><li><strong>Huntington</strong> <span>— school contracts can offset fewer families nearby</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Chicago</span><small>In development · ZIP 60616</small></div>
+    <div class="acq-body">
+      <div class="acq-name">2111 S. State St. — South Loop</div>
+      <div class="acq-desc">The only site near the national median income, so the ranking shifts toward enrichment and pets. The grant may matter less here.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val good">$77,841</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val good">54,456</span></div><div class="ls-stat"><span class="ls-stat-label">Status</span><span class="ls-stat-val warn">In development</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Code Ninjas</strong> <span>— higher incomes support coding enrichment</span></li><li><strong>Mathnasium</strong> <span>— strong demand at full price</span></li><li><strong>Scenthound</strong> <span>— pet services fit this site's income level</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Baltimore</span><small>316,474 SF · ZIP 21229</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Edmondson Village</div>
+      <div class="acq-desc">TREND's largest center, backed by $12.5M in city and state grants. It's the one site where an anchor-size kids' concept or a pet groomer could also work.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val ">$55,457</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val good">44,687</span></div><div class="ls-stat"><span class="ls-stat-label">Center Size</span><span class="ls-stat-val good">Largest in portfolio</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Mathnasium</strong> <span>— solid population base and the middle of the income range</span></li><li><strong>Huntington</strong> <span>— room for a larger center and school contracts</span></li><li><strong>KidStrong or The Little Gym</strong> <span>— the only TREND center big enough for an anchor-size concept</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Baltimore</span><small>ZIP 21216</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Walbrook Junction</div>
+      <div class="acq-desc">Lower incomes than Edmondson Village, so lead with the lowest-cost options.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val ">~$46,761</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val ">~28,385</span></div><div class="ls-stat"><span class="ls-stat-label">Fit</span><span class="ls-stat-val warn">Lower-income site</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Kumon</strong> <span>— lowest price point for families</span></li><li><strong>Snapology</strong> <span>— low-cost enrichment add-on</span></li><li><strong>Mathnasium</strong> <span>— only with the grant in place</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Columbus</span><small>ZIP 43203 (assumed)</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Mount Vernon Plaza — Mount Vernon Ave. (“Million Dollar Mile”)</div>
+      <div class="acq-desc">The smallest trade area of the six, so a brand that can also serve nearby schools helps. Ohio's state enrichment accounts have ended, so the grant would need to come from philanthropy.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val warn">$44,099</span></div><div class="ls-stat"><span class="ls-stat-label">Poverty Rate</span><span class="ls-stat-val warn">36.5%</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val warn">9,093 (small)</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Kumon</strong> <span>— lowest price point for families</span></li><li><strong>Snapology</strong> <span>— off-site classes reach kids beyond a small ZIP</span></li><li><strong>Mathnasium</strong> <span>— only with the grant in place</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Wilmington</span><small>82,912 SF · ZIP 19801</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Adams Four — 800 W. 4th St., West Center City</div>
+      <div class="acq-desc">TREND has a contract to acquire this center and is raising community investment now, so tenant planning can start early.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income</span><span class="ls-stat-val warn">$44,505</span></div><div class="ls-stat"><span class="ls-stat-label">Population</span><span class="ls-stat-val ">16,170</span></div><div class="ls-stat"><span class="ls-stat-label">Status</span><span class="ls-stat-val warn">Acquisition in progress</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Kumon</strong> <span>— lowest price point for families</span></li><li><strong>Mathnasium</strong> <span>— mid-size center can host a full learning center</span></li><li><strong>Snapology</strong> <span>— low-cost enrichment add-on</span></li></ol></div>
+  </div>
+  <div class="acq-card">
+    <div class="acq-bar"><span>Hartford</span><small>Ranking is provisional</small></div>
+    <div class="acq-body">
+      <div class="acq-name">Site not yet public</div>
+      <div class="acq-desc">We used city-wide figures until TREND confirms the site. Hartford's lowest-income ZIP (06120) has a median income near $33,500, so the specific location could change this ranking.</div>
+    </div>
+    <div class="acq-stats three"><div class="ls-stat"><span class="ls-stat-label">Median HH Income (city)</span><span class="ls-stat-val warn">$45,687</span></div><div class="ls-stat"><span class="ls-stat-label">Population (city)</span><span class="ls-stat-val ">120,347</span></div><div class="ls-stat"><span class="ls-stat-label">Status</span><span class="ls-stat-val warn">Site to be confirmed</span></div></div>
+    <div class="loc-picks"><ol><li><strong>Kumon</strong> <span>— lowest price point for families</span></li><li><strong>Mathnasium</strong> <span>— only with the grant in place</span></li><li><strong>Snapology</strong> <span>— low-cost enrichment add-on</span></li></ol></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">Making the 50% Grant Work</div>
+  <div class="grant-box"><strong>Pay the center, not the family.</strong> Ohio gave families $1,000 per child for tutoring and enrichment through its ACE accounts, but most of the money went unused and the program wasn't renewed, partly because parents struggled to get claims paid. A grant that pays the center directly avoids that problem.</div>
+  <div class="grant-box"><strong>Fit the grant to the royalty.</strong> Brands with a monthly royalty minimum (Mathnasium, Huntington) need steady enrollment from the start. A grant committed for the first 12–18 months helps a new location get through ramp-up.</div>
+  <div class="grant-box"><strong>To confirm with TREND:</strong> available bay sizes at each center, rent, and whether two concepts could share a center (for example, tutoring next to a pet groomer at Edmondson Village).</div>
+</div>
+
+<div class="disclaimer">
+  <p><strong>Important:</strong> This list is based on publicly available information only. We have not reviewed the Franchise Disclosure Document (FDD) for any of these systems. Investment, royalty, and revenue figures come from public summaries of each brand's disclosure documents and should be confirmed against the current FDD. Family tuition figures are typical ranges reported by parents and vary by location. Neighborhood figures are Census estimates (ACS 2023) by ZIP code; the Columbus ZIP is assumed from the center's address, and Hartford uses city-wide figures until the site is confirmed. Territory availability must be confirmed directly with each franchisor. All decisions should be made after full FDD review, legal counsel, and independent financial due diligence.</p>
+</div>
+
+<div class="doc-footer">
+  <p class="footer-main">Franchise Nova &nbsp;&middot;&nbsp; A BLK GRVTY Initiative &nbsp;&middot;&nbsp; Prepared for The Chicago TREND Corporation &nbsp;&middot;&nbsp; November 2026</p>
+</div>
+
+</div>
+</body>
+</html>
